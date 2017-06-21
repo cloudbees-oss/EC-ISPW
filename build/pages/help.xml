@@ -1,0 +1,419 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=us-ascii" http-equiv="content-type" />
+    <title><!-- TITLE BEGIN -->Electric Flow integration for Compuware ISPW<!-- TITLE END --></title>
+    <link rel="stylesheet" href="../../plugins/MyPlugin/pluginhelp.css" type="text/css" media="screen" />
+</head>
+<!-- REST PLUGIN WIZARD HELP -->
+<body>
+    <div class="help">
+        <h1>MyPlugin</h1>
+        <p>Plugin Version 1.0.0</p>
+        <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
+        <p>Revised on <!-- REVISION DATE BEGIN -->June 21, 2017<!-- REVISION DATE END --></p>
+        <p>
+            <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
+        </p>
+        <h2>Links</h2>
+        <!-- LINKS BEGIN -->
+<a href="http://www.compuware.com/en_us/use-cases/source-code-management.html" target="_blank">http://www.compuware.com/en_us/use-cases/source-code-management.html</a>
+<!-- LINKS END -->
+        <h1>Contents</h1>
+        <ul>
+        <!-- TOC BEGIN --><li><a href="#CreateAssignment">Create Assignment</a></li>
+<li><a href="#LoadTask">Load Task</a></li>
+<li><a href="#GetAssignmentInformation">Get Assignment Information</a></li>
+<li><a href="#GetAssignmentTaskList">Get Assignment Task List</a></li>
+<li><a href="#GetAssignmentTaskInformation">Get Assignment Task Information</a></li>
+<li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
+<li><a href="#CreateRelease">Create Release</a></li>
+<li><a href="#GetReleaseInformation">Get Release Information</a></li><!-- TOC END -->
+        </ul>
+        <h2>Configuration</h2>
+        <div id="CreateConfiguration">
+            <a name="CreateConfiguration" id="CreateConfigurationLink"></a>
+            <h2>Plugin Configurations</h2>
+            <p>
+                Plugin configurations are sets of parameters that apply
+                across some or all of the plugin procedures. They
+                reduce repetition of common values, create
+                predefined parameter sets for end users, and
+                securely store credentials where needed. Each configuration
+                is given a unique name that is entered in designated
+                parameters on procedures that use them.<br /><br />
+            </p>
+            <h3>Creating Plugin Configurations</h3>
+            <p>To create plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the MyPlugin row.</li>
+                <li>Click <b>Configure</b> to open the
+                MyPlugin Configurations page.</li>
+                <li>Click <b>Create Configuration</b>.</li>
+                <li>To enable ElectricFlow server to communicate with the API,
+                enter the following information:<br /></li>
+                <!-- CONFIG PARAMS BEGIN -->
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="required">
+                    Configuration:
+                </td>
+                <td>
+                    Unique name for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    Description for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    Credential:
+                </td>
+                <td>
+                    Credentials to connect
+                </td>
+            </tr>
+        </tbody>
+    </table><!-- CONFIG PARAMS END -->
+            </ol>
+            <p>The MyPlugin Configurations page now shows the new configuration.</p>
+            <h3>Editing Plugin Configurations</h3>
+            <p>To edit plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the MyPlugin row.</li>
+                <li>Click <b>Configure</b> to open the Configurations page.</li>
+                <li>Find the configuration that you want to edit.</li>
+                <li>Click <b>Edit</b>.</li>
+                <li>Edit the parameters in the configuration.</li>
+                <li>Click <b>OK</b> to save the modified configuration.</li>
+            </ol>
+        </div>
+        <h1>Procedures</h1>
+        <!-- PROCEDURES BEGIN -->
+            <div id="CreateAssignment">
+                <a name="CreateAssignment" id="CreateAssignment" />
+                <h3>Create Assignment</h3>
+                <p>Creates Assignment.</p>
+                <!-- CreateAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">Stream Name</td>
+                    <td>ISPW Stream Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Application Id</td>
+                    <td>ISPW Application Id</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>Assignment Description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Assignment Prefix</td>
+                    <td>Assignment Prefix</td>
+                </tr>
+                <tr>
+                    <td>Ref Number</td>
+                    <td>Ref Number</td>
+                </tr>
+                <tr>
+                    <td>Release</td>
+                    <td>Release</td>
+                </tr>
+                <tr>
+                    <td>User Tag</td>
+                    <td>User Tag</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- CreateAssignment END -->
+            </div>
+            <div id="LoadTask">
+                <a name="LoadTask" id="LoadTask" />
+                <h3>Load Task</h3>
+                <p>Loads A Task for Specified Assignment.</p>
+                <!-- LoadTask BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">assignmentId</td>
+                    <td>Assignment Id</td>
+                </tr>
+                <tr>
+                    <td class="required">Stream Name</td>
+                    <td>ISPW Stream Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Application Id</td>
+                    <td>ISPW Application Id</td>
+                </tr>
+                <tr>
+                    <td class="required">moduleName</td>
+                    <td>Module Name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Module Type</td>
+                    <td>Module Type</td>
+                </tr>
+                <tr>
+                    <td class="required">Current Level</td>
+                    <td>Current Level</td>
+                </tr>
+                <tr>
+                    <td class="required">Starting Level</td>
+                    <td>Starting Level</td>
+                </tr>
+                <tr>
+                    <td>Generate Sequence</td>
+                    <td>Generate Sequence</td>
+                </tr>
+                <tr>
+                    <td>SQL</td>
+                    <td>SQL</td>
+                </tr>
+                <tr>
+                    <td>IMS</td>
+                    <td>IMS</td>
+                </tr>
+                <tr>
+                    <td>CICS</td>
+                    <td>CICS</td>
+                </tr>
+                <tr>
+                    <td>Program</td>
+                    <td>Program</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- LoadTask END -->
+            </div>
+            <div id="GetAssignmentInformation">
+                <a name="GetAssignmentInformation" id="GetAssignmentInformation" />
+                <h3>Get Assignment Information</h3>
+                <p>Get Assignment Information</p>
+                <!-- GetAssignmentInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">assignmentId</td>
+                    <td>Assignment Id</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentInformation END -->
+            </div>
+            <div id="GetAssignmentTaskList">
+                <a name="GetAssignmentTaskList" id="GetAssignmentTaskList" />
+                <h3>Get Assignment Task List</h3>
+                <p>Get Assignment Task List</p>
+                <!-- GetAssignmentTaskList BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">assignmentId</td>
+                    <td>Assignment Id</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentTaskList END -->
+            </div>
+            <div id="GetAssignmentTaskInformation">
+                <a name="GetAssignmentTaskInformation" id="GetAssignmentTaskInformation" />
+                <h3>Get Assignment Task Information</h3>
+                <p>Get Assignment Task Information</p>
+                <!-- GetAssignmentTaskInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">assignmentId</td>
+                    <td>Assignment Id</td>
+                </tr>
+                <tr>
+                    <td class="required">taskId</td>
+                    <td>Task Id</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentTaskInformation END -->
+            </div>
+            <div id="GenerateTasksinAssignment">
+                <a name="GenerateTasksinAssignment" id="GenerateTasksinAssignment" />
+                <h3>Generate Tasks in Assignment</h3>
+                <p>Generates Tasks in Assignment.</p>
+                <!-- GenerateTasksinAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>ISPW Instance Id</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required see ISPW administrator for valid values.</td>
+                </tr>
+                <tr>
+                    <td class="required">Optional global custom headers used for all callbacks</td>
+                    <td>Optional global custom headers used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td class="required">Optional, global credentials used for all callbacks</td>
+                    <td>Optional, global credentials used for all callbacks.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GenerateTasksinAssignment END -->
+            </div>
+            <div id="CreateRelease">
+                <a name="CreateRelease" id="CreateRelease" />
+                <h3>Create Release</h3>
+                <p>Generates Tasks in Assignment.</p>
+                <!-- CreateRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>srid</td>
+                </tr>
+                <tr>
+                    <td class="required">Stream</td>
+                    <td>Stream</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>Description</td>
+                </tr>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Can only be used if releasePrefix is not set, one must be used</td>
+                </tr>
+                <tr>
+                    <td class="required">Release Prefix</td>
+                    <td>Can only be used if releaseId is not set, one must be used</td>
+                </tr>
+                <tr>
+                    <td>Owner</td>
+                    <td>Owner</td>
+                </tr>
+                <tr>
+                    <td>Reference Number</td>
+                    <td>Reference Number</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- CreateRelease END -->
+            </div>
+            <div id="GetReleaseInformation">
+                <a name="GetReleaseInformation" id="GetReleaseInformation" />
+                <h3>Get Release Information</h3>
+                <p>Gets Release information.</p>
+                <!-- GetReleaseInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">srid</td>
+                    <td>srid</td>
+                </tr>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetReleaseInformation END -->
+            </div>
+<!-- PROCEDURES END -->
+    </div>
+    <!-- RELEASE NOTES BEGIN -->
+    <!-- RELEASE NOTES END -->
+</body>
+</html>

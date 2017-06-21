@@ -1,0 +1,561 @@
+{
+   "create release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/release"
+      },
+      "name" : "Create Release",
+      "description" : "Generates Tasks in Assignment.",
+      "stepName" : "create release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Stream",
+            "label" : "Stream",
+            "type" : "entry",
+            "property" : "stream:"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Description",
+            "label" : "Description",
+            "type" : "entry",
+            "property" : "description"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Can only be used if releasePrefix is not set, one must be used",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Can only be used if releaseId is not set, one must be used",
+            "label" : "Release Prefix",
+            "type" : "entry",
+            "property" : "releasePrefix"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Owner",
+            "label" : "Owner",
+            "type" : "entry",
+            "property" : "owner1"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Reference Number",
+            "label" : "Reference Number",
+            "type" : "entry",
+            "property" : "referenceNumber"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "stream:",
+         "description",
+         "releaseId",
+         "releasePrefix",
+         "owner1",
+         "referenceNumber"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/releases",
+      "attachCredentials" : "true"
+   },
+   "Load Task" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/loadTask"
+      },
+      "name" : "Load Task",
+      "description" : "Loads A Task for Specified Assignment.",
+      "stepName" : "Load Task",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id",
+            "label" : "assignmentId",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "ISPW Stream Name.",
+            "label" : "Stream Name",
+            "type" : "entry",
+            "property" : "stream"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "ISPW Application Id",
+            "label" : "Application Id",
+            "type" : "entry",
+            "property" : "application"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Module Name.",
+            "label" : "moduleName",
+            "type" : "entry",
+            "property" : "moduleName"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Module Type",
+            "label" : "Module Type",
+            "type" : "entry",
+            "property" : "moduleType"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Current Level",
+            "label" : "Current Level",
+            "type" : "entry",
+            "property" : "currentLevel"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Starting Level",
+            "label" : "Starting Level",
+            "type" : "entry",
+            "property" : "startingLevel"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Generate Sequence",
+            "label" : "Generate Sequence",
+            "type" : "entry",
+            "property" : "generateSequence"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "SQL",
+            "label" : "SQL",
+            "type" : "entry",
+            "property" : "sql"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "IMS",
+            "label" : "IMS",
+            "type" : "entry",
+            "property" : "ims"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "CICS",
+            "label" : "CICS",
+            "type" : "entry",
+            "property" : "cics"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Program",
+            "label" : "Program",
+            "type" : "entry",
+            "property" : "program"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "assignmentId",
+         "stream",
+         "application",
+         "moduleName",
+         "moduleType",
+         "currentLevel",
+         "startingLevel",
+         "generateSequence",
+         "sql",
+         "ims",
+         "cics",
+         "program"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks",
+      "attachCredentials" : "true"
+   },
+   "Get Assignment Information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/assignment"
+      },
+      "name" : "Get Assignment Information",
+      "description" : "Get Assignment Information",
+      "stepName" : "Get Assignment Information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id",
+            "label" : "assignmentId",
+            "type" : "entry",
+            "property" : "assignmentId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "assignmentId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/",
+      "attachCredentials" : "true"
+   },
+   "create assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/createAssignment"
+      },
+      "name" : "Create Assignment",
+      "description" : "Creates Assignment.",
+      "stepName" : "create assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "ISPW Stream Name.",
+            "label" : "Stream Name",
+            "type" : "entry",
+            "property" : "stream"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "ISPW Application Id",
+            "label" : "Application Id",
+            "type" : "entry",
+            "property" : "application"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Assignment Description.",
+            "label" : "Description",
+            "type" : "entry",
+            "property" : "description"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Assignment Prefix",
+            "label" : "Assignment Prefix",
+            "type" : "entry",
+            "property" : "assignmentPrefix"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Ref Number",
+            "label" : "Ref Number",
+            "type" : "entry",
+            "property" : "refNumber"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Release",
+            "label" : "Release",
+            "type" : "entry",
+            "property" : "release"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "User Tag",
+            "label" : "User Tag",
+            "type" : "entry",
+            "property" : "userTag"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "stream",
+         "application",
+         "description",
+         "assignmentPrefix",
+         "refNumber",
+         "release",
+         "userTag"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments",
+      "attachCredentials" : "true"
+   },
+   "generate tasks in assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/generateAssignmentTasks"
+      },
+      "name" : "Generate Tasks in Assignment",
+      "description" : "Generates Tasks in Assignment.",
+      "stepName" : "generate tasks in assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required see ISPW administrator for valid values.",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration\":"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional global custom headers used for all callbacks",
+            "label" : "Optional global custom headers used for all callbacks",
+            "type" : "entry",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional, global credentials used for all callbacks.",
+            "label" : "Optional, global credentials used for all callbacks",
+            "type" : "entry",
+            "property" : "credentials"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Event array, must contain at least 1 member",
+            "label" : "Event array, must contain at least 1 member",
+            "type" : "entry",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "runtimeConfiguration\":",
+         "httpHeaders",
+         "credentials",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/tasks/generations",
+      "attachCredentials" : "true"
+   },
+   "get release information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/releaseInfo"
+      },
+      "name" : "Get Release Information",
+      "description" : "Gets Release information.",
+      "stepName" : "get release information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "releaseId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}",
+      "attachCredentials" : "true"
+   },
+   "Get Assignment Task List" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/assignmentTasks"
+      },
+      "name" : "Get Assignment Task List",
+      "description" : "Get Assignment Task List",
+      "stepName" : "Get Assignment Task List",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id",
+            "label" : "assignmentId",
+            "type" : "entry",
+            "property" : "assignmentId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "assignmentId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks",
+      "attachCredentials" : "true"
+   },
+   "Get Assignment Task Information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/assignmentTask"
+      },
+      "name" : "Get Assignment Task Information",
+      "description" : "Get Assignment Task Information",
+      "stepName" : "Get Assignment Task Information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "ISPW Instance Id",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id",
+            "label" : "assignmentId",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Task Id",
+            "label" : "taskId",
+            "type" : "entry",
+            "property" : "taskId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "assignmentId",
+         "taskId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks/#{taskId}",
+      "attachCredentials" : "true"
+   }
+}
