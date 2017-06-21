@@ -669,7 +669,7 @@ procedures:
         in: body
         documentation: Event array, must contain at least 1 member
 
- - name: Get Set Information
+  - name: Get Set Information
     stepName: get set information
     description: Gets Set information.
     endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}'
@@ -706,7 +706,7 @@ procedures:
         required: 1
         documentation: Set ID
 
- - name: Get Set Task List
+  - name: Get Set Task List
     stepName: get set task list
     description: Gets Set Task List.
     endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks'

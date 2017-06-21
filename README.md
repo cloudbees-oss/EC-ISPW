@@ -36,6 +36,26 @@ Generates Tasks in Assignment.
 
 Gets Release information.
 
+## Promote Release
+
+Promotes release.
+
+## Deploy Release
+
+Deploys release.
+
+## Regress Release
+
+Regresses release.
+
+## Get Set Information
+
+Gets Set information.
+
+## Get Set Task List
+
+Gets Set Task List.
+
 
 
 # Building the plugin

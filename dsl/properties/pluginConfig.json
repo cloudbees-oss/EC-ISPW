@@ -1,4 +1,99 @@
 {
+   "regress release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/regressResult"
+      },
+      "name" : "Regress Release",
+      "description" : "Regresses release.",
+      "stepName" : "regress release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "label" : "Change Type",
+            "type" : "entry",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "label" : "Execution Status",
+            "type" : "entry",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional global custom headers used for all callbacks",
+            "label" : "HTTP Headers",
+            "type" : "entry",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional, global credentials used for all callbacks.",
+            "label" : "Optional, global credentials used for all callbacks",
+            "type" : "entry",
+            "property" : "credentials"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Event array, must contain at least 1 member",
+            "label" : "Event array, must contain at least 1 member",
+            "type" : "entry",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "releaseId",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "credentials",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/regress",
+      "attachCredentials" : "true"
+   },
    "create release" : {
       "resultProperty" : {
          "show" : "true",
@@ -225,6 +320,47 @@
       "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
+   "get set information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/setInfo"
+      },
+      "name" : "Get Set Information",
+      "description" : "Gets Set information.",
+      "stepName" : "get set information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Set ID",
+            "label" : "Set ID",
+            "type" : "entry",
+            "property" : "setId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "setId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}",
+      "attachCredentials" : "true"
+   },
    "Get Assignment Information" : {
       "resultProperty" : {
          "show" : "true",
@@ -263,6 +399,237 @@
       "basicAuth" : "true",
       "method" : "GET",
       "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/",
+      "attachCredentials" : "true"
+   },
+   "get set task list" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/setTasks"
+      },
+      "name" : "Get Set Task List",
+      "description" : "Gets Set Task List.",
+      "stepName" : "get set task list",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Set ID",
+            "label" : "Set ID",
+            "type" : "entry",
+            "property" : "setId"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "setId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks",
+      "attachCredentials" : "true"
+   },
+   "deploy release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/deployResult"
+      },
+      "name" : "Deploy Release",
+      "description" : "Deploys release.",
+      "stepName" : "deploy release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "label" : "Change Type",
+            "type" : "entry",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "label" : "Execution Status",
+            "type" : "entry",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional global custom headers used for all callbacks",
+            "label" : "HTTP Headers",
+            "type" : "entry",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional, global credentials used for all callbacks.",
+            "label" : "Optional, global credentials used for all callbacks",
+            "type" : "entry",
+            "property" : "credentials"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Event array, must contain at least 1 member",
+            "label" : "Event array, must contain at least 1 member",
+            "type" : "entry",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "releaseId",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "credentials",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/deploy",
+      "attachCredentials" : "true"
+   },
+   "promote release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/promoteResult"
+      },
+      "name" : "Promote Release",
+      "description" : "Promotes release.",
+      "stepName" : "promote release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "srid",
+            "label" : "srid",
+            "type" : "entry",
+            "property" : "srid"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "label" : "Change Type",
+            "type" : "entry",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "label" : "Execution Status",
+            "type" : "entry",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional global custom headers used for all callbacks",
+            "label" : "HTTP Headers",
+            "type" : "entry",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Optional, global credentials used for all callbacks.",
+            "label" : "Optional, global credentials used for all callbacks",
+            "type" : "entry",
+            "property" : "credentials"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Event array, must contain at least 1 member",
+            "label" : "Event array, must contain at least 1 member",
+            "type" : "entry",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "srid",
+         "releaseId",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "credentials",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/promote",
       "attachCredentials" : "true"
    },
    "create assignment" : {
