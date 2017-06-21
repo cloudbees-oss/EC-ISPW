@@ -463,7 +463,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- PromoteRelease END -->
+        <!-- PromoteRelease END -->
             </div>
             <div id="DeployRelease">
                 <a name="DeployRelease" id="DeployRelease" />
@@ -512,7 +512,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- DeployRelease END -->
+        <!-- DeployRelease END -->
             </div>
             <div id="RegressRelease">
                 <a name="RegressRelease" id="RegressRelease" />
@@ -561,7 +561,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- RegressRelease END -->
+        <!-- RegressRelease END -->
             </div>
             <div id="GetSetInformation">
                 <a name="GetSetInformation" id="GetSetInformation" />
@@ -586,7 +586,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- GetSetInformation END -->
+        <!-- GetSetInformation END -->
             </div>
             <div id="GetSetTaskList">
                 <a name="GetSetTaskList" id="GetSetTaskList" />
@@ -611,7 +611,7 @@
                 </tr>
                  </tbody>
             </table>
-                <!-- GetSetTaskList END -->
+        <!-- GetSetTaskList END -->
             </div>
 <!-- PROCEDURES END -->
     </div>

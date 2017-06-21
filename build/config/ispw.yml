@@ -1,0 +1,744 @@
+---
+basicAuth: true # get credentials from config and add basic auth
+# This block refers to auto help generation
+help:
+  title: Electric Flow integration for Compuware ISPW 
+  description: Electric Flow integration for Compuware ISPW
+  links:
+    - http://www.compuware.com/en_us/use-cases/source-code-management.html
+  hasConfig: true
+procedures:
+  - name: Create Assignment
+    stepName: create assignment
+    description: Creates Assignment.
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/createAssignment
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        required: 1
+      - property: stream
+        type: entry
+        label: Stream Name
+        required: 1
+        in: body
+        documentation: ISPW Stream Name.
+      - property: application
+        type: entry
+        label: Application Id
+        required: 1
+        in: body
+        documentation: ISPW Application Id
+      - property: description
+        type: entry
+        label: Description
+        required: 1
+        in: body
+        documentation: Assignment Description.
+      - property: assignmentPrefix
+        type: entry
+        label: Assignment Prefix
+        required: 1
+        in: body
+        documentation: Assignment Prefix
+      - property: refNumber
+        type: entry
+        label: Ref Number
+        required: 0
+        in: body
+        documentation: Ref Number
+      - property: release
+        type: entry
+        label: Release
+        required: 0
+        in: body
+        documentation: Release
+      - property: userTag
+        type: entry
+        label: User Tag
+        required: 0
+        in: body
+        documentation: User Tag
+
+  - name: Load Task
+    stepName: Load Task
+    description: Loads A Task for Specified Assignment.
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks'
+    method: POST
+    hasConfig: true
+    attachCredentials: true
+    basicAuth: true
+    canSkipAuth: true
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/loadTask
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        required: 1
+      - property: assignmentId
+        type: entry
+        label: assignmentId
+        documentation: Assignment Id
+        required: 1
+      - property: stream
+        type: entry
+        label: Stream Name
+        required: 1
+        in: body
+        documentation: ISPW Stream Name.
+      - property: application
+        type: entry
+        label: Application Id
+        required: 1
+        in: body
+        documentation: ISPW Application Id
+      - property: moduleName
+        type: entry
+        label: moduleName
+        required: 1
+        in: body
+        documentation: Module Name.
+      - property: moduleType
+        type: entry
+        label: Module Type
+        required: 1
+        in: body
+        documentation: Module Type
+      - property: currentLevel
+        type: entry
+        label: Current Level
+        required: 1
+        in: body
+        documentation: Current Level
+      - property: startingLevel
+        type: entry
+        label: Starting Level
+        required: 1
+        in: body
+        documentation: Starting Level
+      - property: generateSequence
+        type: entry
+        label: Generate Sequence
+        required: 0
+        in: body
+        documentation: Generate Sequence
+      - property: sql
+        type: entry
+        label: SQL
+        required: 0
+        in: body
+        documentation: SQL
+      - property: ims
+        type: entry
+        label: IMS
+        required: 0
+        in: body
+        documentation: IMS
+      - property: cics
+        type: entry
+        label: CICS
+        required: 0
+        in: body
+        documentation: CICS
+      - property: program
+        type: entry
+        label: Program
+        required: 0
+        in: body
+        documentation: Program
+
+  - name: Get Assignment Information
+    stepName: Get Assignment Information
+    description: Get Assignment Information
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    basicAuth: true
+    canSkipAuth: true
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/assignment
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        required: 1
+      - property: assignmentId
+        type: entry
+        label: assignmentId
+        documentation: Assignment Id
+        required: 1
+
+  - name: Get Assignment Task List
+    stepName: Get Assignment Task List
+    description: Get Assignment Task List
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks'
+    #TODO: add ?level=level
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    basicAuth: true
+    canSkipAuth: true
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/assignmentTasks
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        required: 1
+      - property: assignmentId
+        type: entry
+        label: assignmentId
+        documentation: Assignment Id
+        required: 1
+
+  - name: Get Assignment Task Information
+    stepName: Get Assignment Task Information
+    description: Get Assignment Task Information
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks/#{taskId}'
+    method: GET
+    hasConfig: true
+    attachCredentials: true
+    basicAuth: true
+    canSkipAuth: true
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/assignmentTask
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        required: 1
+      - property: assignmentId
+        type: entry
+        label: assignmentId
+        documentation: Assignment Id
+        required: 1
+      - property: taskId
+        type: entry
+        label: taskId
+        documentation: Task Id
+        required: 1
+
+  - name: Generate Tasks in Assignment
+    stepName: generate tasks in assignment
+    description: Generates Tasks in Assignment.
+    endpoint: '#{{instance}}/ispw/#{srid}/assignments/tasks/generations'
+    #TODO: add ?level=level
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/generateAssignmentTasks
+    parameters:
+      - property: srid
+        type: entry
+        label: srid
+        documentation: ISPW Instance Id
+        in: query
+        required: 1
+      - property: runtimeConfiguration":
+        type: entry
+        label: Runtime Configuration
+        required: 1
+        in: body
+        documentation: Required see ISPW administrator for valid values.
+      - property: httpHeaders
+        type: entry
+        # TODO: Work on it's nested structure
+        label: Optional global custom headers used for all callbacks
+        required: 1
+        in: body
+        documentation: Optional global custom headers used for all callbacks
+      - property: credentials
+        type: entry
+        # TODO: Work on it's nested structure
+        label: Optional, global credentials used for all callbacks
+        required: 1
+        in: body
+        documentation: Optional, global credentials used for all callbacks.
+      - property: events
+        type: entry
+        #TODO: work on it's nested structure
+        label: Event array, must contain at least 1 member
+        required: 1
+        in: body
+        documentation: Event array, must contain at least 1 member
+
+  - name: Create Release
+    stepName: create release
+    description: Generates Tasks in Assignment.
+    endpoint: '#{{instance}}/ispw/#{srid}/releases'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/release
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: stream:
+        type: entry
+        label: Stream
+        required: 1
+        in: body
+        documentation: Stream
+      - property: description
+        type: entry
+        label: Description
+        required: 1
+        in: body
+        documentation: Description
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        in: body
+        documentation: Can only be used if releasePrefix is not set, one must be used
+      - property: releasePrefix
+        type: entry
+        label: Release Prefix
+        required: 1
+        in: body
+        documentation: Can only be used if releaseId is not set, one must be used
+      - property: owner1
+        # TODO: rename it with code
+        type: entry
+        label: Owner
+        required: 0
+        in: body
+        documentation: Owner
+      - property: referenceNumber
+        type: entry
+        label: Reference Number
+        required: 0
+        in: body
+        documentation: Reference Number
+
+  - name: Get Release Information
+    stepName: get release information
+    description: Gets Release information.
+    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: GET
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/releaseInfo
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
+
+  - name: Promote Release
+    stepName: promote release
+    description: Promotes release.
+    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/promote'
+    #TODO: add ?level=level
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/promoteResult
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: Runtime Configuration
+        required: 1
+        documentation: Required see ISPW administrator for valid values
+      - property: httpHeaders
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: HTTP Headers
+        required: 1
+        documentation: Optional global custom headers used for all callbacks
+      - property: credentials
+        type: entry
+        # TODO: Work on it's nested structure
+        label: Optional, global credentials used for all callbacks
+        required: 1
+        in: body
+        documentation: Optional, global credentials used for all callbacks.
+      - property: events
+        type: entry
+        #TODO: work on it's nested structure
+        label: Event array, must contain at least 1 member
+        required: 1
+        in: body
+        documentation: Event array, must contain at least 1 member
+
+  - name: Deploy Release
+    stepName: deploy release
+    description: Deploys release.
+    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/deploy'
+    #TODO: add ?level=level
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/deployResult
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: Runtime Configuration
+        required: 1
+        documentation: Required see ISPW administrator for valid values
+      - property: httpHeaders
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: HTTP Headers
+        required: 1
+        documentation: Optional global custom headers used for all callbacks
+      - property: credentials
+        type: entry
+        # TODO: Work on it's nested structure
+        label: Optional, global credentials used for all callbacks
+        required: 1
+        in: body
+        documentation: Optional, global credentials used for all callbacks.
+      - property: events
+        type: entry
+        #TODO: work on it's nested structure
+        label: Event array, must contain at least 1 member
+        required: 1
+        in: body
+        documentation: Event array, must contain at least 1 member
+
+  - name: Regress Release
+    stepName: regress release
+    description: Regresses release.
+    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/regress'
+    #TODO: add ?level=level
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/regressResult
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: Runtime Configuration
+        required: 1
+        documentation: Required see ISPW administrator for valid values
+      - property: httpHeaders
+        type: entry
+        in: body
+        # TODO: Work on it's nested structure
+        label: HTTP Headers
+        required: 1
+        documentation: Optional global custom headers used for all callbacks
+      - property: credentials
+        type: entry
+        # TODO: Work on it's nested structure
+        label: Optional, global credentials used for all callbacks
+        required: 1
+        in: body
+        documentation: Optional, global credentials used for all callbacks.
+      - property: events
+        type: entry
+        #TODO: work on it's nested structure
+        label: Event array, must contain at least 1 member
+        required: 1
+        in: body
+        documentation: Event array, must contain at least 1 member
+
+  - name: Get Set Information
+    stepName: get set information
+    description: Gets Set information.
+    endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: GET
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/setInfo
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: setId
+        type: entry
+        label: Set ID
+        required: 1
+        documentation: Set ID
+
+  - name: Get Set Task List
+    stepName: get set task list
+    description: Gets Set Task List.
+    endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: GET
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/setTasks
+    parameters:
+      - property: srid
+        type: entry
+        label:  srid
+        documentation: srid
+        in: query
+        required: 1
+      - property: setId
+        type: entry
+        label: Set ID
+        required: 1
+        documentation: Set ID

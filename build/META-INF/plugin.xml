@@ -1,10 +1,10 @@
 <plugin>
-  <key>MyPlugin</key>
-  <label>MyPlugin</label>
+  <key>EC-ISPW</key>
+  <label>EC-ISPW</label>
   <version>1.0.0</version>
-  <author>Your name or company name</author>
-  <authorUrl>Your company support url or email</authorUrl>
-  <category>Utilities</category>
+  <author>Electric Cloud</author>
+  <authorUrl>www.electric-cloud.com</authorUrl>
+  <category>z/OS</category>
   <commander-version min="6.0" />
   <description></description>
   <configure>ec_config</configure>

@@ -30,8 +30,8 @@ If this property exists, it will set the debug level. Otherwize debug level will
 sub after_init_hook {
     my ($self, %params) = @_;
 
-    $self->{plugin_name} = 'MyPlugin-1.0.0';
-    $self->{plugin_key} = 'MyPlugin';
+    $self->{plugin_name} = 'EC-ISPW-1.0.0';
+    $self->{plugin_key} = 'EC-ISPW';
     my $debug_level = 0;
     my $proxy;
 
@@ -450,7 +450,7 @@ sub get_config_values {
     my ($self, $config_name) = @_;
 
     die 'No config name' unless $config_name;
-    my $plugin_project_name = 'MyPlugin-1.0.0';
+    my $plugin_project_name = 'EC-ISPW-1.0.0';
     my $config_property_sheet = "/projects/$plugin_project_name/ec_plugin_cfgs/$config_name";
     my $property_sheet_id = $self->ec->getProperty($config_property_sheet)->findvalue('//propertySheetId')->string_value;
 

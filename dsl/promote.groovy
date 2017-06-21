@@ -20,14 +20,14 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'Load Task', stepName: 'Load Task'],
   [procedureName: 'Get Set Information', stepName: 'get set information'],
   [procedureName: 'Procedure Name', stepName: 'step that needs the credentials to be attached'],
+  [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
   [procedureName: 'Regress Release', stepName: 'regress release'],
   [procedureName: 'Deploy Release', stepName: 'deploy release'],
   [procedureName: 'Get Assignment Information', stepName: 'Get Assignment Information'],
-  [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
   [procedureName: 'Get Release Information', stepName: 'get release information'],
-  [procedureName: 'Promote Release', stepName: 'promote release'],
-  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
   [procedureName: 'Get Assignment Task Information', stepName: 'Get Assignment Task Information'],
+  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
+  [procedureName: 'Promote Release', stepName: 'promote release'],
   [procedureName: 'Create Release', stepName: 'create release']
 ]
 // ** end steps with attached credentials
