@@ -1,5 +1,5 @@
 ---
-basicAuth: true # get credentials from config and add basic auth
+basicAuth: false # get credentials from config and add basic auth
 # This block refers to auto help generation
 help:
   title: Electric Flow integration for Compuware ISPW 
@@ -11,7 +11,7 @@ procedures:
   - name: Create Assignment
     stepName: create assignment
     description: Creates Assignment.
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -20,7 +20,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -33,11 +33,6 @@ procedures:
         - propertySheet
       default: /myJob/createAssignment
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        required: 1
       - property: stream
         type: entry
         label: Stream Name
@@ -84,11 +79,11 @@ procedures:
   - name: Load Task
     stepName: Load Task
     description: Loads A Task for Specified Assignment.
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     method: POST
     hasConfig: true
     attachCredentials: true
-    basicAuth: true
+    basicAuth: false
     canSkipAuth: true
     bodyContentType: json
     # request body will be json-encoded and header Content-Type: application/json will be added
@@ -99,11 +94,6 @@ procedures:
         - propertySheet
       default: /myJob/loadTask
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        required: 1
       - property: assignmentId
         type: entry
         label: assignmentId
@@ -179,11 +169,11 @@ procedures:
   - name: Get Assignment Information
     stepName: Get Assignment Information
     description: Get Assignment Information
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/'
     method: GET
     hasConfig: true
     attachCredentials: true
-    basicAuth: true
+    basicAuth: false
     canSkipAuth: true
     bodyContentType: json
     # request body will be json-encoded and header Content-Type: application/json will be added
@@ -194,11 +184,6 @@ procedures:
         - propertySheet
       default: /myJob/assignment
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        required: 1
       - property: assignmentId
         type: entry
         label: assignmentId
@@ -208,12 +193,12 @@ procedures:
   - name: Get Assignment Task List
     stepName: Get Assignment Task List
     description: Get Assignment Task List
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     #TODO: add ?level=level
     method: GET
     hasConfig: true
     attachCredentials: true
-    basicAuth: true
+    basicAuth: false
     canSkipAuth: true
     bodyContentType: json
     # request body will be json-encoded and header Content-Type: application/json will be added
@@ -224,11 +209,6 @@ procedures:
         - propertySheet
       default: /myJob/assignmentTasks
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        required: 1
       - property: assignmentId
         type: entry
         label: assignmentId
@@ -238,11 +218,11 @@ procedures:
   - name: Get Assignment Task Information
     stepName: Get Assignment Task Information
     description: Get Assignment Task Information
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks/#{taskId}'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}'
     method: GET
     hasConfig: true
     attachCredentials: true
-    basicAuth: true
+    basicAuth: false
     canSkipAuth: true
     bodyContentType: json
     # request body will be json-encoded and header Content-Type: application/json will be added
@@ -253,11 +233,6 @@ procedures:
         - propertySheet
       default: /myJob/assignmentTask
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        required: 1
       - property: assignmentId
         type: entry
         label: assignmentId
@@ -272,7 +247,7 @@ procedures:
   - name: Generate Tasks in Assignment
     stepName: generate tasks in assignment
     description: Generates Tasks in Assignment.
-    endpoint: '#{{instance}}/ispw/#{srid}/assignments/tasks/generations'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations'
     #TODO: add ?level=level
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -282,7 +257,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -295,13 +270,7 @@ procedures:
         - propertySheet
       default: /myJob/generateAssignmentTasks
     parameters:
-      - property: srid
-        type: entry
-        label: srid
-        documentation: ISPW Instance Id
-        in: query
-        required: 1
-      - property: runtimeConfiguration":
+      - property: runtimeConfiguration:
         type: entry
         label: Runtime Configuration
         required: 1
@@ -331,8 +300,8 @@ procedures:
 
   - name: Create Release
     stepName: create release
-    description: Generates Tasks in Assignment.
-    endpoint: '#{{instance}}/ispw/#{srid}/releases'
+    description: Creates Release.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -341,7 +310,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -354,12 +323,6 @@ procedures:
         - propertySheet
       default: /myJob/release
     parameters:
-      - property: srid
-        type: entry
-        label:  srid
-        documentation: srid
-        in: query
-        required: 1
       - property: stream:
         type: entry
         label: Stream
@@ -401,7 +364,7 @@ procedures:
   - name: Get Release Information
     stepName: get release information
     description: Gets Release information.
-    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: GET
@@ -410,7 +373,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -423,12 +386,6 @@ procedures:
         - propertySheet
       default: /myJob/releaseInfo
     parameters:
-      - property: srid
-        type: entry
-        label:  srid
-        documentation: srid
-        in: query
-        required: 1
       - property: releaseId
         type: entry
         label: Release ID
@@ -438,7 +395,7 @@ procedures:
   - name: Promote Release
     stepName: promote release
     description: Promotes release.
-    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/promote'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
     #TODO: add ?level=level
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -448,7 +405,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -461,12 +418,6 @@ procedures:
         - propertySheet
       default: /myJob/promoteResult
     parameters:
-      - property: srid
-        type: entry
-        label:  srid
-        documentation: srid
-        in: query
-        required: 1
       - property: releaseId
         type: entry
         label: Release ID
@@ -526,7 +477,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -604,7 +555,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -681,7 +632,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials
@@ -718,7 +669,7 @@ procedures:
      # a field for configuration name will be added to the form
     attachCredentials: true
      # credentials will be attached to the procedure
-    basicAuth: true
+    basicAuth: false
      # credentials will be turned into basic auth header
     canSkipAuth: false
      # if no credentials found, the procedure won't fail, the request will be made without credentials

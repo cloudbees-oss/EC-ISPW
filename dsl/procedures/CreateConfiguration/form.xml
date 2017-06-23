@@ -17,12 +17,26 @@
 -->
 <editor>
     <formElement>
+            <type>entry</type>
+            <label>Configuration:</label>
+            <property>config</property>
+            <required>1</required>
+            <documentation>Unique name for the plugin configuration.</documentation>
+        </formElement>
+    <formElement>
         <type>entry</type>
-        <label>Configuration:</label>
-        <property>config</property>
+        <label>ISPW Instance URL:</label>
+        <property>instance</property>
         <required>1</required>
-        <documentation>Unique name for the plugin configuration.</documentation>
+        <documentation>ISPW Instance URL</documentation>
     </formElement>
+    <formElement>
+         <type>entry</type>
+         <label>ISPW Instance SRID</label>
+         <property>srid</property>
+         <required>1</required>
+         <documentation>ISPW Instance SRID</documentation>
+     </formElement>
     <formElement>
         <type>entry</type>
         <label>Description:</label>
@@ -32,10 +46,10 @@
     </formElement>
     <formElement>
         <type>credential</type>
-        <label>Credential:</label>
+        <label>Token:</label>
         <property>credential</property>
         <required>1</required>
-        <documentation>Credentials to connect</documentation>
+        <documentation>Use ISPW-provided token as Password</documentation>
         <attachedAsParameterToStep>createAndAttachCredential</attachedAsParameterToStep>
     </formElement>
 </editor>
