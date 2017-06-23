@@ -273,6 +273,10 @@
                 </thead>
                 <tbody>
                 <tr>
+                    <td>Level</td>
+                    <td>Level</td>
+                </tr>
+                <tr>
                     <td class="required">assignmentId</td>
                     <td>Assignment Id</td>
                 </tr>
@@ -318,6 +322,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
+                </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
                     <td>Required see ISPW administrator for valid values.</td>
@@ -414,6 +422,10 @@
                 </thead>
                 <tbody>
                 <tr>
+                    <td>Level</td>
+                    <td>Level</td>
+                </tr>
+                <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>
                 </tr>
@@ -459,8 +471,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
+                    <td>Level</td>
+                    <td>Level</td>
                 </tr>
                 <tr>
                     <td class="required">Release ID</td>
@@ -508,8 +520,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
+                    <td>Level</td>
+                    <td>Level</td>
                 </tr>
                 <tr>
                     <td class="required">Release ID</td>
@@ -557,10 +569,6 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
-                </tr>
-                <tr>
                     <td class="required">Set ID</td>
                     <td>Set ID</td>
                 </tr>
@@ -581,10 +589,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
-                </tr>
                 <tr>
                     <td class="required">Set ID</td>
                     <td>Set ID</td>

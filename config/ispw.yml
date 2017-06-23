@@ -194,7 +194,6 @@ procedures:
     stepName: Get Assignment Task List
     description: Get Assignment Task List
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
-    #TODO: add ?level=level
     method: GET
     hasConfig: true
     attachCredentials: true
@@ -209,6 +208,12 @@ procedures:
         - propertySheet
       default: /myJob/assignmentTasks
     parameters:
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
       - property: assignmentId
         type: entry
         label: assignmentId
@@ -248,7 +253,6 @@ procedures:
     stepName: generate tasks in assignment
     description: Generates Tasks in Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations'
-    #TODO: add ?level=level
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -270,6 +274,12 @@ procedures:
         - propertySheet
       default: /myJob/generateAssignmentTasks
     parameters:
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0    
       - property: runtimeConfiguration:
         type: entry
         label: Runtime Configuration
@@ -348,7 +358,6 @@ procedures:
         in: body
         documentation: Can only be used if releaseId is not set, one must be used
       - property: owner1
-        # TODO: rename it with code
         type: entry
         label: Owner
         required: 0
@@ -396,7 +405,6 @@ procedures:
     stepName: promote release
     description: Promotes release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
-    #TODO: add ?level=level
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -418,6 +426,12 @@ procedures:
         - propertySheet
       default: /myJob/promoteResult
     parameters:
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
       - property: releaseId
         type: entry
         label: Release ID
@@ -467,8 +481,7 @@ procedures:
   - name: Deploy Release
     stepName: deploy release
     description: Deploys release.
-    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/deploy'
-    #TODO: add ?level=level
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -490,12 +503,12 @@ procedures:
         - propertySheet
       default: /myJob/deployResult
     parameters:
-      - property: srid
+      - property: level
         type: entry
-        label:  srid
-        documentation: srid
+        label: Level
+        documentation: Level
         in: query
-        required: 1
+        required: 0
       - property: releaseId
         type: entry
         label: Release ID
@@ -545,8 +558,7 @@ procedures:
   - name: Regress Release
     stepName: regress release
     description: Regresses release.
-    endpoint: '#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/regress'
-    #TODO: add ?level=level
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -568,12 +580,12 @@ procedures:
         - propertySheet
       default: /myJob/regressResult
     parameters:
-      - property: srid
+      - property: level
         type: entry
-        label:  srid
-        documentation: srid
+        label: Level
+        documentation: Level
         in: query
-        required: 1
+        required: 0
       - property: releaseId
         type: entry
         label: Release ID
@@ -623,7 +635,7 @@ procedures:
   - name: Get Set Information
     stepName: get set information
     description: Gets Set information.
-    endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/sets/#{setId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: GET
@@ -645,12 +657,6 @@ procedures:
         - propertySheet
       default: /myJob/setInfo
     parameters:
-      - property: srid
-        type: entry
-        label:  srid
-        documentation: srid
-        in: query
-        required: 1
       - property: setId
         type: entry
         label: Set ID
@@ -660,7 +666,7 @@ procedures:
   - name: Get Set Task List
     stepName: get set task list
     description: Gets Set Task List.
-    endpoint: '#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: GET
@@ -682,12 +688,6 @@ procedures:
         - propertySheet
       default: /myJob/setTasks
     parameters:
-      - property: srid
-        type: entry
-        label:  srid
-        documentation: srid
-        in: query
-        required: 1
       - property: setId
         type: entry
         label: Set ID

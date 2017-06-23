@@ -184,7 +184,7 @@ sub generate_step_request {
     my $method = $self->config->{$step_name}->{method};
     my $request = HTTP::Request->new($method, $uri);
 
-    if ($self->config->{$step_name}->{basicAuth}) {
+    if ($self->config->{$step_name}->{basicAuth} && $self->config->{$step_name}->{basicAuth} eq 'true') {
         $self->logger->debug('Adding basic auth');
 
         my $username = $config->{userName};

@@ -24,9 +24,9 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'Regress Release', stepName: 'regress release'],
   [procedureName: 'Deploy Release', stepName: 'deploy release'],
   [procedureName: 'Get Release Information', stepName: 'get release information'],
-  [procedureName: 'Promote Release', stepName: 'promote release'],
-  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
   [procedureName: 'Get Assignment Task Information', stepName: 'Get Assignment Task Information'],
+  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
+  [procedureName: 'Promote Release', stepName: 'promote release'],
   [procedureName: 'Create Release', stepName: 'create release']
 ]
 // ** end steps with attached credentials

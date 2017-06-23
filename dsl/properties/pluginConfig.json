@@ -15,12 +15,12 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
+            "documentation" : "Level",
+            "label" : "Level",
             "type" : "entry",
-            "property" : "srid"
+            "property" : "level"
          },
          {
             "required" : "1",
@@ -79,7 +79,7 @@
          }
       ],
       "fields" : [
-         "srid",
+         "level",
          "releaseId",
          "changeType",
          "executionStatus",
@@ -91,7 +91,7 @@
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/regress",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress",
       "attachCredentials" : "true"
    },
    "create release" : {
@@ -320,14 +320,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Set ID",
             "label" : "Set ID",
             "type" : "entry",
@@ -335,13 +327,12 @@
          }
       ],
       "fields" : [
-         "srid",
          "setId"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}",
       "attachCredentials" : "true"
    },
    "Get Assignment Information" : {
@@ -393,14 +384,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Set ID",
             "label" : "Set ID",
             "type" : "entry",
@@ -408,13 +391,12 @@
          }
       ],
       "fields" : [
-         "srid",
          "setId"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks",
       "attachCredentials" : "true"
    },
    "deploy release" : {
@@ -433,12 +415,12 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
+            "documentation" : "Level",
+            "label" : "Level",
             "type" : "entry",
-            "property" : "srid"
+            "property" : "level"
          },
          {
             "required" : "1",
@@ -497,7 +479,7 @@
          }
       ],
       "fields" : [
-         "srid",
+         "level",
          "releaseId",
          "changeType",
          "executionStatus",
@@ -509,7 +491,7 @@
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/deploy",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy",
       "attachCredentials" : "true"
    },
    "promote release" : {
@@ -528,6 +510,14 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
             "required" : "1",
             "documentation" : "Release ID",
             "label" : "Release ID",
@@ -584,6 +574,7 @@
          }
       ],
       "fields" : [
+         "level",
          "releaseId",
          "changeType",
          "executionStatus",
@@ -701,6 +692,14 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
             "required" : "1",
             "in" : "body",
             "documentation" : "Required see ISPW administrator for valid values.",
@@ -734,6 +733,7 @@
          }
       ],
       "fields" : [
+         "level",
          "runtimeConfiguration:",
          "httpHeaders",
          "credentials",
@@ -793,6 +793,14 @@
       "canSkipAuth" : "true",
       "parameters" : [
          {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
             "required" : "1",
             "documentation" : "Assignment Id",
             "label" : "assignmentId",
@@ -801,6 +809,7 @@
          }
       ],
       "fields" : [
+         "level",
          "assignmentId"
       ],
       "hasConfig" : "true",

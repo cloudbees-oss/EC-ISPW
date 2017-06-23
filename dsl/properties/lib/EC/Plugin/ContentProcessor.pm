@@ -77,7 +77,7 @@ Code may look like the following:
         my $dest_filename = $directory ? "$directory/$filename" : $filename;
 
         # And here we write a file instead of parsing response body as JSON
-
+    
         open my $fh, ">$dest_filename" or die "Cannot open $dest_filename: $!";
         print $fh $response->content;
         close $fh;
@@ -93,7 +93,23 @@ Code may look like the following:
 # autogen code ends here
 
 sub define_processors {
+    my ($self) = @_;
 
+    $self->define_processor( 'create release', 'serialize_body', \&create_release );
 }
 
+sub create_release {
+    my ($self, $body) = @_;
+    
+    my $retval = $body;
+    my $owner = $body->{owner1};
+    delete $retval->{owner1};
+    $retval->{owner} = $owner;
+    
+    $self->plugin->logger->trace( $retval );
+
+    my $res = encode_json($retval);
+    $self->plugin->logger->trace( $res );
+    return $res;
+}
 1;
