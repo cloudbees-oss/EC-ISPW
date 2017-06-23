@@ -10,17 +10,9 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>ISPW Instance Id.</documentation>
-  <label>Srid:</label>
-  <property>srid</property>
-  <required>1</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Required see ISPW administrator for valid values.</documentation>
   <label>Runtime Configuration:</label>
-  <property>runtimeConfiguration&quot;:</property>
+  <property>runtimeConfiguration:</property>
   <required>1</required>
   <type>entry</type>
   <value></value>

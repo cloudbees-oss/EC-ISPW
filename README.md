@@ -30,7 +30,7 @@ Generates Tasks in Assignment.
 
 ## Create Release
 
-Generates Tasks in Assignment.
+Creates Release.
 
 ## Get Release Information
 

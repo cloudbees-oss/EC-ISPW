@@ -10,14 +10,6 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>ISPW Instance Id.</documentation>
-  <label>Srid:</label>
-  <property>srid</property>
-  <required>1</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>ISPW Stream Name.</documentation>
   <label>Stream Name:</label>
   <property>stream</property>

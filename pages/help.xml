@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->June 21, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->June 23, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -78,6 +78,22 @@
                 </td>
             </tr>
             <tr>
+                <td class="required">
+                    ISPW Instance URL:
+                </td>
+                <td>
+                    ISPW Instance URL
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    ISPW Instance SRID
+                </td>
+                <td>
+                    ISPW Instance SRID
+                </td>
+            </tr>
+            <tr>
                 <td>
                     Description:
                 </td>
@@ -87,10 +103,10 @@
             </tr>
             <tr>
                 <td class="required">
-                    Credential:
+                    Token:
                 </td>
                 <td>
-                    Credentials to connect
+                    Use ISPW-provided token as Password
                 </td>
             </tr>
         </tbody>
@@ -125,10 +141,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
                 <tr>
                     <td class="required">Stream Name</td>
                     <td>ISPW Stream Name.</td>
@@ -174,10 +186,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
                 <tr>
                     <td class="required">assignmentId</td>
                     <td>Assignment Id</td>
@@ -244,10 +252,6 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
-                <tr>
                     <td class="required">assignmentId</td>
                     <td>Assignment Id</td>
                 </tr>
@@ -269,10 +273,6 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
-                <tr>
                     <td class="required">assignmentId</td>
                     <td>Assignment Id</td>
                 </tr>
@@ -293,10 +293,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
                 <tr>
                     <td class="required">assignmentId</td>
                     <td>Assignment Id</td>
@@ -322,10 +318,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>ISPW Instance Id</td>
-                </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
                     <td>Required see ISPW administrator for valid values.</td>
@@ -359,10 +351,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
-                </tr>
                 <tr>
                     <td class="required">Stream</td>
                     <td>Stream</td>
@@ -405,10 +393,6 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
-                </tr>
-                <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>
                 </tr>
@@ -429,10 +413,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td class="required">srid</td>
-                    <td>srid</td>
-                </tr>
                 <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>

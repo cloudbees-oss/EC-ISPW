@@ -10,14 +10,6 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>srid.</documentation>
-  <label>Srid:</label>
-  <property>srid</property>
-  <required>1</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Release ID.</documentation>
   <label>Release ID:</label>
   <property>releaseId</property>

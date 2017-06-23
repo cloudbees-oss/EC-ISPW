@@ -10,14 +10,6 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>srid.</documentation>
-  <label>Srid:</label>
-  <property>srid</property>
-  <required>1</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Stream.</documentation>
   <label>Stream:</label>
   <property>stream:</property>

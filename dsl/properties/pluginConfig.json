@@ -89,7 +89,7 @@
          "events"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
       "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/regress",
       "attachCredentials" : "true"
@@ -104,19 +104,11 @@
          "default" : "/myJob/release"
       },
       "name" : "Create Release",
-      "description" : "Generates Tasks in Assignment.",
+      "description" : "Creates Release.",
       "stepName" : "create release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
-         {
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
          {
             "required" : "1",
             "in" : "body",
@@ -167,7 +159,6 @@
          }
       ],
       "fields" : [
-         "srid",
          "stream:",
          "description",
          "releaseId",
@@ -176,9 +167,9 @@
          "referenceNumber"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/releases",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases",
       "attachCredentials" : "true"
    },
    "Load Task" : {
@@ -196,13 +187,6 @@
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
       "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
          {
             "required" : "1",
             "documentation" : "Assignment Id",
@@ -300,7 +284,6 @@
          }
       ],
       "fields" : [
-         "srid",
          "assignmentId",
          "stream",
          "application",
@@ -315,9 +298,9 @@
          "program"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
    "get set information" : {
@@ -356,7 +339,7 @@
          "setId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
       "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}",
       "attachCredentials" : "true"
@@ -378,13 +361,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Assignment Id",
             "label" : "assignmentId",
             "type" : "entry",
@@ -392,13 +368,12 @@
          }
       ],
       "fields" : [
-         "srid",
          "assignmentId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/",
       "attachCredentials" : "true"
    },
    "get set task list" : {
@@ -437,7 +412,7 @@
          "setId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
       "endpoint" : "#{{instance}}/ispw/#{srid}/sets/#{setId}/tasks",
       "attachCredentials" : "true"
@@ -532,7 +507,7 @@
          "events"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
       "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/deploy",
       "attachCredentials" : "true"
@@ -552,14 +527,6 @@
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
-         {
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
          {
             "required" : "1",
             "documentation" : "Release ID",
@@ -617,7 +584,6 @@
          }
       ],
       "fields" : [
-         "srid",
          "releaseId",
          "changeType",
          "executionStatus",
@@ -627,9 +593,9 @@
          "events"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}/tasks/promote",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote",
       "attachCredentials" : "true"
    },
    "create assignment" : {
@@ -647,13 +613,6 @@
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
          {
             "required" : "1",
             "in" : "body",
@@ -712,7 +671,6 @@
          }
       ],
       "fields" : [
-         "srid",
          "stream",
          "application",
          "description",
@@ -722,9 +680,9 @@
          "userTag"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments",
       "attachCredentials" : "true"
    },
    "generate tasks in assignment" : {
@@ -744,19 +702,11 @@
       "parameters" : [
          {
             "required" : "1",
-            "in" : "query",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "in" : "body",
             "documentation" : "Required see ISPW administrator for valid values.",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration\":"
+            "property" : "runtimeConfiguration:"
          },
          {
             "required" : "1",
@@ -784,16 +734,15 @@
          }
       ],
       "fields" : [
-         "srid",
-         "runtimeConfiguration\":",
+         "runtimeConfiguration:",
          "httpHeaders",
          "credentials",
          "events"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/tasks/generations",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations",
       "attachCredentials" : "true"
    },
    "get release information" : {
@@ -813,14 +762,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "in" : "query",
-            "documentation" : "srid",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Release ID",
             "label" : "Release ID",
             "type" : "entry",
@@ -828,13 +769,12 @@
          }
       ],
       "fields" : [
-         "srid",
          "releaseId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/releases/#{releaseId}",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}",
       "attachCredentials" : "true"
    },
    "Get Assignment Task List" : {
@@ -854,13 +794,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Assignment Id",
             "label" : "assignmentId",
             "type" : "entry",
@@ -868,13 +801,12 @@
          }
       ],
       "fields" : [
-         "srid",
          "assignmentId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
    "Get Assignment Task Information" : {
@@ -894,13 +826,6 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "ISPW Instance Id",
-            "label" : "srid",
-            "type" : "entry",
-            "property" : "srid"
-         },
-         {
-            "required" : "1",
             "documentation" : "Assignment Id",
             "label" : "assignmentId",
             "type" : "entry",
@@ -915,14 +840,13 @@
          }
       ],
       "fields" : [
-         "srid",
          "assignmentId",
          "taskId"
       ],
       "hasConfig" : "true",
-      "basicAuth" : "true",
+      "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{srid}/assignments/#{assignmentId}/tasks/#{taskId}",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}",
       "attachCredentials" : "true"
    }
 }
