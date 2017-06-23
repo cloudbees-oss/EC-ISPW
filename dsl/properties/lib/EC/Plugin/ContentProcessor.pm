@@ -95,21 +95,39 @@ Code may look like the following:
 sub define_processors {
     my ($self) = @_;
 
+    
     $self->define_processor( 'create release', 'serialize_body', \&create_release );
+    $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
 }
 
 sub create_release {
     my ($self, $body) = @_;
-    
+
     my $retval = $body;
     my $owner = $body->{owner1};
     delete $retval->{owner1};
     $retval->{owner} = $owner;
-    
-    $self->plugin->logger->trace( $retval );
 
-    my $res = encode_json($retval);
-    $self->plugin->logger->trace( $res );
-    return $res;
+    return encode_json($retval);
+}
+
+sub add_nested_elements {
+    my ($self, $body) = @_;
+
+    my $retval = $body;
+    my $headers = $body->{httpHeaders};
+    delete $retval->{httpHeaders};
+    
+    my @lines = split /\n/, $headers;
+    my %httpHeaders = map{ my ($key, $value) = split /\s*=\s*/,  $_ } map @lines;
+    
+    $retval->{httpHeaders}=%httpHeaders;
+    
+    
+    return encode_json($retval);
+
 }
 1;

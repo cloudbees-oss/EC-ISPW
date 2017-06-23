@@ -287,22 +287,19 @@ procedures:
         in: body
         documentation: Required see ISPW administrator for valid values.
       - property: httpHeaders
-        type: entry
-        # TODO: Work on it's nested structure
+        type: textarea
         label: Optional global custom headers used for all callbacks
         required: 1
         in: body
         documentation: Optional global custom headers used for all callbacks
       - property: credentials
-        type: entry
-        # TODO: Work on it's nested structure
+        type: textarea
         label: Optional, global credentials used for all callbacks
         required: 1
         in: body
         documentation: Optional, global credentials used for all callbacks.
       - property: events
-        type: entry
-        #TODO: work on it's nested structure
+        type: textarea
         label: Event array, must contain at least 1 member
         required: 1
         in: body
@@ -452,27 +449,23 @@ procedures:
       - property: runtimeConfiguration
         type: entry
         in: body
-        # TODO: Work on it's nested structure
         label: Runtime Configuration
         required: 1
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
-        type: entry
+        type: textarea
         in: body
-        # TODO: Work on it's nested structure
         label: HTTP Headers
         required: 1
         documentation: Optional global custom headers used for all callbacks
       - property: credentials
-        type: entry
-        # TODO: Work on it's nested structure
+        type: textarea
         label: Optional, global credentials used for all callbacks
         required: 1
         in: body
         documentation: Optional, global credentials used for all callbacks.
       - property: events
-        type: entry
-        #TODO: work on it's nested structure
+        type: textarea
         label: Event array, must contain at least 1 member
         required: 1
         in: body
@@ -529,27 +522,23 @@ procedures:
       - property: runtimeConfiguration
         type: entry
         in: body
-        # TODO: Work on it's nested structure
         label: Runtime Configuration
         required: 1
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
-        type: entry
+        type: textarea
         in: body
-        # TODO: Work on it's nested structure
         label: HTTP Headers
         required: 1
         documentation: Optional global custom headers used for all callbacks
       - property: credentials
-        type: entry
-        # TODO: Work on it's nested structure
+        type: textarea
         label: Optional, global credentials used for all callbacks
         required: 1
         in: body
         documentation: Optional, global credentials used for all callbacks.
       - property: events
-        type: entry
-        #TODO: work on it's nested structure
+        type: textarea
         label: Event array, must contain at least 1 member
         required: 1
         in: body
@@ -606,27 +595,23 @@ procedures:
       - property: runtimeConfiguration
         type: entry
         in: body
-        # TODO: Work on it's nested structure
         label: Runtime Configuration
         required: 1
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
-        type: entry
+        type: textarea
         in: body
-        # TODO: Work on it's nested structure
         label: HTTP Headers
         required: 1
         documentation: Optional global custom headers used for all callbacks
       - property: credentials
-        type: entry
-        # TODO: Work on it's nested structure
+        type: textarea
         label: Optional, global credentials used for all callbacks
         required: 1
         in: body
         documentation: Optional, global credentials used for all callbacks.
       - property: events
-        type: entry
-        #TODO: work on it's nested structure
+        type: textarea
         label: Event array, must contain at least 1 member
         required: 1
         in: body
