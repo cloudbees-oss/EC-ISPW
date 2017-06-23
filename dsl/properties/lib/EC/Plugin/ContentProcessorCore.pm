@@ -63,7 +63,7 @@ sub parse_response {
         $self->plugin->logger->debug($response->content);
 
         if ($response->content) {
-            return decode_json($response->content);
+            return JSON->new->utf8->decode($response->content);
         }
         else {
             $self->plugin->logger->info("Empty response; nothing to parse");

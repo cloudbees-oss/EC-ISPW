@@ -81,18 +81,20 @@ Available hooks types:
 
 sub define_hooks {
     my ($self) = @_;
-    
-    $self->define_hook('create release', 'request', \&add_authentication)
+
+    $self->define_hook('*', 'request', \&add_authentication)
 }
 
 sub add_authentication {
     my ($self, $request) = @_;
-    
+
+    $self->plugin->logger->debug('Adding auth -- ISPW');
     my $params = $self->plugin->parameters;
     my $config_name = $params->{config};
     my $config = $self->plugin->get_config_values($config_name);
-    
+
     my $password = $config->{password};
+    $self->plugin->logger->debug("password: $password");
     $request->header('Authorization' => $password);
 }
 1;
