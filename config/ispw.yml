@@ -2,7 +2,7 @@
 basicAuth: false # get credentials from config and add basic auth
 # This block refers to auto help generation
 help:
-  title: Electric Flow integration for Compuware ISPW 
+  title: Electric Flow integration for Compuware ISPW
   description: Electric Flow integration for Compuware ISPW
   links:
     - http://www.compuware.com/en_us/use-cases/source-code-management.html
@@ -279,7 +279,7 @@ procedures:
         label: Level
         documentation: Level
         in: query
-        required: 0    
+        required: 0
       - property: runtimeConfiguration:
         type: entry
         label: Runtime Configuration
@@ -456,7 +456,7 @@ procedures:
         type: textarea
         in: body
         label: HTTP Headers
-        required: 1
+        required: 0
         documentation: Optional global custom headers used for all callbacks
       - property: credentials
         type: textarea

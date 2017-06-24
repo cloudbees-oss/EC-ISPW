@@ -77,7 +77,7 @@ Code may look like the following:
         my $dest_filename = $directory ? "$directory/$filename" : $filename;
 
         # And here we write a file instead of parsing response body as JSON
-    
+
         open my $fh, ">$dest_filename" or die "Cannot open $dest_filename: $!";
         print $fh $response->content;
         close $fh;
@@ -95,12 +95,25 @@ Code may look like the following:
 sub define_processors {
     my ($self) = @_;
 
-    
+
+
+
+    my @steps_with_nested_elements = (
+        'generate tasks in assignment',
+        'promote release',
+        'deploy release',
+        'regress release',
+    );
+
+    for my $step_name (@steps_with_nested_elements) {
+        $self->define_processor($step_name, 'serialize_body', \&add_nested_elements);
+    }
+
     $self->define_processor( 'create release', 'serialize_body', \&create_release );
-    $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
+    # $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
+    # $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
+    # $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
+    # $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
 }
 
 sub create_release {
@@ -118,16 +131,18 @@ sub add_nested_elements {
     my ($self, $body) = @_;
 
     my $retval = $body;
-    my $headers = $body->{httpHeaders};
-    delete $retval->{httpHeaders};
-    
-    my @lines = split /\n/, $headers;
-    my %httpHeaders = map{ my ($key, $value) = split /\s*=\s*/,  $_ } map @lines;
-    
-    $retval->{httpHeaders}=%httpHeaders;
-    
-    
+    my $headers = delete $retval->{httpHeaders};
+
+    my @lines = split /\n+/, $headers;
+    my %httpHeaders = map {
+        my ($key, $value) = split /\s*=\s*/,  $_;
+        $key => $value
+    } @lines;
+
+    $retval->{httpHeaders} = \%httpHeaders;
+
     return encode_json($retval);
 
 }
+
 1;
