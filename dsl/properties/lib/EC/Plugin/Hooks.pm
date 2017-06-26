@@ -83,7 +83,6 @@ sub define_hooks {
     my ($self) = @_;
 
     $self->define_hook('*', 'request', \&add_authentication);
-    $self->define_hook('create release', 'request', \&create_release);
 }
 
 sub add_authentication {
