@@ -54,26 +54,30 @@
             "property" : "runtimeConfiguration"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional global custom headers used for all callbacks",
-            "label" : "HTTP Headers",
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional, global credentials used for all callbacks.",
-            "label" : "Optional, global credentials used for all callbacks",
-            "type" : "textarea",
-            "property" : "credentials"
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
          },
          {
             "required" : "1",
-            "in" : "body",
-            "documentation" : "Event array, must contain at least 1 member",
-            "label" : "Event array, must contain at least 1 member",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
          }
@@ -85,7 +89,8 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentials",
+         "credentialsUsername",
+         "credentialsPassword",
          "events"
       ],
       "hasConfig" : "true",
@@ -454,26 +459,30 @@
             "property" : "runtimeConfiguration"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional global custom headers used for all callbacks",
-            "label" : "HTTP Headers",
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional, global credentials used for all callbacks.",
-            "label" : "Optional, global credentials used for all callbacks",
-            "type" : "textarea",
-            "property" : "credentials"
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
          },
          {
             "required" : "1",
-            "in" : "body",
-            "documentation" : "Event array, must contain at least 1 member",
-            "label" : "Event array, must contain at least 1 member",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
          }
@@ -485,7 +494,8 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentials",
+         "credentialsUsername",
+         "credentialsPassword",
          "events"
       ],
       "hasConfig" : "true",
@@ -549,26 +559,30 @@
             "property" : "runtimeConfiguration"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional global custom headers used for all callbacks",
-            "label" : "HTTP Headers",
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional, global credentials used for all callbacks.",
-            "label" : "Optional, global credentials used for all callbacks",
-            "type" : "textarea",
-            "property" : "credentials"
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
          },
          {
             "required" : "1",
-            "in" : "body",
-            "documentation" : "Event array, must contain at least 1 member",
-            "label" : "Event array, must contain at least 1 member",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
          }
@@ -580,7 +594,8 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentials",
+         "credentialsUsername",
+         "credentialsPassword",
          "events"
       ],
       "hasConfig" : "true",
@@ -708,26 +723,30 @@
             "property" : "runtimeConfiguration:"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional global custom headers used for all callbacks",
-            "label" : "Optional global custom headers used for all callbacks",
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
          },
          {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Optional, global credentials used for all callbacks.",
-            "label" : "Optional, global credentials used for all callbacks",
-            "type" : "textarea",
-            "property" : "credentials"
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
          },
          {
             "required" : "1",
-            "in" : "body",
-            "documentation" : "Event array, must contain at least 1 member",
-            "label" : "Event array, must contain at least 1 member",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
          }
@@ -736,7 +755,8 @@
          "level",
          "runtimeConfiguration:",
          "httpHeaders",
-         "credentials",
+         "credentialsUsername",
+         "credentialsPassword",
          "events"
       ],
       "hasConfig" : "true",

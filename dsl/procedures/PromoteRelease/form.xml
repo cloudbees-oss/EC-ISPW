@@ -50,24 +50,32 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional global custom headers used for all callbacks.</documentation>
-  <label>HTTP Headers:</label>
+  <documentation>Optional global custom headers used for all callbacks. Use &quot;Header=Value&quot; notation.</documentation>
+  <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>
-  <required>1</required>
+  <required>0</required>
   <type>textarea</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional, global credentials used for all callbacks.</documentation>
-  <label>Optional, global credentials used for all callbacks:</label>
-  <property>credentials</property>
-  <required>1</required>
-  <type>textarea</type>
+  <documentation>Optional, global credentials used for all callbacks. Username.</documentation>
+  <label>Optional, global credentials used for all callbacks. Username:</label>
+  <property>credentialsUsername</property>
+  <required>0</required>
+  <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Event array, must contain at least 1 member.</documentation>
-  <label>Event array, must contain at least 1 member:</label>
+  <documentation>Optional, global credentials used for all callbacks. Password.</documentation>
+  <label>Optional, global credentials used for all callbacks. Password:</label>
+  <property>credentialsPassword</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</documentation>
+  <label>Event array in JSON format, must contain at least 1 member.:</label>
   <property>events</property>
   <required>1</required>
   <type>textarea</type>

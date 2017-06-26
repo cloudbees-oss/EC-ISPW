@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->June 23, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->June 26, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -331,16 +331,20 @@
                     <td>Required see ISPW administrator for valid values.</td>
                 </tr>
                 <tr>
-                    <td class="required">Optional global custom headers used for all callbacks</td>
-                    <td>Optional global custom headers used for all callbacks</td>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
                 </tr>
                 <tr>
-                    <td class="required">Optional, global credentials used for all callbacks</td>
-                    <td>Optional, global credentials used for all callbacks.</td>
+                    <td>Optional, global credentials used for all callbacks. Username</td>
+                    <td>Optional, global credentials used for all callbacks. Username.</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member</td>
+                    <td>Optional, global credentials used for all callbacks. Password</td>
+                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>
@@ -442,16 +446,20 @@
                     <td>Required see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
-                    <td class="required">HTTP Headers</td>
-                    <td>Optional global custom headers used for all callbacks</td>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
                 </tr>
                 <tr>
-                    <td class="required">Optional, global credentials used for all callbacks</td>
-                    <td>Optional, global credentials used for all callbacks.</td>
+                    <td>Optional, global credentials used for all callbacks. Username</td>
+                    <td>Optional, global credentials used for all callbacks. Username.</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member</td>
+                    <td>Optional, global credentials used for all callbacks. Password</td>
+                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>
@@ -491,16 +499,20 @@
                     <td>Required see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
-                    <td class="required">HTTP Headers</td>
-                    <td>Optional global custom headers used for all callbacks</td>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
                 </tr>
                 <tr>
-                    <td class="required">Optional, global credentials used for all callbacks</td>
-                    <td>Optional, global credentials used for all callbacks.</td>
+                    <td>Optional, global credentials used for all callbacks. Username</td>
+                    <td>Optional, global credentials used for all callbacks. Username.</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member</td>
+                    <td>Optional, global credentials used for all callbacks. Password</td>
+                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>
@@ -540,16 +552,20 @@
                     <td>Required see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
-                    <td class="required">HTTP Headers</td>
-                    <td>Optional global custom headers used for all callbacks</td>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
                 </tr>
                 <tr>
-                    <td class="required">Optional, global credentials used for all callbacks</td>
-                    <td>Optional, global credentials used for all callbacks.</td>
+                    <td>Optional, global credentials used for all callbacks. Username</td>
+                    <td>Optional, global credentials used for all callbacks. Username.</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member</td>
+                    <td>Optional, global credentials used for all callbacks. Password</td>
+                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>

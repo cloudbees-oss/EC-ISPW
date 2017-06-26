@@ -288,22 +288,24 @@ procedures:
         documentation: Required see ISPW administrator for valid values.
       - property: httpHeaders
         type: textarea
-        label: Optional global custom headers used for all callbacks
-        required: 1
-        in: body
-        documentation: Optional global custom headers used for all callbacks
-      - property: credentials
-        type: textarea
-        label: Optional, global credentials used for all callbacks
-        required: 1
-        in: body
-        documentation: Optional, global credentials used for all callbacks.
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
       - property: events
         type: textarea
-        label: Event array, must contain at least 1 member
+        label: Event array in JSON format, must contain at least 1 member.
         required: 1
-        in: body
-        documentation: Event array, must contain at least 1 member
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
 
   - name: Create Release
     stepName: create release
@@ -454,22 +456,24 @@ procedures:
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
-        in: body
-        label: HTTP Headers
+        label: HTTP Headers in format: "Header=Value"
         required: 0
-        documentation: Optional global custom headers used for all callbacks
-      - property: credentials
-        type: textarea
-        label: Optional, global credentials used for all callbacks
-        required: 1
-        in: body
-        documentation: Optional, global credentials used for all callbacks.
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
       - property: events
         type: textarea
-        label: Event array, must contain at least 1 member
+        label: Event array in JSON format, must contain at least 1 member.
         required: 1
-        in: body
-        documentation: Event array, must contain at least 1 member
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
 
   - name: Deploy Release
     stepName: deploy release
@@ -527,22 +531,24 @@ procedures:
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
-        in: body
-        label: HTTP Headers
-        required: 1
-        documentation: Optional global custom headers used for all callbacks
-      - property: credentials
-        type: textarea
-        label: Optional, global credentials used for all callbacks
-        required: 1
-        in: body
-        documentation: Optional, global credentials used for all callbacks.
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
       - property: events
         type: textarea
-        label: Event array, must contain at least 1 member
+        label: Event array in JSON format, must contain at least 1 member.
         required: 1
-        in: body
-        documentation: Event array, must contain at least 1 member
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
 
   - name: Regress Release
     stepName: regress release
@@ -600,22 +606,24 @@ procedures:
         documentation: Required see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
-        in: body
-        label: HTTP Headers
-        required: 1
-        documentation: Optional global custom headers used for all callbacks
-      - property: credentials
-        type: textarea
-        label: Optional, global credentials used for all callbacks
-        required: 1
-        in: body
-        documentation: Optional, global credentials used for all callbacks.
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
       - property: events
         type: textarea
-        label: Event array, must contain at least 1 member
+        label: Event array in JSON format, must contain at least 1 member.
         required: 1
-        in: body
-        documentation: Event array, must contain at least 1 member
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
 
   - name: Get Set Information
     stepName: get set information

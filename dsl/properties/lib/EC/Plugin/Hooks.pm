@@ -95,7 +95,6 @@ sub add_authentication {
     my $config = $self->plugin->get_config_values($config_name);
 
     my $password = $config->{password};
-    $self->plugin->logger->debug("password: $password");
     $request->header('Authorization' => $password);
 }
 1;

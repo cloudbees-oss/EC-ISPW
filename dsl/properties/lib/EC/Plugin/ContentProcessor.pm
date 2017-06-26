@@ -95,9 +95,6 @@ Code may look like the following:
 sub define_processors {
     my ($self) = @_;
 
-
-
-
     my @steps_with_nested_elements = (
         'generate tasks in assignment',
         'promote release',
@@ -106,14 +103,14 @@ sub define_processors {
     );
 
     for my $step_name (@steps_with_nested_elements) {
-        $self->define_processor($step_name, 'serialize_body', \&add_nested_elements);
+        $self->define_processor( $step_name, 'serialize_body', \&add_nested_elements );
     }
 
     $self->define_processor( 'create release', 'serialize_body', \&create_release );
-    # $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
-    # $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
-    # $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
-    # $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
 }
 
 sub create_release {
@@ -131,15 +128,27 @@ sub add_nested_elements {
     my ($self, $body) = @_;
 
     my $retval = $body;
-    my $headers = delete $retval->{httpHeaders};
+    my $params = $self->plugin->parameters;
+
+    my $headers = $params->{httpHeaders};
 
     my @lines = split /\n+/, $headers;
     my %httpHeaders = map {
-        my ($key, $value) = split /\s*=\s*/,  $_;
+        my ($key, $value) = split /\s*=\s*/, $_;
         $key => $value
     } @lines;
 
     $retval->{httpHeaders} = \%httpHeaders;
+
+    $retval->{credentials} = { };
+    $retval->{credentials}->{username} = $params->{credentialsUsername};
+    $retval->{credentials}->{password} = $params->{credentialsPassword};
+
+    eval {
+        decode_json($params->{events});
+        1
+    } or do {$self->plugin->bail_out( "Events field couldn't be empty and must be JSON. See ISPW documentation." ) };
+    $retval->{events} = decode_json($params->{events});
 
     return encode_json($retval);
 
