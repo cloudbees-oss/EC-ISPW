@@ -22,7 +22,7 @@ use constant {
     RESULT_PROPERTY_SHEET_FIELD => 'resultPropertySheet',
     FORBIDDEN_FIELD_NAME_PREFIX => '_'
 };
-use constant FORBIDDEN_FIELD_NAME_PROPERTY_SHEET => qw(acl createTime lastModifiedBy modifyTime owner propertySheetId);
+use constant FORBIDDEN_FIELD_NAME_PROPERTY_SHEET => qw(acl createTime lastModifiedBy modifyTime owner propertySheetId description);
 
 
 =head2 after_init_hook
@@ -294,7 +294,7 @@ sub run_one_step{
 
     $self->save_parsed_data($step_name, $parsed);
 
-    $self->hooks->after_hook($step_name);
+    $self->hooks->after_hook($step_name, $parsed);
 
     $self->{last_run_data} = $parsed;
 }
@@ -318,6 +318,10 @@ Running step: $step_name
         $self->hooks->define_hooks;
         $self->content_processor->define_processors;
         my $parameters = $self->parameters($step_name);
+
+        for my $param_name (sort keys %$parameters) {
+            $self->logger->info(qq{Got parameter "$param_name" with value "$parameters->{$param_name}"});
+        }
         $self->logger->debug('Parameters', $parameters);
 
         $self->batch_commander->before_batch_hook($step_name);
@@ -385,6 +389,9 @@ sub save_parsed_data {
         my $json = encode_json($parsed_data);
         $self->ec->setProperty($property_name, $json);
         $self->logger->info("Saved answer under $property_name");
+    }
+    elsif ($selected_format eq 'file') {
+        #saving data implementation is on Hooks side!
     }
     else {
         $self->bail_out("Cannot process format $selected_format: not implemented");
@@ -600,7 +607,7 @@ sub _self_flatten_map {
             if ($check){
                 foreach my $bad_key(FORBIDDEN_FIELD_NAME_PROPERTY_SHEET){
                     if (exists $value->{$bad_key}){
-                        $self->fix_propertysheet_forbidden_key($value, $bad_key);              
+                        $self->fix_propertysheet_forbidden_key($value, $bad_key);
                     }
                 }
             }
@@ -611,7 +618,7 @@ sub _self_flatten_map {
             if ($check){
                 foreach my $bad_key(FORBIDDEN_FIELD_NAME_PROPERTY_SHEET){
                     if ($key eq $bad_key){
-                        $self->fix_propertysheet_forbidden_key(\$key, $bad_key);              
+                        $self->fix_propertysheet_forbidden_key(\$key, $bad_key);
                     }
                 }
             }
