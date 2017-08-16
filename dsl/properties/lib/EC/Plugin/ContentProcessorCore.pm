@@ -50,6 +50,8 @@ sub run_parse_response {
 sub serialize_body {
     my ($self, $body) = @_;
 
+    return unless $body;
+
     my $json = encode_json($body);
     return $json;
 }

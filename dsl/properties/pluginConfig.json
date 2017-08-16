@@ -118,6 +118,14 @@
             "required" : "1",
             "in" : "body",
             "documentation" : "Stream",
+            "label" : "Application",
+            "type" : "entry",
+            "property" : "application:"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Stream",
             "label" : "Stream",
             "type" : "entry",
             "property" : "stream:"
@@ -164,6 +172,7 @@
          }
       ],
       "fields" : [
+         "application:",
          "stream:",
          "description",
          "releaseId",

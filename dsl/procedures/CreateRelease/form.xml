@@ -11,6 +11,14 @@
 </formElement>
 <formElement>
   <documentation>Stream.</documentation>
+  <label>Application:</label>
+  <property>application:</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Stream.</documentation>
   <label>Stream:</label>
   <property>stream:</property>
   <required>1</required>

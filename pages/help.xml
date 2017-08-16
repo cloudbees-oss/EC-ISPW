@@ -1,4 +1,4 @@
-
+<!-- HELP GEN VERSION 1 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->June 26, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->August 16, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -128,10 +128,11 @@
         </div>
         <h1>Procedures</h1>
         <!-- PROCEDURES BEGIN -->
-            <div id="CreateAssignment">
-                <a name="CreateAssignment" id="CreateAssignment" />
-                <h3>Create Assignment</h3>
-                <p>Creates Assignment.</p>
+                <div id="CreateAssignment">
+                <!-- CreateAssignment METADATA BEGIN -->
+            <h3>Create Assignment</h3>
+            <p>Creates Assignment.</p>
+        <!-- CreateAssignment METADATA END -->
                 <!-- CreateAssignment BEGIN -->
             <table class="grid">
                 <thead>
@@ -173,10 +174,11 @@
             </table>
         <!-- CreateAssignment END -->
             </div>
-            <div id="LoadTask">
-                <a name="LoadTask" id="LoadTask" />
-                <h3>Load Task</h3>
-                <p>Loads A Task for Specified Assignment.</p>
+                <div id="LoadTask">
+                <!-- LoadTask METADATA BEGIN -->
+            <h3>Load Task</h3>
+            <p>Loads A Task for Specified Assignment.</p>
+        <!-- LoadTask METADATA END -->
                 <!-- LoadTask BEGIN -->
             <table class="grid">
                 <thead>
@@ -238,10 +240,11 @@
             </table>
         <!-- LoadTask END -->
             </div>
-            <div id="GetAssignmentInformation">
-                <a name="GetAssignmentInformation" id="GetAssignmentInformation" />
-                <h3>Get Assignment Information</h3>
-                <p>Get Assignment Information</p>
+                <div id="GetAssignmentInformation">
+                <!-- GetAssignmentInformation METADATA BEGIN -->
+            <h3>Get Assignment Information</h3>
+            <p>Get Assignment Information</p>
+        <!-- GetAssignmentInformation METADATA END -->
                 <!-- GetAssignmentInformation BEGIN -->
             <table class="grid">
                 <thead>
@@ -259,10 +262,11 @@
             </table>
         <!-- GetAssignmentInformation END -->
             </div>
-            <div id="GetAssignmentTaskList">
-                <a name="GetAssignmentTaskList" id="GetAssignmentTaskList" />
-                <h3>Get Assignment Task List</h3>
-                <p>Get Assignment Task List</p>
+                <div id="GetAssignmentTaskList">
+                <!-- GetAssignmentTaskList METADATA BEGIN -->
+            <h3>Get Assignment Task List</h3>
+            <p>Get Assignment Task List</p>
+        <!-- GetAssignmentTaskList METADATA END -->
                 <!-- GetAssignmentTaskList BEGIN -->
             <table class="grid">
                 <thead>
@@ -284,10 +288,11 @@
             </table>
         <!-- GetAssignmentTaskList END -->
             </div>
-            <div id="GetAssignmentTaskInformation">
-                <a name="GetAssignmentTaskInformation" id="GetAssignmentTaskInformation" />
-                <h3>Get Assignment Task Information</h3>
-                <p>Get Assignment Task Information</p>
+                <div id="GetAssignmentTaskInformation">
+                <!-- GetAssignmentTaskInformation METADATA BEGIN -->
+            <h3>Get Assignment Task Information</h3>
+            <p>Get Assignment Task Information</p>
+        <!-- GetAssignmentTaskInformation METADATA END -->
                 <!-- GetAssignmentTaskInformation BEGIN -->
             <table class="grid">
                 <thead>
@@ -309,10 +314,11 @@
             </table>
         <!-- GetAssignmentTaskInformation END -->
             </div>
-            <div id="GenerateTasksinAssignment">
-                <a name="GenerateTasksinAssignment" id="GenerateTasksinAssignment" />
-                <h3>Generate Tasks in Assignment</h3>
-                <p>Generates Tasks in Assignment.</p>
+                <div id="GenerateTasksinAssignment">
+                <!-- GenerateTasksinAssignment METADATA BEGIN -->
+            <h3>Generate Tasks in Assignment</h3>
+            <p>Generates Tasks in Assignment.</p>
+        <!-- GenerateTasksinAssignment METADATA END -->
                 <!-- GenerateTasksinAssignment BEGIN -->
             <table class="grid">
                 <thead>
@@ -350,10 +356,11 @@
             </table>
         <!-- GenerateTasksinAssignment END -->
             </div>
-            <div id="CreateRelease">
-                <a name="CreateRelease" id="CreateRelease" />
-                <h3>Create Release</h3>
-                <p>Generates Tasks in Assignment.</p>
+                <div id="CreateRelease">
+                <!-- CreateRelease METADATA BEGIN -->
+            <h3>Create Release</h3>
+            <p>Creates Release.</p>
+        <!-- CreateRelease METADATA END -->
                 <!-- CreateRelease BEGIN -->
             <table class="grid">
                 <thead>
@@ -363,6 +370,10 @@
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td class="required">Application</td>
+                    <td>Stream</td>
+                </tr>
                 <tr>
                     <td class="required">Stream</td>
                     <td>Stream</td>
@@ -391,10 +402,11 @@
             </table>
         <!-- CreateRelease END -->
             </div>
-            <div id="GetReleaseInformation">
-                <a name="GetReleaseInformation" id="GetReleaseInformation" />
-                <h3>Get Release Information</h3>
-                <p>Gets Release information.</p>
+                <div id="GetReleaseInformation">
+                <!-- GetReleaseInformation METADATA BEGIN -->
+            <h3>Get Release Information</h3>
+            <p>Gets Release information.</p>
+        <!-- GetReleaseInformation METADATA END -->
                 <!-- GetReleaseInformation BEGIN -->
             <table class="grid">
                 <thead>
@@ -412,10 +424,11 @@
             </table>
         <!-- GetReleaseInformation END -->
             </div>
-            <div id="PromoteRelease">
-                <a name="PromoteRelease" id="PromoteRelease" />
-                <h3>Promote Release</h3>
-                <p>Promotes release.</p>
+                <div id="PromoteRelease">
+                <!-- PromoteRelease METADATA BEGIN -->
+            <h3>Promote Release</h3>
+            <p>Promotes release.</p>
+        <!-- PromoteRelease METADATA END -->
                 <!-- PromoteRelease BEGIN -->
             <table class="grid">
                 <thead>
@@ -465,10 +478,11 @@
             </table>
         <!-- PromoteRelease END -->
             </div>
-            <div id="DeployRelease">
-                <a name="DeployRelease" id="DeployRelease" />
-                <h3>Deploy Release</h3>
-                <p>Deploys release.</p>
+                <div id="DeployRelease">
+                <!-- DeployRelease METADATA BEGIN -->
+            <h3>Deploy Release</h3>
+            <p>Deploys release.</p>
+        <!-- DeployRelease METADATA END -->
                 <!-- DeployRelease BEGIN -->
             <table class="grid">
                 <thead>
@@ -518,10 +532,11 @@
             </table>
         <!-- DeployRelease END -->
             </div>
-            <div id="RegressRelease">
-                <a name="RegressRelease" id="RegressRelease" />
-                <h3>Regress Release</h3>
-                <p>Regresses release.</p>
+                <div id="RegressRelease">
+                <!-- RegressRelease METADATA BEGIN -->
+            <h3>Regress Release</h3>
+            <p>Regresses release.</p>
+        <!-- RegressRelease METADATA END -->
                 <!-- RegressRelease BEGIN -->
             <table class="grid">
                 <thead>
@@ -571,10 +586,11 @@
             </table>
         <!-- RegressRelease END -->
             </div>
-            <div id="GetSetInformation">
-                <a name="GetSetInformation" id="GetSetInformation" />
-                <h3>Get Set Information</h3>
-                <p>Gets Set information.</p>
+                <div id="GetSetInformation">
+                <!-- GetSetInformation METADATA BEGIN -->
+            <h3>Get Set Information</h3>
+            <p>Gets Set information.</p>
+        <!-- GetSetInformation METADATA END -->
                 <!-- GetSetInformation BEGIN -->
             <table class="grid">
                 <thead>
@@ -592,10 +608,11 @@
             </table>
         <!-- GetSetInformation END -->
             </div>
-            <div id="GetSetTaskList">
-                <a name="GetSetTaskList" id="GetSetTaskList" />
-                <h3>Get Set Task List</h3>
-                <p>Gets Set Task List.</p>
+                <div id="GetSetTaskList">
+                <!-- GetSetTaskList METADATA BEGIN -->
+            <h3>Get Set Task List</h3>
+            <p>Gets Set Task List.</p>
+        <!-- GetSetTaskList METADATA END -->
                 <!-- GetSetTaskList BEGIN -->
             <table class="grid">
                 <thead>

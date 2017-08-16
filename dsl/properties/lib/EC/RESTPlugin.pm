@@ -5,6 +5,7 @@ use warnings;
 
 use base qw(EC::Plugin::Core);
 use EC::Plugin::Hooks;
+use EC::Plugin::BatchCommander;
 use EC::Plugin::Validators;
 use EC::Plugin::ContentProcessor;
 use EC::Plugin::Refiners;
@@ -15,9 +16,13 @@ use MIME::Base64 qw(encode_base64);
 use URI;
 use Carp qw(confess);
 
+#according to http://docs.electric-cloud.com/eflow_doc/7_3/User/HTML/content/properties.htm#propertySheet
+#this fields will get "_" prefix to prevent job failure on saving
 use constant {
-    RESULT_PROPERTY_SHEET_FIELD => 'resultPropertySheet'
+    RESULT_PROPERTY_SHEET_FIELD => 'resultPropertySheet',
+    FORBIDDEN_FIELD_NAME_PREFIX => '_'
 };
+use constant FORBIDDEN_FIELD_NAME_PROPERTY_SHEET => qw(acl createTime lastModifiedBy modifyTime owner propertySheetId);
 
 
 =head2 after_init_hook
@@ -32,6 +37,7 @@ sub after_init_hook {
 
     $self->{plugin_name} = '@PLUGIN_NAME@';
     $self->{plugin_key} = '@PLUGIN_KEY@';
+    $self->{last_run_data} = undef;
     my $debug_level = 0;
     my $proxy;
 
@@ -71,6 +77,14 @@ sub hooks {
         $self->{hooks} = EC::Plugin::Hooks->new($self);
     }
     return $self->{hooks};
+}
+
+sub batch_commander {
+    my ($self) = @_;
+    unless($self->{batch_commander}) {
+        $self->{batch_commander} = EC::Plugin::BatchCommander->new($self);
+    }
+    return $self->{batch_commander};
 }
 
 
@@ -144,13 +158,13 @@ sub generate_step_request {
     $endpoint =~ s/#\{($key)\}/$parameters_replacer->($1)/ge;
 
     my $uri = URI->new($endpoint);
-    my %query = ();
+    my %query = $uri->query_form;
     my %body = ();
     my %headers = ();
 
     for my $field ( @{$self->config->{$step_name}->{parameters}}) {
         my $name = $field->{property};
-        my $value = $parameters->{$name} || $field->{value};
+        my $value = $parameters->{$name};
         next unless $field->{in};
 
         if ($field->{in} eq 'query') {
@@ -173,15 +187,16 @@ sub generate_step_request {
     $uri->query_form(%query);
     $self->logger->debug(\%body);
 
+    my $method = $self->config->{$step_name}->{method};
     my $payload;
-    if (%body) {
+    if (%body || $method =~ /PATCH|PUT|POST/) {
         $payload = $self->content_processor->run_serialize_body($step_name, \%body);
         $self->logger->info("Payload size: " . length($payload));
     }
 
     $self->logger->debug("Endpoint: $uri");
 
-    my $method = $self->config->{$step_name}->{method};
+
     my $request = HTTP::Request->new($method, $uri);
 
     if ($self->config->{$step_name}->{basicAuth} && $self->config->{$step_name}->{basicAuth} eq 'true') {
@@ -237,9 +252,53 @@ sub request {
         $self->logger->info("Proxy set for request");
         $ua->requests_redirectable([qw/GET POST PUT PATCH GET HEAD OPTIONS DELETE/]);
     }
+    $self->logger->info($request->method . ' ' . $request->uri);
     my $response = $ua->request($request, $callback);
     return $response;
 }
+
+#running one step for defined procedure
+sub run_one_step{
+    my ($self, $step_name) = @_;
+
+    $self->hooks->before_hook($step_name);
+    my $parameters = $self->parameters($step_name);
+
+    $self->logger->debug('Parameters', $parameters);
+    $self->hooks->parameters_hook($step_name, $parameters);
+
+    my $config = {};
+    if ($self->config->{$step_name}->{hasConfig}) {
+        $config = $self->get_config_values($parameters->{config});
+        $self->logger->debug('Config', $config);
+    }
+
+    my $request = $self->generate_step_request($step_name, $config, $parameters);
+    $self->hooks->request_hook($step_name, $request); # request can be altered by the hook
+    $self->logger->info("Going to run request");
+    $self->logger->trace("Request", $request);
+    my $response = $self->request($step_name, $request);
+    $self->hooks->response_hook($step_name, $response);
+
+    unless($response->is_success) {
+        $self->logger->info("Response", $response->content);
+        my $message = 'Request failed: ' . $response->status_line;
+        return $self->bail_out($message);
+    }
+    else {
+        $self->logger->info('Request succeeded');
+    }
+    my $parsed = $self->parse_response($step_name, $response);
+
+    $self->hooks->parsed_hook($step_name, $parsed);
+
+    $self->save_parsed_data($step_name, $parsed);
+
+    $self->hooks->after_hook($step_name);
+
+    $self->{last_run_data} = $parsed;
+}
+
 
 sub run_step {
     my ($self, $step_name) = @_;
@@ -254,43 +313,21 @@ Running step: $step_name
         $self->current_step_name($step_name);
         die 'No step name' unless $step_name;
         $self->logger->debug("Running step named $step_name");
+        $self->batch_commander->define_batch_hooks;
+        $self->batch_commander->define_iterators;
         $self->hooks->define_hooks;
         $self->content_processor->define_processors;
-
-        $self->hooks->before_hook($step_name);
         my $parameters = $self->parameters($step_name);
-
         $self->logger->debug('Parameters', $parameters);
-        $self->hooks->parameters_hook($step_name, $parameters);
 
-        my $config = {};
-        if ($self->config->{$step_name}->{hasConfig}) {
-            $config = $self->get_config_values($parameters->{config});
-            $self->logger->debug('Config', $config);
+        $self->batch_commander->before_batch_hook($step_name);
+
+        my $next = $self->batch_commander->iterator($step_name, $parameters);
+        while($next->()){
+            $self->run_one_step($step_name);
         }
 
-        my $request = $self->generate_step_request($step_name, $config, $parameters);
-        $self->hooks->request_hook($step_name, $request); # request can be altered by the hook
-        $self->logger->info("Going to run request");
-        $self->logger->trace("Request", $request);
-        my $response = $self->request($step_name, $request);
-        $self->hooks->response_hook($step_name, $response);
-
-        unless($response->is_success) {
-            $self->logger->info("Response", $response->content);
-            my $message = 'Request failed: ' . $response->status_line;
-            return $self->bail_out($message);
-        }
-        else {
-            $self->logger->info('Request succeeded');
-        }
-        my $parsed = $self->parse_response($step_name, $response);
-
-        $self->hooks->parsed_hook($step_name, $parsed);
-
-        $self->save_parsed_data($step_name, $parsed);
-
-        $self->hooks->after_hook($step_name);
+        $self->batch_commander->after_batch_hook($step_name);
 
         1;
     } or do {
@@ -336,7 +373,8 @@ sub save_parsed_data {
     $self->logger->info("Got data", JSON->new->pretty->encode($parsed_data));
 
     if ($selected_format eq 'propertySheet') {
-        my $flat_map = _flatten_map($parsed_data, $property_name);
+
+        my $flat_map = $self->_self_flatten_map($parsed_data, $property_name, 'check_errors!');
 
         for my $key (sort keys %$flat_map) {
             $self->ec->setProperty($key, $flat_map->{$key});
@@ -350,6 +388,20 @@ sub save_parsed_data {
     }
     else {
         $self->bail_out("Cannot process format $selected_format: not implemented");
+    }
+}
+
+sub fix_propertysheet_forbidden_key{
+    my ($self, $ref_var, $key) = @_;
+
+    $self->logger->info("\"$key\" is the system property name", "Prefix FORBIDDEN_FIELD_NAME_PREFIX was added to prevent failure.");
+    my $new_key = FORBIDDEN_FIELD_NAME_PREFIX . $key;
+    if(ref($ref_var) eq 'HASH'){
+        $ref_var->{$new_key} = $ref_var->{$key};
+        delete $ref_var->{$key};
+    }
+    elsif(ref($ref_var) eq 'SCALAR'){
+        $$ref_var = $new_key;
     }
 }
 
@@ -403,19 +455,37 @@ sub refine {
     my ($self, $step_name, $parameters) = @_;
 
     for my $name (keys %$parameters) {
-        my $refine = $self->get_refiner($step_name, $name);
-        if ($refine) {
-            $parameters->{$name} = $self->refiners->$refine($parameters->{$name});
+        my $refiners = $self->get_refiners($step_name, $name);
+        for my $refiner_name (@$refiners) {
+            $parameters->{$name} = $self->refiners->$refiner_name($parameters->{$name});
         }
     }
+
     return $parameters;
 }
 
-sub get_refiner {
+
+sub _fix_multiple_object_syntax{
+    my @params = @_;
+
+    my @objects;
+    foreach my $item (@params){
+        if (defined $item and $item){
+            unless (ref $item eq 'ARRAY'){
+                $item = [$item];
+            }
+            push @objects, @$item;
+        }
+    }
+    return \@objects;
+}
+
+sub get_refiners {
     my ($self, $step_name, $param_name) = @_;
 
     my ($field) = grep  {$_->{property} eq $param_name} @{$self->config->{$step_name}->{parameters}};
-    return $field->{refiner};
+
+    return _fix_multiple_object_syntax($field->{refiner}, $field->{refiners});
 }
 
 sub validate {
@@ -441,12 +511,8 @@ sub get_validators {
     my ($self, $step_name, $param_name) = @_;
 
     my ($field) = grep  {$_->{property} eq $param_name} @{$self->config->{$step_name}->{parameters}};
-    my $validators = $field->{validators};
 
-    return [] unless $validators;
-    $validators = [$validators] unless ref $validators eq 'ARRAY';
-
-    return $validators;
+    return _fix_multiple_object_syntax($field->{validator}, $field->{validators});
 }
 
 sub get_config_values {
@@ -477,7 +543,6 @@ sub get_config_values {
     return $retval;
 }
 
-
 sub _flatten_map {
     my ($map, $prefix) = @_;
 
@@ -500,6 +565,57 @@ sub _flatten_map {
             %retval = (%retval, %{_flatten_map($value, "$prefix/$key")});
         }
         else {
+            $retval{"$prefix/$key"} = $value;
+        }
+    }
+    return \%retval;
+}
+
+
+sub _self_flatten_map {
+    my ($self, $map, $prefix, $check) = @_;
+
+    if (defined $check and $check){
+        $check = 1;
+    }
+    else{
+        $check = 0;
+    }
+    $prefix ||= '';
+    my %retval = ();
+
+    for my $key (keys %$map) {
+
+        my $value = $map->{$key};
+        if (ref $value eq 'ARRAY') {
+            my $counter = 1;
+            my %copy = map { my $key = ref $_ ? $counter ++ : $_; $key => $_ } @$value;
+            $value = \%copy;
+        }
+        if (ref $value ne 'HASH') {
+            $value ||= '';
+            $value = "$value";
+        }
+        if (ref $value) {
+            if ($check){
+                foreach my $bad_key(FORBIDDEN_FIELD_NAME_PROPERTY_SHEET){
+                    if (exists $value->{$bad_key}){
+                        $self->fix_propertysheet_forbidden_key($value, $bad_key);              
+                    }
+                }
+            }
+
+            %retval = (%retval, %{$self->_self_flatten_map($value, "$prefix/$key", $check)});
+        }
+        else {
+            if ($check){
+                foreach my $bad_key(FORBIDDEN_FIELD_NAME_PROPERTY_SHEET){
+                    if ($key eq $bad_key){
+                        $self->fix_propertysheet_forbidden_key(\$key, $bad_key);              
+                    }
+                }
+            }
+
             $retval{"$prefix/$key"} = $value;
         }
     }
