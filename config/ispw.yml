@@ -332,6 +332,12 @@ procedures:
         - propertySheet
       default: /myJob/release
     parameters:
+      - property: application:
+        type: entry
+        label: Application
+        required: 1
+        in: body
+        documentation: Stream
       - property: stream:
         type: entry
         label: Stream
