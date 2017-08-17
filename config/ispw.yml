@@ -326,7 +326,7 @@ procedures:
         documentation: Level.
         in: query
         required: 0
-      - property: runtimeConfiguration:
+      - property: runtimeConfiguration
         type: entry
         label: Runtime Configuration
         required: 1

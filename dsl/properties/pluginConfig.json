@@ -899,7 +899,7 @@
             "documentation" : "Required, see ISPW administrator for valid values.",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration:"
+            "property" : "runtimeConfiguration"
          },
          {
             "required" : "0",
@@ -926,7 +926,7 @@
       "fields" : [
          "assignmentId",
          "level",
-         "runtimeConfiguration:",
+         "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
          "events"
