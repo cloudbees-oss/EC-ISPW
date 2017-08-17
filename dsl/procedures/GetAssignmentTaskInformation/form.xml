@@ -10,16 +10,16 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Assignment Id.</documentation>
-  <label>AssignmentId:</label>
+  <documentation>Assignment ID.</documentation>
+  <label>Assignment ID:</label>
   <property>assignmentId</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Task Id.</documentation>
-  <label>TaskId:</label>
+  <documentation>Task ID.</documentation>
+  <label>Task ID:</label>
   <property>taskId</property>
   <required>1</required>
   <type>entry</type>

@@ -15,19 +15,19 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
             "required" : "0",
             "in" : "query",
             "documentation" : "Level",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
          },
          {
             "required" : "0",
@@ -48,14 +48,14 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Required see ISPW administrator for valid values",
+            "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
             "property" : "runtimeConfiguration"
          },
          {
             "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
@@ -83,8 +83,8 @@
          }
       ],
       "fields" : [
-         "level",
          "releaseId",
+         "level",
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
@@ -117,7 +117,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Stream",
+            "documentation" : "Application",
             "label" : "Application",
             "type" : "entry",
             "property" : "application:"
@@ -141,7 +141,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Can only be used if releasePrefix is not set, one must be used",
+            "documentation" : "Can only be used if Release Prefix is not set, one must be used",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
@@ -149,7 +149,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Can only be used if releaseId is not set, one must be used",
+            "documentation" : "Can only be used if Release ID is not set, one must be used",
             "label" : "Release Prefix",
             "type" : "entry",
             "property" : "releasePrefix"
@@ -160,12 +160,12 @@
             "documentation" : "Owner",
             "label" : "Owner",
             "type" : "entry",
-            "property" : "owner1"
+            "property" : "_owner"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Reference Number",
+            "documentation" : "Reference number",
             "label" : "Reference Number",
             "type" : "entry",
             "property" : "referenceNumber"
@@ -177,7 +177,7 @@
          "description",
          "releaseId",
          "releasePrefix",
-         "owner1",
+         "_owner",
          "referenceNumber"
       ],
       "hasConfig" : "true",
@@ -203,15 +203,15 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id",
-            "label" : "assignmentId",
+            "documentation" : "Assignment ID",
+            "label" : "assignment ID",
             "type" : "entry",
             "property" : "assignmentId"
          },
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Stream Name.",
+            "documentation" : "Stream name.",
             "label" : "Stream Name",
             "type" : "entry",
             "property" : "stream"
@@ -219,23 +219,23 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Application Id",
-            "label" : "Application Id",
+            "documentation" : "Application ID",
+            "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
          },
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Module Name.",
-            "label" : "moduleName",
+            "documentation" : "Module name.",
+            "label" : "Module Name",
             "type" : "entry",
             "property" : "moduleName"
          },
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Module Type",
+            "documentation" : "Module type",
             "label" : "Module Type",
             "type" : "entry",
             "property" : "moduleType"
@@ -243,7 +243,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Current Level",
+            "documentation" : "Current level",
             "label" : "Current Level",
             "type" : "entry",
             "property" : "currentLevel"
@@ -251,7 +251,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Starting Level",
+            "documentation" : "Starting level",
             "label" : "Starting Level",
             "type" : "entry",
             "property" : "startingLevel"
@@ -259,7 +259,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Generate Sequence",
+            "documentation" : "Generate sequence",
             "label" : "Generate Sequence",
             "type" : "entry",
             "property" : "generateSequence"
@@ -366,8 +366,8 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id",
-            "label" : "assignmentId",
+            "documentation" : "Assignment ID",
+            "label" : "assignment ID",
             "type" : "entry",
             "property" : "assignmentId"
          }
@@ -429,19 +429,19 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
             "required" : "0",
             "in" : "query",
             "documentation" : "Level",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
          },
          {
             "required" : "0",
@@ -462,14 +462,14 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Required see ISPW administrator for valid values",
+            "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
             "property" : "runtimeConfiguration"
          },
          {
             "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
@@ -497,8 +497,8 @@
          }
       ],
       "fields" : [
-         "level",
          "releaseId",
+         "level",
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
@@ -529,19 +529,19 @@
       "canSkipAuth" : "false",
       "parameters" : [
          {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
             "required" : "0",
             "in" : "query",
             "documentation" : "Level",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
          },
          {
             "required" : "0",
@@ -562,14 +562,14 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Required see ISPW administrator for valid values",
+            "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
             "property" : "runtimeConfiguration"
          },
          {
             "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
@@ -597,8 +597,8 @@
          }
       ],
       "fields" : [
-         "level",
          "releaseId",
+         "level",
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
@@ -631,7 +631,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Stream Name.",
+            "documentation" : "Stream name.",
             "label" : "Stream Name",
             "type" : "entry",
             "property" : "stream"
@@ -639,15 +639,23 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Application Id",
-            "label" : "Application Id",
+            "documentation" : "Application ID",
+            "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
          },
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment Description.",
+            "documentation" : "Default path",
+            "label" : "Default Path",
+            "type" : "entry",
+            "property" : "defaultPath"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Assignment description",
             "label" : "Description",
             "type" : "entry",
             "property" : "description"
@@ -655,7 +663,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment Prefix",
+            "documentation" : "Assignment prefix",
             "label" : "Assignment Prefix",
             "type" : "entry",
             "property" : "assignmentPrefix"
@@ -663,7 +671,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Ref Number",
+            "documentation" : "Ref number",
             "label" : "Ref Number",
             "type" : "entry",
             "property" : "refNumber"
@@ -679,7 +687,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "User Tag",
+            "documentation" : "User tag",
             "label" : "User Tag",
             "type" : "entry",
             "property" : "userTag"
@@ -688,6 +696,7 @@
       "fields" : [
          "stream",
          "application",
+         "defaultPath",
          "description",
          "assignmentPrefix",
          "refNumber",
@@ -700,21 +709,28 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments",
       "attachCredentials" : "true"
    },
-   "generate tasks in assignment" : {
+   "deploy assignment" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/generateAssignmentTasks"
+         "default" : "/myJob/deployResult"
       },
-      "name" : "Generate Tasks in Assignment",
-      "description" : "Generates Tasks in Assignment.",
-      "stepName" : "generate tasks in assignment",
+      "name" : "Deploy Assignment",
+      "description" : "Deploys assignment.",
+      "stepName" : "deploy assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment ID",
+            "label" : "Assignment ID",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
          {
             "required" : "0",
             "in" : "query",
@@ -724,16 +740,32 @@
             "property" : "level"
          },
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "body",
-            "documentation" : "Required see ISPW administrator for valid values.",
-            "label" : "Runtime Configuration",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "label" : "Change Type",
             "type" : "entry",
-            "property" : "runtimeConfiguration:"
+            "property" : "changeType"
          },
          {
             "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" notation.",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "label" : "Execution Status",
+            "type" : "entry",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
@@ -761,8 +793,11 @@
          }
       ],
       "fields" : [
+         "assignmentId",
          "level",
-         "runtimeConfiguration:",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
          "httpHeaders",
          "credentialsUsername",
          "credentialsPassword",
@@ -771,7 +806,7 @@
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy",
       "attachCredentials" : "true"
    },
    "get release information" : {
@@ -806,6 +841,188 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}",
       "attachCredentials" : "true"
    },
+   "generate tasks in assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/generateAssignmentTasks"
+      },
+      "name" : "Generate Tasks in Assignment",
+      "description" : "Generates Tasks in Assignment.",
+      "stepName" : "generate tasks in assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment ID",
+            "label" : "Assignment ID",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values.",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration:"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "assignmentId",
+         "level",
+         "runtimeConfiguration:",
+         "httpHeaders",
+         "credentialsUsername",
+         "credentialsPassword",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations",
+      "attachCredentials" : "true"
+   },
+   "promote assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/promoteResult"
+      },
+      "name" : "Promote Assignment",
+      "description" : "Promotes assignment.",
+      "stepName" : "promote assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment ID",
+            "label" : "Assignment ID",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "label" : "Change Type",
+            "type" : "entry",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "label" : "Execution Status",
+            "type" : "entry",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "assignmentId",
+         "level",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "credentialsUsername",
+         "credentialsPassword",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote",
+      "attachCredentials" : "true"
+   },
    "Get Assignment Task List" : {
       "resultProperty" : {
          "show" : "true",
@@ -831,8 +1048,8 @@
          },
          {
             "required" : "1",
-            "documentation" : "Assignment Id",
-            "label" : "assignmentId",
+            "documentation" : "Assignment ID",
+            "label" : "Assignment ID",
             "type" : "entry",
             "property" : "assignmentId"
          }
@@ -864,15 +1081,15 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id",
-            "label" : "assignmentId",
+            "documentation" : "Assignment ID",
+            "label" : "assignment ID",
             "type" : "entry",
             "property" : "assignmentId"
          },
          {
             "required" : "1",
-            "documentation" : "Task Id",
-            "label" : "taskId",
+            "documentation" : "Task ID",
+            "label" : "Task ID",
             "type" : "entry",
             "property" : "taskId"
          }

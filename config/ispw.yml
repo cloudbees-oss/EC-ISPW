@@ -38,31 +38,37 @@ procedures:
         label: Stream Name
         required: 1
         in: body
-        documentation: ISPW Stream Name.
+        documentation: Stream name.
       - property: application
         type: entry
-        label: Application Id
+        label: Application ID
         required: 1
         in: body
-        documentation: ISPW Application Id
+        documentation: Application ID
+      - property: defaultPath
+        type: entry
+        label: Default Path
+        required: 1
+        in: body
+        documentation: Default path
       - property: description
         type: entry
         label: Description
         required: 1
         in: body
-        documentation: Assignment Description.
+        documentation: Assignment description
       - property: assignmentPrefix
         type: entry
         label: Assignment Prefix
         required: 1
         in: body
-        documentation: Assignment Prefix
+        documentation: Assignment prefix
       - property: refNumber
         type: entry
         label: Ref Number
         required: 0
         in: body
-        documentation: Ref Number
+        documentation: Ref number
       - property: release
         type: entry
         label: Release
@@ -74,7 +80,7 @@ procedures:
         label: User Tag
         required: 0
         in: body
-        documentation: User Tag
+        documentation: User tag
 
   - name: Load Task
     stepName: Load Task
@@ -96,51 +102,51 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignmentId
-        documentation: Assignment Id
+        label: assignment ID
+        documentation: Assignment ID
         required: 1
       - property: stream
         type: entry
         label: Stream Name
         required: 1
         in: body
-        documentation: ISPW Stream Name.
+        documentation: Stream name.
       - property: application
         type: entry
-        label: Application Id
+        label: Application ID
         required: 1
         in: body
-        documentation: ISPW Application Id
+        documentation: Application ID
       - property: moduleName
         type: entry
-        label: moduleName
+        label: Module Name
         required: 1
         in: body
-        documentation: Module Name.
+        documentation: Module name.
       - property: moduleType
         type: entry
         label: Module Type
         required: 1
         in: body
-        documentation: Module Type
+        documentation: Module type
       - property: currentLevel
         type: entry
         label: Current Level
         required: 1
         in: body
-        documentation: Current Level
+        documentation: Current level
       - property: startingLevel
         type: entry
         label: Starting Level
         required: 1
         in: body
-        documentation: Starting Level
+        documentation: Starting level
       - property: generateSequence
         type: entry
         label: Generate Sequence
         required: 0
         in: body
-        documentation: Generate Sequence
+        documentation: Generate sequence
       - property: sql
         type: entry
         label: SQL
@@ -186,8 +192,8 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignmentId
-        documentation: Assignment Id
+        label: assignment ID
+        documentation: Assignment ID
         required: 1
 
   - name: Get Assignment Task List
@@ -216,8 +222,8 @@ procedures:
         required: 0
       - property: assignmentId
         type: entry
-        label: assignmentId
-        documentation: Assignment Id
+        label: Assignment ID
+        documentation: Assignment ID
         required: 1
 
   - name: Get Assignment Task Information
@@ -240,13 +246,13 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignmentId
-        documentation: Assignment Id
+        label: assignment ID
+        documentation: Assignment ID
         required: 1
       - property: taskId
         type: entry
-        label: taskId
-        documentation: Task Id
+        label: Task ID
+        documentation: Task ID
         required: 1
 
   - name: Generate Tasks in Assignment
@@ -274,6 +280,11 @@ procedures:
         - propertySheet
       default: /myJob/generateAssignmentTasks
     parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        documentation: Assignment ID
+        required: 1
       - property: level
         type: entry
         label: Level
@@ -285,12 +296,162 @@ procedures:
         label: Runtime Configuration
         required: 1
         in: body
-        documentation: Required see ISPW administrator for valid values.
+        documentation: Required, see ISPW administrator for valid values.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
         required: 0
-        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
+      - property: events
+        type: textarea
+        label: Event array in JSON format, must contain at least 1 member.
+        required: 1
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+
+  - name: Promote Assignment
+    stepName: promote assignment
+    description: Promotes assignment.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{assignmentId} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/promoteResult
+    parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        required: 1
+        documentation: Assignment ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
+      - property: events
+        type: textarea
+        label: Event array in JSON format, must contain at least 1 member.
+        required: 1
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+
+  - name: Deploy Assignment
+    stepName: deploy assignment
+    description: Deploys assignment.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{assignmentId} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/deployResult
+    parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        required: 1
+        documentation: Assignment ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
       - property: credentialsUsername
         type: entry
         label: Optional, global credentials used for all callbacks. Username
@@ -337,7 +498,7 @@ procedures:
         label: Application
         required: 1
         in: body
-        documentation: Stream
+        documentation: Application
       - property: stream:
         type: entry
         label: Stream
@@ -355,14 +516,14 @@ procedures:
         label: Release ID
         required: 1
         in: body
-        documentation: Can only be used if releasePrefix is not set, one must be used
+        documentation: Can only be used if Release Prefix is not set, one must be used
       - property: releasePrefix
         type: entry
         label: Release Prefix
         required: 1
         in: body
-        documentation: Can only be used if releaseId is not set, one must be used
-      - property: owner1
+        documentation: Can only be used if Release ID is not set, one must be used
+      - property: _owner
         type: entry
         label: Owner
         required: 0
@@ -373,7 +534,7 @@ procedures:
         label: Reference Number
         required: 0
         in: body
-        documentation: Reference Number
+        documentation: Reference number
 
   - name: Get Release Information
     stepName: get release information
@@ -431,17 +592,17 @@ procedures:
         - propertySheet
       default: /myJob/promoteResult
     parameters:
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
       - property: level
         type: entry
         label: Level
         documentation: Level
         in: query
         required: 0
-      - property: releaseId
-        type: entry
-        label: Release ID
-        required: 1
-        documentation: Release ID
       - property: changeType
         type: entry
         in: body
@@ -459,12 +620,12 @@ procedures:
         in: body
         label: Runtime Configuration
         required: 1
-        documentation: Required see ISPW administrator for valid values
+        documentation: Required, see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
         required: 0
-        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
       - property: credentialsUsername
         type: entry
         label: Optional, global credentials used for all callbacks. Username
@@ -506,17 +667,17 @@ procedures:
         - propertySheet
       default: /myJob/deployResult
     parameters:
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
       - property: level
         type: entry
         label: Level
         documentation: Level
         in: query
         required: 0
-      - property: releaseId
-        type: entry
-        label: Release ID
-        required: 1
-        documentation: Release ID
       - property: changeType
         type: entry
         in: body
@@ -534,12 +695,12 @@ procedures:
         in: body
         label: Runtime Configuration
         required: 1
-        documentation: Required see ISPW administrator for valid values
+        documentation: Required, see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
         required: 0
-        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
       - property: credentialsUsername
         type: entry
         label: Optional, global credentials used for all callbacks. Username
@@ -581,17 +742,17 @@ procedures:
         - propertySheet
       default: /myJob/regressResult
     parameters:
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
       - property: level
         type: entry
         label: Level
         documentation: Level
         in: query
         required: 0
-      - property: releaseId
-        type: entry
-        label: Release ID
-        required: 1
-        documentation: Release ID
       - property: changeType
         type: entry
         in: body
@@ -609,12 +770,12 @@ procedures:
         in: body
         label: Runtime Configuration
         required: 1
-        documentation: Required see ISPW administrator for valid values
+        documentation: Required, see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
         required: 0
-        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" notation.
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
       - property: credentialsUsername
         type: entry
         label: Optional, global credentials used for all callbacks. Username
