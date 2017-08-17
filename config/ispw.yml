@@ -302,16 +302,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
@@ -377,16 +372,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Override Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
@@ -452,22 +442,17 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
         required: 1
         documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
-
+      - property: callbackCredential
+        type: credential
+        label: Global Credentials for Callback
+        required: 0
+        in: body
+        documentation: Optional, global credentials used for all callbacks.
   - name: Create Release
     stepName: create release
     description: Creates Release.
@@ -626,16 +611,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
@@ -701,16 +681,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
@@ -776,16 +751,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
