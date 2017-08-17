@@ -663,13 +663,13 @@ procedures:
         - propertySheet
       default: /myJob/release
     parameters:
-      - property: application:
+      - property: application
         type: entry
         label: Application
         required: 1
         in: body
         documentation: Application.
-      - property: stream:
+      - property: stream
         type: entry
         label: Stream
         required: 1

@@ -112,7 +112,7 @@
             "documentation" : "Application.",
             "label" : "Application",
             "type" : "entry",
-            "property" : "application:"
+            "property" : "application"
          },
          {
             "required" : "1",
@@ -120,7 +120,7 @@
             "documentation" : "Stream.",
             "label" : "Stream",
             "type" : "entry",
-            "property" : "stream:"
+            "property" : "stream"
          },
          {
             "required" : "1",
@@ -163,8 +163,8 @@
          }
       ],
       "fields" : [
-         "application:",
-         "stream:",
+         "application",
+         "stream",
          "description",
          "releaseId",
          "releasePrefix",

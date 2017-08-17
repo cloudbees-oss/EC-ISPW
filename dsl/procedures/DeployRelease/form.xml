@@ -58,7 +58,6 @@
   <value></value>
 </formElement>
 <formElement>
-  <attachedAsParameterToStep>deploy release</attachedAsParameterToStep>
   <documentation>Optional, global credentials used for all callbacks.</documentation>
   <label>Global Credentials for Callbacks:</label>
   <property>callbackCredential</property>

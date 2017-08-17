@@ -12,7 +12,7 @@
 <formElement>
   <documentation>Application.</documentation>
   <label>Application:</label>
-  <property>application:</property>
+  <property>application</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
@@ -20,7 +20,7 @@
 <formElement>
   <documentation>Stream.</documentation>
   <label>Stream:</label>
-  <property>stream:</property>
+  <property>stream</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
