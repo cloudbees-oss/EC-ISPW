@@ -106,6 +106,46 @@
   <value></value>
 </formElement>
 <formElement>
+  <documentation>Option 1.</documentation>
+  <label>Option 1:</label>
+  <property>option1</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Option 2.</documentation>
+  <label>Option 2:</label>
+  <property>option2</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Option 3.</documentation>
+  <label>Option 3:</label>
+  <property>option3</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Option 4.</documentation>
+  <label>Option 4:</label>
+  <property>option4</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Option 5.</documentation>
+  <label>Option 5:</label>
+  <property>option5</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Results will be saved into this property/property sheet.</documentation>
   <label>Property sheet name or filename for results:</label>
   <property>resultPropertySheet</property>

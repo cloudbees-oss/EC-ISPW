@@ -177,7 +177,37 @@ procedures:
         required: 0
         in: body
         documentation: Program.
-
+      - property: option1
+        type: entry
+        label: Option 1
+        required: 0
+        in: body
+        documentation: Option 1.
+      - property: option2
+        type: entry
+        label: Option 2
+        required: 0
+        in: body
+        documentation: Option 2.
+      - property: option3
+        type: entry
+        label: Option 3
+        required: 0
+        in: body
+        documentation: Option 3.
+      - property: option4
+        type: entry
+        label: Option 4
+        required: 0
+        in: body
+        documentation: Option 4.
+      - property: option5
+        type: entry
+        label: Option 5
+        required: 0
+        in: body
+        documentation: Option 5.    
+                    
   - name: Get Assignment Information
     stepName: Get Assignment Information
     description: Get Assignment Information

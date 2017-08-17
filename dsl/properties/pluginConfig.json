@@ -294,6 +294,46 @@
             "label" : "Program",
             "type" : "entry",
             "property" : "program"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Option 1.",
+            "label" : "Option 1",
+            "type" : "entry",
+            "property" : "option1"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Option 2.",
+            "label" : "Option 2",
+            "type" : "entry",
+            "property" : "option2"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Option 3.",
+            "label" : "Option 3",
+            "type" : "entry",
+            "property" : "option3"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Option 4.",
+            "label" : "Option 4",
+            "type" : "entry",
+            "property" : "option4"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Option 5.",
+            "label" : "Option 5",
+            "type" : "entry",
+            "property" : "option5"
          }
       ],
       "fields" : [
@@ -308,7 +348,12 @@
          "sql",
          "ims",
          "cics",
-         "program"
+         "program",
+         "option1",
+         "option2",
+         "option3",
+         "option4",
+         "option5"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
