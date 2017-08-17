@@ -10,15 +10,15 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Assignment Id.</documentation>
-  <label>AssignmentId:</label>
+  <documentation>Assignment ID.</documentation>
+  <label>Assignment ID:</label>
   <property>assignmentId</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>ISPW Stream Name.</documentation>
+  <documentation>Stream name.</documentation>
   <label>Stream Name:</label>
   <property>stream</property>
   <required>1</required>
@@ -26,23 +26,23 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>ISPW Application Id.</documentation>
-  <label>Application Id:</label>
+  <documentation>Application ID.</documentation>
+  <label>Application ID:</label>
   <property>application</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Module Name.</documentation>
-  <label>ModuleName:</label>
+  <documentation>Module name.</documentation>
+  <label>Module Name:</label>
   <property>moduleName</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Module Type.</documentation>
+  <documentation>Module type.</documentation>
   <label>Module Type:</label>
   <property>moduleType</property>
   <required>1</required>
@@ -50,7 +50,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Current Level.</documentation>
+  <documentation>Current level.</documentation>
   <label>Current Level:</label>
   <property>currentLevel</property>
   <required>1</required>
@@ -58,7 +58,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Starting Level.</documentation>
+  <documentation>Starting level.</documentation>
   <label>Starting Level:</label>
   <property>startingLevel</property>
   <required>1</required>
@@ -66,7 +66,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Generate Sequence.</documentation>
+  <documentation>Generate sequence.</documentation>
   <label>Generate Sequence:</label>
   <property>generateSequence</property>
   <required>0</required>

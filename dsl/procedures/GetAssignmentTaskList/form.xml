@@ -18,8 +18,8 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment Id.</documentation>
-  <label>AssignmentId:</label>
+  <documentation>Assignment ID.</documentation>
+  <label>Assignment ID:</label>
   <property>assignmentId</property>
   <required>1</required>
   <type>entry</type>

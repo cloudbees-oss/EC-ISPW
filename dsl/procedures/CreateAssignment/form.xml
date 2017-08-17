@@ -10,7 +10,7 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>ISPW Stream Name.</documentation>
+  <documentation>Stream name.</documentation>
   <label>Stream Name:</label>
   <property>stream</property>
   <required>1</required>
@@ -18,15 +18,23 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>ISPW Application Id.</documentation>
-  <label>Application Id:</label>
+  <documentation>Application ID.</documentation>
+  <label>Application ID:</label>
   <property>application</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment Description.</documentation>
+  <documentation>Default path.</documentation>
+  <label>Default Path:</label>
+  <property>defaultPath</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Assignment description.</documentation>
   <label>Description:</label>
   <property>description</property>
   <required>1</required>
@@ -34,7 +42,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment Prefix.</documentation>
+  <documentation>Assignment prefix.</documentation>
   <label>Assignment Prefix:</label>
   <property>assignmentPrefix</property>
   <required>1</required>
@@ -42,7 +50,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Ref Number.</documentation>
+  <documentation>Ref number.</documentation>
   <label>Ref Number:</label>
   <property>refNumber</property>
   <required>0</required>
@@ -58,7 +66,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>User Tag.</documentation>
+  <documentation>User tag.</documentation>
   <label>User Tag:</label>
   <property>userTag</property>
   <required>0</required>

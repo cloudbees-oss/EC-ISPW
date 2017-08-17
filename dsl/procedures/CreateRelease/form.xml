@@ -10,7 +10,7 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Stream.</documentation>
+  <documentation>Application.</documentation>
   <label>Application:</label>
   <property>application:</property>
   <required>1</required>
@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if releasePrefix is not set, one must be used.</documentation>
+  <documentation>Can only be used if Release Prefix is not set, one must be used.</documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
   <required>1</required>
@@ -42,7 +42,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if releaseId is not set, one must be used.</documentation>
+  <documentation>Can only be used if Release ID is not set, one must be used.</documentation>
   <label>Release Prefix:</label>
   <property>releasePrefix</property>
   <required>1</required>
@@ -52,13 +52,13 @@
 <formElement>
   <documentation>Owner.</documentation>
   <label>Owner:</label>
-  <property>owner1</property>
+  <property>_owner</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Reference Number.</documentation>
+  <documentation>Reference number.</documentation>
   <label>Reference Number:</label>
   <property>referenceNumber</property>
   <required>0</required>

@@ -10,6 +10,14 @@
   <type>entry</type>
 </formElement>
 <formElement>
+  <documentation>Assignment ID.</documentation>
+  <label>Assignment ID:</label>
+  <property>assignmentId</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Level.</documentation>
   <label>Level:</label>
   <property>level</property>
@@ -18,7 +26,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Required see ISPW administrator for valid values.</documentation>
+  <documentation>Required, see ISPW administrator for valid values.</documentation>
   <label>Runtime Configuration:</label>
   <property>runtimeConfiguration:</property>
   <required>1</required>
@@ -26,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional global custom headers used for all callbacks. Use &quot;Header=Value&quot; notation.</documentation>
+  <documentation>Optional, global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
   <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>
   <required>0</required>
