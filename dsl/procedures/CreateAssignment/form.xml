@@ -18,7 +18,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Application ID.</documentation>
+  <documentation>ISPW Application Id.</documentation>
   <label>Application ID:</label>
   <property>application</property>
   <required>1</required>
@@ -26,7 +26,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Default path.</documentation>
+  <documentation>Default Path.</documentation>
   <label>Default Path:</label>
   <property>defaultPath</property>
   <required>1</required>
@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment description.</documentation>
+  <documentation>Assignment Description.</documentation>
   <label>Description:</label>
   <property>description</property>
   <required>1</required>
@@ -42,7 +42,15 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment prefix.</documentation>
+  <documentation>Owner.</documentation>
+  <label>Owner:</label>
+  <property>_owner</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Assignment Prefix.</documentation>
   <label>Assignment Prefix:</label>
   <property>assignmentPrefix</property>
   <required>1</required>
@@ -50,7 +58,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Ref number.</documentation>
+  <documentation>Ref Number.</documentation>
   <label>Ref Number:</label>
   <property>refNumber</property>
   <required>0</required>
@@ -66,7 +74,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>User tag.</documentation>
+  <documentation>User Tag.</documentation>
   <label>User Tag:</label>
   <property>userTag</property>
   <required>0</required>

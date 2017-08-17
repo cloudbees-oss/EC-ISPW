@@ -44,43 +44,49 @@ procedures:
         label: Application ID
         required: 1
         in: body
-        documentation: Application ID
+        documentation: ISPW Application Id
       - property: defaultPath
         type: entry
         label: Default Path
         required: 1
         in: body
-        documentation: Default path
+        documentation: Default Path.
       - property: description
         type: entry
         label: Description
         required: 1
         in: body
-        documentation: Assignment description
+        documentation: Assignment Description.
+      - property: _owner
+        type: entry
+        label: Owner
+        required: 1
+        in: body
+        documentation: Owner.
       - property: assignmentPrefix
         type: entry
         label: Assignment Prefix
         required: 1
         in: body
-        documentation: Assignment prefix
+        documentation: Assignment Prefix.
       - property: refNumber
         type: entry
         label: Ref Number
         required: 0
         in: body
-        documentation: Ref number
+        documentation: Ref Number.
       - property: release
         type: entry
         label: Release
         required: 0
         in: body
-        documentation: Release
+        documentation: Release.
       - property: userTag
         type: entry
         label: User Tag
         required: 0
         in: body
-        documentation: User tag
+        documentation: User Tag.
 
   - name: Load Task
     stepName: Load Task
@@ -102,8 +108,8 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignment ID
-        documentation: Assignment ID
+        label: Assignment Id
+        documentation: Assignment Id.
         required: 1
       - property: stream
         type: entry
@@ -116,7 +122,7 @@ procedures:
         label: Application ID
         required: 1
         in: body
-        documentation: Application ID
+        documentation: ISPW Application Id.
       - property: moduleName
         type: entry
         label: Module Name
@@ -128,49 +134,49 @@ procedures:
         label: Module Type
         required: 1
         in: body
-        documentation: Module type
+        documentation: Module Type.
       - property: currentLevel
         type: entry
         label: Current Level
         required: 1
         in: body
-        documentation: Current level
+        documentation: Current Level.
       - property: startingLevel
         type: entry
         label: Starting Level
         required: 1
         in: body
-        documentation: Starting level
+        documentation: Starting Level.
       - property: generateSequence
         type: entry
         label: Generate Sequence
         required: 0
         in: body
-        documentation: Generate sequence
+        documentation: Generate Sequence.
       - property: sql
         type: entry
         label: SQL
         required: 0
         in: body
-        documentation: SQL
+        documentation: SQL.
       - property: ims
         type: entry
         label: IMS
         required: 0
         in: body
-        documentation: IMS
+        documentation: IMS.
       - property: cics
         type: entry
         label: CICS
         required: 0
         in: body
-        documentation: CICS
+        documentation: CICS.
       - property: program
         type: entry
         label: Program
         required: 0
         in: body
-        documentation: Program
+        documentation: Program.
 
   - name: Get Assignment Information
     stepName: Get Assignment Information
@@ -192,10 +198,9 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignment ID
-        documentation: Assignment ID
+        label: Assignment Id
         required: 1
-
+        documentation: Assignment Id.
   - name: Get Assignment Task List
     stepName: Get Assignment Task List
     description: Get Assignment Task List
@@ -214,16 +219,21 @@ procedures:
         - propertySheet
       default: /myJob/assignmentTasks
     parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment Id
+        documentation: Assignment Id.
+        required: 1
       - property: level
         type: entry
         label: Level
-        documentation: Level
         in: query
         required: 0
+        documentation: Level.
       - property: assignmentId
         type: entry
         label: Assignment ID
-        documentation: Assignment ID
+        documentation: Assignment ID.
         required: 1
 
   - name: Get Assignment Task Information
@@ -246,19 +256,19 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: assignment ID
-        documentation: Assignment ID
+        label: Assignment Id
+        documentation: Assignment Id.
         required: 1
       - property: taskId
         type: entry
-        label: Task ID
-        documentation: Task ID
+        label: Task Id
+        documentation: Task Id.
         required: 1
 
   - name: Generate Tasks in Assignment
     stepName: generate tasks in assignment
     description: Generates Tasks in Assignment.
-    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -282,13 +292,13 @@ procedures:
     parameters:
       - property: assignmentId
         type: entry
-        label: Assignment ID
-        documentation: Assignment ID
+        label: Assignment Id
+        documentation: Assignment Id.
         required: 1
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: runtimeConfiguration:
@@ -297,6 +307,156 @@ procedures:
         required: 1
         in: body
         documentation: Required, see ISPW administrator for valid values.
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
+      - property: events
+        type: textarea
+        label: Event array in JSON format, must contain at least 1 member.
+        required: 1
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+
+  - name: Promote Assignment
+    stepName: promote assignment
+    description: Promotes assignment.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{assignmentId} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/promoteResult
+    parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        required: 1
+        documentation: Assignment ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: credentialsUsername
+        type: entry
+        label: Optional, global credentials used for all callbacks. Username
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Username.
+      - property: credentialsPassword
+        type: entry
+        label: Optional, global credentials used for all callbacks. Password
+        required: 0
+        documentation: Optional, global credentials used for all callbacks. Password.
+      - property: events
+        type: textarea
+        label: Event array in JSON format, must contain at least 1 member.
+        required: 1
+        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+
+  - name: Deploy Assignment
+    stepName: deploy assignment
+    description: Deploys assignment.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{assignmentId} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/deployResult
+    parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        required: 1
+        documentation: Assignment ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level
+        in: query
+        required: 0
+      - property: changeType
+        type: entry
+        in: body
+        label: Change Type
+        required: 0
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: entry
+        in: body
+        label: Execution Status
+        required: 0
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -498,43 +658,42 @@ procedures:
         label: Application
         required: 1
         in: body
-        documentation: Application
+        documentation: Application.
       - property: stream:
         type: entry
         label: Stream
         required: 1
         in: body
-        documentation: Stream
+        documentation: Stream.
       - property: description
         type: entry
         label: Description
         required: 1
         in: body
-        documentation: Description
+        documentation: Description.
       - property: releaseId
         type: entry
         label: Release ID
         required: 1
         in: body
-        documentation: Can only be used if Release Prefix is not set, one must be used
       - property: releasePrefix
         type: entry
         label: Release Prefix
         required: 1
         in: body
-        documentation: Can only be used if Release ID is not set, one must be used
+        documentation: Can only be used if releaseId is not set, one must be used.
       - property: _owner
         type: entry
         label: Owner
         required: 0
         in: body
-        documentation: Owner
+        documentation: Owner.
       - property: referenceNumber
         type: entry
         label: Reference Number
         required: 0
         in: body
-        documentation: Reference number
+        documentation: Reference Number.
 
   - name: Get Release Information
     stepName: get release information
@@ -565,7 +724,7 @@ procedures:
         type: entry
         label: Release ID
         required: 1
-        documentation: Release ID
+        documentation: Release ID.
 
   - name: Promote Release
     stepName: promote release

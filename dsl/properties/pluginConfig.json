@@ -117,7 +117,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Application",
+            "documentation" : "Application.",
             "label" : "Application",
             "type" : "entry",
             "property" : "application:"
@@ -125,7 +125,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Stream",
+            "documentation" : "Stream.",
             "label" : "Stream",
             "type" : "entry",
             "property" : "stream:"
@@ -133,7 +133,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Description",
+            "documentation" : "Description.",
             "label" : "Description",
             "type" : "entry",
             "property" : "description"
@@ -141,7 +141,6 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Can only be used if Release Prefix is not set, one must be used",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
@@ -149,7 +148,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Can only be used if Release ID is not set, one must be used",
+            "documentation" : "Can only be used if releaseId is not set, one must be used.",
             "label" : "Release Prefix",
             "type" : "entry",
             "property" : "releasePrefix"
@@ -157,7 +156,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Owner",
+            "documentation" : "Owner.",
             "label" : "Owner",
             "type" : "entry",
             "property" : "_owner"
@@ -165,7 +164,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Reference number",
+            "documentation" : "Reference Number.",
             "label" : "Reference Number",
             "type" : "entry",
             "property" : "referenceNumber"
@@ -203,8 +202,8 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "assignment ID",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
          },
@@ -219,7 +218,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Application ID",
+            "documentation" : "ISPW Application Id.",
             "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
@@ -235,7 +234,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Module type",
+            "documentation" : "Module Type.",
             "label" : "Module Type",
             "type" : "entry",
             "property" : "moduleType"
@@ -243,7 +242,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Current level",
+            "documentation" : "Current Level.",
             "label" : "Current Level",
             "type" : "entry",
             "property" : "currentLevel"
@@ -251,7 +250,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Starting level",
+            "documentation" : "Starting Level.",
             "label" : "Starting Level",
             "type" : "entry",
             "property" : "startingLevel"
@@ -259,7 +258,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Generate sequence",
+            "documentation" : "Generate Sequence.",
             "label" : "Generate Sequence",
             "type" : "entry",
             "property" : "generateSequence"
@@ -267,7 +266,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "SQL",
+            "documentation" : "SQL.",
             "label" : "SQL",
             "type" : "entry",
             "property" : "sql"
@@ -275,7 +274,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "IMS",
+            "documentation" : "IMS.",
             "label" : "IMS",
             "type" : "entry",
             "property" : "ims"
@@ -283,7 +282,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "CICS",
+            "documentation" : "CICS.",
             "label" : "CICS",
             "type" : "entry",
             "property" : "cics"
@@ -291,7 +290,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Program",
+            "documentation" : "Program.",
             "label" : "Program",
             "type" : "entry",
             "property" : "program"
@@ -366,8 +365,8 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "assignment ID",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
          }
@@ -639,7 +638,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Application ID",
+            "documentation" : "ISPW Application Id",
             "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
@@ -647,7 +646,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Default path",
+            "documentation" : "Default Path.",
             "label" : "Default Path",
             "type" : "entry",
             "property" : "defaultPath"
@@ -655,7 +654,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment description",
+            "documentation" : "Assignment Description.",
             "label" : "Description",
             "type" : "entry",
             "property" : "description"
@@ -663,7 +662,15 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment prefix",
+            "documentation" : "Owner.",
+            "label" : "Owner",
+            "type" : "entry",
+            "property" : "_owner"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Assignment Prefix.",
             "label" : "Assignment Prefix",
             "type" : "entry",
             "property" : "assignmentPrefix"
@@ -671,7 +678,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Ref number",
+            "documentation" : "Ref Number.",
             "label" : "Ref Number",
             "type" : "entry",
             "property" : "refNumber"
@@ -679,7 +686,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Release",
+            "documentation" : "Release.",
             "label" : "Release",
             "type" : "entry",
             "property" : "release"
@@ -687,7 +694,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "User tag",
+            "documentation" : "User Tag.",
             "label" : "User Tag",
             "type" : "entry",
             "property" : "userTag"
@@ -698,6 +705,7 @@
          "application",
          "defaultPath",
          "description",
+         "_owner",
          "assignmentPrefix",
          "refNumber",
          "release",
@@ -826,7 +834,7 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Release ID",
+            "documentation" : "Release ID.",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
@@ -858,15 +866,15 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "Assignment ID",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
          },
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -920,7 +928,7 @@
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/tasks/generations",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations",
       "attachCredentials" : "true"
    },
    "promote assignment" : {
@@ -1039,22 +1047,30 @@
       "canSkipAuth" : "true",
       "parameters" : [
          {
+            "required" : "1",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
          },
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
+            "documentation" : "Assignment ID.",
             "label" : "Assignment ID",
             "type" : "entry",
             "property" : "assignmentId"
          }
       ],
       "fields" : [
+         "assignmentId",
          "level",
          "assignmentId"
       ],
@@ -1081,15 +1097,15 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "assignment ID",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
          },
          {
             "required" : "1",
-            "documentation" : "Task ID",
-            "label" : "Task ID",
+            "documentation" : "Task Id.",
+            "label" : "Task Id",
             "type" : "entry",
             "property" : "taskId"
          }

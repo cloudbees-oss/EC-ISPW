@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if Release Prefix is not set, one must be used.</documentation>
+  <documentation></documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
   <required>1</required>
@@ -42,7 +42,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if Release ID is not set, one must be used.</documentation>
+  <documentation>Can only be used if releaseId is not set, one must be used.</documentation>
   <label>Release Prefix:</label>
   <property>releasePrefix</property>
   <required>1</required>
@@ -58,7 +58,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Reference number.</documentation>
+  <documentation>Reference Number.</documentation>
   <label>Reference Number:</label>
   <property>referenceNumber</property>
   <required>0</required>

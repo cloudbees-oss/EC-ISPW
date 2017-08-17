@@ -294,7 +294,7 @@ sub run_one_step{
 
     $self->save_parsed_data($step_name, $parsed);
 
-    $self->hooks->after_hook($step_name, $parsed);
+    $self->hooks->after_hook($step_name);
 
     $self->{last_run_data} = $parsed;
 }
@@ -318,10 +318,6 @@ Running step: $step_name
         $self->hooks->define_hooks;
         $self->content_processor->define_processors;
         my $parameters = $self->parameters($step_name);
-
-        for my $param_name (sort keys %$parameters) {
-            $self->logger->info(qq{Got parameter "$param_name" with value "$parameters->{$param_name}"});
-        }
         $self->logger->debug('Parameters', $parameters);
 
         $self->batch_commander->before_batch_hook($step_name);

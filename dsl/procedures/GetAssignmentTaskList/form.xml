@@ -10,6 +10,14 @@
   <type>entry</type>
 </formElement>
 <formElement>
+  <documentation>Assignment Id.</documentation>
+  <label>Assignment Id:</label>
+  <property>assignmentId</property>
+  <required>1</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Level.</documentation>
   <label>Level:</label>
   <property>level</property>
