@@ -1,0 +1,109 @@
+<editor>
+  <formElement>
+    <label>Event Name:</label>
+    <property>eventName</property>
+    <type>select</type>
+    <option>
+      <name>Always</name>
+      <value>Always</value>
+    </option>
+    <option>
+      <name>Closed</name>
+      <value>Closed</value>
+    </option>
+    <option>
+      <name>Completed</name>
+      <value>Completed</value>
+    </option>
+    <option>
+      <name>Failed</name>
+      <value>Failed</value>
+    </option>
+    <option>
+      <name>Terminated</name>
+      <value>Terminated</value>
+    </option>
+    <required>1</required>
+    <htmlDocumentation>
+        Event name.<br/>
+        Always - This event will trigger on every above ISPW event.<br/>
+        Closed - The operation set has been closed. No more events will be generated for this
+requested operation set.<br/>
+Completed - The requested operation has completed successfully. The only other event
+that may occur for this operation set after "completed" is "closed".<br/>
+      Failed - A problem has occurred in the operation, or the stop command has been
+issued for the operation. The operation set may be manually restarted or
+terminated. If the operation set is restarted and completes successfully, a
+"completed" event will be generated.<br/>
+Terminated - After a problem occurred with the operation, or the stop command was issued,
+the terminate command was issued. At this point the operation set cannot be
+restarted. The only other event that may occur for this operation set after
+"terminated" is "closed".<br/>
+    </htmlDocumentation>
+  </formElement>
+  <formElement>
+    <property>url</property>
+    <label>URL:</label>
+    <type>entry</type>
+    <documentation>Callback URI.</documentation>
+    <required>0</required>
+  </formElement>
+  <formElement>
+    <property>method</property>
+    <label>Method:</label>
+    <type>entry</type>
+    <documentation>Callback method.</documentation>
+    <required>0</required>
+  </formElement>
+  <formElement>
+    <property>body</property>
+    <label>Body:</label>
+    <type>textarea</type>
+    <documentation>Callback body.</documentation>
+    <required>0</required>
+  </formElement>
+  <formElement>
+    <property>httpHeaders</property>
+    <label>HTTP Headers:</label>
+    <type>textarea</type>
+    <documentation>HTTP headers - will override global headers for the callback, in key = value format.</documentation>
+    <required>0</required>
+  </formElement>
+  <formElement>
+    <property>overrideCredential</property>
+    <label>Credentials:</label>
+    <type>credential</type>
+    <documentation>Optional, used if 3rd party requires basic authentication - overrides global credentials.</documentation>
+    <required>0</required>
+    <attachedAsParameterToStep>generate events</attachedAsParameterToStep>
+  </formElement>
+  <formElement>
+    <property>projName</property>
+    <label>Project Name:</label>
+    <type>entry</type>
+    <required>0</required>
+    <documentation>Project name for the procedure or pipeline to be called.</documentation>
+  </formElement>
+  <formElement>
+    <property>pipelineNameRun</property>
+    <label>Pipeline Name:</label>
+    <type>entry</type>
+    <required>0</required>
+    <documentation>Pipeline name to be called.</documentation>
+  </formElement>
+  <formElement>
+    <property>flagProperty</property>
+    <label>Flag Property:</label>
+    <type>entry</type>
+    <required>0</required>
+    <documentation>A property to be set to success or failure. Will be used as a condition property.</documentation>
+  </formElement>
+  <formElement>
+    <property>resultProperty</property>
+    <label>Result property:</label>
+    <type>entry</type>
+    <documentation>Property to save generated JSON. Event will be added to the events array.</documentation>
+    <required>0</required>
+    <value>/myJob/ISPWGeneratedEvents</value>
+  </formElement>
+</editor>
