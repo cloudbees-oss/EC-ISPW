@@ -638,6 +638,7 @@ procedures:
         required: 0
         in: body
         documentation: Optional, global credentials used for all callbacks.
+        
   - name: Create Release
     stepName: create release
     description: Creates Release.
@@ -684,12 +685,12 @@ procedures:
       - property: releaseId
         type: entry
         label: Release ID
-        required: 1
+        required: 0
         in: body
       - property: releasePrefix
         type: entry
         label: Release Prefix
-        required: 1
+        required: 0
         in: body
         documentation: Can only be used if releaseId is not set, one must be used.
       - property: _owner

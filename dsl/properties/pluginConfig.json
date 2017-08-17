@@ -131,14 +131,14 @@
             "property" : "description"
          },
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "body",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
          },
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "body",
             "documentation" : "Can only be used if releaseId is not set, one must be used.",
             "label" : "Release Prefix",

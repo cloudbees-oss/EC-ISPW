@@ -37,7 +37,7 @@
   <documentation></documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
-  <required>1</required>
+  <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
@@ -45,7 +45,7 @@
   <documentation>Can only be used if releaseId is not set, one must be used.</documentation>
   <label>Release Prefix:</label>
   <property>releasePrefix</property>
-  <required>1</required>
+  <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>

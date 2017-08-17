@@ -415,11 +415,11 @@
                     <td>Description.</td>
                 </tr>
                 <tr>
-                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td class="required">Release Prefix</td>
+                    <td>Release Prefix</td>
                     <td>Can only be used if releaseId is not set, one must be used.</td>
                 </tr>
                 <tr>
