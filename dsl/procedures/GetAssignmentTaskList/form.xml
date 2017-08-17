@@ -10,18 +10,18 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Level.</documentation>
-  <label>Level:</label>
-  <property>level</property>
-  <required>0</required>
+  <documentation>Assignment Id.</documentation>
+  <label>Assignment Id:</label>
+  <property>assignmentId</property>
+  <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment ID.</documentation>
-  <label>Assignment ID:</label>
-  <property>assignmentId</property>
-  <required>1</required>
+  <documentation>Level.</documentation>
+  <label>Level:</label>
+  <property>level</property>
+  <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>

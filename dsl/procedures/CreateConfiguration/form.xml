@@ -51,5 +51,8 @@
         <required>1</required>
         <documentation>Use ISPW-provided token as Password</documentation>
         <attachedAsParameterToStep>createAndAttachCredential</attachedAsParameterToStep>
+        <userNameLabel>Leave this empty:</userNameLabel>
+        <passwordLabel>API access token:</passwordLabel>
+        <retypePasswordLabel>Retype API access token or password:</retypePasswordLabel>
     </formElement>
 </editor>

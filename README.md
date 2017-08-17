@@ -28,6 +28,22 @@ Get Assignment Task Information
 
 Generates Tasks in Assignment.
 
+## Promote Assignment
+
+Promotes assignment.
+
+## Deploy Assignment
+
+Deploys assignment.
+
+## Promote Assignment
+
+Promotes assignment.
+
+## Deploy Assignment
+
+Deploys assignment.
+
 ## Create Release
 
 Creates Release.

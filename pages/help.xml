@@ -30,6 +30,8 @@
 <li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
 <li><a href="#PromoteAssignment">Promote Assignment</a></li>
 <li><a href="#DeployAssignment">Deploy Assignment</a></li>
+<li><a href="#PromoteAssignment">Promote Assignment</a></li>
+<li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#CreateRelease">Create Release</a></li>
 <li><a href="#GetReleaseInformation">Get Release Information</a></li>
 <li><a href="#PromoteRelease">Promote Release</a></li>
@@ -150,31 +152,35 @@
                 </tr>
                 <tr>
                     <td class="required">Application ID</td>
-                    <td>Application ID</td>
+                    <td>ISPW Application Id</td>
                 </tr>
                 <tr>
                     <td class="required">Default Path</td>
-                    <td>Default path</td>
+                    <td>Default Path.</td>
                 </tr>
                 <tr>
                     <td class="required">Description</td>
-                    <td>Assignment description</td>
+                    <td>Assignment Description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Owner</td>
+                    <td>Owner.</td>
                 </tr>
                 <tr>
                     <td class="required">Assignment Prefix</td>
-                    <td>Assignment prefix</td>
+                    <td>Assignment Prefix.</td>
                 </tr>
                 <tr>
                     <td>Ref Number</td>
-                    <td>Ref number</td>
+                    <td>Ref Number.</td>
                 </tr>
                 <tr>
                     <td>Release</td>
-                    <td>Release</td>
+                    <td>Release.</td>
                 </tr>
                 <tr>
                     <td>User Tag</td>
-                    <td>User tag</td>
+                    <td>User Tag.</td>
                 </tr>
                  </tbody>
             </table>
@@ -195,8 +201,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignment ID</td>
-                    <td>Assignment ID</td>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
                 </tr>
                 <tr>
                     <td class="required">Stream Name</td>
@@ -204,7 +210,7 @@
                 </tr>
                 <tr>
                     <td class="required">Application ID</td>
-                    <td>Application ID</td>
+                    <td>ISPW Application Id.</td>
                 </tr>
                 <tr>
                     <td class="required">Module Name</td>
@@ -212,35 +218,55 @@
                 </tr>
                 <tr>
                     <td class="required">Module Type</td>
-                    <td>Module type</td>
+                    <td>Module Type.</td>
                 </tr>
                 <tr>
                     <td class="required">Current Level</td>
-                    <td>Current level</td>
+                    <td>Current Level.</td>
                 </tr>
                 <tr>
                     <td class="required">Starting Level</td>
-                    <td>Starting level</td>
+                    <td>Starting Level.</td>
                 </tr>
                 <tr>
                     <td>Generate Sequence</td>
-                    <td>Generate sequence</td>
+                    <td>Generate Sequence.</td>
                 </tr>
                 <tr>
                     <td>SQL</td>
-                    <td>SQL</td>
+                    <td>SQL.</td>
                 </tr>
                 <tr>
                     <td>IMS</td>
-                    <td>IMS</td>
+                    <td>IMS.</td>
                 </tr>
                 <tr>
                     <td>CICS</td>
-                    <td>CICS</td>
+                    <td>CICS.</td>
                 </tr>
                 <tr>
                     <td>Program</td>
-                    <td>Program</td>
+                    <td>Program.</td>
+                </tr>
+                <tr>
+                    <td>Option 1</td>
+                    <td>Option 1.</td>
+                </tr>
+                <tr>
+                    <td>Option 2</td>
+                    <td>Option 2.</td>
+                </tr>
+                <tr>
+                    <td>Option 3</td>
+                    <td>Option 3.</td>
+                </tr>
+                <tr>
+                    <td>Option 4</td>
+                    <td>Option 4.</td>
+                </tr>
+                <tr>
+                    <td>Option 5</td>
+                    <td>Option 5.</td>
                 </tr>
                  </tbody>
             </table>
@@ -261,8 +287,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignment ID</td>
-                    <td>Assignment ID</td>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
                 </tr>
                  </tbody>
             </table>
@@ -283,12 +309,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Level</td>
-                    <td>Level</td>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
                 </tr>
                 <tr>
-                    <td class="required">Assignment ID</td>
-                    <td>Assignment ID</td>
+                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                  </tbody>
             </table>
@@ -309,12 +335,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignment ID</td>
-                    <td>Assignment ID</td>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
                 </tr>
                 <tr>
-                    <td class="required">Task ID</td>
-                    <td>Task ID</td>
+                    <td class="required">Task Id</td>
+                    <td>Task Id.</td>
                 </tr>
                  </tbody>
             </table>
@@ -335,12 +361,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">Assignment ID</td>
-                    <td>Assignment ID</td>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
@@ -378,31 +404,31 @@
                 <tbody>
                 <tr>
                     <td class="required">Application</td>
-                    <td>Application</td>
+                    <td>Application.</td>
                 </tr>
                 <tr>
                     <td class="required">Stream</td>
-                    <td>Stream</td>
+                    <td>Stream.</td>
                 </tr>
                 <tr>
                     <td class="required">Description</td>
-                    <td>Description</td>
+                    <td>Description.</td>
                 </tr>
                 <tr>
                     <td class="required">Release ID</td>
-                    <td>Can only be used if Release Prefix is not set, one must be used</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td class="required">Release Prefix</td>
-                    <td>Can only be used if Release ID is not set, one must be used</td>
+                    <td>Can only be used if releaseId is not set, one must be used.</td>
                 </tr>
                 <tr>
                     <td>Owner</td>
-                    <td>Owner</td>
+                    <td>Owner.</td>
                 </tr>
                 <tr>
                     <td>Reference Number</td>
-                    <td>Reference number</td>
+                    <td>Reference Number.</td>
                 </tr>
                  </tbody>
             </table>
@@ -424,7 +450,7 @@
                 <tbody>
                 <tr>
                     <td class="required">Release ID</td>
-                    <td>Release ID</td>
+                    <td>Release ID.</td>
                 </tr>
                  </tbody>
             </table>
@@ -450,7 +476,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -500,7 +526,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -550,7 +576,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -645,7 +671,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -696,7 +722,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
