@@ -24,7 +24,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -482,7 +482,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -582,7 +582,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -787,7 +787,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -1001,7 +1001,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level",
+            "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -1105,19 +1105,11 @@
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Assignment ID.",
-            "label" : "Assignment ID",
-            "type" : "entry",
-            "property" : "assignmentId"
          }
       ],
       "fields" : [
          "assignmentId",
-         "level",
-         "assignmentId"
+         "level"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",

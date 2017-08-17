@@ -26,14 +26,6 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment ID.</documentation>
-  <label>Assignment ID:</label>
-  <property>assignmentId</property>
-  <required>1</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Results will be saved into this property/property sheet.</documentation>
   <label>Property sheet name or filename for results:</label>
   <property>resultPropertySheet</property>

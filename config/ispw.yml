@@ -260,11 +260,6 @@ procedures:
         in: query
         required: 0
         documentation: Level.
-      - property: assignmentId
-        type: entry
-        label: Assignment ID
-        documentation: Assignment ID.
-        required: 1
 
   - name: Get Assignment Task Information
     stepName: Get Assignment Task Information
@@ -391,7 +386,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -466,7 +461,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -541,7 +536,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -616,7 +611,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -789,7 +784,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -864,7 +859,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType
@@ -939,7 +934,7 @@ procedures:
       - property: level
         type: entry
         label: Level
-        documentation: Level
+        documentation: Level.
         in: query
         required: 0
       - property: changeType

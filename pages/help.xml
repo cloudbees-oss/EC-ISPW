@@ -316,10 +316,6 @@
                     <td>Level</td>
                     <td>Level.</td>
                 </tr>
-                <tr>
-                    <td class="required">Assignment ID</td>
-                    <td>Assignment ID.</td>
-                </tr>
                  </tbody>
             </table>
         <!-- GetAssignmentTaskList END -->
@@ -484,7 +480,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -538,7 +534,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -592,7 +588,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -691,7 +687,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -746,7 +742,7 @@
                 </tr>
                 <tr>
                     <td>Level</td>
-                    <td>Level</td>
+                    <td>Level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
