@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->August 16, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->August 17, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -28,6 +28,8 @@
 <li><a href="#GetAssignmentTaskList">Get Assignment Task List</a></li>
 <li><a href="#GetAssignmentTaskInformation">Get Assignment Task Information</a></li>
 <li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
+<li><a href="#PromoteAssignment">Promote Assignment</a></li>
+<li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#CreateRelease">Create Release</a></li>
 <li><a href="#GetReleaseInformation">Get Release Information</a></li>
 <li><a href="#PromoteRelease">Promote Release</a></li>
@@ -144,23 +146,27 @@
                 <tbody>
                 <tr>
                     <td class="required">Stream Name</td>
-                    <td>ISPW Stream Name.</td>
+                    <td>Stream name.</td>
                 </tr>
                 <tr>
-                    <td class="required">Application Id</td>
-                    <td>ISPW Application Id</td>
+                    <td class="required">Application ID</td>
+                    <td>Application ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Default Path</td>
+                    <td>Default path</td>
                 </tr>
                 <tr>
                     <td class="required">Description</td>
-                    <td>Assignment Description.</td>
+                    <td>Assignment description</td>
                 </tr>
                 <tr>
                     <td class="required">Assignment Prefix</td>
-                    <td>Assignment Prefix</td>
+                    <td>Assignment prefix</td>
                 </tr>
                 <tr>
                     <td>Ref Number</td>
-                    <td>Ref Number</td>
+                    <td>Ref number</td>
                 </tr>
                 <tr>
                     <td>Release</td>
@@ -168,7 +174,7 @@
                 </tr>
                 <tr>
                     <td>User Tag</td>
-                    <td>User Tag</td>
+                    <td>User tag</td>
                 </tr>
                  </tbody>
             </table>
@@ -189,36 +195,36 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignmentId</td>
-                    <td>Assignment Id</td>
+                    <td class="required">assignment ID</td>
+                    <td>Assignment ID</td>
                 </tr>
                 <tr>
                     <td class="required">Stream Name</td>
-                    <td>ISPW Stream Name.</td>
+                    <td>Stream name.</td>
                 </tr>
                 <tr>
-                    <td class="required">Application Id</td>
-                    <td>ISPW Application Id</td>
+                    <td class="required">Application ID</td>
+                    <td>Application ID</td>
                 </tr>
                 <tr>
-                    <td class="required">moduleName</td>
-                    <td>Module Name.</td>
+                    <td class="required">Module Name</td>
+                    <td>Module name.</td>
                 </tr>
                 <tr>
                     <td class="required">Module Type</td>
-                    <td>Module Type</td>
+                    <td>Module type</td>
                 </tr>
                 <tr>
                     <td class="required">Current Level</td>
-                    <td>Current Level</td>
+                    <td>Current level</td>
                 </tr>
                 <tr>
                     <td class="required">Starting Level</td>
-                    <td>Starting Level</td>
+                    <td>Starting level</td>
                 </tr>
                 <tr>
                     <td>Generate Sequence</td>
-                    <td>Generate Sequence</td>
+                    <td>Generate sequence</td>
                 </tr>
                 <tr>
                     <td>SQL</td>
@@ -255,8 +261,8 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignmentId</td>
-                    <td>Assignment Id</td>
+                    <td class="required">assignment ID</td>
+                    <td>Assignment ID</td>
                 </tr>
                  </tbody>
             </table>
@@ -281,8 +287,8 @@
                     <td>Level</td>
                 </tr>
                 <tr>
-                    <td class="required">assignmentId</td>
-                    <td>Assignment Id</td>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
                 </tr>
                  </tbody>
             </table>
@@ -303,12 +309,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td class="required">assignmentId</td>
-                    <td>Assignment Id</td>
+                    <td class="required">assignment ID</td>
+                    <td>Assignment ID</td>
                 </tr>
                 <tr>
-                    <td class="required">taskId</td>
-                    <td>Task Id</td>
+                    <td class="required">Task ID</td>
+                    <td>Task ID</td>
                 </tr>
                  </tbody>
             </table>
@@ -329,24 +335,24 @@
                 </thead>
                 <tbody>
                 <tr>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
+                </tr>
+                <tr>
                     <td>Level</td>
                     <td>Level</td>
                 </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
-                    <td>Required see ISPW administrator for valid values.</td>
+                    <td>Required, see ISPW administrator for valid values.</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -372,7 +378,7 @@
                 <tbody>
                 <tr>
                     <td class="required">Application</td>
-                    <td>Stream</td>
+                    <td>Application</td>
                 </tr>
                 <tr>
                     <td class="required">Stream</td>
@@ -384,11 +390,11 @@
                 </tr>
                 <tr>
                     <td class="required">Release ID</td>
-                    <td>Can only be used if releasePrefix is not set, one must be used</td>
+                    <td>Can only be used if Release Prefix is not set, one must be used</td>
                 </tr>
                 <tr>
                     <td class="required">Release Prefix</td>
-                    <td>Can only be used if releaseId is not set, one must be used</td>
+                    <td>Can only be used if Release ID is not set, one must be used</td>
                 </tr>
                 <tr>
                     <td>Owner</td>
@@ -396,7 +402,7 @@
                 </tr>
                 <tr>
                     <td>Reference Number</td>
-                    <td>Reference Number</td>
+                    <td>Reference number</td>
                 </tr>
                  </tbody>
             </table>
@@ -439,12 +445,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Level</td>
-                    <td>Level</td>
-                </tr>
-                <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -456,19 +462,15 @@
                 </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
-                    <td>Required see ISPW administrator for valid values</td>
+                    <td>Required, see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -493,12 +495,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Level</td>
-                    <td>Level</td>
-                </tr>
-                <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -510,19 +512,15 @@
                 </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
-                    <td>Required see ISPW administrator for valid values</td>
+                    <td>Required, see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -547,12 +545,12 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Level</td>
-                    <td>Level</td>
-                </tr>
-                <tr>
                     <td class="required">Release ID</td>
                     <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -564,19 +562,15 @@
                 </tr>
                 <tr>
                     <td class="required">Runtime Configuration</td>
-                    <td>Required see ISPW administrator for valid values</td>
+                    <td>Required, see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" notation.</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -629,6 +623,108 @@
                  </tbody>
             </table>
         <!-- GetSetTaskList END -->
+            </div>
+            <div id="PromoteAssignment">
+                <a name="PromoteAssignment" id="PromoteAssignment" />
+                <!-- PromoteAssignment METADATA BEGIN -->
+            <h3>Promote Assignment</h3>
+            <p>Promotes assignment.</p>
+        <!-- PromoteAssignment METADATA END -->
+                <!-- PromoteAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Override Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PromoteAssignment END -->
+            </div>
+            <div id="DeployAssignment">
+                <a name="DeployAssignment" id="DeployAssignment" />
+                <!-- DeployAssignment METADATA BEGIN -->
+            <h3>Deploy Assignment</h3>
+            <p>Deploys assignment.</p>
+        <!-- DeployAssignment METADATA END -->
+                <!-- DeployAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callback</td>
+                    <td>Optional, global credentials used for all callbacks.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- DeployAssignment END -->
             </div>
 <!-- PROCEDURES END -->
     </div>

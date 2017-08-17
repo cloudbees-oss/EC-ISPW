@@ -62,17 +62,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -89,8 +82,7 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",
@@ -476,17 +468,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -503,8 +488,7 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",
@@ -576,17 +560,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -603,8 +580,7 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",
@@ -771,25 +747,19 @@
             "property" : "httpHeaders"
          },
          {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
-         },
-         {
             "required" : "1",
             "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, global credentials used for all callbacks.",
+            "label" : "Global Credentials for Callback",
+            "type" : "credential",
+            "property" : "callbackCredential"
          }
       ],
       "fields" : [
@@ -799,9 +769,8 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
-         "events"
+         "events",
+         "callbackCredential"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -888,17 +857,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -913,8 +875,7 @@
          "level",
          "runtimeConfiguration:",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",
@@ -986,17 +947,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Override Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -1013,8 +967,7 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",

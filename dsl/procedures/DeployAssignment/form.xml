@@ -58,27 +58,20 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional, global credentials used for all callbacks. Username.</documentation>
-  <label>Optional, global credentials used for all callbacks. Username:</label>
-  <property>credentialsUsername</property>
-  <required>0</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
-  <documentation>Optional, global credentials used for all callbacks. Password.</documentation>
-  <label>Optional, global credentials used for all callbacks. Password:</label>
-  <property>credentialsPassword</property>
-  <required>0</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</documentation>
   <label>Event array in JSON format, must contain at least 1 member.:</label>
   <property>events</property>
   <required>1</required>
   <type>textarea</type>
+  <value></value>
+</formElement>
+<formElement>
+  <attachedAsParameterToStep>deploy assignment</attachedAsParameterToStep>
+  <documentation>Optional, global credentials used for all callbacks.</documentation>
+  <label>Global Credentials for Callback:</label>
+  <property>callbackCredential</property>
+  <required>0</required>
+  <type>credential</type>
   <value></value>
 </formElement>
 <formElement>

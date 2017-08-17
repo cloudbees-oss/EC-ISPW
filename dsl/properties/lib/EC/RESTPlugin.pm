@@ -320,7 +320,8 @@ Running step: $step_name
         my $parameters = $self->parameters($step_name);
 
         for my $param_name (sort keys %$parameters) {
-            $self->logger->info(qq{Got parameter "$param_name" with value "$parameters->{$param_name}"});
+            my $value = $self->safe_log($param_name, $parameters->{$param_name});
+            $self->logger->info(qq{Got parameter "$param_name" with value "$value"});
         }
         $self->logger->debug('Parameters', $parameters);
 
@@ -339,6 +340,17 @@ Running step: $step_name
         $self->ec->setProperty('/myCall/summary', $error);
         die $error;
     };
+}
+
+sub safe_log {
+    my ($self, $param_name, $param_value) = @_;
+
+    if ($self->{hidden}->{$param_name}) {
+        return '*******';
+    }
+    else {
+        return $param_value;
+    }
 }
 
 sub parse_response {
@@ -452,10 +464,39 @@ sub grab_parameters {
     unless ($fields && scalar @$fields) {
         die "No fields defined for step $step_name";
     }
+
     my $parameters = $self->get_params_as_hashref(@$fields);
+    for my $param_name (keys %$parameters) {
+        if ($self->get_param_type($step_name, $param_name) eq 'credential') {
+            my $cred = $self->get_step_credential($parameters->{$param_name});
+            $parameters->{"${param_name}UserName"} = $cred->{userName};
+            $parameters->{"${param_name}Password"} = $cred->{password};
+            $self->{hidden}->{"${param_name}Password"} = 1;
+        }
+    }
+
     $self->validate($step_name, $parameters);
     $parameters = $self->refine($step_name, $parameters);
     return $parameters;
+}
+
+sub get_param_type {
+    my ($self, $step_name, $param_name) = @_;
+
+    my $step_config = $self->config->{$step_name};
+    my $parameters = $step_config->{parameters};
+    my ($param) = grep { $_->{property} eq $param_name } @$parameters;
+    return $param->{type} || '';
+}
+
+sub get_step_credential {
+    my ($self, $cred_name) = @_;
+
+    my $xpath = $self->ec->getFullCredential($cred_name);
+    my $user_name = $xpath->findvalue('//userName')->string_value;
+    my $password = $xpath->findvalue('//password')->string_value;
+
+    return {userName => $user_name, password => $password};
 }
 
 sub refine {
