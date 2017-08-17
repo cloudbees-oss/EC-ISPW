@@ -111,6 +111,7 @@ sub define_processors {
     $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
     $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
     $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
+    $self->define_processor( 'deploy assignment', 'serialize_body', \&add_nested_elements );
 }
 
 sub create_release {
@@ -141,17 +142,22 @@ sub add_nested_elements {
     $retval->{httpHeaders} = \%httpHeaders;
 
     $retval->{credentials} = { };
-    $retval->{credentials}->{username} = $params->{credentialsUsername};
-    $retval->{credentials}->{password} = $params->{credentialsPassword};
+    if ($params->{callbackCredentialUserName} && $params->{callbackCredentialPassword}) {
+        $retval->{credentials}->{username} = $params->{callbackCredentialUserName};
+        $retval->{credentials}->{password} = $params->{callbackCredentialPassword};
+    }
 
+    my $events;
     eval {
-        decode_json($params->{events});
-        1
-    } or do {$self->plugin->bail_out( "Events field couldn't be empty and must be JSON. See ISPW documentation." ) };
-    $retval->{events} = decode_json($params->{events});
+        $events = decode_json($params->{events});
+        1;
+    } or do {
+        $self->plugin->bail_out( "Events field couldn't be empty and must be JSON. See ISPW documentation." );
+    };
+    $retval->{events} = $events;
 
     return encode_json($retval);
-
 }
+
 
 1;

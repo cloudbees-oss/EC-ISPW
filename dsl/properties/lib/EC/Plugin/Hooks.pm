@@ -96,4 +96,5 @@ sub add_authentication {
     my $password = $config->{password};
     $request->header('Authorization' => $password);
 }
+
 1;

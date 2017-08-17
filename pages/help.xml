@@ -377,12 +377,8 @@
                     <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -499,12 +495,8 @@
                     <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -553,12 +545,8 @@
                     <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -607,12 +595,8 @@
                     <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -706,12 +690,8 @@
                     <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Override Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
@@ -761,16 +741,12 @@
                     <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
-                </tr>
-                <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
                     <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callback</td>
+                    <td>Optional, global credentials used for all callbacks.</td>
                 </tr>
                  </tbody>
             </table>
