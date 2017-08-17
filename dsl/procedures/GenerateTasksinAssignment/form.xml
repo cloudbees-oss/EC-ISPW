@@ -28,7 +28,7 @@
 <formElement>
   <documentation>Required, see ISPW administrator for valid values.</documentation>
   <label>Runtime Configuration:</label>
-  <property>runtimeConfiguration:</property>
+  <property>runtimeConfiguration</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
