@@ -44,7 +44,7 @@ procedures:
         label: Application ID
         required: 1
         in: body
-        documentation: ISPW Application Id
+        documentation: ISPW Application Id.
       - property: defaultPath
         type: entry
         label: Default Path
@@ -420,16 +420,11 @@ procedures:
         label: HTTP Headers in format: "Header=Value"
         required: 0
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: credentialsUsername
-        type: entry
-        label: Optional, global credentials used for all callbacks. Username
+      - property: callbackCredential
+        label: Override Credentials for Callbacks
+        documentation: Optional, global credentials used for all callbacks
         required: 0
-        documentation: Optional, global credentials used for all callbacks. Username.
-      - property: credentialsPassword
-        type: entry
-        label: Optional, global credentials used for all callbacks. Password
-        required: 0
-        documentation: Optional, global credentials used for all callbacks. Password.
+        type: credential
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.

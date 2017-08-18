@@ -78,19 +78,12 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional, global credentials used for all callbacks. Username.</documentation>
-  <label>Optional, global credentials used for all callbacks. Username:</label>
-  <property>credentialsUsername</property>
+  <attachedAsParameterToStep>deploy assignment</attachedAsParameterToStep>
+  <documentation>Optional, global credentials used for all callbacks.</documentation>
+  <label>Override Credentials for Callbacks:</label>
+  <property>callbackCredential</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
-  <documentation>Optional, global credentials used for all callbacks. Password.</documentation>
-  <label>Optional, global credentials used for all callbacks. Password:</label>
-  <property>credentialsPassword</property>
-  <required>0</required>
-  <type>entry</type>
+  <type>credential</type>
   <value></value>
 </formElement>
 <formElement>
