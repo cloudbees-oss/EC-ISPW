@@ -17,20 +17,20 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 // ** steps with attached credentials
 def stepsWithAttachedCredentials = [
   [procedureName: 'Create Assignment', stepName: 'create assignment'],
+  [procedureName: 'Create Release', stepName: 'create release'],
+  [procedureName: 'Deploy Assignment', stepName: 'deploy assignment'],
+  [procedureName: 'Deploy Release', stepName: 'deploy release'],
+  [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
+  [procedureName: 'Get Assignment Information', stepName: 'Get Assignment Information'],
+  [procedureName: 'Get Assignment Task Information', stepName: 'Get Assignment Task Information'],
+  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
+  [procedureName: 'Get Release Information', stepName: 'get release information'],
+  [procedureName: 'Get Set Information', stepName: 'get set information'],
   [procedureName: 'Get Set Task List', stepName: 'get set task list'],
   [procedureName: 'Load Task', stepName: 'Load Task'],
   [procedureName: 'Promote Assignment', stepName: 'promote assignment'],
-  [procedureName: 'Get Set Information', stepName: 'get set information'],
-  [procedureName: 'Regress Release', stepName: 'regress release'],
-  [procedureName: 'Deploy Release', stepName: 'deploy release'],
-  [procedureName: 'Get Assignment Information', stepName: 'Get Assignment Information'],
-  [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
-  [procedureName: 'Get Release Information', stepName: 'get release information'],
   [procedureName: 'Promote Release', stepName: 'promote release'],
-  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
-  [procedureName: 'Get Assignment Task Information', stepName: 'Get Assignment Task Information'],
-  [procedureName: 'Deploy Assignment', stepName: 'deploy assignment'],
-  [procedureName: 'Create Release', stepName: 'create release']
+  [procedureName: 'Regress Release', stepName: 'regress release']
 ]
 // ** end steps with attached credentials
 
