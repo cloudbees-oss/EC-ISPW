@@ -133,7 +133,7 @@
                 <div id="CreateAssignment">
                 <!-- CreateAssignment METADATA BEGIN -->
             <h3>Create Assignment</h3>
-            <p>Creates Assignment.</p>
+            <p>Creates an Assignment.</p>
         <!-- CreateAssignment METADATA END -->
                 <!-- CreateAssignment BEGIN -->
             <table class="grid">
@@ -187,7 +187,7 @@
                 <div id="LoadTask">
                 <!-- LoadTask METADATA BEGIN -->
             <h3>Load Task</h3>
-            <p>Loads A Task for Specified Assignment.</p>
+            <p>Loads a Task for the specified Assignment.</p>
         <!-- LoadTask METADATA END -->
                 <!-- LoadTask BEGIN -->
             <table class="grid">
@@ -273,7 +273,7 @@
                 <div id="GetAssignmentInformation">
                 <!-- GetAssignmentInformation METADATA BEGIN -->
             <h3>Get Assignment Information</h3>
-            <p>Get Assignment Information</p>
+            <p>Retrieves Assignment information and saves it under the specified property.</p>
         <!-- GetAssignmentInformation METADATA END -->
                 <!-- GetAssignmentInformation BEGIN -->
             <table class="grid">
@@ -295,7 +295,7 @@
                 <div id="GetAssignmentTaskList">
                 <!-- GetAssignmentTaskList METADATA BEGIN -->
             <h3>Get Assignment Task List</h3>
-            <p>Get Assignment Task List</p>
+            <p>Retrieves Assignment Task List and saves it under the specified property.</p>
         <!-- GetAssignmentTaskList METADATA END -->
                 <!-- GetAssignmentTaskList BEGIN -->
             <table class="grid">
@@ -321,7 +321,7 @@
                 <div id="GetAssignmentTaskInformation">
                 <!-- GetAssignmentTaskInformation METADATA BEGIN -->
             <h3>Get Assignment Task Information</h3>
-            <p>Get Assignment Task Information</p>
+            <p>Retrieves Assignment Task information and saved it under the specified property.</p>
         <!-- GetAssignmentTaskInformation METADATA END -->
                 <!-- GetAssignmentTaskInformation BEGIN -->
             <table class="grid">
@@ -389,7 +389,7 @@
                 <div id="CreateRelease">
                 <!-- CreateRelease METADATA BEGIN -->
             <h3>Create Release</h3>
-            <p>Creates a release.</p>
+            <p>Creates a Release.</p>
         <!-- CreateRelease METADATA END -->
                 <!-- CreateRelease BEGIN -->
             <table class="grid">
@@ -435,7 +435,7 @@
                 <div id="GetReleaseInformation">
                 <!-- GetReleaseInformation METADATA BEGIN -->
             <h3>Get Release Information</h3>
-            <p>Gets Release information.</p>
+            <p>Retrieves Release information and saves it under the specified property.</p>
         <!-- GetReleaseInformation METADATA END -->
                 <!-- GetReleaseInformation BEGIN -->
             <table class="grid">
@@ -457,7 +457,7 @@
                 <div id="PromoteRelease">
                 <!-- PromoteRelease METADATA BEGIN -->
             <h3>Promote Release</h3>
-            <p>Promotes release.</p>
+            <p>Promotes Release.</p>
         <!-- PromoteRelease METADATA END -->
                 <!-- PromoteRelease BEGIN -->
             <table class="grid">
@@ -498,7 +498,7 @@
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>
@@ -507,7 +507,7 @@
                 <div id="DeployRelease">
                 <!-- DeployRelease METADATA BEGIN -->
             <h3>Deploy Release</h3>
-            <p>Deploys release.</p>
+            <p>Deploys Release.</p>
         <!-- DeployRelease METADATA END -->
                 <!-- DeployRelease BEGIN -->
             <table class="grid">
@@ -523,7 +523,7 @@
                     <td>Release ID</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>
@@ -547,7 +547,7 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
                     <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
@@ -557,7 +557,7 @@
                 <div id="RegressRelease">
                 <!-- RegressRelease METADATA BEGIN -->
             <h3>Regress Release</h3>
-            <p>Regresses release.</p>
+            <p>Regresses Release.</p>
         <!-- RegressRelease METADATA END -->
                 <!-- RegressRelease BEGIN -->
             <table class="grid">
@@ -573,7 +573,7 @@
                     <td>Release ID</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>
@@ -597,8 +597,8 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
             </table>
@@ -652,7 +652,7 @@
                 <a name="PromoteAssignment" id="PromoteAssignment" />
                 <!-- PromoteAssignment METADATA BEGIN -->
             <h3>Promote Assignment</h3>
-            <p>Promotes assignment.</p>
+            <p>Promotes Assignment.</p>
         <!-- PromoteAssignment METADATA END -->
                 <!-- PromoteAssignment BEGIN -->
             <table class="grid">
@@ -668,7 +668,7 @@
                     <td>Assignment ID</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>
@@ -703,7 +703,7 @@
                 <a name="DeployAssignment" id="DeployAssignment" />
                 <!-- DeployAssignment METADATA BEGIN -->
             <h3>Deploy Assignment</h3>
-            <p>Deploys assignment.</p>
+            <p>Deploys Assignment.</p>
         <!-- DeployAssignment METADATA END -->
                 <!-- DeployAssignment BEGIN -->
             <table class="grid">
@@ -719,7 +719,7 @@
                     <td>Assignment ID</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>

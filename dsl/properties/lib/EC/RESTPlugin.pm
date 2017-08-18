@@ -244,7 +244,6 @@ sub request {
     my $callback = undef;
 
     $self->hooks->content_callback_hook($step_name, $callback);
-    $self->logger->trace('Content callback', $callback);
     # my @request_parameters = $self->hooks->request_parameters_hook($step_name, $request);
 
     if ($self->{proxy}) {
@@ -276,7 +275,7 @@ sub run_one_step{
     my $request = $self->generate_step_request($step_name, $config, $parameters);
     $self->hooks->request_hook($step_name, $request); # request can be altered by the hook
     $self->logger->info("Going to run request");
-    $self->logger->trace("Request", $request);
+    $self->logger->trace("Request", $request->as_string);
     my $response = $self->request($step_name, $request);
     $self->hooks->response_hook($step_name, $response);
 
@@ -671,6 +670,9 @@ sub _self_flatten_map {
     }
     return \%retval;
 }
+
+
+
 
 
 1;

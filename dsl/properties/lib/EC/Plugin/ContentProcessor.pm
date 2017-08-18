@@ -108,16 +108,17 @@ sub define_processors {
         $self->define_processor( $step_name, 'serialize_body', \&add_nested_elements );
     }
 
-    $self->define_processor( 'create release', 'serialize_body', \&create_release );
+    $self->define_processor( 'create release', 'serialize_body', \&replace_owner );
+    $self->define_processor( 'create assignment', 'serialize_body', \&replace_owner );
 }
 
-sub create_release {
+sub replace_owner {
     my ($self, $body) = @_;
 
     my $retval = $body;
-    my $owner = $body->{owner1};
-    delete $retval->{owner1};
-    $retval->{owner} = $owner;
+    my $owner = $body->{_owner};
+    delete $retval->{_owner};
+    $retval->{owner} = $owner if $owner;
 
     return encode_json($retval);
 }
