@@ -83,6 +83,30 @@ sub define_hooks {
     my ($self) = @_;
 
     $self->define_hook('*', 'request', \&add_authentication);
+    $self->define_hook('*', 'response', \&process_response);
+    $self->define_hook('create release', 'parameters', \&check_create_release);
+}
+
+sub process_response {
+    my ($self, $response) = @_;
+
+    my $json_error;
+    eval {
+        $json_error = decode_json($response->content);
+        my $message = $json_error->{message};
+        if ($message) {
+            $self->plugin->set_summary($message);
+        }
+        1;
+    };
+}
+
+sub check_create_release {
+    my ($self, $params) = @_;
+
+    unless ($params->{releasePrefix} || $params->{releaseId}) {
+        $self->plugin->bail_out("Release ID or Release prefix must be specified.");
+    }
 }
 
 sub add_authentication {

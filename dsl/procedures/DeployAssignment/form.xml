@@ -50,11 +50,27 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
+  <documentation>Optional, global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
   <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>
   <required>0</required>
   <type>textarea</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, global credentials used for all callbacks. Username.</documentation>
+  <label>Optional, global credentials used for all callbacks. Username:</label>
+  <property>credentialsUsername</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, global credentials used for all callbacks. Password.</documentation>
+  <label>Optional, global credentials used for all callbacks. Password:</label>
+  <property>credentialsPassword</property>
+  <required>0</required>
+  <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
@@ -66,17 +82,8 @@
   <value></value>
 </formElement>
 <formElement>
-  <attachedAsParameterToStep>deploy assignment</attachedAsParameterToStep>
-  <documentation>Optional, global credentials used for all callbacks.</documentation>
-  <label>Global Credentials for Callback:</label>
-  <property>callbackCredential</property>
-  <required>0</required>
-  <type>credential</type>
-  <value></value>
-</formElement>
-<formElement>
   <documentation>Results will be saved into this property/property sheet.</documentation>
-  <label>Property sheet name or filename for results:</label>
+  <label>Property sheet name for results:</label>
   <property>resultPropertySheet</property>
   <required>1</required>
   <type>entry</type>

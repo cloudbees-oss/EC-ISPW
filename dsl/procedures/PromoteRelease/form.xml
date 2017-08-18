@@ -18,20 +18,32 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Level.</documentation>
+  <documentation>Release level.</documentation>
   <label>Level:</label>
   <property>level</property>
-  <required>0</required>
+  <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
   <documentation>Optional, S for standard, I for incidental, or E for emergency. Default value of S.</documentation>
   <label>Change Type:</label>
+  <option>
+    <name>Standard (S)</name>
+    <value>S</value>
+  </option>
+  <option>
+    <name>Incidental (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Emergency (E)</name>
+    <value>E</value>
+  </option>
   <property>changeType</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>select</type>
+  <value>S</value>
 </formElement>
 <formElement>
   <documentation>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I.</documentation>
@@ -68,7 +80,7 @@
 </formElement>
 <formElement>
   <documentation>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</documentation>
-  <label>Event array in JSON format, must contain at least 1 member.:</label>
+  <label>Event array in JSON format, must contain at least 1 member:</label>
   <property>events</property>
   <required>1</required>
   <type>textarea</type>
@@ -76,7 +88,7 @@
 </formElement>
 <formElement>
   <documentation>Results will be saved into this property/property sheet.</documentation>
-  <label>Property sheet name or filename for results:</label>
+  <label>Property sheet name for results:</label>
   <property>resultPropertySheet</property>
   <required>1</required>
   <type>entry</type>

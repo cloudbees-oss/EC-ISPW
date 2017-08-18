@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->August 17, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->August 18, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -28,10 +28,8 @@
 <li><a href="#GetAssignmentTaskList">Get Assignment Task List</a></li>
 <li><a href="#GetAssignmentTaskInformation">Get Assignment Task Information</a></li>
 <li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
-<li><a href="#PromoteAssignment">Promote Assignment</a></li>
 <li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#PromoteAssignment">Promote Assignment</a></li>
-<li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#CreateRelease">Create Release</a></li>
 <li><a href="#GetReleaseInformation">Get Release Information</a></li>
 <li><a href="#PromoteRelease">Promote Release</a></li>
@@ -391,7 +389,7 @@
                 <div id="CreateRelease">
                 <!-- CreateRelease METADATA BEGIN -->
             <h3>Create Release</h3>
-            <p>Creates Release.</p>
+            <p>Creates a release.</p>
         <!-- CreateRelease METADATA END -->
                 <!-- CreateRelease BEGIN -->
             <table class="grid">
@@ -404,19 +402,19 @@
                 <tbody>
                 <tr>
                     <td class="required">Application</td>
-                    <td>Application.</td>
+                    <td>Application name for the release.</td>
                 </tr>
                 <tr>
                     <td class="required">Stream</td>
-                    <td>Stream.</td>
+                    <td>Stream name for the application.</td>
                 </tr>
                 <tr>
                     <td class="required">Description</td>
-                    <td>Description.</td>
+                    <td>Release description.</td>
                 </tr>
                 <tr>
                     <td>Release ID</td>
-                    <td></td>
+                    <td>Can only be used if releasePrefix is not set, one must be used.</td>
                 </tr>
                 <tr>
                     <td>Release Prefix</td>
@@ -424,11 +422,11 @@
                 </tr>
                 <tr>
                     <td>Owner</td>
-                    <td>Owner.</td>
+                    <td>Release owner.</td>
                 </tr>
                 <tr>
                     <td>Reference Number</td>
-                    <td>Reference Number.</td>
+                    <td>Release reference number.</td>
                 </tr>
                  </tbody>
             </table>
@@ -475,8 +473,8 @@
                     <td>Release ID</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
-                    <td>Level.</td>
+                    <td class="required">Level</td>
+                    <td>Release level.</td>
                 </tr>
                 <tr>
                     <td>Change Type</td>
@@ -499,7 +497,7 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
+                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
                     <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
                 </tr>
                  </tbody>
@@ -738,15 +736,19 @@
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Optional, global credentials used for all callbacks. Username</td>
+                    <td>Optional, global credentials used for all callbacks. Username.</td>
+                </tr>
+                <tr>
+                    <td>Optional, global credentials used for all callbacks. Password</td>
+                    <td>Optional, global credentials used for all callbacks. Password.</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>
                     <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
-                </tr>
-                <tr>
-                    <td>Global Credentials for Callback</td>
-                    <td>Optional, global credentials used for all callbacks.</td>
                 </tr>
                  </tbody>
             </table>

@@ -101,7 +101,7 @@
          "default" : "/myJob/release"
       },
       "name" : "Create Release",
-      "description" : "Creates Release.",
+      "description" : "Creates a release.",
       "stepName" : "create release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -109,7 +109,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Application.",
+            "documentation" : "Application name for the release.",
             "label" : "Application",
             "type" : "entry",
             "property" : "application"
@@ -117,7 +117,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Stream.",
+            "documentation" : "Stream name for the application.",
             "label" : "Stream",
             "type" : "entry",
             "property" : "stream"
@@ -125,7 +125,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Description.",
+            "documentation" : "Release description.",
             "label" : "Description",
             "type" : "entry",
             "property" : "description"
@@ -133,6 +133,7 @@
          {
             "required" : "0",
             "in" : "body",
+            "documentation" : "Can only be used if releasePrefix is not set, one must be used.",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
@@ -148,7 +149,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Owner.",
+            "documentation" : "Release owner.",
             "label" : "Owner",
             "type" : "entry",
             "property" : "_owner"
@@ -156,7 +157,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Reference Number.",
+            "documentation" : "Release reference number.",
             "label" : "Reference Number",
             "type" : "entry",
             "property" : "referenceNumber"
@@ -564,19 +565,34 @@
             "property" : "releaseId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
-            "documentation" : "Level.",
+            "documentation" : "Release level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
          },
          {
             "required" : "0",
+            "value" : "S",
             "in" : "body",
             "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
             "label" : "Change Type",
-            "type" : "entry",
+            "type" : "select",
             "property" : "changeType"
          },
          {
@@ -612,7 +628,7 @@
          {
             "required" : "1",
             "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
          }
@@ -794,10 +810,24 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Username.",
+            "label" : "Optional, global credentials used for all callbacks. Username",
+            "type" : "entry",
+            "property" : "credentialsUsername"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks. Password.",
+            "label" : "Optional, global credentials used for all callbacks. Password",
+            "type" : "entry",
+            "property" : "credentialsPassword"
          },
          {
             "required" : "1",
@@ -805,14 +835,6 @@
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, global credentials used for all callbacks.",
-            "label" : "Global Credentials for Callback",
-            "type" : "credential",
-            "property" : "callbackCredential"
          }
       ],
       "fields" : [
@@ -822,8 +844,9 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "events",
-         "callbackCredential"
+         "credentialsUsername",
+         "credentialsPassword",
+         "events"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
