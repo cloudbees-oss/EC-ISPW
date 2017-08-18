@@ -10,7 +10,7 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Application.</documentation>
+  <documentation>Application name for the release.</documentation>
   <label>Application:</label>
   <property>application</property>
   <required>1</required>
@@ -18,7 +18,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Stream.</documentation>
+  <documentation>Stream name for the application.</documentation>
   <label>Stream:</label>
   <property>stream</property>
   <required>1</required>
@@ -26,7 +26,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Description.</documentation>
+  <documentation>Release description.</documentation>
   <label>Description:</label>
   <property>description</property>
   <required>1</required>
@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation></documentation>
+  <documentation>Can only be used if releasePrefix is not set, one must be used.</documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
   <required>0</required>
@@ -50,7 +50,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Owner.</documentation>
+  <documentation>Release owner.</documentation>
   <label>Owner:</label>
   <property>_owner</property>
   <required>0</required>
@@ -58,7 +58,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Reference Number.</documentation>
+  <documentation>Release reference number.</documentation>
   <label>Reference Number:</label>
   <property>referenceNumber</property>
   <required>0</required>
@@ -67,7 +67,7 @@
 </formElement>
 <formElement>
   <documentation>Results will be saved into this property/property sheet.</documentation>
-  <label>Property sheet name or filename for results:</label>
+  <label>Property sheet name for results:</label>
   <property>resultPropertySheet</property>
   <required>1</required>
   <type>entry</type>

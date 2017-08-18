@@ -100,6 +100,8 @@ sub define_processors {
         'promote release',
         'deploy release',
         'regress release',
+        'deploy assignment',
+        'promote assignment',
     );
 
     for my $step_name (@steps_with_nested_elements) {
@@ -107,11 +109,6 @@ sub define_processors {
     }
 
     $self->define_processor( 'create release', 'serialize_body', \&create_release );
-    $self->define_processor( 'generate tasks in assignment', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'promote release', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'deploy release', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'regress release', 'serialize_body', \&add_nested_elements );
-    $self->define_processor( 'deploy assignment', 'serialize_body', \&add_nested_elements );
 }
 
 sub create_release {
