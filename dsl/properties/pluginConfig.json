@@ -9,7 +9,7 @@
          "default" : "/myJob/regressResult"
       },
       "name" : "Regress Release",
-      "description" : "Regresses release.",
+      "description" : "Regresses Release.",
       "stepName" : "regress release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -125,7 +125,7 @@
          "default" : "/myJob/release"
       },
       "name" : "Create Release",
-      "description" : "Creates a release.",
+      "description" : "Creates a Release.",
       "stepName" : "create release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -212,7 +212,7 @@
          "default" : "/myJob/loadTask"
       },
       "name" : "Load Task",
-      "description" : "Loads A Task for Specified Assignment.",
+      "description" : "Loads a Task for the specified Assignment.",
       "stepName" : "Load Task",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
@@ -420,7 +420,7 @@
          "default" : "/myJob/assignment"
       },
       "name" : "Get Assignment Information",
-      "description" : "Get Assignment Information",
+      "description" : "Retrieves Assignment information and saves it under the specified property.",
       "stepName" : "Get Assignment Information",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
@@ -484,7 +484,7 @@
          "default" : "/myJob/deployResult"
       },
       "name" : "Deploy Release",
-      "description" : "Deploys release.",
+      "description" : "Deploys Release.",
       "stepName" : "deploy release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -529,6 +529,7 @@
          },
          {
             "required" : "0",
+            "value" : "I",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
             "option" : [
@@ -601,7 +602,7 @@
          "default" : "/myJob/promoteResult"
       },
       "name" : "Promote Release",
-      "description" : "Promotes release.",
+      "description" : "Promotes Release.",
       "stepName" : "promote release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -718,7 +719,7 @@
          "default" : "/myJob/createAssignment"
       },
       "name" : "Create Assignment",
-      "description" : "Creates Assignment.",
+      "description" : "Creates an Assignment.",
       "stepName" : "create assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -823,7 +824,7 @@
          "default" : "/myJob/deployResult"
       },
       "name" : "Deploy Assignment",
-      "description" : "Deploys assignment.",
+      "description" : "Deploys Assignment.",
       "stepName" : "deploy assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -836,7 +837,7 @@
             "property" : "assignmentId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
@@ -845,18 +846,43 @@
          },
          {
             "required" : "0",
+            "value" : "S",
             "in" : "body",
             "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
             "label" : "Change Type",
-            "type" : "entry",
+            "type" : "select",
             "property" : "changeType"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
             "label" : "Execution Status",
-            "type" : "entry",
+            "type" : "select",
             "property" : "executionStatus"
          },
          {
@@ -923,7 +949,7 @@
          "default" : "/myJob/releaseInfo"
       },
       "name" : "Get Release Information",
-      "description" : "Gets Release information.",
+      "description" : "Retrieves Release information and saves it under the specified property.",
       "stepName" : "get release information",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -1029,7 +1055,7 @@
          "default" : "/myJob/promoteResult"
       },
       "name" : "Promote Assignment",
-      "description" : "Promotes assignment.",
+      "description" : "Promotes Assignment.",
       "stepName" : "promote assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
@@ -1042,7 +1068,7 @@
             "property" : "assignmentId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
@@ -1051,18 +1077,43 @@
          },
          {
             "required" : "0",
+            "value" : "S",
             "in" : "body",
             "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
             "label" : "Change Type",
-            "type" : "entry",
+            "type" : "select",
             "property" : "changeType"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
             "label" : "Execution Status",
-            "type" : "entry",
+            "type" : "select",
             "property" : "executionStatus"
          },
          {
@@ -1121,7 +1172,7 @@
          "default" : "/myJob/assignmentTasks"
       },
       "name" : "Get Assignment Task List",
-      "description" : "Get Assignment Task List",
+      "description" : "Retrieves Assignment Task List and saves it under the specified property.",
       "stepName" : "Get Assignment Task List",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
@@ -1162,7 +1213,7 @@
          "default" : "/myJob/assignmentTask"
       },
       "name" : "Get Assignment Task Information",
-      "description" : "Get Assignment Task Information",
+      "description" : "Retrieves Assignment Task information and saved it under the specified property.",
       "stepName" : "Get Assignment Task Information",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",

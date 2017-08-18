@@ -95,7 +95,8 @@ sub process_response {
         $json_error = decode_json($response->content);
         my $message = $json_error->{message};
         if ($message) {
-            $self->plugin->set_summary($message);
+            $self->plugin->logger->trace($response->as_string);
+            $self->plugin->bail_out($message);
         }
         1;
     };

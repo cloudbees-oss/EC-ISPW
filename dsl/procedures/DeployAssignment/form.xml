@@ -21,24 +21,44 @@
   <documentation>Level.</documentation>
   <label>Level:</label>
   <property>level</property>
-  <required>0</required>
+  <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
   <documentation>Optional, S for standard, I for incidental, or E for emergency. Default value of S.</documentation>
   <label>Change Type:</label>
+  <option>
+    <name>Standard (S)</name>
+    <value>S</value>
+  </option>
+  <option>
+    <name>Incidental (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Emergency (E)</name>
+    <value>E</value>
+  </option>
   <property>changeType</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>select</type>
+  <value>S</value>
 </formElement>
 <formElement>
   <documentation>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I.</documentation>
   <label>Execution Status:</label>
+  <option>
+    <name>Immediate (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Hold (H)</name>
+    <value>H</value>
+  </option>
   <property>executionStatus</property>
   <required>0</required>
-  <type>entry</type>
+  <type>select</type>
   <value></value>
 </formElement>
 <formElement>

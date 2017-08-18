@@ -59,7 +59,7 @@
   <property>executionStatus</property>
   <required>0</required>
   <type>select</type>
-  <value></value>
+  <value>I</value>
 </formElement>
 <formElement>
   <documentation>Required, see ISPW administrator for valid values.</documentation>

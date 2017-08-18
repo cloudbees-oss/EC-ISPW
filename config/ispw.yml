@@ -10,7 +10,7 @@ help:
 procedures:
   - name: Create Assignment
     stepName: create assignment
-    description: Creates Assignment.
+    description: Creates an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -90,7 +90,7 @@ procedures:
 
   - name: Load Task
     stepName: Load Task
-    description: Loads A Task for Specified Assignment.
+    description: Loads a Task for the specified Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     method: POST
     hasConfig: true
@@ -210,7 +210,7 @@ procedures:
 
   - name: Get Assignment Information
     stepName: Get Assignment Information
-    description: Get Assignment Information
+    description: Retrieves Assignment information and saves it under the specified property.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/'
     method: GET
     hasConfig: true
@@ -233,7 +233,7 @@ procedures:
         documentation: Assignment Id.
   - name: Get Assignment Task List
     stepName: Get Assignment Task List
-    description: Get Assignment Task List
+    description: Retrieves Assignment Task List and saves it under the specified property.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     method: GET
     hasConfig: true
@@ -263,7 +263,7 @@ procedures:
 
   - name: Get Assignment Task Information
     stepName: Get Assignment Task Information
-    description: Get Assignment Task Information
+    description: Retrieves Assignment Task information and saved it under the specified property.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}'
     method: GET
     hasConfig: true
@@ -350,7 +350,7 @@ procedures:
 
   - name: Deploy Assignment
     stepName: deploy assignment
-    description: Deploys assignment.
+    description: Deploys Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
     #  #{{instance}} means that "instance" will be taken from config
     # #{assignmentId} will be taken from the procedure parameters
@@ -383,18 +383,31 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
       - property: changeType
-        type: entry
+        type: select
         in: body
         label: Change Type
         required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
         documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
       - property: executionStatus
-        type: entry
+        type: select
         in: body
         label: Execution Status
         required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
       - property: runtimeConfiguration
         type: entry
@@ -425,7 +438,7 @@ procedures:
 
   - name: Promote Assignment
     stepName: promote assignment
-    description: Promotes assignment.
+    description: Promotes Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote'
     #  #{{instance}} means that "instance" will be taken from config
     # #{assignmentId} will be taken from the procedure parameters
@@ -458,18 +471,31 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
       - property: changeType
-        type: entry
+        type: select
         in: body
         label: Change Type
         required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
         documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
       - property: executionStatus
-        type: entry
+        type: select
         in: body
         label: Execution Status
         required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
       - property: runtimeConfiguration
         type: entry
@@ -495,7 +521,7 @@ procedures:
 
   - name: Create Release
     stepName: create release
-    description: Creates a release.
+    description: Creates a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -563,7 +589,7 @@ procedures:
 
   - name: Get Release Information
     stepName: get release information
-    description: Retrieves release information and saves it under the specified property.
+    description: Retrieves Release information and saves it under the specified property.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -594,7 +620,7 @@ procedures:
 
   - name: Promote Release
     stepName: promote release
-    description: Promotes release.
+    description: Promotes Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -677,7 +703,7 @@ procedures:
 
   - name: Deploy Release
     stepName: deploy release
-    description: Deploys release.
+    description: Deploys Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -761,7 +787,7 @@ procedures:
 
   - name: Regress Release
     stepName: regress release
-    description: Regresses release.
+    description: Regresses Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
