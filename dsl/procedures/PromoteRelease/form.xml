@@ -48,9 +48,17 @@
 <formElement>
   <documentation>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I.</documentation>
   <label>Execution Status:</label>
+  <option>
+    <name>Immediate (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Hold (H)</name>
+    <value>H</value>
+  </option>
   <property>executionStatus</property>
   <required>0</required>
-  <type>entry</type>
+  <type>select</type>
   <value></value>
 </formElement>
 <formElement>
@@ -79,7 +87,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</documentation>
+  <documentation>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</documentation>
   <label>Event array in JSON format, must contain at least 1 member:</label>
   <property>events</property>
   <required>1</required>

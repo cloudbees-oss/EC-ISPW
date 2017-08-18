@@ -3,7 +3,7 @@ package EC::Plugin::Hooks;
 use strict;
 use warnings;
 use MIME::Base64 qw(encode_base64);
-
+use JSON;
 use base qw(EC::Plugin::HooksCore);
 
 

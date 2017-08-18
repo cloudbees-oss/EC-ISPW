@@ -22,7 +22,7 @@
             "property" : "releaseId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
@@ -33,16 +33,40 @@
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
             "label" : "Change Type",
-            "type" : "entry",
+            "type" : "select",
             "property" : "changeType"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
             "label" : "Execution Status",
-            "type" : "entry",
+            "type" : "select",
             "property" : "executionStatus"
          },
          {
@@ -69,8 +93,8 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
          }
@@ -473,7 +497,7 @@
             "property" : "releaseId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
@@ -482,18 +506,43 @@
          },
          {
             "required" : "0",
+            "value" : "S",
             "in" : "body",
             "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
             "label" : "Change Type",
-            "type" : "entry",
+            "type" : "select",
             "property" : "changeType"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
             "label" : "Execution Status",
-            "type" : "entry",
+            "type" : "select",
             "property" : "executionStatus"
          },
          {
@@ -521,7 +570,7 @@
          {
             "required" : "1",
             "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
          }
@@ -599,8 +648,18 @@
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
             "label" : "Execution Status",
-            "type" : "entry",
+            "type" : "select",
             "property" : "executionStatus"
          },
          {
@@ -627,7 +686,7 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
             "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"

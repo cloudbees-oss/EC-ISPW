@@ -563,7 +563,7 @@ procedures:
 
   - name: Get Release Information
     stepName: get release information
-    description: Gets Release information.
+    description: Retrieves release information and saves it under the specified property.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -643,10 +643,15 @@ procedures:
         value: S
         documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
       - property: executionStatus
-        type: entry
+        type: select
         in: body
         label: Execution Status
         required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
       - property: runtimeConfiguration
         type: entry
@@ -668,7 +673,7 @@ procedures:
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
         required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
 
   - name: Deploy Release
     stepName: deploy release
@@ -705,18 +710,32 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
       - property: changeType
-        type: entry
+        type: select
         in: body
         label: Change Type
         required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
         documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
       - property: executionStatus
-        type: entry
+        type: select
         in: body
         label: Execution Status
         required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
+        value: I
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
       - property: runtimeConfiguration
         type: entry
@@ -736,7 +755,7 @@ procedures:
         type: credential
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
+        label: Event array in JSON format, must contain at least 1 member
         required: 1
         documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
 
@@ -775,18 +794,30 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
       - property: changeType
-        type: entry
+        type: select
         in: body
         label: Change Type
         required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
         documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
       - property: executionStatus
-        type: entry
+        type: select
         in: body
         label: Execution Status
         required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
       - property: runtimeConfiguration
         type: entry
@@ -806,9 +837,9 @@ procedures:
         type: credential
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
+        label: Event array in JSON format, must contain at least 1 member
         required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
 
   - name: Get Set Information
     stepName: get set information

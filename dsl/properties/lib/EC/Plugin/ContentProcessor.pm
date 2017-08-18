@@ -115,9 +115,9 @@ sub create_release {
     my ($self, $body) = @_;
 
     my $retval = $body;
-    my $owner = $body->{owner1};
-    delete $retval->{owner1};
-    $retval->{owner} = $owner;
+    my $owner = $body->{_owner};
+    delete $retval->{_owner};
+    $retval->{owner} = $owner if $owner;
 
     return encode_json($retval);
 }
