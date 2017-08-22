@@ -150,7 +150,7 @@
                 </tr>
                 <tr>
                     <td class="required">Application ID</td>
-                    <td>ISPW Application Id</td>
+                    <td>ISPW Application Id.</td>
                 </tr>
                 <tr>
                     <td class="required">Default Path</td>
@@ -739,12 +739,8 @@
                     <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
                 <tr>
-                    <td>Optional, global credentials used for all callbacks. Username</td>
-                    <td>Optional, global credentials used for all callbacks. Username.</td>
-                </tr>
-                <tr>
-                    <td>Optional, global credentials used for all callbacks. Password</td>
-                    <td>Optional, global credentials used for all callbacks. Password.</td>
+                    <td>Override Credentials for Callbacks</td>
+                    <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
                     <td class="required">Event array in JSON format, must contain at least 1 member.</td>

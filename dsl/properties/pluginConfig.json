@@ -735,7 +735,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Application Id",
+            "documentation" : "ISPW Application Id.",
             "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
@@ -902,17 +902,10 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Username.",
-            "label" : "Optional, global credentials used for all callbacks. Username",
-            "type" : "entry",
-            "property" : "credentialsUsername"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks. Password.",
-            "label" : "Optional, global credentials used for all callbacks. Password",
-            "type" : "entry",
-            "property" : "credentialsPassword"
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Override Credentials for Callbacks",
+            "property" : "callbackCredential"
          },
          {
             "required" : "1",
@@ -929,8 +922,7 @@
          "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
-         "credentialsUsername",
-         "credentialsPassword",
+         "callbackCredential",
          "events"
       ],
       "hasConfig" : "true",
