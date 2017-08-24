@@ -4,7 +4,7 @@
   <version>1.0.0</version>
   <author>Electric Cloud</author>
   <authorUrl>www.electric-cloud.com</authorUrl>
-  <category>Mainfram</category>
+  <category>Mainframe</category>
   <commander-version min="6.0" />
   <description></description>
   <configure>ec_config</configure>
