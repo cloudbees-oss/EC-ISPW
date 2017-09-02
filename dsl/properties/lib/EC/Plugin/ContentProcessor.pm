@@ -132,12 +132,12 @@ sub add_nested_elements {
     my $headers = $params->{httpHeaders};
 
     my @lines = split /\n+/, $headers;
-    my %httpHeaders = map {
+    my @httpHeaders = map {
         my ($key, $value) = split /\s*=\s*/, $_;
-        $key => $value
+        {name => $key, value => $value}
     } @lines;
 
-    $retval->{httpHeaders} = \%httpHeaders;
+    $retval->{httpHeaders} = \@httpHeaders;
 
     $retval->{credentials} = { };
     if ($params->{callbackCredentialUserName} && $params->{callbackCredentialPassword}) {
