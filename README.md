@@ -6,63 +6,55 @@ Electric Flow integration for Compuware ISPW
 
 ## Create Assignment
 
-Creates Assignment.
+Creates an Assignment.
 
 ## Load Task
 
-Loads A Task for Specified Assignment.
+Loads a Task for the specified Assignment.
 
 ## Get Assignment Information
 
-Get Assignment Information
+Retrieves Assignment information and saves it under the specified property.
 
 ## Get Assignment Task List
 
-Get Assignment Task List
+Retrieves Assignment Task List and saves it under the specified property.
 
 ## Get Assignment Task Information
 
-Get Assignment Task Information
+Retrieves Assignment Task information and saved it under the specified property.
 
 ## Generate Tasks in Assignment
 
 Generates Tasks in Assignment.
 
-## Promote Assignment
-
-Promotes assignment.
-
 ## Deploy Assignment
 
-Deploys assignment.
+Deploys Assignment.
 
 ## Promote Assignment
 
-Promotes assignment.
-
-## Deploy Assignment
-
-Deploys assignment.
+Promotes Assignment.
 
 ## Create Release
 
-Creates Release.
+Creates a Release.
 
 ## Get Release Information
 
-Gets Release information.
+Retrieves Release information and saves it under the specified property.
 
 ## Promote Release
 
-Promotes release.
+Promotes Release.
 
 ## Deploy Release
 
-Deploys release.
+Deploys Release.
 
 ## Regress Release
 
-Regresses release.
+Regresses Release.
 
 ## Get Set Information
 
