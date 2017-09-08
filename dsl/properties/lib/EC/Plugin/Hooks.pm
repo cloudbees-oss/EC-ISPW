@@ -90,6 +90,8 @@ sub define_hooks {
 sub process_response {
     my ($self, $response) = @_;
 
+    return if $response->is_success;
+
     my $json_error;
     eval {
         $json_error = decode_json($response->content);
