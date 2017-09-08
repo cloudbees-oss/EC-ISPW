@@ -166,21 +166,16 @@ sub generate_step_request {
         my $name = $field->{property};
         my $value = $parameters->{$name};
         next unless $field->{in};
+        next unless(defined $value && $value ne '');
 
         if ($field->{in} eq 'query') {
-            if (defined $value) {
-                $query{$name} = $value;
-            }
+            $query{$name} = $value;
         }
         elsif ($field->{in} eq 'body') {
-            if (defined $value) {
-                $body{$name} = $value;
-            }
+            $body{$name} = $value;
         }
         elsif ($field->{in} eq 'header') {
-            if (defined $value) {
-                $headers{$name} = $value;
-            }
+            $headers{$name} = $value;
         }
     }
 
