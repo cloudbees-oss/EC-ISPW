@@ -1,5 +1,7 @@
 ---
 basicAuth: false # get credentials from config and add basic auth
+options:
+  noEmptyString: true
 # This block refers to auto help generation
 help:
   title: Electric Flow integration for Compuware ISPW
@@ -326,6 +328,7 @@ procedures:
         documentation: Level.
         in: query
         required: 0
+        noEmptyString: true
       - property: runtimeConfiguration
         type: entry
         label: Runtime Configuration
