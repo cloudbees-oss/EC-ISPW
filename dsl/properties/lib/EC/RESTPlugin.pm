@@ -166,7 +166,10 @@ sub generate_step_request {
         my $name = $field->{property};
         my $value = $parameters->{$name};
         next unless $field->{in};
-        next unless(defined $value && $value ne '');
+
+        if($field->{noEmptyString} || $self->config->{options}->{noEmptyString}) {
+            next unless(defined $value && $value ne '');
+        }
 
         if ($field->{in} eq 'query') {
             $query{$name} = $value;
@@ -567,6 +570,9 @@ sub get_config_values {
     my $config_property_sheet = "/projects/$plugin_project_name/ec_plugin_cfgs/$config_name";
     my $property_sheet_id = $self->ec->getProperty($config_property_sheet)->findvalue('//propertySheetId')->string_value;
 
+    unless($property_sheet_id) {
+        $self->bail_out(qq{No config named $config_name found});
+    }
     my $properties = $self->ec->getProperties({propertySheetId => $property_sheet_id});
 
     my $retval = {};

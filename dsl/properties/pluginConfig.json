@@ -1,4 +1,7 @@
 {
+   "options" : {
+      "noEmptyString" : "true"
+   },
    "regress release" : {
       "resultProperty" : {
          "show" : "true",
@@ -986,6 +989,7 @@
             "property" : "assignmentId"
          },
          {
+            "noEmptyString" : "true",
             "required" : "0",
             "in" : "query",
             "documentation" : "Level.",
