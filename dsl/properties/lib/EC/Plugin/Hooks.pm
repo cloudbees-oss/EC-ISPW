@@ -85,6 +85,7 @@ sub define_hooks {
     $self->define_hook('*', 'request', \&add_authentication);
     $self->define_hook('*', 'response', \&process_response);
     $self->define_hook('create release', 'parameters', \&check_create_release);
+    $self->define_hook('Get Assignment Task Information', 'parsed', \&create_task_info_report);
 }
 
 sub process_response {
@@ -110,6 +111,44 @@ sub check_create_release {
     unless ($params->{releasePrefix} || $params->{releaseId}) {
         $self->plugin->bail_out("Release ID or Release prefix must be specified.");
     }
+}
+
+
+sub create_task_info_report {
+    my ($self, $parsed) = @_;
+
+    my $params = {};
+    for my $key (keys %$parsed) {
+        my $template_key = 'task' . ucfirst($key);
+        $params->{$template_key} = $parsed->{$key};
+    }
+
+
+    my @type = ();
+    $self->plugin->logger->trace($parsed);
+    for my $flag (qw/IMS SQL Program CICS/) {
+        push @type, $flag . ': ' . ($parsed->{lc $flag} ? 'true' : 'false');
+    }
+    $params->{type} = join(", ", @type);
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/taskInfoReport', $params);
+
+    mkdir 'artifacts' or die "Cannot create directory: $!";
+    my $random_postfix = $self->plugin->gen_random_numbers();
+    my $report_filename = "taskInfoReport_$random_postfix.html";
+    open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
+    print $fh $report;
+    close $fh;
+
+    my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
+    my $link = "/commander/jobSteps/$job_step_id/$report_filename";
+    my $name = "Assignment Task Info: $parsed->{taskId}";
+    $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
+    eval {
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Assignment Task Info",
+        qq{<html><a href="$link" target="_blank">$parsed->{taskId}</a></html>}
+        );
+    };
+
 }
 
 sub add_authentication {
