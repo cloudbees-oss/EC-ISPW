@@ -151,13 +151,15 @@
   <body>
     <div class="header">
       <div class="wrap">
-        <img src="http://www.compuware.com/cpwr/2015/wp-content/uploads/2016/06/web-assets/png/CPWRlogo_p_pms-widget.png" height="26" alt="dynatrace logo">
+        <img src="http://www.compuware.com/cpwr/2015/wp-content/uploads/2016/06/web-assets/png/CPWRlogo_p_pms-widget.png" height="75" alt="compuware logo">
       </div>
     </div>
+
 
     <div class="wrap">
       <div>
         <div>
+          <!-- <img src="http://www.compuware.com/cpwr/2015/wp-content/uploads/2016/06/web-assets/png/CPWRlogo_p_pms-widget.png" alt="compuware logo" height="75" /> -->
           <ul class="list">
             <li><strong>Release Name:</strong> [% taskRelease %]</li>
             <li><strong>Stream:</strong> [% taskStream %]</li>
@@ -187,16 +189,16 @@
             </thead>
             <tbody>
               <tr>
-                <td>[% taskModuleName %]</td>
-                <td>[% taskModuleType %]</td>
-                <td>[% taskVersion %]</td>
-                <td>[% type %]</td>
-                <td>[% taskDateTime %]</td>
-                <td>[% taskLevel %]</td>
-                <td>[% taskStartingLevel %]</td>
-                <td>[% taskOperation %]</td>
-                <td>[% taskTaskId %]</td>
-                <td>[% taskAssignment %]</td>
+                <td class="text-center">[% taskModuleName %]</td>
+                <td class="text-center">[% taskModuleType %]</td>
+                <td class="text-center">[% taskInternalVersion %]</td>
+                <td class="text-center">[% type %]</td>
+                <td class="text-center">[% taskDateTime %]</td>
+                <td class="text-center">[% taskLevel %]</td>
+                <td class="text-center">[% taskStartingLevel %]</td>
+                <td class="text-center">[% taskOperation %]</td>
+                <td class="text-center">[% taskTaskId %]</td>
+                <td class="text-center">[% taskAssignment %]</td>
               </tr>
             </tbody>
           </table>

@@ -123,13 +123,13 @@ sub create_task_info_report {
         $params->{$template_key} = $parsed->{$key};
     }
 
-
-    my @type = ();
-    $self->plugin->logger->trace($parsed);
-    for my $flag (qw/IMS SQL Program CICS/) {
-        push @type, $flag . ': ' . ($parsed->{lc $flag} ? 'true' : 'false');
+    my $type = '';
+    for (qw/Program SQL IMS CICS/) {
+        if ($parsed->{lc $_}) {
+            $type = $_;
+        }
     }
-    $params->{type} = join(", ", @type);
+    $params->{type} = $type;
     my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/taskInfoReport', $params);
 
     mkdir 'artifacts' or die "Cannot create directory: $!";
@@ -144,8 +144,8 @@ sub create_task_info_report {
     my $name = "Assignment Task Info: $parsed->{taskId}";
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
-        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Assignment Task Info",
-        qq{<html><a href="$link" target="_blank">$parsed->{taskId}</a></html>}
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
+        qq{<html><a href="$link" target="_blank">Link to Task and Release details</a></html>}
         );
     };
 
