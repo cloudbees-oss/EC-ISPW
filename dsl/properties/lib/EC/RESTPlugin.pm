@@ -643,7 +643,7 @@ sub _self_flatten_map {
             $value = \%copy;
         }
         if (ref $value ne 'HASH') {
-            $value ||= '';
+            $value = '' unless defined $value;
             $value = "$value";
         }
         if (ref $value) {
