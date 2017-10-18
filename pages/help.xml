@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->September 13, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->October 18, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -379,8 +379,16 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -497,8 +505,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -547,8 +559,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -597,8 +613,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -692,8 +712,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -743,8 +767,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>

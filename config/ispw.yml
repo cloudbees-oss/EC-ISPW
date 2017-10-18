@@ -9,6 +9,7 @@ help:
   links:
     - http://www.compuware.com/en_us/use-cases/source-code-management.html
   hasConfig: true
+  
 procedures:
   - name: Create Assignment
     stepName: create assignment
@@ -345,11 +346,41 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        label: Event array in JSON format, must contain at least 1 member. 
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Assignment
     stepName: deploy assignment
@@ -428,11 +459,26 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Promote Assignment
     stepName: promote assignment
@@ -511,11 +557,26 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Create Release
     stepName: create release
@@ -693,11 +754,26 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Release
     stepName: deploy release
@@ -777,11 +853,26 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Regress Release
     stepName: regress release
@@ -859,11 +950,26 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Get Set Information
     stepName: get set information

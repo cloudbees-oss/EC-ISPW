@@ -48,6 +48,10 @@ project pluginName, {
 			}
 		}
 	}
+	// callback events list properties
+	property 'ec_callback_flow', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=terminated" }]'
+	property 'ec_callback_job', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=terminated" }]'
+	property 'ec_callback_pipeline', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=terminated" }]'
 
 }
 

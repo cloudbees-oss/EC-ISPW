@@ -96,7 +96,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
@@ -110,6 +136,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -573,7 +600,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
@@ -587,6 +640,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -690,7 +744,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
@@ -704,6 +784,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -912,7 +993,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
@@ -926,6 +1033,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1021,7 +1129,59 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "1",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
@@ -1033,6 +1193,8 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1136,7 +1298,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
@@ -1150,6 +1338,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
