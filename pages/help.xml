@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->October 18, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->October 19, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -363,7 +363,7 @@
                     <td>Assignment Id.</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>

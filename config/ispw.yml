@@ -328,7 +328,7 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
         noEmptyString: true
       - property: runtimeConfiguration
         type: entry

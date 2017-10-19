@@ -21,7 +21,7 @@
   <documentation>Level.</documentation>
   <label>Level:</label>
   <property>level</property>
-  <required>0</required>
+  <required>1</required>
   <type>entry</type>
   <value></value>
 </formElement>

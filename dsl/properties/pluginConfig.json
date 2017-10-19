@@ -1098,7 +1098,7 @@
          },
          {
             "noEmptyString" : "true",
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
