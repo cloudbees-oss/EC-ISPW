@@ -14,27 +14,27 @@ Loads a Task for the specified Assignment.
 
 ## Get Assignment Information
 
-Retrieves Assignment information and saves it under the specified property.
+Retrieves information about an Assignment.
 
 ## Get Assignment Task List
 
-Retrieves Assignment Task List and saves it under the specified property.
+Retrieves the Task list for an Assignment.
 
 ## Get Assignment Task Information
 
-Retrieves Assignment Task information and saved it under the specified property.
+Retrieves information about a Task in an Assignment.
 
 ## Generate Tasks in Assignment
 
-Generates Tasks in Assignment.
+Runs generate for the Tasks in Assignment.
 
 ## Deploy Assignment
 
-Deploys Assignment.
+Deploys an Assignment.
 
 ## Promote Assignment
 
-Promotes Assignment.
+Promotes an Assignment.
 
 ## Create Release
 
@@ -42,27 +42,27 @@ Creates a Release.
 
 ## Get Release Information
 
-Retrieves Release information and saves it under the specified property.
+Retrieves information about a Release.
 
 ## Promote Release
 
-Promotes Release.
+Promotes a Release.
 
 ## Deploy Release
 
-Deploys Release.
+Deploys a Release.
 
 ## Regress Release
 
-Regresses Release.
+Regresses a Release.
 
 ## Get Set Information
 
-Gets Set information.
+Retrieves information about a Set.
 
 ## Get Set Task List
 
-Gets Set Task List.
+Retrieves the Task list for a Set.
 
 
 

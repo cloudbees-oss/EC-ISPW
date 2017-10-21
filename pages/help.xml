@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->September 13, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->October 21, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -80,22 +80,6 @@
                 </td>
             </tr>
             <tr>
-                <td class="required">
-                    ISPW Instance URL:
-                </td>
-                <td>
-                    ISPW Instance URL
-                </td>
-            </tr>
-            <tr>
-                <td class="required">
-                    ISPW Instance SRID
-                </td>
-                <td>
-                    ISPW Instance SRID
-                </td>
-            </tr>
-            <tr>
                 <td>
                     Description:
                 </td>
@@ -105,10 +89,10 @@
             </tr>
             <tr>
                 <td class="required">
-                    Token:
+                    Credential:
                 </td>
                 <td>
-                    Use ISPW-provided token as Password
+                    Credentials to connect
                 </td>
             </tr>
         </tbody>
@@ -273,7 +257,7 @@
                 <div id="GetAssignmentInformation">
                 <!-- GetAssignmentInformation METADATA BEGIN -->
             <h3>Get Assignment Information</h3>
-            <p>Retrieves Assignment information and saves it under the specified property.</p>
+            <p>Retrieves information about an Assignment.</p>
         <!-- GetAssignmentInformation METADATA END -->
                 <!-- GetAssignmentInformation BEGIN -->
             <table class="grid">
@@ -295,7 +279,7 @@
                 <div id="GetAssignmentTaskList">
                 <!-- GetAssignmentTaskList METADATA BEGIN -->
             <h3>Get Assignment Task List</h3>
-            <p>Retrieves Assignment Task List and saves it under the specified property.</p>
+            <p>Retrieves the Task list for an Assignment.</p>
         <!-- GetAssignmentTaskList METADATA END -->
                 <!-- GetAssignmentTaskList BEGIN -->
             <table class="grid">
@@ -321,7 +305,7 @@
                 <div id="GetAssignmentTaskInformation">
                 <!-- GetAssignmentTaskInformation METADATA BEGIN -->
             <h3>Get Assignment Task Information</h3>
-            <p>Retrieves Assignment Task information and saved it under the specified property.</p>
+            <p>Retrieves information about a Task in an Assignment.</p>
         <!-- GetAssignmentTaskInformation METADATA END -->
                 <!-- GetAssignmentTaskInformation BEGIN -->
             <table class="grid">
@@ -347,7 +331,7 @@
                 <div id="GenerateTasksinAssignment">
                 <!-- GenerateTasksinAssignment METADATA BEGIN -->
             <h3>Generate Tasks in Assignment</h3>
-            <p>Generates Tasks in Assignment.</p>
+            <p>Runs generate for the Tasks in Assignment.</p>
         <!-- GenerateTasksinAssignment METADATA END -->
                 <!-- GenerateTasksinAssignment BEGIN -->
             <table class="grid">
@@ -363,7 +347,7 @@
                     <td>Assignment Id.</td>
                 </tr>
                 <tr>
-                    <td>Level</td>
+                    <td class="required">Level</td>
                     <td>Level.</td>
                 </tr>
                 <tr>
@@ -379,8 +363,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -435,7 +423,7 @@
                 <div id="GetReleaseInformation">
                 <!-- GetReleaseInformation METADATA BEGIN -->
             <h3>Get Release Information</h3>
-            <p>Retrieves Release information and saves it under the specified property.</p>
+            <p>Retrieves information about a Release.</p>
         <!-- GetReleaseInformation METADATA END -->
                 <!-- GetReleaseInformation BEGIN -->
             <table class="grid">
@@ -457,7 +445,7 @@
                 <div id="PromoteRelease">
                 <!-- PromoteRelease METADATA BEGIN -->
             <h3>Promote Release</h3>
-            <p>Promotes Release.</p>
+            <p>Promotes a Release.</p>
         <!-- PromoteRelease METADATA END -->
                 <!-- PromoteRelease BEGIN -->
             <table class="grid">
@@ -497,8 +485,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -507,7 +499,7 @@
                 <div id="DeployRelease">
                 <!-- DeployRelease METADATA BEGIN -->
             <h3>Deploy Release</h3>
-            <p>Deploys Release.</p>
+            <p>Deploys a Release.</p>
         <!-- DeployRelease METADATA END -->
                 <!-- DeployRelease BEGIN -->
             <table class="grid">
@@ -547,8 +539,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -557,7 +553,7 @@
                 <div id="RegressRelease">
                 <!-- RegressRelease METADATA BEGIN -->
             <h3>Regress Release</h3>
-            <p>Regresses Release.</p>
+            <p>Regresses a Release.</p>
         <!-- RegressRelease METADATA END -->
                 <!-- RegressRelease BEGIN -->
             <table class="grid">
@@ -597,8 +593,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member</td>
-                    <td>Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -607,7 +607,7 @@
                 <div id="GetSetInformation">
                 <!-- GetSetInformation METADATA BEGIN -->
             <h3>Get Set Information</h3>
-            <p>Gets Set information.</p>
+            <p>Retrieves information about a Set.</p>
         <!-- GetSetInformation METADATA END -->
                 <!-- GetSetInformation BEGIN -->
             <table class="grid">
@@ -629,7 +629,7 @@
                 <div id="GetSetTaskList">
                 <!-- GetSetTaskList METADATA BEGIN -->
             <h3>Get Set Task List</h3>
-            <p>Gets Set Task List.</p>
+            <p>Retrieves the Task list for a Set.</p>
         <!-- GetSetTaskList METADATA END -->
                 <!-- GetSetTaskList BEGIN -->
             <table class="grid">
@@ -652,7 +652,7 @@
                 <a name="PromoteAssignment" id="PromoteAssignment" />
                 <!-- PromoteAssignment METADATA BEGIN -->
             <h3>Promote Assignment</h3>
-            <p>Promotes Assignment.</p>
+            <p>Promotes an Assignment.</p>
         <!-- PromoteAssignment METADATA END -->
                 <!-- PromoteAssignment BEGIN -->
             <table class="grid">
@@ -692,8 +692,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>
@@ -703,7 +707,7 @@
                 <a name="DeployAssignment" id="DeployAssignment" />
                 <!-- DeployAssignment METADATA BEGIN -->
             <h3>Deploy Assignment</h3>
-            <p>Deploys Assignment.</p>
+            <p>Deploys an Assignment.</p>
         <!-- DeployAssignment METADATA END -->
                 <!-- DeployAssignment BEGIN -->
             <table class="grid">
@@ -743,8 +747,12 @@
                     <td>Optional, global credentials used for all callbacks</td>
                 </tr>
                 <tr>
-                    <td class="required">Event array in JSON format, must contain at least 1 member.</td>
-                    <td>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</td>
+                    <td class="required">Callback Type</td>
+                    <td>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format, must contain at least 1 member.</td>
+                    <td>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</td>
                 </tr>
                  </tbody>
             </table>

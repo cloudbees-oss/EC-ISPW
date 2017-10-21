@@ -9,9 +9,10 @@ help:
   links:
     - http://www.compuware.com/en_us/use-cases/source-code-management.html
   hasConfig: true
+  
 procedures:
   - name: Create Assignment
-    stepName: create assignment
+    stepName: Create assignment
     description: Creates an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments'
     #  #{{instance}} means that "instance" will be taken from config
@@ -91,7 +92,7 @@ procedures:
         documentation: User Tag.
 
   - name: Load Task
-    stepName: Load Task
+    stepName: Load task
     description: Loads a Task for the specified Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     method: POST
@@ -211,8 +212,8 @@ procedures:
         documentation: Option 5.
 
   - name: Get Assignment Information
-    stepName: Get Assignment Information
-    description: Retrieves Assignment information and saves it under the specified property.
+    stepName: Get assignment information
+    description: Retrieves information about an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/'
     method: GET
     hasConfig: true
@@ -234,8 +235,8 @@ procedures:
         required: 1
         documentation: Assignment Id.
   - name: Get Assignment Task List
-    stepName: Get Assignment Task List
-    description: Retrieves Assignment Task List and saves it under the specified property.
+    stepName: Get assignment task list
+    description: Retrieves the Task list for an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks'
     method: GET
     hasConfig: true
@@ -264,8 +265,8 @@ procedures:
         documentation: Level.
 
   - name: Get Assignment Task Information
-    stepName: Get Assignment Task Information
-    description: Retrieves Assignment Task information and saved it under the specified property.
+    stepName: Get assignment task information
+    description: Retrieves information about a Task in an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}'
     method: GET
     hasConfig: true
@@ -293,8 +294,8 @@ procedures:
         required: 1
 
   - name: Generate Tasks in Assignment
-    stepName: generate tasks in assignment
-    description: Generates Tasks in Assignment.
+    stepName: Generate tasks in assignment
+    description: Runs generate for the Tasks in Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -327,7 +328,7 @@ procedures:
         label: Level
         documentation: Level.
         in: query
-        required: 0
+        required: 1
         noEmptyString: true
       - property: runtimeConfiguration
         type: entry
@@ -345,15 +346,30 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        label: Event array in JSON format, must contain at least 1 member. 
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Assignment
-    stepName: deploy assignment
-    description: Deploys Assignment.
+    stepName: Deploy assignment
+    description: Deploys an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
     #  #{{instance}} means that "instance" will be taken from config
     # #{assignmentId} will be taken from the procedure parameters
@@ -428,15 +444,30 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Promote Assignment
-    stepName: promote assignment
-    description: Promotes Assignment.
+    stepName: Promote assignment
+    description: Promotes an Assignment.
     endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote'
     #  #{{instance}} means that "instance" will be taken from config
     # #{assignmentId} will be taken from the procedure parameters
@@ -511,14 +542,29 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member.
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Create Release
-    stepName: create release
+    stepName: Create release
     description: Creates a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases'
     #  #{{instance}} means that "instance" will be taken from config
@@ -586,8 +632,8 @@ procedures:
         documentation: Release reference number.
 
   - name: Get Release Information
-    stepName: get release information
-    description: Retrieves Release information and saves it under the specified property.
+    stepName: Get release information
+    description: Retrieves information about a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -617,8 +663,8 @@ procedures:
         documentation: Release ID.
 
   - name: Promote Release
-    stepName: promote release
-    description: Promotes Release.
+    stepName: Promote release
+    description: Promotes a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -693,15 +739,30 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Release
-    stepName: deploy release
-    description: Deploys Release.
+    stepName: Deploy release
+    description: Deploys a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -777,15 +838,30 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Regress Release
-    stepName: regress release
-    description: Regresses Release.
+    stepName: Regress release
+    description: Regresses a Release.
     endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -859,15 +935,30 @@ procedures:
         documentation: Optional, global credentials used for all callbacks
         required: 0
         type: credential
+      - property: callbackType
+        label: Callback Type
+        documentation: The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.
+        required: 1
+        type: select
+        option:
+          - name: job
+            value: job
+          - name: flow
+            value: flow
+          - name: pipeline
+            value: pipeline
+          - name: custom
+            value: custom
+        value: job
       - property: events
         type: textarea
         label: Event array in JSON format, must contain at least 1 member
-        required: 1
-        documentation: Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.
+        required: 0
+        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Get Set Information
-    stepName: get set information
-    description: Gets Set information.
+    stepName: Get set information
+    description: Retrieves information about a Set.
     endpoint: '#{{instance}}/ispw/#{{srid}}/sets/#{setId}'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
@@ -897,8 +988,8 @@ procedures:
         documentation: Set ID
 
   - name: Get Set Task List
-    stepName: get set task list
-    description: Gets Set Task List.
+    stepName: Get set task list
+    description: Retrieves the Task list for a Set.
     endpoint: '#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters

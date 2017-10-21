@@ -2,123 +2,7 @@
    "options" : {
       "noEmptyString" : "true"
    },
-   "regress release" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/regressResult"
-      },
-      "name" : "Regress Release",
-      "description" : "Regresses Release.",
-      "stepName" : "regress release",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         },
-         {
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "Level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
-            "option" : [
-               {
-                  "value" : "S",
-                  "name" : "Standard (S)"
-               },
-               {
-                  "value" : "I",
-                  "name" : "Incidental (I)"
-               },
-               {
-                  "value" : "E",
-                  "name" : "Emergency (E)"
-               }
-            ],
-            "label" : "Change Type",
-            "type" : "select",
-            "property" : "changeType"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
-            "option" : [
-               {
-                  "value" : "I",
-                  "name" : "Immediate (I)"
-               },
-               {
-                  "value" : "H",
-                  "name" : "Hold (H)"
-               }
-            ],
-            "label" : "Execution Status",
-            "type" : "select",
-            "property" : "executionStatus"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "releaseId",
-         "level",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress",
-      "attachCredentials" : "true"
-   },
-   "create release" : {
+   "Create release" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
@@ -129,7 +13,7 @@
       },
       "name" : "Create Release",
       "description" : "Creates a Release.",
-      "stepName" : "create release",
+      "stepName" : "Create release",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
@@ -205,7 +89,293 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases",
       "attachCredentials" : "true"
    },
-   "Load Task" : {
+   "Deploy assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/deployResult"
+      },
+      "name" : "Deploy Assignment",
+      "description" : "Deploys an Assignment.",
+      "stepName" : "Deploy assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment ID",
+            "label" : "Assignment ID",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "Level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "0",
+            "value" : "S",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
+            "label" : "Change Type",
+            "type" : "select",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
+            "label" : "Execution Status",
+            "type" : "select",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Override Credentials for Callbacks",
+            "property" : "callbackCredential"
+         },
+         {
+            "required" : "1",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "assignmentId",
+         "level",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "callbackCredential",
+         "callbackType",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy",
+      "attachCredentials" : "true"
+   },
+   "Generate tasks in assignment" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/generateAssignmentTasks"
+      },
+      "name" : "Generate Tasks in Assignment",
+      "description" : "Runs generate for the Tasks in Assignment.",
+      "stepName" : "Generate tasks in assignment",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "noEmptyString" : "true",
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "Level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values.",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
+         },
+         {
+            "required" : "1",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "assignmentId",
+         "level",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "callbackCredential",
+         "callbackType",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations",
+      "attachCredentials" : "true"
+   },
+   "Get assignment task information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/assignmentTask"
+      },
+      "name" : "Get Assignment Task Information",
+      "description" : "Retrieves information about a Task in an Assignment.",
+      "stepName" : "Get assignment task information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
+            "type" : "entry",
+            "property" : "assignmentId"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Task Id.",
+            "label" : "Task Id",
+            "type" : "entry",
+            "property" : "taskId"
+         }
+      ],
+      "fields" : [
+         "assignmentId",
+         "taskId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}",
+      "attachCredentials" : "true"
+   },
+   "Load task" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
@@ -216,7 +386,7 @@
       },
       "name" : "Load Task",
       "description" : "Loads a Task for the specified Assignment.",
-      "stepName" : "Load Task",
+      "stepName" : "Load task",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
       "parameters" : [
@@ -381,7 +551,7 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
-   "get set information" : {
+   "Get set information" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
@@ -391,8 +561,8 @@
          "default" : "/myJob/setInfo"
       },
       "name" : "Get Set Information",
-      "description" : "Gets Set information.",
-      "stepName" : "get set information",
+      "description" : "Retrieves information about a Set.",
+      "stepName" : "Get set information",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
@@ -413,18 +583,18 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}",
       "attachCredentials" : "true"
    },
-   "Get Assignment Information" : {
+   "Get assignment task list" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/assignment"
+         "default" : "/myJob/assignmentTasks"
       },
-      "name" : "Get Assignment Information",
-      "description" : "Retrieves Assignment information and saves it under the specified property.",
-      "stepName" : "Get Assignment Information",
+      "name" : "Get Assignment Task List",
+      "description" : "Retrieves the Task list for an Assignment.",
+      "stepName" : "Get assignment task list",
       "bodyContentType" : "json",
       "canSkipAuth" : "true",
       "parameters" : [
@@ -434,285 +604,27 @@
             "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
-         }
-      ],
-      "fields" : [
-         "assignmentId"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/",
-      "attachCredentials" : "true"
-   },
-   "get set task list" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/setTasks"
-      },
-      "name" : "Get Set Task List",
-      "description" : "Gets Set Task List.",
-      "stepName" : "get set task list",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Set ID",
-            "label" : "Set ID",
-            "type" : "entry",
-            "property" : "setId"
-         }
-      ],
-      "fields" : [
-         "setId"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks",
-      "attachCredentials" : "true"
-   },
-   "deploy release" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/deployResult"
-      },
-      "name" : "Deploy Release",
-      "description" : "Deploys Release.",
-      "stepName" : "deploy release",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
          },
          {
-            "required" : "1",
+            "required" : "0",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
-         },
-         {
-            "required" : "0",
-            "value" : "S",
-            "in" : "body",
-            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
-            "option" : [
-               {
-                  "value" : "S",
-                  "name" : "Standard (S)"
-               },
-               {
-                  "value" : "I",
-                  "name" : "Incidental (I)"
-               },
-               {
-                  "value" : "E",
-                  "name" : "Emergency (E)"
-               }
-            ],
-            "label" : "Change Type",
-            "type" : "select",
-            "property" : "changeType"
-         },
-         {
-            "required" : "0",
-            "value" : "I",
-            "in" : "body",
-            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
-            "option" : [
-               {
-                  "value" : "I",
-                  "name" : "Immediate (I)"
-               },
-               {
-                  "value" : "H",
-                  "name" : "Hold (H)"
-               }
-            ],
-            "label" : "Execution Status",
-            "type" : "select",
-            "property" : "executionStatus"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
-            "type" : "textarea",
-            "property" : "events"
          }
       ],
       "fields" : [
-         "releaseId",
-         "level",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
+         "assignmentId",
+         "level"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
-   "promote release" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/promoteResult"
-      },
-      "name" : "Promote Release",
-      "description" : "Promotes Release.",
-      "stepName" : "promote release",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         },
-         {
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "Release level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         },
-         {
-            "required" : "0",
-            "value" : "S",
-            "in" : "body",
-            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
-            "option" : [
-               {
-                  "value" : "S",
-                  "name" : "Standard (S)"
-               },
-               {
-                  "value" : "I",
-                  "name" : "Incidental (I)"
-               },
-               {
-                  "value" : "E",
-                  "name" : "Emergency (E)"
-               }
-            ],
-            "label" : "Change Type",
-            "type" : "select",
-            "property" : "changeType"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
-            "option" : [
-               {
-                  "value" : "I",
-                  "name" : "Immediate (I)"
-               },
-               {
-                  "value" : "H",
-                  "name" : "Hold (H)"
-               }
-            ],
-            "label" : "Execution Status",
-            "type" : "select",
-            "property" : "executionStatus"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. Use JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "releaseId",
-         "level",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote",
-      "attachCredentials" : "true"
-   },
-   "create assignment" : {
+   "Create assignment" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
@@ -723,7 +635,7 @@
       },
       "name" : "Create Assignment",
       "description" : "Creates an Assignment.",
-      "stepName" : "create assignment",
+      "stepName" : "Create assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
@@ -817,32 +729,96 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments",
       "attachCredentials" : "true"
    },
-   "deploy assignment" : {
+   "Get release information" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/deployResult"
+         "default" : "/myJob/releaseInfo"
       },
-      "name" : "Deploy Assignment",
-      "description" : "Deploys Assignment.",
-      "stepName" : "deploy assignment",
+      "name" : "Get Release Information",
+      "description" : "Retrieves information about a Release.",
+      "stepName" : "Get release information",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "Assignment ID",
+            "documentation" : "Release ID.",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         }
+      ],
+      "fields" : [
+         "releaseId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}",
+      "attachCredentials" : "true"
+   },
+   "Get assignment information" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/assignment"
+      },
+      "name" : "Get Assignment Information",
+      "description" : "Retrieves information about an Assignment.",
+      "stepName" : "Get assignment information",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Assignment Id.",
+            "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
+         }
+      ],
+      "fields" : [
+         "assignmentId"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/",
+      "attachCredentials" : "true"
+   },
+   "Promote release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/promoteResult"
+      },
+      "name" : "Promote Release",
+      "description" : "Promotes a Release.",
+      "stepName" : "Promote release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
          },
          {
             "required" : "1",
             "in" : "query",
-            "documentation" : "Level.",
+            "documentation" : "Release level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -898,116 +874,7 @@
          },
          {
             "required" : "0",
-            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Override Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "assignmentId",
-         "level",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy",
-      "attachCredentials" : "true"
-   },
-   "get release information" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/releaseInfo"
-      },
-      "name" : "Get Release Information",
-      "description" : "Retrieves Release information and saves it under the specified property.",
-      "stepName" : "get release information",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID.",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         }
-      ],
-      "fields" : [
-         "releaseId"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}",
-      "attachCredentials" : "true"
-   },
-   "generate tasks in assignment" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/generateAssignmentTasks"
-      },
-      "name" : "Generate Tasks in Assignment",
-      "description" : "Generates Tasks in Assignment.",
-      "stepName" : "generate tasks in assignment",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Assignment Id.",
-            "label" : "Assignment Id",
-            "type" : "entry",
-            "property" : "assignmentId"
-         },
-         {
-            "noEmptyString" : "true",
-            "required" : "0",
-            "in" : "query",
-            "documentation" : "Level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values.",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
             "property" : "httpHeaders"
@@ -1021,27 +888,56 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
             "type" : "textarea",
             "property" : "events"
          }
       ],
       "fields" : [
-         "assignmentId",
+         "releaseId",
          "level",
+         "changeType",
+         "executionStatus",
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote",
       "attachCredentials" : "true"
    },
-   "promote assignment" : {
+   "Promote assignment" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
@@ -1051,8 +947,8 @@
          "default" : "/myJob/promoteResult"
       },
       "name" : "Promote Assignment",
-      "description" : "Promotes Assignment.",
-      "stepName" : "promote assignment",
+      "description" : "Promotes an Assignment.",
+      "stepName" : "Promote assignment",
       "bodyContentType" : "json",
       "canSkipAuth" : "false",
       "parameters" : [
@@ -1136,7 +1032,33 @@
          },
          {
             "required" : "1",
-            "documentation" : "Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
             "label" : "Event array in JSON format, must contain at least 1 member.",
             "type" : "textarea",
             "property" : "events"
@@ -1150,6 +1072,7 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
+         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1158,85 +1081,324 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote",
       "attachCredentials" : "true"
    },
-   "Get Assignment Task List" : {
+   "Regress release" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/assignmentTasks"
+         "default" : "/myJob/regressResult"
       },
-      "name" : "Get Assignment Task List",
-      "description" : "Retrieves Assignment Task List and saves it under the specified property.",
-      "stepName" : "Get Assignment Task List",
+      "name" : "Regress Release",
+      "description" : "Regresses a Release.",
+      "stepName" : "Regress release",
       "bodyContentType" : "json",
-      "canSkipAuth" : "true",
+      "canSkipAuth" : "false",
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id.",
-            "label" : "Assignment Id",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
             "type" : "entry",
-            "property" : "assignmentId"
+            "property" : "releaseId"
          },
          {
-            "required" : "0",
+            "required" : "1",
             "in" : "query",
             "documentation" : "Level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
+            "label" : "Change Type",
+            "type" : "select",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
+            "label" : "Execution Status",
+            "type" : "select",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
+         },
+         {
+            "required" : "1",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
+            "type" : "textarea",
+            "property" : "events"
          }
       ],
       "fields" : [
-         "assignmentId",
-         "level"
+         "releaseId",
+         "level",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "callbackCredential",
+         "callbackType",
+         "events"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress",
       "attachCredentials" : "true"
    },
-   "Get Assignment Task Information" : {
+   "Get set task list" : {
       "resultProperty" : {
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
          ],
-         "default" : "/myJob/assignmentTask"
+         "default" : "/myJob/setTasks"
       },
-      "name" : "Get Assignment Task Information",
-      "description" : "Retrieves Assignment Task information and saved it under the specified property.",
-      "stepName" : "Get Assignment Task Information",
+      "name" : "Get Set Task List",
+      "description" : "Retrieves the Task list for a Set.",
+      "stepName" : "Get set task list",
       "bodyContentType" : "json",
-      "canSkipAuth" : "true",
+      "canSkipAuth" : "false",
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id.",
-            "label" : "Assignment Id",
+            "documentation" : "Set ID",
+            "label" : "Set ID",
             "type" : "entry",
-            "property" : "assignmentId"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Task Id.",
-            "label" : "Task Id",
-            "type" : "entry",
-            "property" : "taskId"
+            "property" : "setId"
          }
       ],
       "fields" : [
-         "assignmentId",
-         "taskId"
+         "setId"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/#{taskId}",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks",
+      "attachCredentials" : "true"
+   },
+   "Deploy release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/deployResult"
+      },
+      "name" : "Deploy Release",
+      "description" : "Deploys a Release.",
+      "stepName" : "Deploy release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "Level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "0",
+            "value" : "S",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
+            "label" : "Change Type",
+            "type" : "select",
+            "property" : "changeType"
+         },
+         {
+            "required" : "0",
+            "value" : "I",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
+            "label" : "Execution Status",
+            "type" : "select",
+            "property" : "executionStatus"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
+         },
+         {
+            "required" : "1",
+            "value" : "job",
+            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
+            "option" : [
+               {
+                  "value" : "job",
+                  "name" : "job"
+               },
+               {
+                  "value" : "flow",
+                  "name" : "flow"
+               },
+               {
+                  "value" : "pipeline",
+                  "name" : "pipeline"
+               },
+               {
+                  "value" : "custom",
+                  "name" : "custom"
+               }
+            ],
+            "type" : "select",
+            "label" : "Callback Type",
+            "property" : "callbackType"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format, must contain at least 1 member",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "releaseId",
+         "level",
+         "changeType",
+         "executionStatus",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "callbackCredential",
+         "callbackType",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy",
       "attachCredentials" : "true"
    }
 }

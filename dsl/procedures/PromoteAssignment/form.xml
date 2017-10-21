@@ -78,7 +78,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <attachedAsParameterToStep>promote assignment</attachedAsParameterToStep>
+  <attachedAsParameterToStep>Promote assignment</attachedAsParameterToStep>
   <documentation>Optional, global credentials used for all callbacks.</documentation>
   <label>Override Credentials for Callbacks:</label>
   <property>callbackCredential</property>
@@ -87,10 +87,34 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Event array, must contain at least 1 member. User JSON format, described at ISPW API Guide.</documentation>
+  <documentation>The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.</documentation>
+  <label>Callback Type:</label>
+  <option>
+    <name>job</name>
+    <value>job</value>
+  </option>
+  <option>
+    <name>flow</name>
+    <value>flow</value>
+  </option>
+  <option>
+    <name>pipeline</name>
+    <value>pipeline</value>
+  </option>
+  <option>
+    <name>custom</name>
+    <value>custom</value>
+  </option>
+  <property>callbackType</property>
+  <required>1</required>
+  <type>select</type>
+  <value>job</value>
+</formElement>
+<formElement>
+  <documentation>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</documentation>
   <label>Event array in JSON format, must contain at least 1 member.:</label>
   <property>events</property>
-  <required>1</required>
+  <required>0</required>
   <type>textarea</type>
   <value></value>
 </formElement>

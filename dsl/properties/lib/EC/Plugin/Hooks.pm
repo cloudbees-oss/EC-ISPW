@@ -79,13 +79,16 @@ Available hooks types:
 
 # autogen end
 
+
 sub define_hooks {
     my ($self) = @_;
 
     $self->define_hook('*', 'request', \&add_authentication);
     $self->define_hook('*', 'response', \&process_response);
-    $self->define_hook('create release', 'parameters', \&check_create_release);
-    $self->define_hook('Get Assignment Task Information', 'parsed', \&create_task_info_report);
+    $self->define_hook('Get assignment task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
+    $self->define_hook('Get set task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
+    $self->define_hook('Create release', 'parameters', \&check_create_release);
+    $self->define_hook('Get assignment task information', 'parsed', \&create_task_info_report);
 }
 
 sub process_response {
@@ -105,6 +108,14 @@ sub process_response {
     };
 }
 
+sub correct_json_list_response {
+    my ($self, $response) = @_;
+    
+    if ($response->content =~ /^({"[a-z][A-Za-z]+s":)({.+})(})$/) {
+        $response->{'_content'} = $1 . "[" . $2 . "]" . $3;
+    }
+}    
+    
 sub check_create_release {
     my ($self, $params) = @_;
 
