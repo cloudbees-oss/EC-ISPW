@@ -96,20 +96,20 @@ sub define_processors {
     my ($self) = @_;
 
     my @steps_with_nested_elements = (
-        'generate tasks in assignment',
-        'promote release',
-        'deploy release',
-        'regress release',
-        'deploy assignment',
-        'promote assignment',
+        'Deploy assignment',
+        'Deploy release',
+        'Generate tasks in assignment',
+        'Promote assignment',
+        'Promote release',
+        'Regress release',
     );
 
     for my $step_name (@steps_with_nested_elements) {
         $self->define_processor( $step_name, 'serialize_body', \&add_nested_elements );
     }
 
-    $self->define_processor( 'create release', 'serialize_body', \&replace_owner );
-    $self->define_processor( 'create assignment', 'serialize_body', \&replace_owner );
+    $self->define_processor( 'Create release', 'serialize_body', \&replace_owner );
+    $self->define_processor( 'Create assignment', 'serialize_body', \&replace_owner );
 }
 
 sub replace_owner {

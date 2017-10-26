@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->October 21, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->October 26, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -89,10 +89,26 @@
             </tr>
             <tr>
                 <td class="required">
-                    Credential:
+                    ISPW Instance URL:
                 </td>
                 <td>
-                    Credentials to connect
+                    ISPW Instance URL
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    ISPW Instance SRID
+                </td>
+                <td>
+                    ISPW Instance SRID
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    Token:
+                </td>
+                <td>
+                    Use ISPW-provided access token as Password
                 </td>
             </tr>
         </tbody>
