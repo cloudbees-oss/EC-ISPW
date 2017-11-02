@@ -24,6 +24,7 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'Deploy Assignment', stepName: 'deploy assignment'],
   [procedureName: 'Deploy Release', stepName: 'Deploy release'],
   [procedureName: 'Deploy Release', stepName: 'deploy release'],
+  [procedureName: 'Display Task Information', stepName: 'Display task information'],
   [procedureName: 'Generate Tasks in Assignment', stepName: 'Generate tasks in assignment'],
   [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
   [procedureName: 'Get Assignment Information', stepName: 'Get Assignment Information'],
