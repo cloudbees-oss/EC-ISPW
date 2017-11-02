@@ -20,7 +20,7 @@ _EOM_
 """,
         errorHandling: 'abortProcedure',
         exclusiveMode: 'none',
-        precondition: "\$[/javascript myParent.callbackType != 'custom']",
+        condition: "\$[/javascript myParent.callbackType != 'custom']",
         releaseMode: 'none',
         shell: 'ec-perl'
     // [REST Plugin Wizard step]
@@ -39,10 +39,6 @@ EC::RESTPlugin->new->run_step('Deploy release');
     
     // [REST Plugin Wizard step ends]
     
-    
-    
-    
-
     step "Wait for callback, then error on failure", description: "This step will be skipped immediately if the Callback Type is set to 'custom' (in which case it is the caller's responsibility to make the operation wait for the callback the call to be synchronous); otherwise, it will wait for the callback, and then be skipped if the operation was successful, or will report the error if it was not successful.",
         command: """
 echo "Callback result was '\$[/javascript ( (myParent.callbackType != 'custom') && ( (myParent.callbackType == 'job') ? myJob.ec_callback_response : ( (myParent.callbackType == 'flow') ? myFlowRuntime.ec_callback_response : myPipelineRuntime.ec_callback_response ) ) ) ]'!"
@@ -51,7 +47,7 @@ exit -1
         condition: "\$[/javascript ( (myParent.callbackType != 'custom') && ( ( (myParent.callbackType == 'job') ? myJob.ec_callback_response : ( (myParent.callbackType == 'flow') ? myFlowRuntime.ec_callback_response : myPipelineRuntime.ec_callback_response ) )  != 'completed' ) ) ]",
         errorHandling: 'abortProcedure',
         exclusiveMode: 'none',
-        precondition: "\$[/javascript ( (myParent.callbackType != 'custom') && ( (myParent.callbackType == 'job') ? myJob.ec_callback_response : ( (myParent.callbackType == 'flow') ? myFlowRuntime.ec_callback_response : myPipelineRuntime.ec_callback_response ) ) ) ]",
+        precondition: "\$[/javascript ( (myParent.callbackType == 'custom') || ( (myParent.callbackType == 'job') ? myJob.ec_callback_response : ( (myParent.callbackType == 'flow') ? myFlowRuntime.ec_callback_response : myPipelineRuntime.ec_callback_response ) ) ) ]",
         releaseMode: 'none',
         timeLimitUnits: 'minutes'    
 

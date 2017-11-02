@@ -111,8 +111,8 @@
   <value>job</value>
 </formElement>
 <formElement>
-  <documentation>Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</documentation>
-  <label>Event array in JSON format, must contain at least 1 member:</label>
+  <documentation>Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.</documentation>
+  <label>Event array in JSON format for custom callback:</label>
   <property>events</property>
   <required>0</required>
   <type>textarea</type>

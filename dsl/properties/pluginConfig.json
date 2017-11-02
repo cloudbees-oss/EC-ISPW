@@ -210,8 +210,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -314,8 +314,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -914,8 +914,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1058,8 +1058,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member.",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1201,8 +1201,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1378,8 +1378,8 @@
          },
          {
             "required" : "0",
-            "documentation" : "Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format, must contain at least 1 member",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
+            "label" : "Event array in JSON format for custom callback",
             "type" : "textarea",
             "property" : "events"
          }

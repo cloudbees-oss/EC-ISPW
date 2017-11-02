@@ -363,9 +363,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member. 
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Assignment
     stepName: Deploy assignment
@@ -461,9 +461,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Promote Assignment
     stepName: Promote assignment
@@ -559,9 +559,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member.
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Create Release
     stepName: Create release
@@ -756,9 +756,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Deploy Release
     stepName: Deploy release
@@ -855,9 +855,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Regress Release
     stepName: Regress release
@@ -952,9 +952,9 @@ procedures:
         value: job
       - property: events
         type: textarea
-        label: Event array in JSON format, must contain at least 1 member
+        label: Event array in JSON format for custom callback
         required: 0
-        documentation: Event array, must contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.
 
   - name: Get Set Information
     stepName: Get set information
