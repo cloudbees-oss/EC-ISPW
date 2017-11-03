@@ -17,36 +17,20 @@ def pluginDir = getProperty("/projects/$pluginName/pluginDir").value
 // ** steps with attached credentials
 def stepsWithAttachedCredentials = [
   [procedureName: 'Create Assignment', stepName: 'Create assignment'],
-  [procedureName: 'Create Assignment', stepName: 'create assignment'],
   [procedureName: 'Create Release', stepName: 'Create release'],
-  [procedureName: 'Create Release', stepName: 'create release'],
   [procedureName: 'Deploy Assignment', stepName: 'Deploy assignment'],
-  [procedureName: 'Deploy Assignment', stepName: 'deploy assignment'],
   [procedureName: 'Deploy Release', stepName: 'Deploy release'],
-  [procedureName: 'Deploy Release', stepName: 'deploy release'],
-  [procedureName: 'Display Task Information', stepName: 'Display task information'],
   [procedureName: 'Generate Tasks in Assignment', stepName: 'Generate tasks in assignment'],
-  [procedureName: 'Generate Tasks in Assignment', stepName: 'generate tasks in assignment'],
-  [procedureName: 'Get Assignment Information', stepName: 'Get Assignment Information'],
   [procedureName: 'Get Assignment Information', stepName: 'Get assignment information'],
-  [procedureName: 'Get Assignment Task Information', stepName: 'Get Assignment Task Information'],
   [procedureName: 'Get Assignment Task Information', stepName: 'Get assignment task information'],
-  [procedureName: 'Get Assignment Task List', stepName: 'Get Assignment Task List'],
   [procedureName: 'Get Assignment Task List', stepName: 'Get assignment task list'],
   [procedureName: 'Get Release Information', stepName: 'Get release information'],
-  [procedureName: 'Get Release Information', stepName: 'get release information'],
   [procedureName: 'Get Set Information', stepName: 'Get set information'],
-  [procedureName: 'Get Set Information', stepName: 'get set information'],
   [procedureName: 'Get Set Task List', stepName: 'Get set task list'],
-  [procedureName: 'Get Set Task List', stepName: 'get set task list'],
-  [procedureName: 'Load Task', stepName: 'Load Task'],
   [procedureName: 'Load Task', stepName: 'Load task'],
   [procedureName: 'Promote Assignment', stepName: 'Promote assignment'],
-  [procedureName: 'Promote Assignment', stepName: 'promote assignment'],
   [procedureName: 'Promote Release', stepName: 'Promote release'],
-  [procedureName: 'Promote Release', stepName: 'promote release'],
-  [procedureName: 'Regress Release', stepName: 'Regress release'],
-  [procedureName: 'Regress Release', stepName: 'regress release']
+  [procedureName: 'Regress Release', stepName: 'Regress release']
 ]
 // ** end steps with attached credentials
 
@@ -67,7 +51,9 @@ project pluginName, {
 	// callback events list properties
 	property 'ec_callback_flow', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myFlowRuntime/id]&value=terminated" }]'
 	property 'ec_callback_job', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobId=$[/myJob/jobId]&value=terminated" }]'
+	property 'ec_callback_jobStep', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobStepId=$[/myParent/jobStepId]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobStepId=$[/myParent/jobStepId]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?jobStepId=$[/myParent/jobStepId]&value=terminated" }]'
 	property 'ec_callback_pipeline', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?flowRuntimeId=$[/myPipelineRuntime/id]&value=terminated" }]'
+	property 'ec_callback_workflow', value: '[{ "name":"completed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?workflowId=$[/myWorkflow/workflowId]&value=completed" }, { "name":"failed", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?workflowId=$[/myWorkflow/workflowId]&value=failed" }, { "name":"terminated", "method":"PUT", "url":"https://$[/server/hostIP]:8443/rest/v1.0/properties/ec_callback_response?workflowId=$[/myWorkflow/workflowId]&value=terminated" }]'
 
 }
 

@@ -183,35 +183,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -224,7 +199,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -287,35 +261,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -326,7 +275,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -887,35 +835,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -928,7 +851,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1031,35 +953,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1072,7 +969,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1174,35 +1070,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1215,7 +1086,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
@@ -1351,35 +1221,10 @@
             "property" : "callbackCredential"
          },
          {
-            "required" : "1",
-            "value" : "job",
-            "documentation" : "The type of callback to use: this determines where the propery used for the callback lives. Set this to the appropriate value for the context in which you are calling the procedure, or else set it to 'custom' and supply a JSON event array.",
-            "option" : [
-               {
-                  "value" : "job",
-                  "name" : "job"
-               },
-               {
-                  "value" : "flow",
-                  "name" : "flow"
-               },
-               {
-                  "value" : "pipeline",
-                  "name" : "pipeline"
-               },
-               {
-                  "value" : "custom",
-                  "name" : "custom"
-               }
-            ],
-            "type" : "select",
-            "label" : "Callback Type",
-            "property" : "callbackType"
-         },
-         {
             "required" : "0",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described at ISPW API Guide. Ignored unless Callback Type is 'custom'.",
-            "label" : "Event array in JSON format for custom callback",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
             "type" : "textarea",
             "property" : "events"
          }
@@ -1392,7 +1237,6 @@
          "runtimeConfiguration",
          "httpHeaders",
          "callbackCredential",
-         "callbackType",
          "events"
       ],
       "hasConfig" : "true",
