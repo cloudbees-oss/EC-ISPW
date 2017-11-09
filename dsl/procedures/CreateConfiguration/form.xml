@@ -35,24 +35,26 @@
         <label>ISPW Instance URL:</label>
         <property>instance</property>
         <required>1</required>
-        <documentation>ISPW Instance URL</documentation>
+        <value>http://[server]:[port]</value>
+        <documentation>ISPW Instance URL. This should match the http://[server]:[port] (with no trailing slash) portion of the URL of your ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/compuware.jsp</documentation>
     </formElement>
     <formElement>
         <type>entry</type>
         <label>ISPW Instance SRID</label>
         <property>srid</property>
         <required>1</required>
-        <documentation>ISPW Instance SRID</documentation>
+        <value>ISPW</value>
+        <documentation>The SRID ("SeRver IDentifier") is a 4-character value that specifies which ISPW server instance you want to connect to. It is required even if you only have one ISPW server instance. Consult the administrator of your ISPW server for this value. (The SRID's default value is 'ISPW'.)</documentation>
     </formElement>
     <formElement>
         <type>credential</type>
-        <label>Token:</label>
+        <label>Access Token:</label>
         <property>credential</property>
         <required>1</required>
-        <documentation>Use ISPW-provided access token as Password</documentation>
         <attachedAsParameterToStep>createAndAttachCredential</attachedAsParameterToStep>
         <userNameLabel>ISPW User Name:</userNameLabel>
-        <passwordLabel>API access token:</passwordLabel>
-        <retypePasswordLabel>Retype API access token:</retypePasswordLabel>
+        <passwordLabel>CES Personal Access Token:</passwordLabel>
+        <retypePasswordLabel>Retype CES Personal Access Token:</retypePasswordLabel>
+        <documentation>The CES Personal Access Token can be obtained from the ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/jsp/settings/security.jsp under the tab "Personal Access Tokens". Its value is a hex-encoded guid. (The ISPW User Name field is currently unused, but cannot be left blank.)</documentation>
     </formElement>
 </editor>

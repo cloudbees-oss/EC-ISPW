@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->November 3, 2017<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->November 9, 2017<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -92,7 +92,7 @@
                     ISPW Instance URL:
                 </td>
                 <td>
-                    ISPW Instance URL
+                    ISPW Instance URL. This should match the http://[server]:[port] (with no trailing slash) portion of the URL of your ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/compuware.jsp
                 </td>
             </tr>
             <tr>
@@ -100,15 +100,15 @@
                     ISPW Instance SRID
                 </td>
                 <td>
-                    ISPW Instance SRID
+                    The SRID ("SeRver IDentifier") is a 4-character value that specifies which ISPW server instance you want to connect to. It is required even if you only have one ISPW server instance. Consult the administrator of your ISPW server for this value. (The SRID's default value is 'ISPW'.)
                 </td>
             </tr>
             <tr>
                 <td class="required">
-                    Token:
+                    Access Token:
                 </td>
                 <td>
-                    Use ISPW-provided access token as Password
+                    The CES Personal Access Token can be obtained from the ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/jsp/settings/security.jsp under the tab "Personal Access Tokens". Its value is a hex-encoded guid. (The ISPW User Name field is currently unused, but cannot be left blank.)
                 </td>
             </tr>
         </tbody>
