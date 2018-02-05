@@ -9,7 +9,7 @@ use JSON;
 
 
 sub step_display_task_information {
-    my ($self) = @_;
+    my ($self, $containerType) = @_;
 
     my $parameters = $self->get_params_as_hashref(qw/
         config
@@ -43,10 +43,10 @@ sub step_display_task_information {
     my $result = [];
     for my $task (@$tasks) {
         my $task_id = $task->{taskId};
-        my $assignment = $task->{assignment};
+        my $container = ($containerType eq 'release') ? $task->{container} : task->{assignment};
 
         my $uri = URI->new($config->{instance});
-        $uri->path_segments('ispw', $srid, 'assignments', $assignment, 'tasks', $task_id);
+        $uri->path_segments('ispw', $srid, (($containerType eq 'release') ? 'assignments' : 'releases'), $container, 'tasks', $task_id);
         my $request = HTTP::Request->new(GET => $uri);
         $request->header('Authorization' => $password);
 
@@ -66,7 +66,7 @@ sub step_display_task_information {
         }
     }
 
-    $self->_generate_report($result);
+    $self->_generate_report($result, $containerType);
     $self->_save_result($parameters->{resultPropertySheet}, $parameters->{resultFormat}, {tasks => $result});
 }
 
@@ -96,9 +96,9 @@ sub _save_result {
 
 
 sub _generate_report {
-    my ($self, $result) = @_;
+    my ($self, $result, $containerType) = @_;
 
-    my $template_property = '/plugins/@PLUGIN_KEY@/project/resources/taskListReport';
+    my $template_property = '/plugins/@PLUGIN_KEY@/project/resources/' . $containerType . 'TaskListReport';
     my $params = {tasks => $result};
     $self->logger->trace($params);
     my $report = $self->render_template_from_property($template_property, $params, mt => 1);

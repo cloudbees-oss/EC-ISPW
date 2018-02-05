@@ -36,9 +36,21 @@ Deploys an Assignment.
 
 Promotes an Assignment.
 
+## Regress Assignment
+
+Regresses an Assignment.
+
 ## Create Release
 
 Creates a Release.
+
+## Get Release Task List
+
+Retrieves the Task list for a Release.
+
+## Get Release Task Information
+
+Retrieves information about a Task in a Release.
 
 ## Get Release Information
 
@@ -47,6 +59,14 @@ Retrieves information about a Release.
 ## Promote Release
 
 Promotes a Release.
+
+## Generate Tasks in Release
+
+Runs generate for the Tasks in Release.
+
+## Get Release Task Generate Listing
+
+Retrieves a generate listing for a Task in a Release.
 
 ## Deploy Release
 
@@ -63,6 +83,14 @@ Retrieves information about a Set.
 ## Get Set Task List
 
 Retrieves the Task list for a Set.
+
+## Get Set Deployment Information
+
+Retrieves deployment information about a Set.
+
+## Fallback Set
+
+Fallbacks a Set from a previous deployment.
 
 
 

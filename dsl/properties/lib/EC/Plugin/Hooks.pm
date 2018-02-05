@@ -86,9 +86,11 @@ sub define_hooks {
     $self->define_hook('*', 'request', \&add_authentication);
     $self->define_hook('*', 'response', \&process_response);
     $self->define_hook('Get assignment task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
+    $self->define_hook('Get release task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
     $self->define_hook('Get set task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
     $self->define_hook('Create release', 'parameters', \&check_create_release);
     $self->define_hook('Get assignment task information', 'parsed', \&create_task_info_report);
+    $self->define_hook('Get release task information', 'parsed', \&create_task_info_report);
 }
 
 sub process_response {

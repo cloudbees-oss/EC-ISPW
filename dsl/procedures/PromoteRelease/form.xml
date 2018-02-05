@@ -70,7 +70,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
+  <documentation>Optional, global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
   <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>
   <required>0</required>
@@ -79,7 +79,7 @@
 </formElement>
 <formElement>
   <attachedAsParameterToStep>Promote release</attachedAsParameterToStep>
-  <documentation>Optional, global credentials used for all callbacks.</documentation>
+  <documentation>Optional, global overide credentials used for all callbacks.</documentation>
   <label>Global Credentials for Callbacks:</label>
   <property>callbackCredential</property>
   <required>0</required>

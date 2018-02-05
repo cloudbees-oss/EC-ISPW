@@ -79,8 +79,8 @@
 </formElement>
 <formElement>
   <attachedAsParameterToStep>Deploy assignment</attachedAsParameterToStep>
-  <documentation>Optional, global credentials used for all callbacks.</documentation>
-  <label>Override Credentials for Callbacks:</label>
+  <documentation>Optional, global overide credentials used for all callbacks.</documentation>
+  <label>Global Credentials for Callbacks:</label>
   <property>callbackCredential</property>
   <required>0</required>
   <type>credential</type>
