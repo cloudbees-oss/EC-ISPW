@@ -137,10 +137,12 @@ sub add_nested_elements {
         {name => $key, value => $value}
     } @lines;
 
-    $retval->{httpHeaders} = \@httpHeaders;
-
-    $retval->{credentials} = { };
+    if (scalar(@httpHeaders) > 0) {
+        $retval->{httpHeaders} = \@httpHeaders;
+    }
+    
     if ($params->{callbackCredentialUserName} && $params->{callbackCredentialPassword}) {
+        $retval->{credentials} = { };
         $retval->{credentials}->{username} = $params->{callbackCredentialUserName};
         $retval->{credentials}->{password} = $params->{callbackCredentialPassword};
     }
