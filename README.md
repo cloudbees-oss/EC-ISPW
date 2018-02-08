@@ -36,10 +36,6 @@ Promotes an Assignment.
 
 Deploys an Assignment.
 
-## Regress Assignment
-
-Regresses an Assignment.
-
 ## Create Release
 
 Creates a Release.
@@ -60,10 +56,6 @@ Retrieves information about a Release.
 
 Runs generate for the Tasks in Release.
 
-## Get Release Task Generate Listing
-
-Retrieves a generate listing for a Task in a Release.
-
 ## Promote Release
 
 Promotes a Release.
@@ -83,14 +75,6 @@ Retrieves information about a Set.
 ## Get Set Task List
 
 Retrieves the Task list for a Set.
-
-## Get Set Deployment Information
-
-Retrieves deployment information about a Set.
-
-## Fallback Set
-
-Fallbacks a Set from a previous deployment.
 
 
 

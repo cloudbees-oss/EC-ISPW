@@ -21,23 +21,19 @@ def stepsWithAttachedCredentials = [
   [procedureName: 'Deploy Assignment', stepName: 'Deploy assignment'],
   [procedureName: 'Deploy Release', stepName: 'Deploy release'],
   [procedureName: 'Display Task Information', stepName: 'Display task information'],
-  [procedureName: 'Fallback Set', stepName: 'Fallback set'],
   [procedureName: 'Generate Tasks in Assignment', stepName: 'Generate tasks in assignment'],
   [procedureName: 'Generate Tasks in Release', stepName: 'Generate tasks in release'],
   [procedureName: 'Get Assignment Information', stepName: 'Get assignment information'],
   [procedureName: 'Get Assignment Task Information', stepName: 'Get assignment task information'],
   [procedureName: 'Get Assignment Task List', stepName: 'Get assignment task list'],
   [procedureName: 'Get Release Information', stepName: 'Get release information'],
-  [procedureName: 'Get Release Task Generate Listing', stepName: 'Get release task generate listing'],
   [procedureName: 'Get Release Task Information', stepName: 'Get release task information'],
   [procedureName: 'Get Release Task List', stepName: 'Get release task list'],
-  [procedureName: 'Get Set Deployment Information', stepName: 'Get set deployment information'],
   [procedureName: 'Get Set Information', stepName: 'Get set information'],
   [procedureName: 'Get Set Task List', stepName: 'Get set task list'],
   [procedureName: 'Load Task', stepName: 'Load task'],
   [procedureName: 'Promote Assignment', stepName: 'Promote assignment'],
   [procedureName: 'Promote Release', stepName: 'Promote release'],
-  [procedureName: 'Regress Assignment', stepName: 'Regress assignment'],
   [procedureName: 'Regress Release', stepName: 'Regress release']
 ]
 // ** end steps with attached credentials

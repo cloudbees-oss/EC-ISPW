@@ -603,115 +603,6 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks",
       "attachCredentials" : "true"
    },
-   "Fallback set" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/setDeploymentInfo"
-      },
-      "name" : "Fallback Set",
-      "description" : "Fallbacks a Set from a previous deployment.",
-      "stepName" : "Fallback set",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Set ID",
-            "label" : "Set ID",
-            "type" : "entry",
-            "property" : "setId"
-         },
-         {
-            "required" : "0",
-            "value" : "S",
-            "in" : "body",
-            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
-            "option" : [
-               {
-                  "value" : "S",
-                  "name" : "Standard (S)"
-               },
-               {
-                  "value" : "I",
-                  "name" : "Incidental (I)"
-               },
-               {
-                  "value" : "E",
-                  "name" : "Emergency (E)"
-               }
-            ],
-            "label" : "Change Type",
-            "type" : "select",
-            "property" : "changeType"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
-            "option" : [
-               {
-                  "value" : "I",
-                  "name" : "Immediate (I)"
-               },
-               {
-                  "value" : "H",
-                  "name" : "Hold (H)"
-               }
-            ],
-            "label" : "Execution Status",
-            "type" : "select",
-            "property" : "executionStatus"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global overide credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "0",
-            "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "setId",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}/tasks/fallback",
-      "attachCredentials" : "true"
-   },
    "Create assignment" : {
       "resultProperty" : {
          "show" : "true",
@@ -879,124 +770,6 @@
       "basicAuth" : "false",
       "method" : "GET",
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/",
-      "attachCredentials" : "true"
-   },
-   "Regress assignment" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/promoteResult"
-      },
-      "name" : "Regress Assignment",
-      "description" : "Regresses an Assignment.",
-      "stepName" : "Regress assignment",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Assignment ID",
-            "label" : "Assignment ID",
-            "type" : "entry",
-            "property" : "assignmentId"
-         },
-         {
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "Level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         },
-         {
-            "required" : "0",
-            "value" : "S",
-            "in" : "body",
-            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
-            "option" : [
-               {
-                  "value" : "S",
-                  "name" : "Standard (S)"
-               },
-               {
-                  "value" : "I",
-                  "name" : "Incidental (I)"
-               },
-               {
-                  "value" : "E",
-                  "name" : "Emergency (E)"
-               }
-            ],
-            "label" : "Change Type",
-            "type" : "select",
-            "property" : "changeType"
-         },
-         {
-            "required" : "0",
-            "in" : "body",
-            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
-            "option" : [
-               {
-                  "value" : "I",
-                  "name" : "Immediate (I)"
-               },
-               {
-                  "value" : "H",
-                  "name" : "Hold (H)"
-               }
-            ],
-            "label" : "Execution Status",
-            "type" : "select",
-            "property" : "executionStatus"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global overide credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "0",
-            "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "assignmentId",
-         "level",
-         "changeType",
-         "executionStatus",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/regress",
       "attachCredentials" : "true"
    },
    "Promote release" : {
@@ -1377,6 +1150,47 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/promote",
       "attachCredentials" : "true"
    },
+   "Get release task list" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/releaseTasks"
+      },
+      "name" : "Get Release Task List",
+      "description" : "Retrieves the Task list for a Release.",
+      "stepName" : "Get release task list",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "true",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "required" : "0",
+            "in" : "query",
+            "documentation" : "Level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         }
+      ],
+      "fields" : [
+         "releaseId",
+         "level"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "GET",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks",
+      "attachCredentials" : "true"
+   },
    "Regress release" : {
       "resultProperty" : {
          "show" : "true",
@@ -1492,79 +1306,6 @@
       "basicAuth" : "false",
       "method" : "POST",
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/regress",
-      "attachCredentials" : "true"
-   },
-   "Get release task list" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/releaseTasks"
-      },
-      "name" : "Get Release Task List",
-      "description" : "Retrieves the Task list for a Release.",
-      "stepName" : "Get release task list",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "true",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         },
-         {
-            "required" : "0",
-            "in" : "query",
-            "documentation" : "Level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         }
-      ],
-      "fields" : [
-         "releaseId",
-         "level"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks",
-      "attachCredentials" : "true"
-   },
-   "Get set deployment information" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/setDeploymentInfo"
-      },
-      "name" : "Get Set Deployment Information",
-      "description" : "Retrieves deployment information about a Set.",
-      "stepName" : "Get set deployment information",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Set ID",
-            "label" : "Set ID",
-            "type" : "entry",
-            "property" : "setId"
-         }
-      ],
-      "fields" : [
-         "setId"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/sets/#{setId}/deployment",
       "attachCredentials" : "true"
    },
    "Get set task list" : {
@@ -1734,46 +1475,6 @@
       "basicAuth" : "false",
       "method" : "POST",
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/deploy",
-      "attachCredentials" : "true"
-   },
-   "Get release task generate listing" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/releaseTaskGenerateListing"
-      },
-      "name" : "Get Release Task Generate Listing",
-      "description" : "Retrieves a generate listing for a Task in a Release.",
-      "stepName" : "Get release task generate listing",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "true",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         },
-         {
-            "required" : "1",
-            "documentation" : "Task Id.",
-            "label" : "Task Id",
-            "type" : "entry",
-            "property" : "taskId"
-         }
-      ],
-      "fields" : [
-         "releaseId",
-         "taskId"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "GET",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/#{taskId}/listing",
       "attachCredentials" : "true"
    }
 }

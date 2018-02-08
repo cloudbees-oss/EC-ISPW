@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->February 7, 2018<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->February 8, 2018<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -30,20 +30,16 @@
 <li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
 <li><a href="#PromoteAssignment">Promote Assignment</a></li>
 <li><a href="#DeployAssignment">Deploy Assignment</a></li>
-<li><a href="#RegressAssignment">Regress Assignment</a></li>
 <li><a href="#CreateRelease">Create Release</a></li>
 <li><a href="#GetReleaseTaskList">Get Release Task List</a></li>
 <li><a href="#GetReleaseTaskInformation">Get Release Task Information</a></li>
 <li><a href="#GetReleaseInformation">Get Release Information</a></li>
 <li><a href="#GenerateTasksinRelease">Generate Tasks in Release</a></li>
-<li><a href="#GetReleaseTaskGenerateListing">Get Release Task Generate Listing</a></li>
 <li><a href="#PromoteRelease">Promote Release</a></li>
 <li><a href="#DeployRelease">Deploy Release</a></li>
 <li><a href="#RegressRelease">Regress Release</a></li>
 <li><a href="#GetSetInformation">Get Set Information</a></li>
-<li><a href="#GetSetTaskList">Get Set Task List</a></li>
-<li><a href="#GetSetDeploymentInformation">Get Set Deployment Information</a></li>
-<li><a href="#FallbackSet">Fallback Set</a></li><!-- TOC END -->
+<li><a href="#GetSetTaskList">Get Set Task List</a></li><!-- TOC END -->
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -785,57 +781,6 @@
             </table>
         <!-- DeployAssignment END -->
             </div>
-            <div id="RegressAssignment">
-                <a name="RegressAssignment" id="RegressAssignment" />
-                <!-- RegressAssignment METADATA BEGIN -->
-            <h3>Regress Assignment</h3>
-            <p>Regresses an Assignment.</p>
-        <!-- RegressAssignment METADATA END -->
-                <!-- RegressAssignment BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Assignment ID</td>
-                    <td>Assignment ID</td>
-                </tr>
-                <tr>
-                    <td class="required">Level</td>
-                    <td>Level.</td>
-                </tr>
-                <tr>
-                    <td>Change Type</td>
-                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
-                </tr>
-                <tr>
-                    <td>Execution Status</td>
-                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
-                </tr>
-                <tr>
-                    <td class="required">Runtime Configuration</td>
-                    <td>Required, see ISPW administrator for valid values</td>
-                </tr>
-                <tr>
-                    <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
-                </tr>
-                <tr>
-                    <td>Global Credentials for Callbacks</td>
-                    <td>Optional, global overide credentials used for all callbacks</td>
-                </tr>
-                <tr>
-                    <td>Event array in JSON format for asynchronous callback</td>
-                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- RegressAssignment END -->
-            </div>
             <div id="GetReleaseTaskList">
                 <a name="GetReleaseTaskList" id="GetReleaseTaskList" />
                 <!-- GetReleaseTaskList METADATA BEGIN -->
@@ -932,103 +877,6 @@
                  </tbody>
             </table>
         <!-- GenerateTasksinRelease END -->
-            </div>
-            <div id="GetReleaseTaskGenerateListing">
-                <a name="GetReleaseTaskGenerateListing" id="GetReleaseTaskGenerateListing" />
-                <!-- GetReleaseTaskGenerateListing METADATA BEGIN -->
-            <h3>Get Release Task Generate Listing</h3>
-            <p>Retrieves a generate listing for a Task in a Release.</p>
-        <!-- GetReleaseTaskGenerateListing METADATA END -->
-                <!-- GetReleaseTaskGenerateListing BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Release ID</td>
-                    <td>Release ID</td>
-                </tr>
-                <tr>
-                    <td class="required">Task Id</td>
-                    <td>Task Id.</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- GetReleaseTaskGenerateListing END -->
-            </div>
-            <div id="GetSetDeploymentInformation">
-                <a name="GetSetDeploymentInformation" id="GetSetDeploymentInformation" />
-                <!-- GetSetDeploymentInformation METADATA BEGIN -->
-            <h3>Get Set Deployment Information</h3>
-            <p>Retrieves deployment information about a Set.</p>
-        <!-- GetSetDeploymentInformation METADATA END -->
-                <!-- GetSetDeploymentInformation BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Set ID</td>
-                    <td>Set ID</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- GetSetDeploymentInformation END -->
-            </div>
-            <div id="FallbackSet">
-                <a name="FallbackSet" id="FallbackSet" />
-                <!-- FallbackSet METADATA BEGIN -->
-            <h3>Fallback Set</h3>
-            <p>Fallbacks a Set from a previous deployment.</p>
-        <!-- FallbackSet METADATA END -->
-                <!-- FallbackSet BEGIN -->
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>Parameter</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="required">Set ID</td>
-                    <td>Set ID</td>
-                </tr>
-                <tr>
-                    <td>Change Type</td>
-                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
-                </tr>
-                <tr>
-                    <td>Execution Status</td>
-                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
-                </tr>
-                <tr>
-                    <td class="required">Runtime Configuration</td>
-                    <td>Required, see ISPW administrator for valid values</td>
-                </tr>
-                <tr>
-                    <td>HTTP Headers in format: "Header=Value"</td>
-                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
-                </tr>
-                <tr>
-                    <td>Global Credentials for Callbacks</td>
-                    <td>Optional, global overide credentials used for all callbacks</td>
-                </tr>
-                <tr>
-                    <td>Event array in JSON format for asynchronous callback</td>
-                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
-                </tr>
-                 </tbody>
-            </table>
-        <!-- FallbackSet END -->
             </div>
 <!-- PROCEDURES END -->
     </div>
