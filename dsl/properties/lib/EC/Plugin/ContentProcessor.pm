@@ -97,10 +97,13 @@ sub define_processors {
 
     my @steps_with_nested_elements = (
         'Deploy assignment',
-        'Deploy release',
+        'Deploy release',        
+        'Fallback set',
         'Generate tasks in assignment',
+        'Generate tasks in release',
         'Promote assignment',
         'Promote release',
+        'Regress assignment',
         'Regress release',
     );
 
@@ -137,10 +140,12 @@ sub add_nested_elements {
         {name => $key, value => $value}
     } @lines;
 
-    $retval->{httpHeaders} = \@httpHeaders;
-
-    $retval->{credentials} = { };
+    if (scalar(@httpHeaders) > 0) {
+        $retval->{httpHeaders} = \@httpHeaders;
+    }
+    
     if ($params->{callbackCredentialUserName} && $params->{callbackCredentialPassword}) {
+        $retval->{credentials} = { };
         $retval->{credentials}->{username} = $params->{callbackCredentialUserName};
         $retval->{credentials}->{password} = $params->{callbackCredentialPassword};
     }

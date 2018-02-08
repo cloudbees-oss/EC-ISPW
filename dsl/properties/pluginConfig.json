@@ -170,6 +170,22 @@
          },
          {
             "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.",
+            "label" : "DpEnvLst",
+            "type" : "entry",
+            "property" : "dpenvlst"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, allows you to specify a specific System for the Deploy.",
+            "label" : "System",
+            "type" : "entry",
+            "property" : "system"
+         },
+         {
+            "required" : "0",
             "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
@@ -197,6 +213,8 @@
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
+         "dpenvlst",
+         "system",
          "httpHeaders",
          "callbackCredential",
          "events"
@@ -247,6 +265,18 @@
             "property" : "runtimeConfiguration"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.",
+            "type" : "checkbox",
+            "label" : "Auto-Deploy",
+            "property" : "autoDeploy"
+         },
+         {
             "required" : "0",
             "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
@@ -273,6 +303,7 @@
          "assignmentId",
          "level",
          "runtimeConfiguration",
+         "autoDeploy",
          "httpHeaders",
          "callbackCredential",
          "events"
@@ -280,7 +311,7 @@
       "hasConfig" : "true",
       "basicAuth" : "false",
       "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generate",
       "attachCredentials" : "true"
    },
    "Get assignment task information" : {
@@ -747,18 +778,18 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Ref Number.",
-            "label" : "Ref Number",
+            "documentation" : "Reference Number.",
+            "label" : "Reference Number",
             "type" : "entry",
-            "property" : "refNumber"
+            "property" : "referenceNumber"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Release.",
-            "label" : "Release",
+            "documentation" : "Release Id.",
+            "label" : "Release Id",
             "type" : "entry",
-            "property" : "release"
+            "property" : "releaseId"
          },
          {
             "required" : "0",
@@ -776,8 +807,8 @@
          "description",
          "_owner",
          "assignmentPrefix",
-         "refNumber",
-         "release",
+         "referenceNumber",
+         "releaseId",
          "userTag"
       ],
       "hasConfig" : "true",
@@ -968,82 +999,6 @@
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/regress",
       "attachCredentials" : "true"
    },
-   "Generate tasks in release" : {
-      "resultProperty" : {
-         "show" : "true",
-         "format" : [
-            "json",
-            "propertySheet"
-         ],
-         "default" : "/myJob/generateReleaseTasks"
-      },
-      "name" : "Generate Tasks in Release",
-      "description" : "Runs generate for the Tasks in Release.",
-      "stepName" : "Generate tasks in release",
-      "bodyContentType" : "json",
-      "canSkipAuth" : "false",
-      "parameters" : [
-         {
-            "required" : "1",
-            "documentation" : "Release ID",
-            "label" : "Release ID",
-            "type" : "entry",
-            "property" : "releaseId"
-         },
-         {
-            "noEmptyString" : "true",
-            "required" : "1",
-            "in" : "query",
-            "documentation" : "Level.",
-            "label" : "Level",
-            "type" : "entry",
-            "property" : "level"
-         },
-         {
-            "required" : "1",
-            "in" : "body",
-            "documentation" : "Required, see ISPW administrator for valid values.",
-            "label" : "Runtime Configuration",
-            "type" : "entry",
-            "property" : "runtimeConfiguration"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
-            "label" : "HTTP Headers in format: \"Header=Value\"",
-            "type" : "textarea",
-            "property" : "httpHeaders"
-         },
-         {
-            "required" : "0",
-            "documentation" : "Optional, global overide credentials used for all callbacks",
-            "type" : "credential",
-            "label" : "Global Credentials for Callbacks",
-            "property" : "callbackCredential"
-         },
-         {
-            "required" : "0",
-            "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
-            "type" : "textarea",
-            "property" : "events"
-         }
-      ],
-      "fields" : [
-         "releaseId",
-         "level",
-         "runtimeConfiguration",
-         "httpHeaders",
-         "callbackCredential",
-         "events"
-      ],
-      "hasConfig" : "true",
-      "basicAuth" : "false",
-      "method" : "POST",
-      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/generate",
-      "attachCredentials" : "true"
-   },
    "Promote release" : {
       "resultProperty" : {
          "show" : "true",
@@ -1124,6 +1079,18 @@
             "property" : "runtimeConfiguration"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.",
+            "type" : "checkbox",
+            "label" : "Auto-Deploy",
+            "property" : "autoDeploy"
+         },
+         {
             "required" : "0",
             "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
@@ -1152,6 +1119,7 @@
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
+         "autoDeploy",
          "httpHeaders",
          "callbackCredential",
          "events"
@@ -1160,6 +1128,82 @@
       "basicAuth" : "false",
       "method" : "POST",
       "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote",
+      "attachCredentials" : "true"
+   },
+   "Generate tasks in release" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/generateReleaseTasks"
+      },
+      "name" : "Generate Tasks in Release",
+      "description" : "Runs generate for the Tasks in Release.",
+      "stepName" : "Generate tasks in release",
+      "bodyContentType" : "json",
+      "canSkipAuth" : "false",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "Release ID",
+            "label" : "Release ID",
+            "type" : "entry",
+            "property" : "releaseId"
+         },
+         {
+            "noEmptyString" : "true",
+            "required" : "1",
+            "in" : "query",
+            "documentation" : "Level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "1",
+            "in" : "body",
+            "documentation" : "Required, see ISPW administrator for valid values.",
+            "label" : "Runtime Configuration",
+            "type" : "entry",
+            "property" : "runtimeConfiguration"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
+            "label" : "HTTP Headers in format: \"Header=Value\"",
+            "type" : "textarea",
+            "property" : "httpHeaders"
+         },
+         {
+            "required" : "0",
+            "documentation" : "Optional, global overide credentials used for all callbacks",
+            "type" : "credential",
+            "label" : "Global Credentials for Callbacks",
+            "property" : "callbackCredential"
+         },
+         {
+            "required" : "0",
+            "expansionDeferred" : "true",
+            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event array in JSON format for asynchronous callback",
+            "type" : "textarea",
+            "property" : "events"
+         }
+      ],
+      "fields" : [
+         "releaseId",
+         "level",
+         "runtimeConfiguration",
+         "httpHeaders",
+         "callbackCredential",
+         "events"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "false",
+      "method" : "POST",
+      "endpoint" : "#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/generate",
       "attachCredentials" : "true"
    },
    "Get release task information" : {
@@ -1282,6 +1326,18 @@
             "property" : "runtimeConfiguration"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.",
+            "type" : "checkbox",
+            "label" : "Auto-Deploy",
+            "property" : "autoDeploy"
+         },
+         {
             "required" : "0",
             "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
@@ -1310,6 +1366,7 @@
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
+         "autoDeploy",
          "httpHeaders",
          "callbackCredential",
          "events"
@@ -1624,6 +1681,22 @@
          },
          {
             "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.",
+            "label" : "DpEnvLst",
+            "type" : "entry",
+            "property" : "dpenvlst"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, allows you to specify a specific System for the Deploy.",
+            "label" : "System",
+            "type" : "entry",
+            "property" : "system"
+         },
+         {
+            "required" : "0",
             "documentation" : "Optional, global custom headers used for all callbacks. Use \"Header=Value\" format.",
             "label" : "HTTP Headers in format: \"Header=Value\"",
             "type" : "textarea",
@@ -1651,6 +1724,8 @@
          "changeType",
          "executionStatus",
          "runtimeConfiguration",
+         "dpenvlst",
+         "system",
          "httpHeaders",
          "callbackCredential",
          "events"

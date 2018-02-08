@@ -72,18 +72,18 @@ procedures:
         required: 1
         in: body
         documentation: Assignment Prefix.
-      - property: refNumber
+      - property: referenceNumber
         type: entry
-        label: Ref Number
+        label: Reference Number
         required: 0
         in: body
-        documentation: Ref Number.
-      - property: release
+        documentation: Reference Number.
+      - property: releaseId
         type: entry
-        label: Release
+        label: Release Id
         required: 0
         in: body
-        documentation: Release.
+        documentation: Release Id.
       - property: userTag
         type: entry
         label: User Tag
@@ -297,7 +297,7 @@ procedures:
   - name: Generate Tasks in Assignment
     stepName: Generate tasks in assignment
     description: Runs generate for the Tasks in Assignment.
-    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generations'
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/generate'
     #  #{{instance}} means that "instance" will be taken from config
     # #{repository} will be taken from the procedure parameters
     method: POST
@@ -337,90 +337,16 @@ procedures:
         required: 1
         in: body
         documentation: Required, see ISPW administrator for valid values.
-      - property: httpHeaders
-        type: textarea
-        label: HTTP Headers in format: "Header=Value"
+      - property: autoDeploy
+        type: checkbox
+        label: Auto-Deploy
         required: 0
-        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: callbackCredential
-        label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
-        required: 0
-        type: credential
-      - property: events
-        type: textarea
-        label: Event array in JSON format for asynchronous callback
-        required: 0
-        expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
-
-  - name: Deploy Assignment
-    stepName: Deploy assignment
-    description: Deploys an Assignment.
-    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
-    #  #{{instance}} means that "instance" will be taken from config
-    # #{assignmentId} will be taken from the procedure parameters
-    method: POST
-    # HTTP method
-    hasConfig: true
-     # a field for configuration name will be added to the form
-    attachCredentials: true
-     # credentials will be attached to the procedure
-    basicAuth: false
-     # credentials will be turned into basic auth header
-    canSkipAuth: false
-     # if no credentials found, the procedure won't fail, the request will be made without credentials
-    bodyContentType: json
-    # request body will be json-encoded and header Content-Type: application/json will be added
-    resultProperty:
-      show: true
-      format:
-        - json
-        - propertySheet
-      default: /myJob/deployResult
-    parameters:
-      - property: assignmentId
-        type: entry
-        label: Assignment ID
-        required: 1
-        documentation: Assignment ID
-      - property: level
-        type: entry
-        label: Level
-        documentation: Level.
-        in: query
-        required: 1
-      - property: changeType
-        type: select
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
         in: body
-        label: Change Type
-        required: 0
-        option:
-          - name: Standard (S)
-            value: S
-          - name: Incidental (I)
-            value: I
-          - name: Emergency (E)
-            value: E
-        value: S
-        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
-      - property: executionStatus
-        type: select
-        in: body
-        label: Execution Status
-        required: 0
-        option:
-          - name: Immediate (I)
-            value: I
-          - name: Hold (H)
-            value: H
-        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
-        type: entry
-        in: body
-        label: Runtime Configuration
-        required: 1
-        documentation: Required, see ISPW administrator for valid values
+        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -505,6 +431,112 @@ procedures:
         label: Runtime Configuration
         required: 1
         documentation: Required, see ISPW administrator for valid values
+      - property: autoDeploy
+        type: checkbox
+        label: Auto-Deploy
+        required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
+        in: body
+        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global overide credentials used for all callbacks
+        required: 0
+        type: credential
+      - property: events
+        type: textarea
+        label: Event array in JSON format for asynchronous callback
+        required: 0
+        expansionDeferred: true
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+
+  - name: Deploy Assignment
+    stepName: Deploy assignment
+    description: Deploys an Assignment.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/assignments/#{assignmentId}/tasks/deploy'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{assignmentId} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/deployResult
+    parameters:
+      - property: assignmentId
+        type: entry
+        label: Assignment ID
+        required: 1
+        documentation: Assignment ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Level.
+        in: query
+        required: 1
+      - property: changeType
+        type: select
+        in: body
+        label: Change Type
+        required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: select
+        in: body
+        label: Execution Status
+        required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
+      - property: dpenvlst
+        type: entry
+        in: body
+        label: DpEnvLst
+        required: 0
+        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+      - property: system
+        type: entry
+        in: body
+        label: System
+        required: 0
+        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -764,90 +796,6 @@ procedures:
         required: 1
         documentation: Release ID.
 
-  - name: Promote Release
-    stepName: Promote release
-    description: Promotes a Release.
-    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
-    #  #{{instance}} means that "instance" will be taken from config
-    # #{repository} will be taken from the procedure parameters
-    method: POST
-    # HTTP method
-    hasConfig: true
-     # a field for configuration name will be added to the form
-    attachCredentials: true
-     # credentials will be attached to the procedure
-    basicAuth: false
-     # credentials will be turned into basic auth header
-    canSkipAuth: false
-     # if no credentials found, the procedure won't fail, the request will be made without credentials
-    bodyContentType: json
-    # request body will be json-encoded and header Content-Type: application/json will be added
-    resultProperty:
-      show: true
-      format:
-        - json
-        - propertySheet
-      default: /myJob/promoteResult
-    parameters:
-      - property: releaseId
-        type: entry
-        label: Release ID
-        required: 1
-        documentation: Release ID
-      - property: level
-        type: entry
-        label: Level
-        documentation: Release level.
-        in: query
-        required: 1
-      - property: changeType
-        type: select
-        in: body
-        label: Change Type
-        required: 0
-        option:
-          - name: Standard (S)
-            value: S
-          - name: Incidental (I)
-            value: I
-          - name: Emergency (E)
-            value: E
-        value: S
-        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
-      - property: executionStatus
-        type: select
-        in: body
-        label: Execution Status
-        required: 0
-        option:
-          - name: Immediate (I)
-            value: I
-          - name: Hold (H)
-            value: H
-        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
-        type: entry
-        in: body
-        label: Runtime Configuration
-        required: 1
-        documentation: Required, see ISPW administrator for valid values
-      - property: httpHeaders
-        type: textarea
-        label: HTTP Headers in format: "Header=Value"
-        required: 0
-        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
-      - property: callbackCredential
-        label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
-        required: 0
-        type: credential
-      - property: events
-        type: textarea
-        label: Event array in JSON format for asynchronous callback
-        required: 0
-        expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
-
   - name: Generate Tasks in Release
     stepName: Generate tasks in release
     description: Runs generate for the Tasks in Release.
@@ -937,6 +885,100 @@ procedures:
         documentation: Task Id.
         required: 1
 
+  - name: Promote Release
+    stepName: Promote release
+    description: Promotes a Release.
+    endpoint: '#{{instance}}/ispw/#{{srid}}/releases/#{releaseId}/tasks/promote'
+    #  #{{instance}} means that "instance" will be taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: POST
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: false
+     # credentials will be turned into basic auth header
+    canSkipAuth: false
+     # if no credentials found, the procedure won't fail, the request will be made without credentials
+    bodyContentType: json
+    # request body will be json-encoded and header Content-Type: application/json will be added
+    resultProperty:
+      show: true
+      format:
+        - json
+        - propertySheet
+      default: /myJob/promoteResult
+    parameters:
+      - property: releaseId
+        type: entry
+        label: Release ID
+        required: 1
+        documentation: Release ID
+      - property: level
+        type: entry
+        label: Level
+        documentation: Release level.
+        in: query
+        required: 1
+      - property: changeType
+        type: select
+        in: body
+        label: Change Type
+        required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: executionStatus
+        type: select
+        in: body
+        label: Execution Status
+        required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfiguration
+        type: entry
+        in: body
+        label: Runtime Configuration
+        required: 1
+        documentation: Required, see ISPW administrator for valid values
+      - property: autoDeploy
+        type: checkbox
+        label: Auto-Deploy
+        required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
+        in: body
+        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+      - property: httpHeaders
+        type: textarea
+        label: HTTP Headers in format: "Header=Value"
+        required: 0
+        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
+      - property: callbackCredential
+        label: Global Credentials for Callbacks
+        documentation: Optional, global overide credentials used for all callbacks
+        required: 0
+        type: credential
+      - property: events
+        type: textarea
+        label: Event array in JSON format for asynchronous callback
+        required: 0
+        expansionDeferred: true
+        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+
   - name: Deploy Release
     stepName: Deploy release
     description: Deploys a Release.
@@ -1005,6 +1047,18 @@ procedures:
         label: Runtime Configuration
         required: 1
         documentation: Required, see ISPW administrator for valid values
+      - property: dpenvlst
+        type: entry
+        in: body
+        label: DpEnvLst
+        required: 0
+        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+      - property: system
+        type: entry
+        in: body
+        label: System
+        required: 0
+        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"

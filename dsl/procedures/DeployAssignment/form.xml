@@ -70,6 +70,22 @@
   <value></value>
 </formElement>
 <formElement>
+  <documentation>Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.</documentation>
+  <label>DpEnvLst:</label>
+  <property>dpenvlst</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, allows you to specify a specific System for the Deploy.</documentation>
+  <label>System:</label>
+  <property>system</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Optional, global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
   <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>

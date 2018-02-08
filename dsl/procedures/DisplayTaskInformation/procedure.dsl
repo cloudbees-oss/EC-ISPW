@@ -6,7 +6,7 @@ procedure 'Display Task Information', description: 'Queries several tasks and ge
         command: '''
 \$[/myProject/scripts/preamble]
 use EC::Plugin::ISPW;
-EC::Plugin::ISPW->new->step_display_task_information($params{containerType});
+EC::Plugin::ISPW->new->step_display_task_information();
 
 ''',
         errorHandling: 'failProcedure',

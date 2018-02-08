@@ -12,7 +12,7 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->February 2, 2018<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->February 7, 2018<!-- REVISION DATE END --></p>
         <p>
             <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
         </p>
@@ -28,16 +28,16 @@
 <li><a href="#GetAssignmentTaskList">Get Assignment Task List</a></li>
 <li><a href="#GetAssignmentTaskInformation">Get Assignment Task Information</a></li>
 <li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
-<li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#PromoteAssignment">Promote Assignment</a></li>
+<li><a href="#DeployAssignment">Deploy Assignment</a></li>
 <li><a href="#RegressAssignment">Regress Assignment</a></li>
 <li><a href="#CreateRelease">Create Release</a></li>
 <li><a href="#GetReleaseTaskList">Get Release Task List</a></li>
 <li><a href="#GetReleaseTaskInformation">Get Release Task Information</a></li>
 <li><a href="#GetReleaseInformation">Get Release Information</a></li>
-<li><a href="#PromoteRelease">Promote Release</a></li>
 <li><a href="#GenerateTasksinRelease">Generate Tasks in Release</a></li>
 <li><a href="#GetReleaseTaskGenerateListing">Get Release Task Generate Listing</a></li>
+<li><a href="#PromoteRelease">Promote Release</a></li>
 <li><a href="#DeployRelease">Deploy Release</a></li>
 <li><a href="#RegressRelease">Regress Release</a></li>
 <li><a href="#GetSetInformation">Get Set Information</a></li>
@@ -176,12 +176,12 @@
                     <td>Assignment Prefix.</td>
                 </tr>
                 <tr>
-                    <td>Ref Number</td>
-                    <td>Ref Number.</td>
+                    <td>Reference Number</td>
+                    <td>Reference Number.</td>
                 </tr>
                 <tr>
-                    <td>Release</td>
-                    <td>Release.</td>
+                    <td>Release Id</td>
+                    <td>Release Id.</td>
                 </tr>
                 <tr>
                     <td>User Tag</td>
@@ -378,6 +378,10 @@
                     <td>Required, see ISPW administrator for valid values.</td>
                 </tr>
                 <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
                     <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
@@ -496,6 +500,10 @@
                     <td>Required, see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
                     <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
@@ -544,6 +552,14 @@
                 <tr>
                     <td class="required">Runtime Configuration</td>
                     <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>DpEnvLst</td>
+                    <td>Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.</td>
+                </tr>
+                <tr>
+                    <td>System</td>
+                    <td>Optional, allows you to specify a specific System for the Deploy.</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
@@ -691,6 +707,10 @@
                     <td>Required, see ISPW administrator for valid values</td>
                 </tr>
                 <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>
                     <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
                 </tr>
@@ -740,6 +760,14 @@
                 <tr>
                     <td class="required">Runtime Configuration</td>
                     <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>DpEnvLst</td>
+                    <td>Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.</td>
+                </tr>
+                <tr>
+                    <td>System</td>
+                    <td>Optional, allows you to specify a specific System for the Deploy.</td>
                 </tr>
                 <tr>
                     <td>HTTP Headers in format: "Header=Value"</td>

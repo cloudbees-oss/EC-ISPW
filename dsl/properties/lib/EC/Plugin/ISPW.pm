@@ -9,10 +9,11 @@ use JSON;
 
 
 sub step_display_task_information {
-    my ($self, $containerType) = @_;
+    my ($self) = @_;
 
     my $parameters = $self->get_params_as_hashref(qw/
         config
+        containerType
         setTasksJson
         resultPropertySheet
         resultFormat
@@ -43,10 +44,10 @@ sub step_display_task_information {
     my $result = [];
     for my $task (@$tasks) {
         my $task_id = $task->{taskId};
-        my $container = ($containerType eq 'release') ? $task->{container} : task->{assignment};
+        my $container = ($parameters->{containerType} eq 'release') ? $task->{container} : task->{assignment};
 
         my $uri = URI->new($config->{instance});
-        $uri->path_segments('ispw', $srid, (($containerType eq 'release') ? 'assignments' : 'releases'), $container, 'tasks', $task_id);
+        $uri->path_segments('ispw', $srid, (($parameters->{containerType} eq 'release') ? 'assignments' : 'releases'), $container, 'tasks', $task_id);
         my $request = HTTP::Request->new(GET => $uri);
         $request->header('Authorization' => $password);
 
@@ -66,7 +67,7 @@ sub step_display_task_information {
         }
     }
 
-    $self->_generate_report($result, $containerType);
+    $self->_generate_report($result, $parameters->{containerType});
     $self->_save_result($parameters->{resultPropertySheet}, $parameters->{resultFormat}, {tasks => $result});
 }
 

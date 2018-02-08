@@ -70,6 +70,16 @@
   <value></value>
 </formElement>
 <formElement>
+  <checkedValue>true</checkedValue>
+  <documentation>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</documentation>
+  <label>Auto-Deploy:</label>
+  <property>autoDeploy</property>
+  <required>0</required>
+  <type>checkbox</type>
+  <uncheckedValue>false</uncheckedValue>
+  <value>false</value>
+</formElement>
+<formElement>
   <documentation>Optional, global custom headers used for all callbacks. Use &quot;Header=Value&quot; format.</documentation>
   <label>HTTP Headers in format: &quot;Header=Value&quot;:</label>
   <property>httpHeaders</property>

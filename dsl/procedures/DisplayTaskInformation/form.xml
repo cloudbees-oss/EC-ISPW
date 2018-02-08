@@ -20,6 +20,10 @@
     <name>release</name>
     <value>release</value>
   </option>
+  <option>
+    <name>set</name>
+    <value>set</value>
+  </option>
   <value>assignment</value>
   <property>containerType</property>
   <required>0</required>

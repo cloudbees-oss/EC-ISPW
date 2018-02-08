@@ -28,13 +28,13 @@ Retrieves information about a Task in an Assignment.
 
 Runs generate for the Tasks in Assignment.
 
-## Deploy Assignment
-
-Deploys an Assignment.
-
 ## Promote Assignment
 
 Promotes an Assignment.
+
+## Deploy Assignment
+
+Deploys an Assignment.
 
 ## Regress Assignment
 
@@ -56,10 +56,6 @@ Retrieves information about a Task in a Release.
 
 Retrieves information about a Release.
 
-## Promote Release
-
-Promotes a Release.
-
 ## Generate Tasks in Release
 
 Runs generate for the Tasks in Release.
@@ -67,6 +63,10 @@ Runs generate for the Tasks in Release.
 ## Get Release Task Generate Listing
 
 Retrieves a generate listing for a Task in a Release.
+
+## Promote Release
+
+Promotes a Release.
 
 ## Deploy Release
 

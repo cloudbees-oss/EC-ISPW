@@ -89,8 +89,13 @@ sub define_hooks {
     $self->define_hook('Get release task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
     $self->define_hook('Get set task list', 'response', \&correct_json_list_response, {run_before_shared => 0});
     $self->define_hook('Create release', 'parameters', \&check_create_release);
+    $self->define_hook('Get assignment information', 'parsed', \&create_assignment_info_report);
     $self->define_hook('Get assignment task information', 'parsed', \&create_task_info_report);
+    $self->define_hook('Get release task generate listing', 'parsed', \&create_release_task_generate_listing_report);    
     $self->define_hook('Get release task information', 'parsed', \&create_task_info_report);
+    $self->define_hook('Get release information', 'parsed', \&create_release_info_report);
+    $self->define_hook('Get set deployment information', 'parsed', \&create_set_deployment_info_report);
+    $self->define_hook('Get set information', 'parsed', \&create_set_info_report);
 }
 
 sub process_response {
@@ -126,13 +131,146 @@ sub check_create_release {
     }
 }
 
+sub create_assignment_info_report {
+    my ($self, $parsed) = @_;
+
+    my $params = {};
+    for my $key (keys %$parsed) {
+        my $template_key = (index($key, 'assignment') == 0) ? $key : 'assignment' . ucfirst($key);
+        $params->{$template_key} = $parsed->{$key};
+    }
+
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/assignmentInfoReport', $params);
+
+    mkdir 'artifacts' or die "Cannot create directory: $!";
+    my $random_postfix = $self->plugin->gen_random_numbers();
+    my $report_filename = "assignmentInfoReport_$random_postfix.html";
+    open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
+    print $fh $report;
+    close $fh;
+
+    my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
+    my $link = "/commander/jobSteps/$job_step_id/$report_filename";
+    my $name = "Assignment Task Info: $parsed->{taskId}";
+    $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
+    eval {
+        #### TODO What about if we're not running in a pipeline? Add to job as well
+        
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
+        qq{<html><a href="$link" target="_blank">Link to Assignment details</a></html>}
+        );
+    };
+
+}
+
+sub create_release_info_report {
+    my ($self, $parsed) = @_;
+
+    my $params = {};
+    for my $key (keys %$parsed) {
+        my $template_key = (index($key, 'release') == 0) ? $key : 'release' . ucfirst($key);
+        $params->{$template_key} = $parsed->{$key};
+    }
+
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/releaseInfoReport', $params);
+
+    mkdir 'artifacts' or die "Cannot create directory: $!";
+    my $random_postfix = $self->plugin->gen_random_numbers();
+    my $report_filename = "releaseInfoReport_$random_postfix.html";
+    open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
+    print $fh $report;
+    close $fh;
+
+    my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
+    my $link = "/commander/jobSteps/$job_step_id/$report_filename";
+    my $name = "Release Task Info: $parsed->{taskId}";
+    $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
+    eval {
+        #### TODO What about if we're not running in a pipeline? Add to job as well
+        
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
+        qq{<html><a href="$link" target="_blank">Link to Release details</a></html>}
+        );
+    };
+
+}
+
+sub create_release_task_generate_listing_report {
+    my ($self, $parsed) = @_;
+
+    my $params = {};
+    for my $key (keys %$parsed) {
+        my $template_key = (index($key, 'task') == 0) ? $key : 'task' . ucfirst($key);
+        $params->{$template_key} = $parsed->{$key};
+    }
+
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/releaseTaskGenerateListingReport', $params);
+
+    mkdir 'artifacts' or die "Cannot create directory: $!";
+    my $random_postfix = $self->plugin->gen_random_numbers();
+    my $report_filename = "releaseTaskGenerateReport_$random_postfix.html";
+    open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
+    print $fh $report;
+    close $fh;
+
+    my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
+    my $link = "/commander/jobSteps/$job_step_id/$report_filename";
+    my $name = "Release Task Generate Listing: $parsed->{taskId}";
+    $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
+    eval {
+        #### TODO What about if we're not running in a pipeline? Add to job as well
+        
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
+        qq{<html><a href="$link" target="_blank">Link to Generate Listing details</a></html>}
+        );
+    };
+
+}
+
+#### TODO Add report for 'Get Set Deployment Information' ?with multi-level table?
+
+sub create_set_deployment_info_report {
+    #### TODO
+}
+
+sub create_set_info_report {
+    my ($self, $parsed) = @_;
+
+    my $params = {};
+    for my $key (keys %$parsed) {
+        my $template_key = (index($key, 'set') == 0) ? $key : 'set' . ucfirst($key);
+        $params->{$template_key} = $parsed->{$key};
+    }
+
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/setInfoReport', $params);
+
+    mkdir 'artifacts' or die "Cannot create directory: $!";
+    my $random_postfix = $self->plugin->gen_random_numbers();
+    my $report_filename = "setInfoReport_$random_postfix.html";
+    open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
+    print $fh $report;
+    close $fh;
+
+    my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
+    my $link = "/commander/jobSteps/$job_step_id/$report_filename";
+    my $name = "Set Task Info: $parsed->{taskId}";
+    $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
+    eval {
+        #### TODO What about if we're not running in a pipeline? Add to job as well
+        
+        $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
+        qq{<html><a href="$link" target="_blank">Link to Set details</a></html>}
+        );
+    };
+
+}
 
 sub create_task_info_report {
     my ($self, $parsed) = @_;
 
     my $params = {};
     for my $key (keys %$parsed) {
-        my $template_key = 'task' . ucfirst($key);
+        my $template_key = (index($key, 'task') == 0) ? $key : 'task' . ucfirst($key);
         $params->{$template_key} = $parsed->{$key};
     }
 
@@ -143,22 +281,24 @@ sub create_task_info_report {
         }
     }
     $params->{type} = $type;
-    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/taskInfoReport', $params);
+    my $report = $self->plugin->render_template_from_property('/projects/@PLUGIN_NAME@/resources/' . $params->{containerType} . 'TaskInfoReport', $params);
 
     mkdir 'artifacts' or die "Cannot create directory: $!";
     my $random_postfix = $self->plugin->gen_random_numbers();
-    my $report_filename = "taskInfoReport_$random_postfix.html";
+    my $report_filename = $params->{containerType} . "TaskInfoReport_$random_postfix.html";
     open my $fh, ">artifacts/$report_filename" or die "Cannot open $report_filename: $!";
     print $fh $report;
     close $fh;
 
     my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
     my $link = "/commander/jobSteps/$job_step_id/$report_filename";
-    my $name = "Assignment Task Info: $parsed->{taskId}";
+    my $name = ucFirst($params->{containerType}) . " Task Info: $parsed->{taskId}";
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
+        #### TODO What about if we're not running in a pipeline? Add to job as well
+        
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
-        qq{<html><a href="$link" target="_blank">Link to Task and Release details</a></html>}
+        qq{<html><a href="$link" target="_blank">Link to Task and }.ucFirst($params->{containerType}).qq{ details</a></html>}
         );
     };
 
