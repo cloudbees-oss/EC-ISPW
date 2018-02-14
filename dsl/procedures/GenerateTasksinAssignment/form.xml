@@ -26,9 +26,45 @@
   <value></value>
 </formElement>
 <formElement>
+  <documentation>Optional, S for standard, I for incidental, or E for emergency. Default value of S.</documentation>
+  <label>Change Type:</label>
+  <option>
+    <name>Standard (S)</name>
+    <value>S</value>
+  </option>
+  <option>
+    <name>Incidental (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Emergency (E)</name>
+    <value>E</value>
+  </option>
+  <property>changeType #### TODO Is this ignored?</property>
+  <required>0</required>
+  <type>select</type>
+  <value>S</value>
+</formElement>
+<formElement>
+  <documentation>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I.</documentation>
+  <label>Execution Status:</label>
+  <option>
+    <name>Immediate (I)</name>
+    <value>I</value>
+  </option>
+  <option>
+    <name>Hold (H)</name>
+    <value>H</value>
+  </option>
+  <property>execStat #### TODO Is this ignored?</property>
+  <required>0</required>
+  <type>select</type>
+  <value></value>
+</formElement>
+<formElement>
   <documentation>Required, see ISPW administrator for valid values.</documentation>
-  <label>Runtime Configuration:</label>
-  <property>runtimeConfiguration</property>
+  <label>Runtime Config:</label>
+  <property>runtimeConfig</property>
   <required>1</required>
   <type>entry</type>
   <value></value>
@@ -61,10 +97,10 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</documentation>
+  <documentation>Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</documentation>
   <expansionDeferred>true</expansionDeferred>
-  <label>Event array in JSON format for asynchronous callback:</label>
-  <property>events</property>
+  <label>Event Callback Array for Asynchronous Callback:</label>
+  <property>eventCallbacks</property>
   <required>0</required>
   <type>textarea</type>
   <value></value>

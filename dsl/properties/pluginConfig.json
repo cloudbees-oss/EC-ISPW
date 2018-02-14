@@ -26,7 +26,7 @@
             "property" : "application"
          },
          {
-            "required" : "1",
+            "required" : "1 #### TODO Is this optional?",
             "in" : "body",
             "documentation" : "Stream name for the application.",
             "label" : "Stream",
@@ -44,7 +44,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Can only be used if releasePrefix is not set, one must be used.",
+            "documentation" : "Optional, can only be used if releasePrefix is not set, one must be used. #### TODO Is this still optional?",
             "label" : "Release ID",
             "type" : "entry",
             "property" : "releaseId"
@@ -52,15 +52,15 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Can only be used if releaseId is not set, one must be used.",
-            "label" : "Release Prefix",
+            "documentation" : "Oprional, ? #### TODO",
+            "label" : "Release Preference",
             "type" : "entry",
-            "property" : "releasePrefix"
+            "property" : "releasePreference #### TODO If this a typo in the documentation for releasePrefix?"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Release owner.",
+            "documentation" : "Optional, owner.",
             "label" : "Owner",
             "type" : "entry",
             "property" : "_owner"
@@ -68,10 +68,26 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Release reference number.",
-            "label" : "Reference Number",
+            "documentation" : "Optional, work reference number.",
+            "label" : "Work Reference Number",
             "type" : "entry",
-            "property" : "referenceNumber"
+            "property" : "workRefNumber"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, message.",
+            "label" : "Message",
+            "type" : "entry",
+            "property" : "message"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, user tag.",
+            "label" : "User Tag",
+            "type" : "entry",
+            "property" : "userTag"
          }
       ],
       "fields" : [
@@ -79,9 +95,11 @@
          "stream",
          "description",
          "releaseId",
-         "releasePrefix",
+         "releasePreference #### TODO If this a typo in the documentation for releasePrefix?",
          "_owner",
-         "referenceNumber"
+         "workRefNumber",
+         "message",
+         "userTag"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -166,13 +184,45 @@
             "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy active date.",
+            "label" : "Deploy Active Date",
+            "type" : "entry",
+            "property" : "deployActiveDate"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy active time.",
+            "label" : "Deploy Active Time",
+            "type" : "entry",
+            "property" : "deployActiveTime"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy implementation date.",
+            "label" : "Deploy Implementation Date",
+            "type" : "entry",
+            "property" : "deployImplementationDate"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy implementation time.",
+            "label" : "Deploy Implementation Time",
+            "type" : "entry",
+            "property" : "deployImplementationTime"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.",
-            "label" : "DpEnvLst",
+            "label" : "Deploy Environment List",
             "type" : "entry",
             "property" : "dpenvlst"
          },
@@ -201,10 +251,10 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
@@ -212,12 +262,16 @@
          "level",
          "changeType",
          "executionStatus",
-         "runtimeConfiguration",
+         "runtimeConfig",
+         "deployActiveDate",
+         "deployActiveTime",
+         "deployImplementationDate",
+         "deployImplementationTime",
          "dpenvlst",
          "system",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -257,12 +311,53 @@
             "property" : "level"
          },
          {
+            "required" : "0",
+            "value" : "S",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
+            "label" : "Change Type",
+            "type" : "select",
+            "property" : "changeType #### TODO Is this ignored?"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
+            "label" : "Execution Status",
+            "type" : "select",
+            "property" : "execStat #### TODO Is this ignored?"
+         },
+         {
             "required" : "1",
             "in" : "body",
             "documentation" : "Required, see ISPW administrator for valid values.",
-            "label" : "Runtime Configuration",
+            "label" : "Runtime Config",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
          },
          {
             "checkedValue" : "true",
@@ -293,20 +388,22 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
          "assignmentId",
          "level",
-         "runtimeConfiguration",
+         "changeType #### TODO Is this ignored?",
+         "execStat #### TODO Is this ignored?",
+         "runtimeConfig",
          "autoDeploy",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -371,7 +468,7 @@
       "parameters" : [
          {
             "required" : "1",
-            "documentation" : "Assignment Id.",
+            "documentation" : "Assignment id.",
             "label" : "Assignment Id",
             "type" : "entry",
             "property" : "assignmentId"
@@ -387,7 +484,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "ISPW Application Id.",
+            "documentation" : "ISPW application id.",
             "label" : "Application ID",
             "type" : "entry",
             "property" : "application"
@@ -403,7 +500,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Module Type.",
+            "documentation" : "Module type.",
             "label" : "Module Type",
             "type" : "entry",
             "property" : "moduleType"
@@ -411,7 +508,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Current Level.",
+            "documentation" : "Current level.",
             "label" : "Current Level",
             "type" : "entry",
             "property" : "currentLevel"
@@ -419,7 +516,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Starting Level.",
+            "documentation" : "Starting level.",
             "label" : "Starting Level",
             "type" : "entry",
             "property" : "startingLevel"
@@ -427,47 +524,63 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Generate Sequence.",
+            "documentation" : "Optional, generate sequence.",
             "label" : "Generate Sequence",
             "type" : "entry",
             "property" : "generateSequence"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
             "required" : "0",
             "in" : "body",
-            "documentation" : "SQL.",
+            "documentation" : "Optional, SQL.",
+            "type" : "checkbox",
             "label" : "SQL",
-            "type" : "entry",
             "property" : "sql"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
             "required" : "0",
             "in" : "body",
-            "documentation" : "IMS.",
+            "documentation" : "Optional, IMS.",
+            "type" : "checkbox",
             "label" : "IMS",
-            "type" : "entry",
             "property" : "ims"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
             "required" : "0",
             "in" : "body",
-            "documentation" : "CICS.",
+            "documentation" : "Optional, CICS.",
+            "type" : "checkbox",
             "label" : "CICS",
-            "type" : "entry",
             "property" : "cics"
          },
          {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
             "required" : "0",
             "in" : "body",
-            "documentation" : "Program.",
+            "documentation" : "Optional, program.",
+            "type" : "checkbox",
             "label" : "Program",
-            "type" : "entry",
             "property" : "program"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Option 1.",
+            "documentation" : "Optional, option 1.",
             "label" : "Option 1",
             "type" : "entry",
             "property" : "option1"
@@ -475,7 +588,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Option 2.",
+            "documentation" : "Optional, option 2.",
             "label" : "Option 2",
             "type" : "entry",
             "property" : "option2"
@@ -483,7 +596,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Option 3.",
+            "documentation" : "Optional, Option 3.",
             "label" : "Option 3",
             "type" : "entry",
             "property" : "option3"
@@ -491,7 +604,7 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Option 4.",
+            "documentation" : "Optional, option 4.",
             "label" : "Option 4",
             "type" : "entry",
             "property" : "option4"
@@ -499,10 +612,178 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Option 5.",
+            "documentation" : "Optional, option 5.",
             "label" : "Option 5",
             "type" : "entry",
             "property" : "option5"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, action.",
+            "label" : "Action",
+            "type" : "entry",
+            "property" : "action"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, alternate name.",
+            "label" : "Alternate Name",
+            "type" : "entry",
+            "property" : "alternateName"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, base version.",
+            "label" : "Base Version",
+            "type" : "entry",
+            "property" : "baseVersion"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, internal version.",
+            "label" : "Internal Version",
+            "type" : "entry",
+            "property" : "internalVersion"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, replace version.",
+            "label" : "Replace Version",
+            "type" : "entry",
+            "property" : "replaceVersion"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, version.",
+            "label" : "Version",
+            "type" : "entry",
+            "property" : "version"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, clazz.",
+            "label" : "Clazz",
+            "type" : "entry",
+            "property" : "clazz"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, container.",
+            "label" : "Container",
+            "type" : "entry",
+            "property" : "container"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, date-time.",
+            "label" : "Date-Time",
+            "type" : "entry",
+            "property" : "dateTime"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, environment.",
+            "label" : "Environment",
+            "type" : "entry",
+            "property" : "environment"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, extension.",
+            "label" : "Extension",
+            "type" : "entry",
+            "property" : "extension"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, flags.",
+            "label" : "Flags",
+            "type" : "entry",
+            "property" : "flags"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, level.",
+            "label" : "Level",
+            "type" : "entry",
+            "property" : "level"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, message.",
+            "label" : "Message",
+            "type" : "entry",
+            "property" : "message"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, operation.",
+            "label" : "Operation",
+            "type" : "entry",
+            "property" : "operation"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, release.",
+            "label" : "Release",
+            "type" : "entry",
+            "property" : "release"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, set.",
+            "label" : "Set",
+            "type" : "entry",
+            "property" : "set"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, status.",
+            "label" : "Status",
+            "type" : "entry",
+            "property" : "status"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, taskId.",
+            "label" : "Task Id",
+            "type" : "entry",
+            "property" : "taskId"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, URL.",
+            "label" : "URL",
+            "type" : "entry",
+            "property" : "url"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, use id.",
+            "label" : "User Id",
+            "type" : "entry",
+            "property" : "userId"
          }
       ],
       "fields" : [
@@ -522,7 +803,28 @@
          "option2",
          "option3",
          "option4",
-         "option5"
+         "option5",
+         "action",
+         "alternateName",
+         "baseVersion",
+         "internalVersion",
+         "replaceVersion",
+         "version",
+         "clazz",
+         "container",
+         "dateTime",
+         "environment",
+         "extension",
+         "flags",
+         "level",
+         "message",
+         "operation",
+         "release",
+         "set",
+         "status",
+         "taskId",
+         "url",
+         "userId"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -587,7 +889,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level.",
+            "documentation" : "Optional, level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -645,7 +947,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment Description.",
+            "documentation" : "Assignment description.",
             "label" : "Description",
             "type" : "entry",
             "property" : "description"
@@ -661,7 +963,7 @@
          {
             "required" : "1",
             "in" : "body",
-            "documentation" : "Assignment Prefix.",
+            "documentation" : "Assignment prefix.",
             "label" : "Assignment Prefix",
             "type" : "entry",
             "property" : "assignmentPrefix"
@@ -669,23 +971,23 @@
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Reference Number.",
-            "label" : "Reference Number",
+            "documentation" : "Optional, ref number.",
+            "label" : "Ref Number",
             "type" : "entry",
-            "property" : "referenceNumber"
+            "property" : "refNumber"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "Release Id.",
-            "label" : "Release Id",
+            "documentation" : "Optional, release.",
+            "label" : "Release",
             "type" : "entry",
-            "property" : "releaseId"
+            "property" : "release"
          },
          {
             "required" : "0",
             "in" : "body",
-            "documentation" : "User Tag.",
+            "documentation" : "Optional, user tag.",
             "label" : "User Tag",
             "type" : "entry",
             "property" : "userTag"
@@ -698,8 +1000,8 @@
          "description",
          "_owner",
          "assignmentPrefix",
-         "referenceNumber",
-         "releaseId",
+         "refNumber",
+         "release",
          "userTag"
       ],
       "hasConfig" : "true",
@@ -849,7 +1151,7 @@
             "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
          },
          {
             "checkedValue" : "true",
@@ -880,10 +1182,10 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
@@ -891,11 +1193,11 @@
          "level",
          "changeType",
          "executionStatus",
-         "runtimeConfiguration",
+         "runtimeConfig",
          "autoDeploy",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -935,12 +1237,53 @@
             "property" : "level"
          },
          {
+            "required" : "0",
+            "value" : "S",
+            "in" : "body",
+            "documentation" : "Optional, S for standard, I for incidental, or E for emergency. Default value of S",
+            "option" : [
+               {
+                  "value" : "S",
+                  "name" : "Standard (S)"
+               },
+               {
+                  "value" : "I",
+                  "name" : "Incidental (I)"
+               },
+               {
+                  "value" : "E",
+                  "name" : "Emergency (E)"
+               }
+            ],
+            "label" : "Change Type",
+            "type" : "select",
+            "property" : "changeType #### TODO Is this ignored?"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I",
+            "option" : [
+               {
+                  "value" : "I",
+                  "name" : "Immediate (I)"
+               },
+               {
+                  "value" : "H",
+                  "name" : "Hold (H)"
+               }
+            ],
+            "label" : "Execution Status",
+            "type" : "select",
+            "property" : "execStat #### TODO Is this ignored?"
+         },
+         {
             "required" : "1",
             "in" : "body",
             "documentation" : "Required, see ISPW administrator for valid values.",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
          },
          {
             "required" : "0",
@@ -959,19 +1302,21 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
          "releaseId",
          "level",
-         "runtimeConfiguration",
+         "changeType #### TODO Is this ignored?",
+         "execStat #### TODO Is this ignored?",
+         "runtimeConfig",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -1096,7 +1441,7 @@
             "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
          },
          {
             "checkedValue" : "true",
@@ -1127,10 +1472,10 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
@@ -1138,11 +1483,11 @@
          "level",
          "changeType",
          "executionStatus",
-         "runtimeConfiguration",
+         "runtimeConfig",
          "autoDeploy",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -1175,7 +1520,7 @@
          {
             "required" : "0",
             "in" : "query",
-            "documentation" : "Level.",
+            "documentation" : "Optional, level.",
             "label" : "Level",
             "type" : "entry",
             "property" : "level"
@@ -1267,7 +1612,19 @@
             "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
+         },
+         {
+            "checkedValue" : "true",
+            "value" : "false",
+            "uncheckedValue" : "false",
+            "initiallyChecked" : "0",
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.",
+            "type" : "checkbox",
+            "label" : "Auto-Deploy",
+            "property" : "autoDeploy #### TODO Is this ignored?"
          },
          {
             "required" : "0",
@@ -1286,10 +1643,10 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
@@ -1297,10 +1654,11 @@
          "level",
          "changeType",
          "executionStatus",
-         "runtimeConfiguration",
+         "runtimeConfig",
+         "autoDeploy #### TODO Is this ignored?",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",
@@ -1418,13 +1776,45 @@
             "documentation" : "Required, see ISPW administrator for valid values",
             "label" : "Runtime Configuration",
             "type" : "entry",
-            "property" : "runtimeConfiguration"
+            "property" : "runtimeConfig"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy active date.",
+            "label" : "Deploy Active Date",
+            "type" : "entry",
+            "property" : "deployActiveDate"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy active time.",
+            "label" : "Deploy Active Time",
+            "type" : "entry",
+            "property" : "deployActiveTime"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy implementation date.",
+            "label" : "Deploy Implementation Date",
+            "type" : "entry",
+            "property" : "deployImplementationDate"
+         },
+         {
+            "required" : "0",
+            "in" : "body",
+            "documentation" : "Optional, deploy implementation time.",
+            "label" : "Deploy Implementation Time",
+            "type" : "entry",
+            "property" : "deployImplementationTime"
          },
          {
             "required" : "0",
             "in" : "body",
             "documentation" : "Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.",
-            "label" : "DpEnvLst",
+            "label" : "Deploy Environment List",
             "type" : "entry",
             "property" : "dpenvlst"
          },
@@ -1453,10 +1843,10 @@
          {
             "required" : "0",
             "expansionDeferred" : "true",
-            "documentation" : "Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
-            "label" : "Event array in JSON format for asynchronous callback",
+            "documentation" : "Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).",
+            "label" : "Event Callback Array for Asynchronous Callback",
             "type" : "textarea",
-            "property" : "events"
+            "property" : "eventCallbacks"
          }
       ],
       "fields" : [
@@ -1464,12 +1854,16 @@
          "level",
          "changeType",
          "executionStatus",
-         "runtimeConfiguration",
+         "runtimeConfig",
+         "deployActiveDate",
+         "deployActiveTime",
+         "deployImplementationDate",
+         "deployImplementationTime",
          "dpenvlst",
          "system",
          "httpHeaders",
          "callbackCredential",
-         "events"
+         "eventCallbacks"
       ],
       "hasConfig" : "true",
       "basicAuth" : "false",

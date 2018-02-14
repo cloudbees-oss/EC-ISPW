@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if releasePrefix is not set, one must be used.</documentation>
+  <documentation>Optional, can only be used if releasePrefix is not set, one must be used. #### TODO Is this still optional?.</documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
   <required>0</required>
@@ -42,15 +42,15 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Can only be used if releaseId is not set, one must be used.</documentation>
-  <label>Release Prefix:</label>
-  <property>releasePrefix</property>
+  <documentation>Oprional, ? #### TODO.</documentation>
+  <label>Release Preference:</label>
+  <property>releasePreference #### TODO If this a typo in the documentation for releasePrefix?</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Release owner.</documentation>
+  <documentation>Optional, owner.</documentation>
   <label>Owner:</label>
   <property>_owner</property>
   <required>0</required>
@@ -58,9 +58,25 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Release reference number.</documentation>
-  <label>Reference Number:</label>
-  <property>referenceNumber</property>
+  <documentation>Optional, work reference number.</documentation>
+  <label>Work Reference Number:</label>
+  <property>workRefNumber</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, message.</documentation>
+  <label>Message:</label>
+  <property>message</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, user tag.</documentation>
+  <label>User Tag:</label>
+  <property>userTag</property>
   <required>0</required>
   <type>entry</type>
   <value></value>

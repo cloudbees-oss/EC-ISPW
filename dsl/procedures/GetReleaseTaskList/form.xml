@@ -18,7 +18,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Level.</documentation>
+  <documentation>Optional, level.</documentation>
   <label>Level:</label>
   <property>level</property>
   <required>0</required>

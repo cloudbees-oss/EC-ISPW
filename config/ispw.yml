@@ -59,7 +59,7 @@ procedures:
         label: Description
         required: 1
         in: body
-        documentation: Assignment Description.
+        documentation: Assignment description.
       - property: _owner
         type: entry
         label: Owner
@@ -71,25 +71,25 @@ procedures:
         label: Assignment Prefix
         required: 1
         in: body
-        documentation: Assignment Prefix.
-      - property: referenceNumber
+        documentation: Assignment prefix.
+      - property: refNumber
         type: entry
-        label: Reference Number
+        label: Ref Number
         required: 0
         in: body
-        documentation: Reference Number.
-      - property: releaseId
+        documentation: Optional, ref number.
+      - property: release
         type: entry
-        label: Release Id
+        label: Release
         required: 0
         in: body
-        documentation: Release Id.
+        documentation: Optional, release.
       - property: userTag
         type: entry
         label: User Tag
         required: 0
         in: body
-        documentation: User Tag.
+        documentation: Optional, user tag.
 
   - name: Load Task
     stepName: Load task
@@ -112,7 +112,7 @@ procedures:
       - property: assignmentId
         type: entry
         label: Assignment Id
-        documentation: Assignment Id.
+        documentation: Assignment id.
         required: 1
       - property: stream
         type: entry
@@ -125,7 +125,7 @@ procedures:
         label: Application ID
         required: 1
         in: body
-        documentation: ISPW Application Id.
+        documentation: ISPW application id.
       - property: moduleName
         type: entry
         label: Module Name
@@ -137,79 +137,221 @@ procedures:
         label: Module Type
         required: 1
         in: body
-        documentation: Module Type.
+        documentation: Module type.
       - property: currentLevel
         type: entry
         label: Current Level
         required: 1
         in: body
-        documentation: Current Level.
+        documentation: Current level.
       - property: startingLevel
         type: entry
         label: Starting Level
         required: 1
         in: body
-        documentation: Starting Level.
+        documentation: Starting level.
       - property: generateSequence
         type: entry
         label: Generate Sequence
         required: 0
         in: body
-        documentation: Generate Sequence.
+        documentation: Optional, generate sequence.
       - property: sql
-        type: entry
+        type: checkbox
         label: SQL
         required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
         in: body
-        documentation: SQL.
+        documentation: Optional, SQL.
       - property: ims
-        type: entry
+        type: checkbox
         label: IMS
         required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
         in: body
-        documentation: IMS.
+        documentation: Optional, IMS.
       - property: cics
-        type: entry
+        type: checkbox
         label: CICS
         required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
         in: body
-        documentation: CICS.
+        documentation: Optional, CICS.
       - property: program
-        type: entry
+        type: checkbox
         label: Program
         required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
         in: body
-        documentation: Program.
+        documentation: Optional, program.
       - property: option1
         type: entry
         label: Option 1
         required: 0
         in: body
-        documentation: Option 1.
+        documentation: Optional, option 1.
       - property: option2
         type: entry
         label: Option 2
         required: 0
         in: body
-        documentation: Option 2.
+        documentation: Optional, option 2.
       - property: option3
         type: entry
         label: Option 3
         required: 0
         in: body
-        documentation: Option 3.
+        documentation: Optional, Option 3.
       - property: option4
         type: entry
         label: Option 4
         required: 0
         in: body
-        documentation: Option 4.
+        documentation: Optional, option 4.
       - property: option5
         type: entry
         label: Option 5
         required: 0
         in: body
-        documentation: Option 5.
+        documentation: Optional, option 5.
+      - property: action
+        type: entry
+        label: Action
+        required: 0
+        in: body
+        documentation: Optional, action.
+      - property: alternateName
+        type: entry
+        label: Alternate Name
+        required: 0
+        in: body
+        documentation: Optional, alternate name.
+      - property: baseVersion
+        type: entry
+        label: Base Version
+        required: 0
+        in: body
+        documentation: Optional, base version.
+      - property: internalVersion
+        type: entry
+        label: Internal Version
+        required: 0
+        in: body
+        documentation: Optional, internal version.
+      - property: replaceVersion
+        type: entry
+        label: Replace Version
+        required: 0
+        in: body
+        documentation: Optional, replace version.
+      - property: version
+        type: entry
+        label: Version
+        required: 0
+        in: body
+        documentation: Optional, version.
+      - property: clazz
+        type: entry
+        label: Clazz
+        required: 0
+        in: body
+        documentation: Optional, clazz.
+      - property: container
+        type: entry
+        label: Container
+        required: 0
+        in: body
+        documentation: Optional, container.
+      - property: dateTime
+        type: entry
+        label: Date-Time
+        required: 0
+        in: body
+        documentation: Optional, date-time.
+      - property: environment
+        type: entry
+        label: Environment
+        required: 0
+        in: body
+        documentation: Optional, environment.
+      - property: extension
+        type: entry
+        label: Extension
+        required: 0
+        in: body
+        documentation: Optional, extension.
+      - property: flags
+        type: entry
+        label: Flags
+        required: 0
+        in: body
+        documentation: Optional, flags.
+      - property: level
+        type: entry
+        label: Level
+        required: 0
+        in: body
+        documentation: Optional, level.
+      - property: message
+        type: entry
+        label: Message
+        required: 0
+        in: body
+        documentation: Optional, message.
+      - property: operation
+        type: entry
+        label: Operation
+        required: 0
+        in: body
+        documentation: Optional, operation.
+      - property: release
+        type: entry
+        label: Release
+        required: 0
+        in: body
+        documentation: Optional, release.
+      - property: set
+        type: entry
+        label: Set
+        required: 0
+        in: body
+        documentation: Optional, set.
+      - property: status
+        type: entry
+        label: Status
+        required: 0
+        in: body
+        documentation: Optional, status.
+      - property: taskId
+        type: entry
+        label: Task Id
+        required: 0
+        in: body
+        documentation: Optional, taskId.
+      - property: url
+        type: entry
+        label: URL
+        required: 0
+        in: body
+        documentation: Optional, URL.
+      - property: userId
+        type: entry
+        label: User Id
+        required: 0
+        in: body
+        documentation: Optional, use id.
 
   - name: Get Assignment Information
     stepName: Get assignment information
@@ -263,7 +405,7 @@ procedures:
         label: Level
         in: query
         required: 0
-        documentation: Level.
+        documentation: Optional, level.
 
   - name: Get Assignment Task Information
     stepName: Get assignment task information
@@ -331,9 +473,34 @@ procedures:
         in: query
         required: 1
         noEmptyString: true
-      - property: runtimeConfiguration
+      - property: changeType #### TODO Is this ignored?
+        type: select
+        in: body
+        label: Change Type
+        required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: execStat #### TODO Is this ignored?
+        type: select
+        in: body
+        label: Execution Status
+        required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfig
         type: entry
-        label: Runtime Configuration
+        label: Runtime Config
         required: 1
         in: body
         documentation: Required, see ISPW administrator for valid values.
@@ -347,6 +514,43 @@ procedures:
         value: false
         in: body
         documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#### TODO Do we need deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: deployActiveDate
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -354,15 +558,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Promote Assignment
     stepName: Promote assignment
@@ -425,7 +629,7 @@ procedures:
           - name: Hold (H)
             value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
+      - property: runtimeConfig
         type: entry
         in: body
         label: Runtime Configuration
@@ -441,6 +645,43 @@ procedures:
         value: false
         in: body
         documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#### TODO Do we need deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: deployActiveDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -448,15 +689,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Deploy Assignment
     stepName: Deploy assignment
@@ -519,16 +760,50 @@ procedures:
           - name: Hold (H)
             value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
+      - property: runtimeConfig
         type: entry
         in: body
         label: Runtime Configuration
         required: 1
         documentation: Required, see ISPW administrator for valid values
+#      - property: autoDeploy #### TODO Is this ignored? If not, what does it do?
+#        type: checkbox
+#        label: Auto-Deploy
+#        required: 0
+#        checkedValue: true
+#        uncheckedValue: false
+#        initiallyChecked: 0
+#        value: false
+#        in: body
+#        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+      - property: deployActiveDate
+        type: entry
+        in: body
+        label: Deploy Active Date
+        required: 0
+        documentation: Optional, deploy active date.
+      - property: deployActiveTime
+        type: entry
+        in: body
+        label: Deploy Active Time
+        required: 0
+        documentation: Optional, deploy active time.
+      - property: deployImplementationDate
+        type: entry
+        in: body
+        label: Deploy Implementation Date
+        required: 0
+        documentation: Optional, deploy implementation date.
+      - property: deployImplementationTime
+        type: entry
+        in: body
+        label: Deploy Implementation Time
+        required: 0
+        documentation: Optional, deploy implementation time.
       - property: dpenvlst
         type: entry
         in: body
-        label: DpEnvLst
+        label: Deploy Environment List
         required: 0
         documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
       - property: system
@@ -544,15 +819,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
 #  - name: Regress Assignment
 #    stepName: Regress assignment
@@ -615,12 +890,58 @@ procedures:
 #          - name: Hold (H)
 #            value: H
 #        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-#      - property: runtimeConfiguration
+#      - property: runtimeConfig
 #        type: entry
 #        in: body
 #        label: Runtime Configuration
 #        required: 1
 #        documentation: Required, see ISPW administrator for valid values
+#      - property: autoDeploy #### TODO Is this ignored? If not, what does it do?
+#        type: checkbox
+#        label: Auto-Deploy
+#        required: 0
+#        checkedValue: true
+#        uncheckedValue: false
+#        initiallyChecked: 0
+#        value: false
+#        in: body
+#        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#      - property: deployActiveDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
 #      - property: httpHeaders
 #        type: textarea
 #        label: HTTP Headers in format: "Header=Value"
@@ -631,12 +952,12 @@ procedures:
 #        documentation: Optional, global overide credentials used for all callbacks
 #        required: 0
 #        type: credential
-#      - property: events
+#      - property: eventCallbacks
 #        type: textarea
-#        label: Event array in JSON format for asynchronous callback
+#        label: Event Callback Array for Asynchronous Callback
 #        required: 0
 #        expansionDeferred: true
-#        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+#        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Create Release
     stepName: Create release
@@ -672,7 +993,7 @@ procedures:
       - property: stream
         type: entry
         label: Stream
-        required: 1
+        required: 1 #### TODO Is this optional?
         in: body
         documentation: Stream name for the application.
       - property: description
@@ -685,26 +1006,44 @@ procedures:
         type: entry
         label: Release ID
         required: 0
-        documentation: Can only be used if releasePrefix is not set, one must be used.
+        documentation: Optional, can only be used if releasePrefix is not set, one must be used. #### TODO Is this still optional?
         in: body
-      - property: releasePrefix
+#      - property: releasePrefix #### TODO Did this go away?
+#        type: entry
+#        label: Release Prefix
+#        required: 0
+#        in: body
+#        documentation: Optional, can only be used if releaseId is not set, one must be used.
+      - property: releasePreference #### TODO If this a typo in the documentation for releasePrefix?
         type: entry
-        label: Release Prefix
+        label: Release Preference
         required: 0
         in: body
-        documentation: Can only be used if releaseId is not set, one must be used.
+        documentation: Oprional, ? #### TODO
       - property: _owner
         type: entry
         label: Owner
         required: 0
         in: body
-        documentation: Release owner.
-      - property: referenceNumber
+        documentation: Optional, owner.
+      - property: workRefNumber
         type: entry
-        label: Reference Number
+        label: Work Reference Number
         required: 0
         in: body
-        documentation: Release reference number.
+        documentation: Optional, work reference number.
+      - property: message
+        type: entry
+        label: Message
+        required: 0
+        in: body
+        documentation: Optional, message.
+      - property: userTag
+        type: entry
+        label: User Tag
+        required: 0
+        in: body
+        documentation: Optional, user tag.
 
   - name: Get Release Task List
     stepName: Get release task list
@@ -734,7 +1073,7 @@ procedures:
         label: Level
         in: query
         required: 0
-        documentation: Level.
+        documentation: Optional, level.
 
   - name: Get Release Task Information
     stepName: Get release task information
@@ -833,12 +1172,84 @@ procedures:
         in: query
         required: 1
         noEmptyString: true
-      - property: runtimeConfiguration
+      - property: changeType #### TODO Is this ignored?
+        type: select
+        in: body
+        label: Change Type
+        required: 0
+        option:
+          - name: Standard (S)
+            value: S
+          - name: Incidental (I)
+            value: I
+          - name: Emergency (E)
+            value: E
+        value: S
+        documentation: Optional, S for standard, I for incidental, or E for emergency. Default value of S
+      - property: execStat #### TODO Is this ignored?
+        type: select
+        in: body
+        label: Execution Status
+        required: 0
+        option:
+          - name: Immediate (I)
+            value: I
+          - name: Hold (H)
+            value: H
+        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
+      - property: runtimeConfig
         type: entry
         label: Runtime Configuration
         required: 1
         in: body
         documentation: Required, see ISPW administrator for valid values.
+#### TODO Do we need autoDeploy, deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: autoDeploy #### TODO Is this ignored?
+#        type: checkbox
+#        label: Auto-Deploy
+#        required: 0
+#        checkedValue: true
+#        uncheckedValue: false
+#        initiallyChecked: 0
+#        value: false
+#        in: body
+#        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#      - property: deployActiveDate
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -846,15 +1257,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
 #  - name: Get Release Task Generate Listing
 #    stepName: Get release task generate listing
@@ -946,7 +1357,7 @@ procedures:
           - name: Hold (H)
             value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
+      - property: runtimeConfig
         type: entry
         in: body
         label: Runtime Configuration
@@ -962,6 +1373,43 @@ procedures:
         value: false
         in: body
         documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#### TODO Do we need deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: deployActiveDate
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -969,15 +1417,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Deploy Release
     stepName: Deploy release
@@ -1041,16 +1489,50 @@ procedures:
             value: H
         value: I
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
+      - property: runtimeConfig
         type: entry
         in: body
         label: Runtime Configuration
         required: 1
         documentation: Required, see ISPW administrator for valid values
+#      - property: autoDeploy #### TODO Is this ignored? If not, what does it do?
+#        type: checkbox
+#        label: Auto-Deploy
+#        required: 0
+#        checkedValue: true
+#        uncheckedValue: false
+#        initiallyChecked: 0
+#        value: false
+#        in: body
+#        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+      - property: deployActiveDate
+        type: entry
+        in: body
+        label: Deploy Active Date
+        required: 0
+        documentation: Optional, deploy active date.
+      - property: deployActiveTime
+        type: entry
+        in: body
+        label: Deploy Active Time
+        required: 0
+        documentation: Optional, deploy active time.
+      - property: deployImplementationDate
+        type: entry
+        in: body
+        label: Deploy Implementation Date
+        required: 0
+        documentation: Optional, deploy implementation date.
+      - property: deployImplementationTime
+        type: entry
+        in: body
+        label: Deploy Implementation Time
+        required: 0
+        documentation: Optional, deploy implementation time.
       - property: dpenvlst
         type: entry
         in: body
-        label: DpEnvLst
+        label: Deploy Environment List
         required: 0
         documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
       - property: system
@@ -1066,15 +1548,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Regress Release
     stepName: Regress release
@@ -1136,12 +1618,59 @@ procedures:
           - name: Hold (H)
             value: H
         documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-      - property: runtimeConfiguration
+      - property: runtimeConfig
         type: entry
         in: body
         label: Runtime Configuration
         required: 1
         documentation: Required, see ISPW administrator for valid values
+      - property: autoDeploy #### TODO Is this ignored?
+        type: checkbox
+        label: Auto-Deploy
+        required: 0
+        checkedValue: true
+        uncheckedValue: false
+        initiallyChecked: 0
+        value: false
+        in: body
+        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#### TODO Do we need deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: deployActiveDate
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
       - property: httpHeaders
         type: textarea
         label: HTTP Headers in format: "Header=Value"
@@ -1149,15 +1678,15 @@ procedures:
         documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
       - property: callbackCredential
         label: Global Credentials for Callbacks
-        documentation: Optional, global overide credentials used for all callbacks
         required: 0
         type: credential
-      - property: events
+        documentation: Optional, global overide credentials used for all callbacks
+      - property: eventCallbacks
         type: textarea
-        label: Event array in JSON format for asynchronous callback
+        label: Event Callback Array for Asynchronous Callback
         required: 0
         expansionDeferred: true
-        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
 
   - name: Get Set Information
     stepName: Get set information
@@ -1307,12 +1836,59 @@ procedures:
 #          - name: Hold (H)
 #            value: H
 #        documentation: Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I
-#      - property: runtimeConfiguration
+#      - property: runtimeConfig
 #        type: entry
 #        in: body
 #        label: Runtime Configuration
 #        required: 1
 #        documentation: Required, see ISPW administrator for valid values
+#### TODO Do we need autoDeploy, deployActiveDate, deployActiveTime, deployImplementationDate, deployImplementationTime, dpenvlst, system -- or are they ignored?
+#      - property: autoDeploy #### TODO Is this ignored?
+#        type: checkbox
+#        label: Auto-Deploy
+#        required: 0
+#        checkedValue: true
+#        uncheckedValue: false
+#        initiallyChecked: 0
+#        value: false
+#        in: body
+#        documentation: Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.
+#      - property: deployActiveDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Date
+#        required: 0
+#        documentation: Optional, deploy active date.
+#      - property: deployActiveTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Active Time
+#        required: 0
+#        documentation: Optional, deploy active time.
+#      - property: deployImplementationDate #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Date
+#        required: 0
+#        documentation: Optional, deploy implementation date.
+#      - property: deployImplementationTime #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Implementation Time
+#        required: 0
+#        documentation: Optional, deploy implementation time.
+#      - property: dpenvlst #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: Deploy Environment List
+#        required: 0
+#        documentation: Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.
+#      - property: system #### TODO Is this ignored?
+#        type: entry
+#        in: body
+#        label: System
+#        required: 0
+#        documentation: Optional, allows you to specify a specific System for the Deploy.
 #      - property: httpHeaders
 #        type: textarea
 #        label: HTTP Headers in format: "Header=Value"
@@ -1320,12 +1896,12 @@ procedures:
 #        documentation: Optional, global custom headers used for all callbacks. Use "Header=Value" format.
 #      - property: callbackCredential
 #        label: Global Credentials for Callbacks
-#        documentation: Optional, global overide credentials used for all callbacks
 #        required: 0
 #        type: credential
-#      - property: events
+#        documentation: Optional, global overide credentials used for all callbacks
+#      - property: eventCallbacks
 #        type: textarea
-#        label: Event array in JSON format for asynchronous callback
+#        label: Event Callback Array for Asynchronous Callback
 #        required: 0
 #        expansionDeferred: true
-#        documentation: Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).
+#        documentation: Optional, event callback array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).

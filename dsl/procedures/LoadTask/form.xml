@@ -10,7 +10,7 @@
   <type>entry</type>
 </formElement>
 <formElement>
-  <documentation>Assignment Id.</documentation>
+  <documentation>Assignment id.</documentation>
   <label>Assignment Id:</label>
   <property>assignmentId</property>
   <required>1</required>
@@ -26,7 +26,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>ISPW Application Id.</documentation>
+  <documentation>ISPW application id.</documentation>
   <label>Application ID:</label>
   <property>application</property>
   <required>1</required>
@@ -42,7 +42,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Module Type.</documentation>
+  <documentation>Module type.</documentation>
   <label>Module Type:</label>
   <property>moduleType</property>
   <required>1</required>
@@ -50,7 +50,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Current Level.</documentation>
+  <documentation>Current level.</documentation>
   <label>Current Level:</label>
   <property>currentLevel</property>
   <required>1</required>
@@ -58,7 +58,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Starting Level.</documentation>
+  <documentation>Starting level.</documentation>
   <label>Starting Level:</label>
   <property>startingLevel</property>
   <required>1</required>
@@ -66,7 +66,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Generate Sequence.</documentation>
+  <documentation>Optional, generate sequence.</documentation>
   <label>Generate Sequence:</label>
   <property>generateSequence</property>
   <required>0</required>
@@ -74,39 +74,47 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>SQL.</documentation>
+  <checkedValue>true</checkedValue>
+  <documentation>Optional, SQL.</documentation>
   <label>SQL:</label>
   <property>sql</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>checkbox</type>
+  <uncheckedValue>false</uncheckedValue>
+  <value>false</value>
 </formElement>
 <formElement>
-  <documentation>IMS.</documentation>
+  <checkedValue>true</checkedValue>
+  <documentation>Optional, IMS.</documentation>
   <label>IMS:</label>
   <property>ims</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>checkbox</type>
+  <uncheckedValue>false</uncheckedValue>
+  <value>false</value>
 </formElement>
 <formElement>
-  <documentation>CICS.</documentation>
+  <checkedValue>true</checkedValue>
+  <documentation>Optional, CICS.</documentation>
   <label>CICS:</label>
   <property>cics</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>checkbox</type>
+  <uncheckedValue>false</uncheckedValue>
+  <value>false</value>
 </formElement>
 <formElement>
-  <documentation>Program.</documentation>
+  <checkedValue>true</checkedValue>
+  <documentation>Optional, program.</documentation>
   <label>Program:</label>
   <property>program</property>
   <required>0</required>
-  <type>entry</type>
-  <value></value>
+  <type>checkbox</type>
+  <uncheckedValue>false</uncheckedValue>
+  <value>false</value>
 </formElement>
 <formElement>
-  <documentation>Option 1.</documentation>
+  <documentation>Optional, option 1.</documentation>
   <label>Option 1:</label>
   <property>option1</property>
   <required>0</required>
@@ -114,7 +122,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Option 2.</documentation>
+  <documentation>Optional, option 2.</documentation>
   <label>Option 2:</label>
   <property>option2</property>
   <required>0</required>
@@ -122,7 +130,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Option 3.</documentation>
+  <documentation>Optional, Option 3.</documentation>
   <label>Option 3:</label>
   <property>option3</property>
   <required>0</required>
@@ -130,7 +138,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Option 4.</documentation>
+  <documentation>Optional, option 4.</documentation>
   <label>Option 4:</label>
   <property>option4</property>
   <required>0</required>
@@ -138,9 +146,177 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Option 5.</documentation>
+  <documentation>Optional, option 5.</documentation>
   <label>Option 5:</label>
   <property>option5</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, action.</documentation>
+  <label>Action:</label>
+  <property>action</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, alternate name.</documentation>
+  <label>Alternate Name:</label>
+  <property>alternateName</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, base version.</documentation>
+  <label>Base Version:</label>
+  <property>baseVersion</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, internal version.</documentation>
+  <label>Internal Version:</label>
+  <property>internalVersion</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, replace version.</documentation>
+  <label>Replace Version:</label>
+  <property>replaceVersion</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, version.</documentation>
+  <label>Version:</label>
+  <property>version</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, clazz.</documentation>
+  <label>Clazz:</label>
+  <property>clazz</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, container.</documentation>
+  <label>Container:</label>
+  <property>container</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, date-time.</documentation>
+  <label>Date-Time:</label>
+  <property>dateTime</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, environment.</documentation>
+  <label>Environment:</label>
+  <property>environment</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, extension.</documentation>
+  <label>Extension:</label>
+  <property>extension</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, flags.</documentation>
+  <label>Flags:</label>
+  <property>flags</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, level.</documentation>
+  <label>Level:</label>
+  <property>level</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, message.</documentation>
+  <label>Message:</label>
+  <property>message</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, operation.</documentation>
+  <label>Operation:</label>
+  <property>operation</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, release.</documentation>
+  <label>Release:</label>
+  <property>release</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, set.</documentation>
+  <label>Set:</label>
+  <property>set</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, status.</documentation>
+  <label>Status:</label>
+  <property>status</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, taskId.</documentation>
+  <label>Task Id:</label>
+  <property>taskId</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, URL.</documentation>
+  <label>URL:</label>
+  <property>url</property>
+  <required>0</required>
+  <type>entry</type>
+  <value></value>
+</formElement>
+<formElement>
+  <documentation>Optional, use id.</documentation>
+  <label>User Id:</label>
+  <property>userId</property>
   <required>0</required>
   <type>entry</type>
   <value></value>

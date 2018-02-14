@@ -34,7 +34,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment Description.</documentation>
+  <documentation>Assignment description.</documentation>
   <label>Description:</label>
   <property>description</property>
   <required>1</required>
@@ -50,7 +50,7 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Assignment Prefix.</documentation>
+  <documentation>Assignment prefix.</documentation>
   <label>Assignment Prefix:</label>
   <property>assignmentPrefix</property>
   <required>1</required>
@@ -58,23 +58,23 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Reference Number.</documentation>
-  <label>Reference Number:</label>
-  <property>referenceNumber</property>
+  <documentation>Optional, ref number.</documentation>
+  <label>Ref Number:</label>
+  <property>refNumber</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Release Id.</documentation>
-  <label>Release Id:</label>
-  <property>releaseId</property>
+  <documentation>Optional, release.</documentation>
+  <label>Release:</label>
+  <property>release</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>User Tag.</documentation>
+  <documentation>Optional, user tag.</documentation>
   <label>User Tag:</label>
   <property>userTag</property>
   <required>0</required>
