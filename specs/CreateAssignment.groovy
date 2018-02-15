@@ -1,18 +1,16 @@
 import spock.lang.*
 
-import com.electriccloud.spec.PluginSpockTestSupport
-
-class CreateConfiguration extends PluginSpockTestSupport {
+class CreateAssignment extends ECISPWPluginHelper {
 
     static def projectName = 'EC-ISPW Specs CreateAssignement'
     
     def doSetupSpec() {
         createConfiguration('specConfig')
-        dslFile 'dsl/CreateIssue/CreateIssue.dsl', [projName: projectName]
+        dslFile 'dsl/CreateAssignment/CreateAssignment.dsl', [projName: projectName]
     }
 
     def doCleanupSpec() {
-        dsl "deleteProject '$projectName'"
+//        dsl "deleteProject '$projectName'"
     }
     
     @Unroll
@@ -20,20 +18,9 @@ class CreateConfiguration extends PluginSpockTestSupport {
         when: 'a procedure runs'
         def result = dsl """
                 runProcedure(
-                    projectName: '/plugins/EC-ISPW/project',
-                    procedureName: 'CreateConfiguration',
-                    credential: [
-                        credentialName: '$configName',
-                        userName: '$validUsername',
-                        password: '$validPassword'
-                    ],
-                    actualParameter: [
-                        instance: '$validInstance',
-                        config: '$configName',
-                        credential: '$configName',
-                        srid: '$validSRID',
-                        desc: '$validDesc'
-                    ]
+                    projectName: '$projectName',
+                    procedureName: 'CreateAssignment',
+                    actualParameter: [config: 'specConfig']
                 )
             """
         then: 'the procedure finishes successfully'
@@ -42,7 +29,5 @@ class CreateConfiguration extends PluginSpockTestSupport {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
-        cleanup: 'delete configuration'
-        deleteConfiguration('EC-ISPW', configName)
     }
 }

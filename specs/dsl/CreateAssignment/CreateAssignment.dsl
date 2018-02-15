@@ -1,37 +1,44 @@
 def projName = args.projName
 
 def params = [
-    config: 'specConfig',
-    assignee: '',
-    jiraProject: '',
-    summary: '',
-    issueType: 'Task',
-    affectsVersion: '',
-    labels: '',
-    description: '',
-    additionalParameters: '',
-    createLink: ''
+//    config: 'specConfig'
 ]
 
 project projName, {
-    procedure 'Create Assignment', {
-      step 'Create Assignment', {
-        subprocedure = 'CreateAssignment'
-        subproject = '/plugins/EC-ISPW/project'
+    procedure 'CreateAssignment', {
+        description = ''
+        jobNameTemplate = ''
+        projectName = projName
+        resourceName = ''
         timeLimit = ''
         timeLimitUnits = 'minutes'
-        workingDirectory = null
         workspaceName = ''
 
-        params.each { key, value ->
-            actualParameter key, '$[' + key + ']'
+        step 'Create Assignment', {
+            projectName = projName
+            subprocedure = 'Create Assignment'
+            subproject = '/plugins/EC-ISPW/project'
+            actualParameter '_owner', 'ELCCLD1'
+            actualParameter 'application', 'DEMO'
+            actualParameter 'assignmentPrefix', 'DEMO'
+            actualParameter 'defaultPath', 'DEV1'
+            actualParameter 'description', 'DEMO Assignment'
+            actualParameter 'refNumber', ''
+            actualParameter 'release', 'QATEST'
+            actualParameter 'resultFormat', 'json'
+            actualParameter 'resultPropertySheet', '/myJob/createAssignment'
+            actualParameter 'stream', 'DEMO'
+            actualParameter 'userTag', ''
+            actualParameter 'config', 'specConfig'
+            params.each { key, value ->
+                actualParameter key, '$[' + key + ']'
+            }
+            
+            params.each { key, value ->
+                    formalParameter key, defaultValue: value, {
+                        type = 'textarea'
+                    }
+                  }
         }
-      }
-
-      params.each { key, value ->
-        formalParameter key, defaultValue: value, {
-            type = 'textarea'
-        }
-      }
     }
 }
