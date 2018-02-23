@@ -1,12 +1,13 @@
 import spock.lang.*
+import org.apache.commons.lang.RandomStringUtils
 
-class CreateAssignment extends ECISPWPluginHelper {
+class CreateRelease extends ECISPWPluginHelper {
 
-    static def projectName = 'EC-ISPW Specs CreateAssignment'
+    static def projectName = 'EC-ISPW Specs CreateRelease'
 
     def doSetupSpec() {
         createConfiguration('specConfig')
-        dslFile 'dsl/CreateAssignment/CreateAssignment.dsl', [projName: projectName]
+        dslFile 'dsl/CreateRelease/CreateRelease.dsl', [projName: projectName]
     }
 
     def doCleanupSpec() {
@@ -14,12 +15,14 @@ class CreateAssignment extends ECISPWPluginHelper {
     }
 
     @Unroll
-    def "Create Assignment with valid params"() {
+    def "Create Release with Release ID"() {
         when: 'a procedure runs'
+
         def result = dsl """
                 runProcedure(
                     projectName: '$projectName',
-                    procedureName: 'CreateAssignment'
+                    procedureName: 'CreateRelease',
+                    actualParameter: ['releaseId':org.apache.commons.lang.RandomStringUtils.random(8, true, true)]
                 )
             """
         then: 'the procedure finishes successfully'
@@ -30,14 +33,33 @@ class CreateAssignment extends ECISPWPluginHelper {
         assert jobStatus(result.jobId).outcome == 'success'
     }
 
+    def "Create Release with Release Prefix"() {
+        when: 'a procedure runs'
+
+        def result = dsl """
+                runProcedure(
+                    projectName: '$projectName',
+                    procedureName: 'CreateRelease',
+                    actualParameter: ['releasePrefix':'EFTEST']
+                )
+            """
+        then: 'the procedure finishes successfully'
+        assert result?.jobId
+        waitUntil {
+            jobCompleted result.jobId
+        }
+        assert jobStatus(result.jobId).outcome == 'success'
+    }
+
+
     @Unroll
-    def "Create Assignment with wrong release"() {
+    def "Create Release with Release Id and Prefix"() {
         when: 'a procedure runs'
         def result = dsl """
                 runProcedure(
                     projectName: '$projectName',
-                    procedureName: 'CreateAssignment',
-                    actualParameter: ['releaseId':'WRONGRELEASE']
+                    procedureName: 'CreateRelease',
+                    actualParameter: ['releaseId':org.apache.commons.lang.RandomStringUtils.random(8, true, true), 'releasePrefix':'EFTEST']
                 )
             """
         then: 'the procedure fails'
@@ -49,12 +71,12 @@ class CreateAssignment extends ECISPWPluginHelper {
     }
 
     @Unroll
-    def "Create Assignment with wrong stream name"() {
+    def "Create Release with wrong stream name"() {
         when: 'a procedure runs'
         def result = dsl """
                     runProcedure(
                         projectName: '$projectName',
-                        procedureName: 'CreateAssignment',
+                        procedureName: 'CreateRelease',
                         actualParameter: ['stream':'WRONGSTREAM']
                     )
                 """
@@ -67,33 +89,15 @@ class CreateAssignment extends ECISPWPluginHelper {
     }
 
     @Unroll
-    def "Create Assignment with wrong application name"() {
+    def "Create Release with wrong application name"() {
         when: 'a procedure runs'
         def result = dsl """
                         runProcedure(
                             projectName: '$projectName',
-                            procedureName: 'CreateAssignment',
+                            procedureName: 'CreateRelease',
                             actualParameter: ['application':'WRONGAPP']
                         )
                     """
-        then: 'the procedure fails'
-        assert result?.jobId
-        waitUntil {
-            jobCompleted result.jobId
-        }
-        assert jobStatus(result.jobId).outcome == 'error'
-    }
-
-    @Unroll
-    def "Create Assignment with wrong Stage"() {
-        when: 'a procedure runs'
-        def result = dsl """
-                            runProcedure(
-                                projectName: '$projectName',
-                                procedureName: 'CreateAssignment',
-                                actualParameter: ['defaultPath':'DEV5']
-                            )
-                        """
         then: 'the procedure fails'
         assert result?.jobId
         waitUntil {

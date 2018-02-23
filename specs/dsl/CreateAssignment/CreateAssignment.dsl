@@ -1,7 +1,11 @@
 def projName = args.projName
 
 def params = [
-//    config: 'specConfig'
+        config   : 'specConfig',
+        releaseId: 'QATEST',
+        stream: 'DEMO',
+        application: 'DEMO',
+        defaultPath: 'DEV1'
 ]
 
 project projName, {
@@ -19,26 +23,21 @@ project projName, {
             subprocedure = 'Create Assignment'
             subproject = '/plugins/EC-ISPW/project'
             actualParameter '_owner', 'ELCCLD1'
-            actualParameter 'application', 'DEMO'
             actualParameter 'assignmentPrefix', 'DEMO'
-            actualParameter 'defaultPath', 'DEV1'
             actualParameter 'description', 'DEMO Assignment'
-            actualParameter 'refNumber', ''
-            actualParameter 'release', 'QATEST'
+            actualParameter 'referenceNumber', ''
             actualParameter 'resultFormat', 'json'
             actualParameter 'resultPropertySheet', '/myJob/createAssignment'
-            actualParameter 'stream', 'DEMO'
             actualParameter 'userTag', ''
-            actualParameter 'config', 'specConfig'
             params.each { key, value ->
                 actualParameter key, '$[' + key + ']'
             }
-            
+
             params.each { key, value ->
-                    formalParameter key, defaultValue: value, {
-                        type = 'textarea'
-                    }
-                  }
+                formalParameter key, defaultValue: value, {
+                    type = 'textarea'
+                }
+            }
         }
     }
 }
