@@ -44,7 +44,7 @@ sub step_display_task_information {
     my $result = [];
     for my $task (@$tasks) {
         my $task_id = $task->{taskId};
-        my $container = ($parameters->{containerType} eq 'release') ? $task->{container} : task->{assignment};
+        my $container = ($parameters->{containerType} eq 'release') ? $task->{container} : $task->{assignment};
 
         my $uri = URI->new($config->{instance});
         $uri->path_segments('ispw', $srid, (($parameters->{containerType} eq 'release') ? 'assignments' : 'releases'), $container, 'tasks', $task_id);
