@@ -1,8 +1,9 @@
 import spock.lang.*
 
+//TODO: Untested
 class DeployRelease extends ECISPWPluginHelper {
 
-    static def projectName = 'EC-ISPW Specs DeployAssignment'
+    static def projectName = 'EC-ISPW Specs DeployRelease'
 
     def doSetupSpec() {
         createConfiguration('specConfig')
@@ -48,6 +49,7 @@ class DeployRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "Container with type R and identifier 1234       does not exist. Try again with a valid container."
     }
 
     @Unroll
@@ -58,7 +60,7 @@ class DeployRelease extends ECISPWPluginHelper {
                     runProcedure(
                         projectName: '$projectName',
                         procedureName: 'Deploy Release',
-                        actualParameter: ['level':'DEV1000']
+                        actualParameter: ['level':'DEV9']
                     )
                 """
         then: 'the procedure fails'
@@ -67,5 +69,6 @@ class DeployRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "Set S* must contain tasks before a lock set request is made."
     }
 }

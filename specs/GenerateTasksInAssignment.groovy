@@ -23,7 +23,7 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'Generate Tasks In Assignment',
-                    actualParameter: ['assignmentId':'1234', 'eventz':'{}']
+                                        actualParameter: ['eventz':'[{}]']
                 )
             """
         then: 'the procedure finishes successfully'
@@ -42,7 +42,7 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'Generate Tasks In Assignment',
-                    actualParameter: ['assignmentId':'1234']
+                    actualParameter: ['assignmentId':'1234', 'eventz':'{}']
                 )
             """
         then: 'the procedure fails'

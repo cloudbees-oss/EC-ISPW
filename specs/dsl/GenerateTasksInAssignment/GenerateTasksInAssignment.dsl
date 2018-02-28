@@ -3,7 +3,7 @@ def projName = args.projName
 def params = [
         config            : 'specConfig',
         level             : 'DEV1',
-//        callbackCredential: "ispw2",
+        callbackCredential: "ispw2",
         assignmentId      : "DEMO000042"
 ]
 
@@ -25,7 +25,7 @@ project projName, {
             actualParameter 'resultPropertySheet', '/myJob/generateAssignmentTasks'
             actualParameter 'runtimeConfiguration', 'ISPW'
             actualParameter 'events', '$[eventz]'
-            formalParameter 'zzz', defaultValue: null, {type = 'textarea'}
+            formalParameter 'eventz', defaultValue: null, {type = 'textarea'}
 
             params.each { key, value ->
                 actualParameter key, '$[' + key + ']'
@@ -36,7 +36,7 @@ project projName, {
                     type = 'textarea'
                 }
             }
-//            attachCredential(credentialName: "/projects/$projName/credentials/ispw2")
+            attachCredential(credentialName: "/projects/$projName/credentials/ispw2")
         }
     }
 }

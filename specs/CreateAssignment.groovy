@@ -27,6 +27,7 @@ class CreateAssignment extends ECISPWPluginHelper {
         waitUntil {
             jobCompleted result.jobId
         }
+        
         assert jobStatus(result.jobId).outcome == 'success'
     }
 
@@ -37,7 +38,7 @@ class CreateAssignment extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'CreateAssignment',
-                    actualParameter: ['releaseId':'WRONGRELEASE']
+                    actualParameter: ['releaseId':'WRONGRELEA']
                 )
             """
         then: 'the procedure fails'
@@ -45,7 +46,9 @@ class CreateAssignment extends ECISPWPluginHelper {
         waitUntil {
             jobCompleted result.jobId
         }
+
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "Release WRONGRELEA not found. Use a valid Release ID and try again."
     }
 
     @Unroll
@@ -63,7 +66,9 @@ class CreateAssignment extends ECISPWPluginHelper {
         waitUntil {
             jobCompleted result.jobId
         }
+        
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "DEV1 is not a valid start level for application DEMO stream WRONGSTR. Use a valid start level and try again."
     }
 
     @Unroll
@@ -82,6 +87,7 @@ class CreateAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "DEV1 is not a valid start level for application WRON stream DEMO    . Use a valid start level and try again."
     }
 
     @Unroll
@@ -100,5 +106,6 @@ class CreateAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "DEV5 is not a valid start level for application DEMO stream DEMO    . Use a valid start level and try again.
     }
 }

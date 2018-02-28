@@ -1,5 +1,6 @@
 import spock.lang.*
 
+//TODO: Untested
 class DeployAssignment extends ECISPWPluginHelper {
 
     static def projectName = 'EC-ISPW Specs DeployAssignment'
@@ -48,6 +49,7 @@ class DeployAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "Container with type A and identifier 1234       does not exist. Try again with a valid container."
     }
 
     @Unroll
@@ -58,7 +60,7 @@ class DeployAssignment extends ECISPWPluginHelper {
                     runProcedure(
                         projectName: '$projectName',
                         procedureName: 'Deploy Assignment',
-                        actualParameter: ['level':'DEV1000']
+                        actualParameter: ['level':'DEV9 ']
                     )
                 """
         then: 'the procedure fails'
@@ -67,5 +69,7 @@ class DeployAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        
+        //Eror message "Set S* must contain tasks before a lock set request is made"
     }
 }

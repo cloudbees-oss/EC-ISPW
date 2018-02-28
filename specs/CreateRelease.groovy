@@ -40,7 +40,7 @@ class CreateRelease extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'CreateRelease',
-                    actualParameter: ['releasePrefix':'EFTEST']
+                    actualParameter: ['releasePrefix':'EFTE']
                 )
             """
         then: 'the procedure finishes successfully'
@@ -68,6 +68,7 @@ class CreateRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        // Error message "Release Identifier and Release Prefix are both set. Only one can be set."
     }
 
     @Unroll
@@ -77,7 +78,7 @@ class CreateRelease extends ECISPWPluginHelper {
                     runProcedure(
                         projectName: '$projectName',
                         procedureName: 'CreateRelease',
-                        actualParameter: ['stream':'WRONGSTREAM']
+                        actualParameter: ['stream':'WRONGSTREAM', 'releasePrefix':'EFTEST']
                     )
                 """
         then: 'the procedure fails'
@@ -86,6 +87,7 @@ class CreateRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "DEMO WRONGSTR is not a valid application stream. Use an existing application stream and try again."
     }
 
     @Unroll
@@ -95,7 +97,7 @@ class CreateRelease extends ECISPWPluginHelper {
                         runProcedure(
                             projectName: '$projectName',
                             procedureName: 'CreateRelease',
-                            actualParameter: ['application':'WRONGAPP']
+                            actualParameter: ['application':'WRONGAPP', 'releasePrefix':'EFTEST']
                         )
                     """
         then: 'the procedure fails'
@@ -104,5 +106,6 @@ class CreateRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //Error message "WRON DEMO     is not a valid application stream. Use an existing application stream and try again."
     }
 }

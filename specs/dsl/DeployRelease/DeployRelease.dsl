@@ -2,7 +2,7 @@ def projName = args.projName
 
 def params = [
         config            : 'specConfig',
-        releaseId         : 'QATEST',
+        releaseId         : 'SPECTEST',
         level             : 'DEV1',
         callbackCredential: "ispw2"
 ]
@@ -25,7 +25,6 @@ project projName, {
             actualParameter 'events', ''
             actualParameter 'executionStatus', ''
             actualParameter 'httpHeaders', ''
-            actualParameter 'releaseId', 'QATEST'
             actualParameter 'resultFormat', 'json'
             actualParameter 'resultPropertySheet', '/myJob/deployResult'
             actualParameter 'runtimeConfiguration', 'ISPW'
