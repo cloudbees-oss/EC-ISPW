@@ -43,11 +43,8 @@ sub step_display_task_information {
     my $result = [];
     for my $task (@$tasks) {
         my $task_id = $task->{taskId};
-<<<<<<< HEAD
-        my $assignment = $task->{assignment};
-=======
+
         my $container = ($parameters->{containerType} eq 'release') ? $task->{container} : $task->{assignment};
->>>>>>> a83ec69... Fixed syntax error
 
         my $uri = URI->new($config->{instance});
         $uri->path_segments('ispw', $srid, 'assignments', $assignment, 'tasks', $task_id);
