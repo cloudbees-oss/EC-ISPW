@@ -6,7 +6,6 @@ use MIME::Base64 qw(encode_base64);
 use JSON;
 use base qw(EC::Plugin::HooksCore);
 
-
 =head1 SYNOPSYS
 
 User-defined hooks
@@ -79,7 +78,6 @@ Available hooks types:
 
 # autogen end
 
-
 sub define_hooks {
     my ($self) = @_;
 
@@ -108,11 +106,24 @@ sub process_response {
         $json_error = decode_json($response->content);
         my $message = $json_error->{message};
         if ($message) {
-            $self->plugin->logger->trace($response->as_string);
-            $self->plugin->bail_out($message);
+            $self->save_error($message);
+            
+            $self->plugin->logger->trace( $response->as_string );
+            $self->plugin->bail_out( $message );
         }
         1;
     };
+}
+
+sub save_error {
+    my ($self, $message) = @_;
+    my $step_name = $self->plugin->current_step_name;
+
+    my $config = $self->plugin->config->{$step_name}->{resultProperty};
+    return unless $config && $config->{show};
+    my $property_name = $self->plugin->parameters( $step_name )->{+'resultPropertySheet'};
+    
+    $self->plugin->ec->setProperty( $property_name, $message );
 }
 
 sub correct_json_list_response {
