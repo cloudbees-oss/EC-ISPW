@@ -21,7 +21,7 @@ project projName, {
             subprocedure = 'Deploy Assignment'
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'changeType', 'S'
-            actualParameter 'events', ''
+            actualParameter 'events', '[{"name":"completed","method":"PUT","url":"http://localhost"},{"name":"failed","method":"PUT","url":"http://localhost"},{"name":"terminated","method":"PUT","url":"http://localhost"}]'
             actualParameter 'executionStatus', ''
             actualParameter 'httpHeaders', ''
             actualParameter 'resultFormat', 'json'

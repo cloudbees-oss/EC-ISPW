@@ -10,7 +10,7 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-//        dsl "deleteProject '$projectName'"
+        dsl "deleteProject '$projectName'"
     }
 
     //TODO: Check what if COBOL Code will have syntax error -> one more testcase?
@@ -23,7 +23,7 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'Generate Tasks In Assignment',
-                                        actualParameter: ['eventz':'[{}]']
+                                        actualParameter: ['eventz':'[{"name":"completed","method":"PUT","url":"http://localhost"},{"name":"failed","method":"PUT","url":"http://localhost"},{"name":"terminated","method":"PUT","url":"http://localhost"}]']
                 )
             """
         then: 'the procedure finishes successfully'
@@ -42,7 +42,7 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'Generate Tasks In Assignment',
-                    actualParameter: ['assignmentId':'1234', 'eventz':'{}']
+                    actualParameter: ['assignmentId':'1234', 'eventz':'[{"name":"completed","method":"PUT","url":"http://localhost"},{"name":"failed","method":"PUT","url":"http://localhost"},{"name":"terminated","method":"PUT","url":"http://localhost"}]']
                 )
             """
         then: 'the procedure fails'

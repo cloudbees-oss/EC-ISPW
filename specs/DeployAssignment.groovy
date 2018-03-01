@@ -1,6 +1,5 @@
 import spock.lang.*
 
-//TODO: Untested
 class DeployAssignment extends ECISPWPluginHelper {
 
     static def projectName = 'EC-ISPW Specs DeployAssignment'

@@ -1,19 +1,19 @@
 def projName = args.projName
 
 def params = [
-        config: 'specConfig',
-        releaseId: 'QATEST',
-        level: 'DEV1',
+        config            : 'specConfig',
+        releaseId         : 'QATEST',
+        level             : 'DEV1',
         callbackCredential: "ispw2"
 ]
 
 project projName, {
 
     credential 'ispw2', {
-      userName='admin'
-      password='changeme' 
+        userName = 'admin'
+        password = 'changeme'
     }
-    
+
     procedure 'Promote Release', {
         projectName = projName
         step 'Promote Release', {
@@ -21,7 +21,7 @@ project projName, {
             subprocedure = 'Promote Release'
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'changeType', 'S'
-            actualParameter 'events', ''
+            actualParameter 'events', '[{"name":"completed","method":"PUT","url":"http://localhost"},{"name":"failed","method":"PUT","url":"http://localhost"},{"name":"terminated","method":"PUT","url":"http://localhost"}]'
             actualParameter 'executionStatus', ''
             actualParameter 'httpHeaders', ''
             actualParameter 'resultFormat', 'json'
@@ -37,8 +37,8 @@ project projName, {
                     type = 'textarea'
                 }
             }
-            
-            attachCredential(credentialName : "/projects/$projName/credentials/ispw2")
+
+            attachCredential(credentialName: "/projects/$projName/credentials/ispw2")
         }
     }
 }
