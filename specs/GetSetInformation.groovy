@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GetSetInformation extends ECISPWPluginHelper {
@@ -7,12 +8,12 @@ class GetSetInformation extends ECISPWPluginHelper {
     def doSetupSpec() {
         createConfiguration('specConfig')
         dslFile 'dsl/GetSetInformation/GetSetInformation.dsl', [projName: projectName]
-        dslFile 'dsl/GetSetInformation/GetSetInformationWrongSet.dsl', [projName: projectName, config:'specConfig']
-        
+        dslFile 'dsl/GetSetInformation/GetSetInformationWrongSet.dsl', [projName: projectName, config: 'specConfig']
+
     }
 
     def doCleanupSpec() {
-//        dsl "deleteProject '$projectName'"
+        dsl "deleteProject '$projectName'"
     }
 
     @Unroll
@@ -31,23 +32,26 @@ class GetSetInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/setInfo", result.jobId).toString())
+
     }
-    
+
     @Unroll
-       def "Get Non-existing Set Information"() {
-           when: 'a procedure runs'
-   
-           def result = dsl """
+    def "Get Non-existing Set Information"() {
+        when: 'a procedure runs'
+
+        def result = dsl """
                    runProcedure(
                        projectName: '$projectName',
                        procedureName: 'Get Set Information Wrong Set'
                    )
                """
-           then: 'the procedure fails'
-           assert result?.jobId
-           waitUntil {
-               jobCompleted result.jobId
-           }
-           assert jobStatus(result.jobId).outcome == 'error'
-       }
+        then: 'the procedure fails'
+        assert result?.jobId
+        waitUntil {
+            jobCompleted result.jobId
+        }
+        assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/setInfo", result.jobId).toString().equals("Could not find Set 1234      . Enter a valid Set name or create a new Set.");
+    }
 }

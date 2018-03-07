@@ -14,7 +14,7 @@ project projName, {
             subprocedure = 'Load Task'
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'application', 'DEMO'
-            actualParameter 'moduleName', 'DEMOTEST1'
+            actualParameter 'moduleName', 'DEMOTST1'
             actualParameter 'moduleType', 'COB'
             actualParameter 'resultFormat', 'json'
             actualParameter 'resultPropertySheet', '/myJob/loadTask'

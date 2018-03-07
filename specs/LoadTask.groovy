@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class LoadTask extends ECISPWPluginHelper {
@@ -29,6 +30,7 @@ class LoadTask extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/loadTask", result.jobId).toString())
     }
 
     @Unroll
@@ -48,6 +50,8 @@ class LoadTask extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //TODO: Workaround 404 response
+//        assert getJobProperty("/myJob/loadTask", result.jobId).toString().equals("{}");
     }
 
     @Unroll
@@ -67,5 +71,7 @@ class LoadTask extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        //TODO: Workaround 404 response
+//        assert getJobProperty("/myJob/loadTask", result.jobId).toString().equals("{}");
     }
 }

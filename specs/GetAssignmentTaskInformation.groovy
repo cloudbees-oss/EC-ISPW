@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GetAssignmentTaskInformation extends ECISPWPluginHelper {
@@ -10,7 +11,7 @@ class GetAssignmentTaskInformation extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-//        dsl "deleteProject '$projectName'"
+        dsl "deleteProject '$projectName'"
     }
 
     @Unroll
@@ -29,6 +30,7 @@ class GetAssignmentTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/assignmentTask", result.jobId).toString())
     }
 
     @Unroll
@@ -48,6 +50,7 @@ class GetAssignmentTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/assignmentTask", result.jobId).toString().equals("Task 7E222BC9CB84 not found in Assignment 1234");
     }
 
     @Unroll
@@ -67,5 +70,6 @@ class GetAssignmentTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/assignmentTask", result.jobId).toString().equals("Task 1234 not found in Assignment DEMO000040");
     }
 }

@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GetSetTaskList extends ECISPWPluginHelper {
@@ -11,7 +12,7 @@ class GetSetTaskList extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-//        dsl "deleteProject '$projectName'"
+        dsl "deleteProject '$projectName'"
     }
 
     @Unroll
@@ -30,6 +31,7 @@ class GetSetTaskList extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/setTasks", result.jobId).toString())
     }
     
     @Unroll
@@ -47,6 +49,7 @@ class GetSetTaskList extends ECISPWPluginHelper {
            waitUntil {
                jobCompleted result.jobId
            }
-           assert jobStatus(result.jobId).outcome == 'error'
+           assert jobStatus(result.jobId).outcome == 'success'
+           assert getJobProperty("/myJob/setTasks", result.jobId).toString().equals("{}");
        }
 }

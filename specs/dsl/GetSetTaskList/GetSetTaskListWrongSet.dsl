@@ -8,7 +8,7 @@ project projName, {
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'config', "$args.config"
             actualParameter 'resultFormat', 'json'
-            actualParameter 'resultPropertySheet', '/myJob/set'
+            actualParameter 'resultPropertySheet', '/myJob/setTasks'
             actualParameter 'setId', '1234'
         }
     }

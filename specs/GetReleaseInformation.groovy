@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GetReleaseInformation extends ECISPWPluginHelper {
@@ -29,24 +30,26 @@ class GetReleaseInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/releaseInformation", result.jobId).toString())
     }
-    
+
     @Unroll
-       def "Get Non-existing Release Information"() {
-           when: 'a procedure runs'
-   
-           def result = dsl """
+    def "Get Non-existing Release Information"() {
+        when: 'a procedure runs'
+
+        def result = dsl """
                    runProcedure(
                        projectName: '$projectName',
                        procedureName: 'Get Release Information',
                        actualParameter: ['releaseId':'1234']
                    )
                """
-           then: 'the procedure failes'
-           assert result?.jobId
-           waitUntil {
-               jobCompleted result.jobId
-           }
-           assert jobStatus(result.jobId).outcome == 'error'
-       }
+        then: 'the procedure failes'
+        assert result?.jobId
+        waitUntil {
+            jobCompleted result.jobId
+        }
+        assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/releaseInformation", result.jobId).toString().equals("Release with id 1234 not found.");
+    }
 }

@@ -2,8 +2,8 @@ def projName = args.projName
 
 def params = [
         config            : 'specConfig',
-        releaseId         : 'QATEST',
-        level             : 'DEV1',
+        releaseId         : 'SPECTEST',
+        level             : 'STG1',
         callbackCredential: "ispw2"
 ]
 

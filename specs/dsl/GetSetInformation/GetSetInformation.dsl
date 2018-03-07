@@ -11,7 +11,7 @@ project projName, {
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'assignmentId', 'DEMO000042'
             actualParameter 'callbackCredential', ''
-            actualParameter 'events', '{}'
+            actualParameter 'events', '[{"name":"completed","method":"PUT","url":"http://localhost"},{"name":"failed","method":"PUT","url":"http://localhost"},{"name":"terminated","method":"PUT","url":"http://localhost"}]'
             actualParameter 'httpHeaders', ''
             actualParameter 'level', 'DEV1'
             actualParameter 'resultFormat', 'json'
@@ -32,9 +32,9 @@ project projName, {
         step 'Get Set Information', {
            subprocedure = 'Get Set Information'
            subproject = '/plugins/EC-ISPW/project'
-            actualParameter 'config', "$args.config"
+           actualParameter 'config', "$args.config"
            actualParameter 'resultFormat', 'json'
-           actualParameter 'resultPropertySheet', '/myJob/set'
+           actualParameter 'resultPropertySheet', '/myJob/setInfo'
            actualParameter 'setId', '\$[/javascript JSON.parse(\'\$[/myJob/generateResult]\').setId]'
          }
     }

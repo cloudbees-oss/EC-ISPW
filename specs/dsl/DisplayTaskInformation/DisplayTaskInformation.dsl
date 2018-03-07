@@ -2,7 +2,7 @@ def projName = args.projName
 
 def params = [
         setTasksJson:'',
-        containerType:'application'
+        containerType:'assignment'
 ]
 
 project projName, {

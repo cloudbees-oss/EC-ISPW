@@ -1,6 +1,6 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
-//TODO: Untested
 class DeployRelease extends ECISPWPluginHelper {
 
     static def projectName = 'EC-ISPW Specs DeployRelease'
@@ -30,6 +30,7 @@ class DeployRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/deployResult", result.jobId).toString())
     }
 
     @Unroll
@@ -49,7 +50,7 @@ class DeployRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        //Error message "Container with type R and identifier 1234       does not exist. Try again with a valid container."
+        assert getJobProperty("/myJob/deployResult", result.jobId).toString().equals("Container with type R and identifier 1234       does not exist. Try again with a valid container.");
     }
 
     @Unroll
@@ -69,6 +70,6 @@ class DeployRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        //Error message "Set S* must contain tasks before a lock set request is made."
+        assert getJobProperty("/myJob/deployResult", result.jobId).toString() ==~ /Set S.+ must contain tasks before a lock set request is made./
     }
 }

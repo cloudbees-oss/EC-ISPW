@@ -1,4 +1,5 @@
 import spock.lang.*
+import org.apache.commons.lang.StringUtils
 
 class RegressRelease extends ECISPWPluginHelper {
 
@@ -6,6 +7,7 @@ class RegressRelease extends ECISPWPluginHelper {
 
     def doSetupSpec() {
         createConfiguration('specConfig')
+        dslFile 'dsl/RegressRelease/RegressReleaseComplex.dsl', [projName: projectName]
         dslFile 'dsl/RegressRelease/RegressRelease.dsl', [projName: projectName]
     }
 
@@ -13,23 +15,28 @@ class RegressRelease extends ECISPWPluginHelper {
         dsl "deleteProject '$projectName'"
     }
 
-    @Unroll
-    def "Regress Release"() {
-        when: 'a procedure runs'
-
-        def result = dsl """
-                runProcedure(
-                    projectName: '$projectName',
-                    procedureName: 'Regress Release'
-                )
-            """
-        then: 'the procedure finishes successfully'
-        assert result?.jobId
-        waitUntil {
-            jobCompleted result.jobId
-        }
-        assert jobStatus(result.jobId).outcome == 'success'
-    }
+// TODO: This testcase will now work without callbacks.
+// Regress should be performed from STG1 level
+// If Task now is at DEV1 level, there is no place to regress
+//    @Unroll
+//    def "Regress Release"() {
+//        when: 'a procedure runs'
+//
+//        def result = dsl """
+//                runProcedure(
+//                    projectName: '$projectName',
+//                    procedureName: 'Regress Release With Checks'
+//                )
+//            """
+//        then: 'the procedure finishes successfully'
+//        assert result?.jobId
+//        waitUntil {
+//            jobCompleted result.jobId
+//        }
+//        assert jobStatus(result.jobId).outcome == 'success'
+//    assert StringUtils.isNotEmpty(getJobProperty("/myJob/regressReleaseResult", result.jobId).toString())
+    
+//    }
 
     @Unroll
     def "Regress Release with Wrong Release ID"() {
@@ -48,6 +55,7 @@ class RegressRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/regressReleaseResult", result.jobId).toString().equals("Container with type R and identifier 1234       does not exist. Try again with a valid container.");
     }
 
     @Unroll
@@ -58,7 +66,7 @@ class RegressRelease extends ECISPWPluginHelper {
                     runProcedure(
                         projectName: '$projectName',
                         procedureName: 'Regress Release',
-                        actualParameter: ['level':'DEV1000']
+                        actualParameter: ['level':'DEV9']
                     )
                 """
         then: 'the procedure fails'
@@ -67,5 +75,6 @@ class RegressRelease extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/regressReleaseResult", result.jobId).toString()==~ /Set S.+ must contain tasks before a lock set request is made./
     }
 }

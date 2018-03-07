@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GetAssignmentInformation extends ECISPWPluginHelper {
@@ -29,6 +30,7 @@ class GetAssignmentInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/assignmentInfo", result.jobId).toString())
     }
     
     @Unroll
@@ -48,5 +50,6 @@ class GetAssignmentInformation extends ECISPWPluginHelper {
                jobCompleted result.jobId
            }
            assert jobStatus(result.jobId).outcome == 'error'
+           assert getJobProperty("/myJob/assignmentInfo", result.jobId).toString().equals("Assignment with id 1234 not found.");
        }
 }

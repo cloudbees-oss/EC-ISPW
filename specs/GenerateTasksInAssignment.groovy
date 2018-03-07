@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class GenerateTasksInAssignment extends ECISPWPluginHelper {
@@ -14,7 +15,6 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
     }
 
     //TODO: Check what if COBOL Code will have syntax error -> one more testcase?
-    
     @Unroll
     def "Generate Tasks In Assignment"() {
         when: 'a procedure runs'
@@ -32,6 +32,8 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/generateAssignmentTasks", result.jobId).toString())
+
     }
 
     @Unroll
@@ -51,5 +53,6 @@ class GenerateTasksInAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
+        assert getJobProperty("/myJob/generateAssignmentTasks", result.jobId).toString().equals("Container with type A and identifier 1234       does not exist. Try again with a valid container.")
     }
 }

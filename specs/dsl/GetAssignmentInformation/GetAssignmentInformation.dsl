@@ -13,7 +13,7 @@ project projName, {
             subprocedure = 'Get Assignment Information'
             subproject = '/plugins/EC-ISPW/project'
             actualParameter 'resultFormat', 'json'
-            actualParameter 'resultPropertySheet', '/myJob/assignment'
+            actualParameter 'resultPropertySheet', '/myJob/assignmentInfo'
 
             params.each { key, value ->
                 actualParameter key, '$[' + key + ']'

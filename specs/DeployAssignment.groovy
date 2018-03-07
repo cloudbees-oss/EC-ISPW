@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class DeployAssignment extends ECISPWPluginHelper {
@@ -29,6 +30,7 @@ class DeployAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/deployResult", result.jobId).toString())
     }
 
     @Unroll
@@ -48,7 +50,7 @@ class DeployAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        //Error message "Container with type A and identifier 1234       does not exist. Try again with a valid container."
+        assert getJobProperty("/myJob/deployResult", result.jobId).toString().equals("Container with type A and identifier 1234       does not exist. Try again with a valid container.");
     }
 
     @Unroll
@@ -68,7 +70,7 @@ class DeployAssignment extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        
-        //Eror message "Set S* must contain tasks before a lock set request is made"
+
+        assert getJobProperty("/myJob/deployResult", result.jobId).toString() ==~ /Set S.+ must contain tasks before a lock set request is made./
     }
 }
