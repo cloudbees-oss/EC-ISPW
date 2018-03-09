@@ -10,6 +10,26 @@
   <type>entry</type>
 </formElement>
 <formElement>
+  <documentation>Whether the tasks list an assignment or a release as their container.</documentation>
+  <label>Container type:</label>
+  <option>
+    <name>assignment</name>
+    <value>assignment</value>
+  </option>
+  <option>
+    <name>release</name>
+    <value>release</value>
+  </option>
+  <option>
+    <name>set</name>
+    <value>set</value>
+  </option>
+  <value>assignment</value>
+  <property>containerType</property>
+  <required>0</required>
+  <type>select</type>
+</formElement>
+<formElement>
   <required>0</required>
   <type>textarea</type>
   <label>Set Tasks:</label>

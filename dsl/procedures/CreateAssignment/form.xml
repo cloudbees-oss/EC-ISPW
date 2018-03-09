@@ -58,17 +58,17 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Ref Number.</documentation>
-  <label>Ref Number:</label>
-  <property>refNumber</property>
+  <documentation>Reference Number.</documentation>
+  <label>Reference Number:</label>
+  <property>referenceNumber</property>
   <required>0</required>
   <type>entry</type>
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Release.</documentation>
-  <label>Release:</label>
-  <property>release</property>
+  <documentation>Release Id.</documentation>
+  <label>Release Id:</label>
+  <property>releaseId</property>
   <required>0</required>
   <type>entry</type>
   <value></value>

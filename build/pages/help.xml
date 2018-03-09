@@ -1,0 +1,886 @@
+<!-- HELP GEN VERSION 1 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta content="text/html; charset=us-ascii" http-equiv="content-type" />
+    <title><!-- TITLE BEGIN -->Electric Flow integration for Compuware ISPW<!-- TITLE END --></title>
+    <link rel="stylesheet" href="../../plugins/EC-ISPW/pluginhelp.css" type="text/css" media="screen" />
+</head>
+<!-- REST PLUGIN WIZARD HELP -->
+<body>
+    <div class="help">
+        <h1>EC-ISPW</h1>
+        <p>Plugin Version 2.0.0.8</p>
+        <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
+        <p>Revised on <!-- REVISION DATE BEGIN -->March 2, 2018<!-- REVISION DATE END --></p>
+        <p>
+            <!-- DESCRIPTION BEGIN -->Electric Flow integration for Compuware ISPW<!-- DESCRIPTION END -->
+        </p>
+        <h2>Links</h2>
+        <!-- LINKS BEGIN -->
+<a href="http://www.compuware.com/en_us/use-cases/source-code-management.html" target="_blank">http://www.compuware.com/en_us/use-cases/source-code-management.html</a>
+<!-- LINKS END -->
+        <h1>Contents</h1>
+        <ul>
+        <!-- TOC BEGIN --><li><a href="#CreateAssignment">Create Assignment</a></li>
+<li><a href="#LoadTask">Load Task</a></li>
+<li><a href="#GetAssignmentInformation">Get Assignment Information</a></li>
+<li><a href="#GetAssignmentTaskList">Get Assignment Task List</a></li>
+<li><a href="#GetAssignmentTaskInformation">Get Assignment Task Information</a></li>
+<li><a href="#GenerateTasksinAssignment">Generate Tasks in Assignment</a></li>
+<li><a href="#PromoteAssignment">Promote Assignment</a></li>
+<li><a href="#DeployAssignment">Deploy Assignment</a></li>
+<li><a href="#CreateRelease">Create Release</a></li>
+<li><a href="#GetReleaseTaskList">Get Release Task List</a></li>
+<li><a href="#GetReleaseTaskInformation">Get Release Task Information</a></li>
+<li><a href="#GetReleaseInformation">Get Release Information</a></li>
+<li><a href="#GenerateTasksinRelease">Generate Tasks in Release</a></li>
+<li><a href="#PromoteRelease">Promote Release</a></li>
+<li><a href="#DeployRelease">Deploy Release</a></li>
+<li><a href="#RegressRelease">Regress Release</a></li>
+<li><a href="#GetSetInformation">Get Set Information</a></li>
+<li><a href="#GetSetTaskList">Get Set Task List</a></li><!-- TOC END -->
+        </ul>
+        <h2>Configuration</h2>
+        <div id="CreateConfiguration">
+            <a name="CreateConfiguration" id="CreateConfigurationLink"></a>
+            <h2>Plugin Configurations</h2>
+            <p>
+                Plugin configurations are sets of parameters that apply
+                across some or all of the plugin procedures. They
+                reduce repetition of common values, create
+                predefined parameter sets for end users, and
+                securely store credentials where needed. Each configuration
+                is given a unique name that is entered in designated
+                parameters on procedures that use them.<br /><br />
+            </p>
+            <h3>Creating Plugin Configurations</h3>
+            <p>To create plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the EC-ISPW row.</li>
+                <li>Click <b>Configure</b> to open the
+                EC-ISPW Configurations page.</li>
+                <li>Click <b>Create Configuration</b>.</li>
+                <li>To enable ElectricFlow server to communicate with the API,
+                enter the following information:<br /></li>
+                <!-- CONFIG PARAMS BEGIN -->
+    <table class="grid">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="required">
+                    Configuration:
+                </td>
+                <td>
+                    Unique name for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Description:
+                </td>
+                <td>
+                    Description for the plugin configuration.
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    ISPW Instance URL:
+                </td>
+                <td>
+                    ISPW Instance URL. This should match the http://[server]:[port] (with no trailing slash) portion of the URL of your ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/compuware.jsp
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    ISPW Instance SRID
+                </td>
+                <td>
+                    The SRID ("SeRver IDentifier") is a 4-character value that specifies which ISPW server instance you want to connect to. It is required even if you only have one ISPW server instance. Consult the administrator of your ISPW server for this value. (The SRID's default value is 'ISPW'.)
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    Access Token:
+                </td>
+                <td>
+                    The CES Personal Access Token can be obtained from the ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/jsp/settings/security.jsp under the tab "Personal Access Tokens". Its value is a hex-encoded guid. (The ISPW User Name field is currently unused, but cannot be left blank.)
+                </td>
+            </tr>
+        </tbody>
+    </table><!-- CONFIG PARAMS END -->
+            </ol>
+            <p>The EC-ISPW Configurations page now shows the new configuration.</p>
+            <h3>Editing Plugin Configurations</h3>
+            <p>To edit plugin configurations in ElectricFlow,
+            do these steps:</p>
+            <ol>
+                <li>Go to <b>Administration</b> &gt; <b>Plugins</b> to open the Plugin Manager.</li>
+                <li>Find the EC-ISPW row.</li>
+                <li>Click <b>Configure</b> to open the Configurations page.</li>
+                <li>Find the configuration that you want to edit.</li>
+                <li>Click <b>Edit</b>.</li>
+                <li>Edit the parameters in the configuration.</li>
+                <li>Click <b>OK</b> to save the modified configuration.</li>
+            </ol>
+        </div>
+        <h1>Procedures</h1>
+        <!-- PROCEDURES BEGIN -->
+                <div id="CreateAssignment">
+                <!-- CreateAssignment METADATA BEGIN -->
+            <h3>Create Assignment</h3>
+            <p>Creates an Assignment.</p>
+        <!-- CreateAssignment METADATA END -->
+                <!-- CreateAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Stream Name</td>
+                    <td>Stream name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Application ID</td>
+                    <td>ISPW Application Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Default Path</td>
+                    <td>Default Path.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>Assignment Description.</td>
+                </tr>
+                <tr>
+                    <td class="required">Owner</td>
+                    <td>Owner.</td>
+                </tr>
+                <tr>
+                    <td class="required">Assignment Prefix</td>
+                    <td>Assignment Prefix.</td>
+                </tr>
+                <tr>
+                    <td>Reference Number</td>
+                    <td>Reference Number.</td>
+                </tr>
+                <tr>
+                    <td>Release Id</td>
+                    <td>Release Id.</td>
+                </tr>
+                <tr>
+                    <td>User Tag</td>
+                    <td>User Tag.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- CreateAssignment END -->
+            </div>
+                <div id="LoadTask">
+                <!-- LoadTask METADATA BEGIN -->
+            <h3>Load Task</h3>
+            <p>Loads a Task for the specified Assignment.</p>
+        <!-- LoadTask METADATA END -->
+                <!-- LoadTask BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Stream Name</td>
+                    <td>Stream name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Application ID</td>
+                    <td>ISPW Application Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Module Name</td>
+                    <td>Module name.</td>
+                </tr>
+                <tr>
+                    <td class="required">Module Type</td>
+                    <td>Module Type.</td>
+                </tr>
+                <tr>
+                    <td class="required">Current Level</td>
+                    <td>Current Level.</td>
+                </tr>
+                <tr>
+                    <td class="required">Starting Level</td>
+                    <td>Starting Level.</td>
+                </tr>
+                <tr>
+                    <td>Generate Sequence</td>
+                    <td>Generate Sequence.</td>
+                </tr>
+                <tr>
+                    <td>SQL</td>
+                    <td>SQL.</td>
+                </tr>
+                <tr>
+                    <td>IMS</td>
+                    <td>IMS.</td>
+                </tr>
+                <tr>
+                    <td>CICS</td>
+                    <td>CICS.</td>
+                </tr>
+                <tr>
+                    <td>Program</td>
+                    <td>Program.</td>
+                </tr>
+                <tr>
+                    <td>Option 1</td>
+                    <td>Option 1.</td>
+                </tr>
+                <tr>
+                    <td>Option 2</td>
+                    <td>Option 2.</td>
+                </tr>
+                <tr>
+                    <td>Option 3</td>
+                    <td>Option 3.</td>
+                </tr>
+                <tr>
+                    <td>Option 4</td>
+                    <td>Option 4.</td>
+                </tr>
+                <tr>
+                    <td>Option 5</td>
+                    <td>Option 5.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- LoadTask END -->
+            </div>
+                <div id="GetAssignmentInformation">
+                <!-- GetAssignmentInformation METADATA BEGIN -->
+            <h3>Get Assignment Information</h3>
+            <p>Retrieves information about an Assignment.</p>
+        <!-- GetAssignmentInformation METADATA END -->
+                <!-- GetAssignmentInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentInformation END -->
+            </div>
+                <div id="GetAssignmentTaskList">
+                <!-- GetAssignmentTaskList METADATA BEGIN -->
+            <h3>Get Assignment Task List</h3>
+            <p>Retrieves the Task list for an Assignment.</p>
+        <!-- GetAssignmentTaskList METADATA END -->
+                <!-- GetAssignmentTaskList BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentTaskList END -->
+            </div>
+                <div id="GetAssignmentTaskInformation">
+                <!-- GetAssignmentTaskInformation METADATA BEGIN -->
+            <h3>Get Assignment Task Information</h3>
+            <p>Retrieves information about a Task in an Assignment.</p>
+        <!-- GetAssignmentTaskInformation METADATA END -->
+                <!-- GetAssignmentTaskInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Task Id</td>
+                    <td>Task Id.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAssignmentTaskInformation END -->
+            </div>
+                <div id="GenerateTasksinAssignment">
+                <!-- GenerateTasksinAssignment METADATA BEGIN -->
+            <h3>Generate Tasks in Assignment</h3>
+            <p>Runs generate for the Tasks in Assignment.</p>
+        <!-- GenerateTasksinAssignment METADATA END -->
+                <!-- GenerateTasksinAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment Id</td>
+                    <td>Assignment Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values.</td>
+                </tr>
+                <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GenerateTasksinAssignment END -->
+            </div>
+                <div id="CreateRelease">
+                <!-- CreateRelease METADATA BEGIN -->
+            <h3>Create Release</h3>
+            <p>Creates a Release.</p>
+        <!-- CreateRelease METADATA END -->
+                <!-- CreateRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Application</td>
+                    <td>Application name for the release.</td>
+                </tr>
+                <tr>
+                    <td class="required">Stream</td>
+                    <td>Stream name for the application.</td>
+                </tr>
+                <tr>
+                    <td class="required">Description</td>
+                    <td>Release description.</td>
+                </tr>
+                <tr>
+                    <td>Release ID</td>
+                    <td>Can only be used if releasePrefix is not set, one must be used.</td>
+                </tr>
+                <tr>
+                    <td>Release Prefix</td>
+                    <td>Can only be used if releaseId is not set, one must be used.</td>
+                </tr>
+                <tr>
+                    <td>Owner</td>
+                    <td>Release owner.</td>
+                </tr>
+                <tr>
+                    <td>Reference Number</td>
+                    <td>Release reference number.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- CreateRelease END -->
+            </div>
+                <div id="GetReleaseInformation">
+                <!-- GetReleaseInformation METADATA BEGIN -->
+            <h3>Get Release Information</h3>
+            <p>Retrieves information about a Release.</p>
+        <!-- GetReleaseInformation METADATA END -->
+                <!-- GetReleaseInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetReleaseInformation END -->
+            </div>
+                <div id="PromoteRelease">
+                <!-- PromoteRelease METADATA BEGIN -->
+            <h3>Promote Release</h3>
+            <p>Promotes a Release.</p>
+        <!-- PromoteRelease METADATA END -->
+                <!-- PromoteRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Release level.</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PromoteRelease END -->
+            </div>
+                <div id="DeployRelease">
+                <!-- DeployRelease METADATA BEGIN -->
+            <h3>Deploy Release</h3>
+            <p>Deploys a Release.</p>
+        <!-- DeployRelease METADATA END -->
+                <!-- DeployRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>DpEnvLst</td>
+                    <td>Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.</td>
+                </tr>
+                <tr>
+                    <td>System</td>
+                    <td>Optional, allows you to specify a specific System for the Deploy.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- DeployRelease END -->
+            </div>
+                <div id="RegressRelease">
+                <!-- RegressRelease METADATA BEGIN -->
+            <h3>Regress Release</h3>
+            <p>Regresses a Release.</p>
+        <!-- RegressRelease METADATA END -->
+                <!-- RegressRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- RegressRelease END -->
+            </div>
+                <div id="GetSetInformation">
+                <!-- GetSetInformation METADATA BEGIN -->
+            <h3>Get Set Information</h3>
+            <p>Retrieves information about a Set.</p>
+        <!-- GetSetInformation METADATA END -->
+                <!-- GetSetInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Set ID</td>
+                    <td>Set ID</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSetInformation END -->
+            </div>
+                <div id="GetSetTaskList">
+                <!-- GetSetTaskList METADATA BEGIN -->
+            <h3>Get Set Task List</h3>
+            <p>Retrieves the Task list for a Set.</p>
+        <!-- GetSetTaskList METADATA END -->
+                <!-- GetSetTaskList BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Set ID</td>
+                    <td>Set ID</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSetTaskList END -->
+            </div>
+            <div id="PromoteAssignment">
+                <a name="PromoteAssignment" id="PromoteAssignment" />
+                <!-- PromoteAssignment METADATA BEGIN -->
+            <h3>Promote Assignment</h3>
+            <p>Promotes an Assignment.</p>
+        <!-- PromoteAssignment METADATA END -->
+                <!-- PromoteAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>Auto-Deploy</td>
+                    <td>Optional, if checked, this will use the automatic deploy if that has been set up by the ISPW administrator, otherwise it defaults to not doing auto-deploy.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- PromoteAssignment END -->
+            </div>
+            <div id="DeployAssignment">
+                <a name="DeployAssignment" id="DeployAssignment" />
+                <!-- DeployAssignment METADATA BEGIN -->
+            <h3>Deploy Assignment</h3>
+            <p>Deploys an Assignment.</p>
+        <!-- DeployAssignment METADATA END -->
+                <!-- DeployAssignment BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Assignment ID</td>
+                    <td>Assignment ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td>Change Type</td>
+                    <td>Optional, S for standard, I for incidental, or E for emergency. Default value of S</td>
+                </tr>
+                <tr>
+                    <td>Execution Status</td>
+                    <td>Optional, I for immediate execution or at start date/time, H to create request in hold. Default is I</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values</td>
+                </tr>
+                <tr>
+                    <td>DpEnvLst</td>
+                    <td>Optional, allows you to override the Environments configured for Deploy at that level. If you wish to Deploy to only certain Environments, you can list them here.</td>
+                </tr>
+                <tr>
+                    <td>System</td>
+                    <td>Optional, allows you to specify a specific System for the Deploy.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- DeployAssignment END -->
+            </div>
+            <div id="GetReleaseTaskList">
+                <a name="GetReleaseTaskList" id="GetReleaseTaskList" />
+                <!-- GetReleaseTaskList METADATA BEGIN -->
+            <h3>Get Release Task List</h3>
+            <p>Retrieves the Task list for a Release.</p>
+        <!-- GetReleaseTaskList METADATA END -->
+                <!-- GetReleaseTaskList BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td>Level</td>
+                    <td>Level.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetReleaseTaskList END -->
+            </div>
+            <div id="GetReleaseTaskInformation">
+                <a name="GetReleaseTaskInformation" id="GetReleaseTaskInformation" />
+                <!-- GetReleaseTaskInformation METADATA BEGIN -->
+            <h3>Get Release Task Information</h3>
+            <p>Retrieves information about a Task in a Release.</p>
+        <!-- GetReleaseTaskInformation METADATA END -->
+                <!-- GetReleaseTaskInformation BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Task Id</td>
+                    <td>Task Id.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetReleaseTaskInformation END -->
+            </div>
+            <div id="GenerateTasksinRelease">
+                <a name="GenerateTasksinRelease" id="GenerateTasksinRelease" />
+                <!-- GenerateTasksinRelease METADATA BEGIN -->
+            <h3>Generate Tasks in Release</h3>
+            <p>Runs generate for the Tasks in Release.</p>
+        <!-- GenerateTasksinRelease METADATA END -->
+                <!-- GenerateTasksinRelease BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Release ID</td>
+                    <td>Release ID</td>
+                </tr>
+                <tr>
+                    <td class="required">Level</td>
+                    <td>Level.</td>
+                </tr>
+                <tr>
+                    <td class="required">Runtime Configuration</td>
+                    <td>Required, see ISPW administrator for valid values.</td>
+                </tr>
+                <tr>
+                    <td>HTTP Headers in format: "Header=Value"</td>
+                    <td>Optional, global custom headers used for all callbacks. Use "Header=Value" format.</td>
+                </tr>
+                <tr>
+                    <td>Global Credentials for Callbacks</td>
+                    <td>Optional, global overide credentials used for all callbacks</td>
+                </tr>
+                <tr>
+                    <td>Event array in JSON format for asynchronous callback</td>
+                    <td>Event array, should contain at least 1 member. Uses JSON format, described in Compuware ISPW REST API Guide. Useful values can be found in /plugins/EC-ISPW/project/ec_callback_job etc. If this parameter is left empty, the plugin procedure will handle the callback itself, and the procedure call will then be synchronous: it won't return until a callback is received (or it times out).</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GenerateTasksinRelease END -->
+            </div>
+<!-- PROCEDURES END -->
+    </div>
+    <!-- RELEASE NOTES BEGIN -->
+    <!-- RELEASE NOTES END -->
+</body>
+</html>
