@@ -48,7 +48,7 @@ sub step_display_task_information {
         my $container = ($parameters->{containerType} eq 'release') ? $task->{container} : $task->{assignment};
 
         my $uri = URI->new($config->{instance});
-        $uri->path_segments('ispw', $srid, (($parameters->{containerType} eq 'release') ? 'assignments' : 'releases'), $container, 'tasks', $task_id);
+        $uri->path_segments('ispw', $srid, (($parameters->{containerType} eq 'release') ? 'releases' : 'assignments'), $container, 'tasks', $task_id);
         my $request = HTTP::Request->new(GET => $uri);
         $request->header('Authorization' => $password);
 

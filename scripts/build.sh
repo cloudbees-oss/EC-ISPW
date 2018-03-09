@@ -2,7 +2,7 @@
 
 
 PLUGIN_NAME=EC-ISPW
-PLUGIN_VERSION=2.0.0.8
+PLUGIN_VERSION=2.0.0.9
 DIR=$(dirname $0)
 chmod +x $DIR/../bin/darwin_x86_64/ecpluginbuilder
 $DIR/../bin/darwin_x86_64/ecpluginbuilder --plugin-version $PLUGIN_VERSION
