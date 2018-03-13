@@ -6,7 +6,7 @@ project projName, {
         step 'Get Set Information', {
            subprocedure = 'Get Set Information'
            subproject = '/plugins/EC-ISPW/project'
-            actualParameter 'config', "$args.config"
+            actualParameter 'config', args.config
            actualParameter 'resultFormat', 'json'
            actualParameter 'resultPropertySheet', '/myJob/setInfo'
            actualParameter 'setId', '1234'
