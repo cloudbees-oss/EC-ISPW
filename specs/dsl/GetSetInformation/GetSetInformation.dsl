@@ -1,6 +1,6 @@
 def projName = args.projName
 def params = [
-        config: args.config
+        config: 'specConfig'
 ]
 project projName, {
     procedure 'Get Set Information', {
@@ -32,7 +32,7 @@ project projName, {
         step 'Get Set Information', {
            subprocedure = 'Get Set Information'
            subproject = '/plugins/EC-ISPW/project'
-           actualParameter 'config', args.config
+           actualParameter 'config', params.config
            actualParameter 'resultFormat', 'json'
            actualParameter 'resultPropertySheet', '/myJob/setInfo'
            actualParameter 'setId', '\$[/javascript JSON.parse(\'\$[/myJob/generateResult]\').setId]'
