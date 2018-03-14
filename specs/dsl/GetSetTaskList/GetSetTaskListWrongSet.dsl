@@ -6,7 +6,7 @@ project projName, {
         step 'Get Set Task List', {
             subprocedure = 'Get Set Task List'
             subproject = '/plugins/EC-ISPW/project'
-            actualParameter 'config', "$args.config"
+            actualParameter 'config', args.config
             actualParameter 'resultFormat', 'json'
             actualParameter 'resultPropertySheet', '/myJob/setTasks'
             actualParameter 'setId', '1234'

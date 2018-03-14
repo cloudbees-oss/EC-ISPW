@@ -28,15 +28,15 @@ project projName, {
                 }
             }
         }
-        
+
         step 'Get Set Task List', {
-           subprocedure = 'Get Set Task List'
-           subproject = '/plugins/EC-ISPW/project'
-            actualParameter 'config', "$args.config"
-           actualParameter 'resultFormat', 'json'
-           actualParameter 'resultPropertySheet', '/myJob/setTasks'
-           actualParameter 'setId', '\$[/javascript JSON.parse(\'\$[/myJob/generateResult]\').setId]'
-         }
+            subprocedure = 'Get Set Task List'
+            subproject = '/plugins/EC-ISPW/project'
+            actualParameter 'config', params.config
+            actualParameter 'resultFormat', 'json'
+            actualParameter 'resultPropertySheet', '/myJob/setTasks'
+            actualParameter 'setId', '\$[/javascript JSON.parse(\'\$[/myJob/generateResult]\').setId]'
+        }
     }
 }
 
