@@ -19,6 +19,12 @@ sub step_display_task_information {
         resultFormat
     /);
 
+    if($parameters->{setTasksJson} eq "" || $parameters->{setTasksJson} =~ m/^\s*{\s*}\s*$/){
+        my $message = "Set Tasks field must contain valid non-empty JSON object.";
+        $self->_save_error($message, $parameters->{resultPropertySheet});
+        $self->bail_out($message);    
+    }
+    
     for my $param_name (sort keys %$parameters) {
         my $value = $parameters->{$param_name};
         $self->logger->info(qq{Got parameter "$param_name" with value "$value"});
@@ -92,7 +98,6 @@ sub _save_result {
         $self->logger->info("Saved answer under $property_name");
     }
     else {
-        $self->bail_out("Cannot process format $selected_format: not implemented");
     }
 }
 

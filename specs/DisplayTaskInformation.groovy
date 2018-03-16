@@ -1,3 +1,4 @@
+import org.apache.commons.lang.StringUtils
 import spock.lang.*
 
 class DisplayTaskInformation extends ECISPWPluginHelper {
@@ -7,18 +8,12 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
     def doSetupSpec() {
         createConfiguration('specConfig')
         dslFile 'dsl/DisplayTaskInformation/DisplayTaskInformation.dsl', [projName: projectName, config: 'specConfig']
-//        dslFile 'dsl/DisplayTaskInformation/DisplayTaskInformationSingleStep.dsl', [projName: projectName, config:'specConfig']
     }
 
     def doCleanupSpec() {
         dsl "deleteProject '$projectName'"
     }
-
-    //TODO: 1. Test against assignment
-    // 2. Release
-    // 3. Set (kinda complicated stuff, since we have to get a Set created first
-    // 3-4-5 Asn - Release - Set agains empty setTasksJson - for now there is an issue with failing Perl. - Talk to Roger
-
+    
     @Unroll
     def "Display Task Information for Assignment"() {
         when: 'a procedure runs'
@@ -36,6 +31,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
+        assert StringUtils.isNotEmpty(getJobProperty("/myJob/tasksInformation", result.jobId).toString())
     }
 
     def "Display Task Information for Release"() {
@@ -45,7 +41,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
                   runProcedure(
                       projectName: '$projectName',
                       procedureName: 'Display Task Information',
-                      actualParameter: [containerType:'release', setTasksJson:'{"tasks":[{"taskId":"7E22DBD4287E","release":"SPECTEST"}]}']
+                      actualParameter: [containerType:'release', setTasksJson:'{"tasks":[{"taskId":"7E22DBD4287E","container":"SPECTEST"}]}']
                   )
               """
         then: 'the procedure finishes successfully'
@@ -56,6 +52,26 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
         assert jobStatus(result.jobId).outcome == 'success'
     }
 
+    @Unroll
+    def "Display Task Information with Emtpy String Set Tasks"() {
+        when: 'a procedure runs'
+
+        def result = dsl """
+                runProcedure(
+                    projectName: '$projectName',
+                    procedureName: 'Display Task Information',
+                    actualParameter: [containerType:'assignment', setTasksJson:'']
+                )
+            """
+        then: 'the procedure fails'
+        assert result?.jobId
+        waitUntil {
+            jobCompleted result.jobId
+        }
+        assert jobStatus(result.jobId).outcome == 'error'
+        assert (getJobProperty("/myJob/tasksInformation", result.jobId).toString().equals("Set Tasks field must contain valid non-empty JSON object."))
+    }
+    
     @Unroll
     def "Display Task Information with Emtpy Set Tasks"() {
         when: 'a procedure runs'
@@ -73,7 +89,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        //TODO: Workaround 404 response
+        assert (getJobProperty("/myJob/tasksInformation", result.jobId).toString().equals("Set Tasks field must contain valid non-empty JSON object."))
     }
 
     @Unroll
@@ -84,7 +100,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
                 runProcedure(
                     projectName: '$projectName',
                     procedureName: 'Display Task Information',
-                    actualParameter: [containerType:'release', setTasksJson:'{"tasks":[{"taskId":"1234", "release":"QATEST"}]}']
+                    actualParameter: [containerType:'release', setTasksJson:'{"tasks":[{"taskId":"1234", "container":"QATEST"}]}']
                 )
             """
         then: 'the procedure fails'
@@ -93,7 +109,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'error'
-        //TODO: Workaround 404 response
+        assert (getJobProperty("/myJob/tasksInformation", result.jobId).toString().equals("{\"message\":\"Task 1234 not found in Release QATEST\"}"))
     }
 
 }
