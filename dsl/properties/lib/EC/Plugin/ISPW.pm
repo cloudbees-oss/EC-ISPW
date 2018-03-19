@@ -70,12 +70,18 @@ sub step_display_task_information {
             my $code = $response->code;
             $self->logger->info("Response code: $code");
             my $error = $response->content ? $response->content : $response->status_line;
+            $self->_save_error($error, $parameters->{resultPropertySheet});
             $self->bail_out($error);
         }
     }
 
     $self->_generate_report($result, $parameters->{containerType});
     $self->_save_result($parameters->{resultPropertySheet}, $parameters->{resultFormat}, {tasks => $result});
+}   
+
+sub _save_error {
+    my ($self, $message, $property_name) = @_;
+    $self->ec->setProperty( $property_name, $message );
 }
 
 sub _save_result {
@@ -98,6 +104,9 @@ sub _save_result {
         $self->logger->info("Saved answer under $property_name");
     }
     else {
+        my $error = "Cannot process format $selected_format: not implemented";
+        $self->_save_error($error, $property_name);
+        $self->bail_out($error);
     }
 }
 
