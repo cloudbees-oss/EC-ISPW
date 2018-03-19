@@ -10,6 +10,12 @@ class ECISPWPluginHelper extends PluginSpockTestSupport {
         if (System.getenv('RECREATE_CONFIG')) {
             props.recreate = true
         }
+
+        println("====");
+        println(System.getenv('AGENT_IP'));
+        println("====");
+        
+
         createPluginConfiguration(
                 'EC-ISPW',
                 configName,
