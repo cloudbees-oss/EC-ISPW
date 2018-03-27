@@ -12,7 +12,7 @@ class RegressRelease extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-        dsl "deleteProject '$projectName'"
+//        dsl "deleteProject '$projectName'"
     }
 
 // TODO: This testcase will now work without callbacks.

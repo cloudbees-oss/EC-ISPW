@@ -12,7 +12,7 @@ class PromoteAssignment extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-        dsl "deleteProject '$projectName'"
+//        dsl "deleteProject '$projectName'"
     }
     
     // TODO: this test will not work properly while we'll not get callbacks working.

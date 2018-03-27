@@ -11,7 +11,7 @@ class DisplayTaskInformation extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-        dsl "deleteProject '$projectName'"
+//        dsl "deleteProject '$projectName'"
     }
     
     @Unroll
