@@ -11,7 +11,7 @@ class GenerateTasksInRelease extends ECISPWPluginHelper {
     }
 
     def doCleanupSpec() {
-//        dsl "deleteProject '$projectName'"
+        dsl "deleteProject '$projectName'"
     }
 
     //TODO: Check what if COBOL Code will have syntax error -> one more testcase?
