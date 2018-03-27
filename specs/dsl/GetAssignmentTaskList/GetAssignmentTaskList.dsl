@@ -8,6 +8,7 @@ def params = [
 project projName, {
     procedure 'Get Assignment Task List', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Get Assignment Information', {
             subprocedure = 'Get Assignment Task List'

@@ -16,6 +16,8 @@ project projName, {
 
     procedure 'Promote Release', {
         projectName = projName
+        resourceName = 'ISPW Agent'
+        
         step 'Promote Release', {
             errorHandling = 'failProcedure'
             subprocedure = 'Promote Release'

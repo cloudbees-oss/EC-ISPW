@@ -5,6 +5,7 @@ def params = [
 project projName, {
     procedure 'Get Set Task List', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Trigger Set Creation', {
             subprocedure = 'Generate Tasks in Assignment'

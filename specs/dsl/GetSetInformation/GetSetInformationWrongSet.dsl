@@ -2,6 +2,7 @@ def projName = args.projName
 project projName, {
     procedure 'Get Set Information Wrong Set', {
         projectName = projName
+        resourceName = 'ISPW Agent'
         
         step 'Get Set Information', {
            subprocedure = 'Get Set Information'

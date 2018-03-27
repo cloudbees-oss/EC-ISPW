@@ -17,6 +17,7 @@ project projName, {
 
     procedure 'Promote Assignment With Checks', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Get Release Info', {
             subprocedure = 'Get Release Task List'

@@ -18,6 +18,7 @@ project projName, {
 
     procedure 'Regress Release With Checks', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Get Release Info', {
             subprocedure = 'Get Release Task List'

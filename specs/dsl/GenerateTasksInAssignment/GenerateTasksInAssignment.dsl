@@ -16,6 +16,7 @@ project projName, {
 
     procedure 'Generate Tasks In Assignment', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Generate Tasks In Assignment', {
             subprocedure = 'Generate Tasks in Assignment'

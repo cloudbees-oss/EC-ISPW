@@ -24,5 +24,7 @@ class ECISPWPluginHelper extends PluginSpockTestSupport {
                 password,
                 props
         )
+        
+        dslFile 'dsl/CreateAgent.dsl', []
     }
 }

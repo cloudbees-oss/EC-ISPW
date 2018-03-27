@@ -16,6 +16,8 @@ project projName, {
 
     procedure 'Regress Release', {
         projectName = projName
+        resourceName = 'ISPW Agent'
+        
         step 'Regress Release', {
             errorHandling = 'failProcedure'
             subprocedure = 'Regress Release'

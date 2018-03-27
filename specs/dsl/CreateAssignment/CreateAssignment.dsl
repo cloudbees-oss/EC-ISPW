@@ -13,7 +13,7 @@ project projName, {
         description = ''
         jobNameTemplate = ''
         projectName = projName
-        resourceName = ''
+        resourceName = 'ISPW Agent'
         timeLimit = ''
         timeLimitUnits = 'minutes'
         workspaceName = ''

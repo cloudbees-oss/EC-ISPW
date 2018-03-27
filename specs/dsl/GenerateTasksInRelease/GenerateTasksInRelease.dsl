@@ -16,6 +16,7 @@ project projName, {
 
     procedure 'Generate Tasks In Release', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Generate Tasks In Release', {
             subprocedure = 'Generate Tasks in Release'

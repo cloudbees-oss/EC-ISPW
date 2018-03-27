@@ -11,6 +11,7 @@ def params = [
 project projName, {
     procedure 'Get Release Task Information', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Get Release Task Information', {
             subprocedure = 'Get Release Task Information'

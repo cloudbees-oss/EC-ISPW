@@ -16,6 +16,7 @@ project projName, {
 
     procedure 'Deploy Assignment', {
         projectName = projName
+        resourceName = 'ISPW Agent'
         step 'Deploy Assignment', {
             errorHandling = 'failProcedure'
             subprocedure = 'Deploy Assignment'

@@ -16,6 +16,7 @@ project projName, {
 
     procedure 'Deploy Release', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Deploy Release', {
             subprocedure = 'Deploy Release'

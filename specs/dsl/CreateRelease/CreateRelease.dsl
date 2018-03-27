@@ -15,7 +15,7 @@ project projName, {
         description = 'Creates a Release'
         jobNameTemplate = null
         projectName = projName
-        resourceName = null
+        resourceName = 'ISPW Agent'
         timeLimitUnits = null
         workspaceName = null
         step 'Create Release', {

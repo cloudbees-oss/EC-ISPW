@@ -9,6 +9,7 @@ project projName, {
     
     procedure 'Display Task Information', {
         projectName = projName
+        resourceName = 'ISPW Agent'
 
         step 'Display Task Information', {
             subprocedure = 'Display Task Information'
