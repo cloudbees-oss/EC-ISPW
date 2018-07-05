@@ -51,6 +51,6 @@ class GetAssignmentTaskList extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
-        assert getJobProperty("/myJob/assignmentTask", result.jobId).toString().equals("{}");
+        assert getJobProperty("/myJob/assignmentTask", result.jobId).toString().equals("{\"message\":\"Results: No tasks available.\"}");
     }
 }

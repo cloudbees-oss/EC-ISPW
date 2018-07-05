@@ -72,6 +72,6 @@ class GetReleaseTaskList extends ECISPWPluginHelper {
             jobCompleted result.jobId
         }
         assert jobStatus(result.jobId).outcome == 'success'
-        assert getJobProperty("/myJob/releaseTask", result.jobId).toString().equals("{}");
+        assert getJobProperty("/myJob/releaseTask", result.jobId).toString().equals("{\"message\":\"Results: No tasks available.\"}");
     }
 }
