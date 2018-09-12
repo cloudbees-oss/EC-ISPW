@@ -1025,6 +1025,12 @@
 <!-- PROCEDURES END -->
     </div>
     <!-- RELEASE NOTES BEGIN -->
+    <h1 id="rns">Release Notes</h1>
+    <h2>@PLUGIN_KEY@-3.0.1</h2>
+    <ul>
+        <li>Remote installation via ectool has been fixed.</li>
+    </ul>
+
     <!-- RELEASE NOTES END -->
 </body>
 </html>
