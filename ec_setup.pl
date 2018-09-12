@@ -17,7 +17,7 @@ if ( defined $ENV{QUERY_STRING} ) {    # Promotion through UI
 else {
     my $commanderPluginDir = $commander->getProperty('/server/settings/pluginsDirectory')->findvalue('//value');
     # We are not checking for the directory, because we can run this script on a different machine
-    $pluginDir = File::Spec->catfile($commanderPluginDir, $pluginName);
+    $pluginDir = "$commanderPluginDir/$pluginName";
 }
 
 $logfile .= "Plugin directory is $pluginDir";
@@ -28,13 +28,7 @@ $logfile .= "Current directory: $dir\n";
 
 # Evaluate promote.groovy or demote.groovy based on whether plugin is being promoted or demoted ($promoteAction)
 local $/ = undef;
-# If env variable QUERY_STRING exists:
-my $dslFilePath;
-if(defined $ENV{QUERY_STRING}) { # Promotion through UI
-    $dslFilePath = File::Spec->catfile($ENV{COMMANDER_PLUGINS}, $pluginName, "dsl", "$promoteAction.groovy");
-} else {  # Promotion from the command line
-    $dslFilePath = File::Spec->catfile($pluginDir, "dsl", "$promoteAction.groovy");
-}
+
 
 my $demoteDsl = q{
 # demote.groovy placeholder
@@ -53,6 +47,7 @@ else {
   $dsl = $demoteDsl;
 }
 
+my $serverLibraryPath = "$pluginDir/dsl";
 my $dslReponse = $commander->evalDsl(
     $dsl, {
         parameters => qq(
@@ -63,7 +58,7 @@ my $dslReponse = $commander->evalDsl(
                      }
               ),
         debug             => 'false',
-        serverLibraryPath => File::Spec->catdir( $pluginDir, 'dsl' ),
+        serverLibraryPath => $serverLibraryPath,
     },
 );
 
@@ -76,4 +71,5 @@ my $errorMessage = $commander->getError();
 my $nowString = localtime;
 $commander->setProperty( "/plugins/$pluginName/project/logs/$nowString", { value => $logfile } );
 
-die $errorMessage unless !$errorMessage
+die $errorMessage unless !$errorMessage;
+
