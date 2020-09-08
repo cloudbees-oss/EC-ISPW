@@ -97,7 +97,7 @@ sub define_processors {
 
     my @steps_with_nested_elements = (
         'Deploy assignment',
-        'Deploy release',        
+        'Deploy release',
         'Fallback set',
         'Generate tasks in assignment',
         'Generate tasks in release',
@@ -143,7 +143,7 @@ sub add_nested_elements {
     if (scalar(@httpHeaders) > 0) {
         $retval->{httpHeaders} = \@httpHeaders;
     }
-    
+
     if ($params->{callbackCredentialUserName} && $params->{callbackCredentialPassword}) {
         $retval->{credentials} = { };
         $retval->{credentials}->{username} = $params->{callbackCredentialUserName};
@@ -152,12 +152,16 @@ sub add_nested_elements {
 
     my $events;
     eval {
-        $events = decode_json($params->{events});
+        my $ec = ElectricCommander->new;
+        my $eventsRaw = $params->{events} ||= $ec->getPropertyValue('events');
+        print "Events JSON raw: $eventsRaw\n";
+        $events = decode_json($eventsRaw);
         1;
     } or do {
         $self->plugin->bail_out( "Events field couldn't be empty and must be JSON. See ISPW documentation." );
     };
     $retval->{events} = $events;
+    print Dumper $events;
 
     return encode_json($retval);
 }
