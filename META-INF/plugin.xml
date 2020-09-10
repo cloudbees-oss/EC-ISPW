@@ -1,11 +1,10 @@
 <plugin>
   <key>EC-ISPW</key>
   <label>EC-ISPW</label>
-  <version>3.0.2.0</version>
+  <version>3.0.3.0</version>
   <author>Electric Cloud</author>
   <authorUrl>www.electric-cloud.com</authorUrl>
   <category>Mainframe</category>
-  <ecSupportLevel>10</ecSupportLevel>
   <commander-version min="6.0" />
   <description>Integrates Compuware ISPW into ElectricFlow</description>
   <configure>ec_config</configure>
