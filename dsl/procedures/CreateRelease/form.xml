@@ -34,17 +34,9 @@
   <value></value>
 </formElement>
 <formElement>
-  <documentation>Optional, can only be used if releasePrefix is not set, one must be used. #### TODO Is this still optional?.</documentation>
+  <documentation>Optional, can only be used if releasePrefix is not set, one must be used.</documentation>
   <label>Release ID:</label>
   <property>releaseId</property>
-  <required>0</required>
-  <type>entry</type>
-  <value></value>
-</formElement>
-<formElement>
-  <documentation>Oprional, ? #### TODO.</documentation>
-  <label>Release Preference:</label>
-  <property>releasePreference #### TODO If this a typo in the documentation for releasePrefix?</property>
   <required>0</required>
   <type>entry</type>
   <value></value>

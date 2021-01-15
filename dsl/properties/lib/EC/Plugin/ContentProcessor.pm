@@ -163,6 +163,9 @@ sub add_nested_elements {
     $retval->{events} = $events;
     print Dumper $events;
 
+    print Dumper $retval;
+    print encode_json($retval);
+
     return encode_json($retval);
 }
 

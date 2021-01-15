@@ -142,6 +142,11 @@ sub generate_step_request {
 
     my $endpoint = $self->config->{$step_name}->{endpoint};
 
+
+    if ($config->{debugLevel}) {
+        $self->logger->{level} = $config->{debugLevel};
+    }
+    $self->logger->debug('test');
     my $key = qr/[\w\-.?!]+/;
     # replace placeholders
     my $config_values_replacer = sub {

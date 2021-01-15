@@ -57,4 +57,22 @@
         <retypePasswordLabel>Retype CES Personal Access Token:</retypePasswordLabel>
         <documentation>The CES Personal Access Token can be obtained from the ISPW server's Compuware Enterprise Services (CES) web interface http://[server]:[port]/compuware/jsp/settings/security.jsp under the tab "Personal Access Tokens". Its value is a hex-encoded guid. (The ISPW User Name field is currently unused, but cannot be left blank.)</documentation>
     </formElement>
+    <formElement>
+        <type>select</type>
+        <label>Debug Level:</label>
+        <property>debugLevel</property>
+        <required>0</required>
+        <option>
+            <name>INFO</name>
+            <value>0</value>
+        </option>
+        <option>
+            <name>DEBUG</name>
+            <value>1</value>
+        </option>
+        <option>
+            <name>TRACE</name>
+            <value>2</value>
+        </option>
+    </formElement>
 </editor>
