@@ -24,21 +24,46 @@ class GetReleaseInformation extends Procedure {
         return this
     }
     
+    
     GetReleaseInformation releaseId(String releaseId) {
         this.addParam('releaseId', releaseId)
         return this
     }
+    
     
     GetReleaseInformation resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
     
+    GetReleaseInformation resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
+    
     GetReleaseInformation resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }

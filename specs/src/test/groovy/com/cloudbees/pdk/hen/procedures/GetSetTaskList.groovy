@@ -24,21 +24,46 @@ class GetSetTaskList extends Procedure {
         return this
     }
     
+    
     GetSetTaskList resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
+    
+    GetSetTaskList resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
     
     GetSetTaskList resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
     
+    
     GetSetTaskList setId(String setId) {
         this.addParam('setId', setId)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }

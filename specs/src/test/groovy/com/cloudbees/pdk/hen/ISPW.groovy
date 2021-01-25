@@ -23,6 +23,10 @@ class ISPW extends Plugin {
         return 'PLAY'
     }
 
+    static String assignment() {
+        return 'PLAY000004'
+    }
+
     static ISPW createWithoutConfig() {
         ISPW plugin = new ISPW(name: 'EC-ISPW')
         return plugin

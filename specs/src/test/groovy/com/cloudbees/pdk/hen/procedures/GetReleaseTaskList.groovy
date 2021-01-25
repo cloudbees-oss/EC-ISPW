@@ -24,26 +24,52 @@ class GetReleaseTaskList extends Procedure {
         return this
     }
     
+    
     GetReleaseTaskList level(String level) {
         this.addParam('level', level)
         return this
     }
+    
     
     GetReleaseTaskList releaseId(String releaseId) {
         this.addParam('releaseId', releaseId)
         return this
     }
     
+    
     GetReleaseTaskList resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
+    
+    GetReleaseTaskList resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
     
     GetReleaseTaskList resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }

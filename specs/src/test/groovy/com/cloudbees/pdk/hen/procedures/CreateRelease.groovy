@@ -24,56 +24,88 @@ class CreateRelease extends Procedure {
         return this
     }
     
+    
     CreateRelease application(String application) {
         this.addParam('application', application)
         return this
     }
+    
     
     CreateRelease config(String config) {
         this.addParam('config', config)
         return this
     }
     
+    
     CreateRelease description(String description) {
         this.addParam('description', description)
         return this
     }
+    
     
     CreateRelease message(String message) {
         this.addParam('message', message)
         return this
     }
     
+    
     CreateRelease releaseId(String releaseId) {
         this.addParam('releaseId', releaseId)
         return this
     }
+    
     
     CreateRelease resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
     
+    CreateRelease resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
+    
     CreateRelease resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
+    
     
     CreateRelease stream(String stream) {
         this.addParam('stream', stream)
         return this
     }
     
+    
     CreateRelease userTag(String userTag) {
         this.addParam('userTag', userTag)
         return this
     }
+    
     
     CreateRelease workRefNumber(String workRefNumber) {
         this.addParam('workRefNumber', workRefNumber)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }

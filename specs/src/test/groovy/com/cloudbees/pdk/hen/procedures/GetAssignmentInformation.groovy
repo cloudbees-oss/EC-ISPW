@@ -24,21 +24,46 @@ class GetAssignmentInformation extends Procedure {
         return this
     }
     
+    
     GetAssignmentInformation config(String config) {
         this.addParam('config', config)
         return this
     }
+    
     
     GetAssignmentInformation resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
     
+    GetAssignmentInformation resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
+    
     GetAssignmentInformation resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }

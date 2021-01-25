@@ -24,26 +24,52 @@ class GetAssignmentTaskList extends Procedure {
         return this
     }
     
+    
     GetAssignmentTaskList config(String config) {
         this.addParam('config', config)
         return this
     }
+    
     
     GetAssignmentTaskList level(String level) {
         this.addParam('level', level)
         return this
     }
     
+    
     GetAssignmentTaskList resultFormat(String resultFormat) {
         this.addParam('resultFormat', resultFormat)
         return this
     }
+    
+    GetAssignmentTaskList resultFormat(ResultFormatOptions resultFormat) {
+        this.addParam('resultFormat', resultFormat.toString())
+        return this
+    }
+    
     
     GetAssignmentTaskList resultPropertySheet(String resultPropertySheet) {
         this.addParam('resultPropertySheet', resultPropertySheet)
         return this
     }
     
+    
+    
+    
+    enum ResultFormatOptions {
+    
+    JSON("json"),
+    
+    PROPERTYSHEET("propertySheet")
+    
+    private String value
+    ResultFormatOptions(String value) {
+        this.value = value
+    }
 
+    String toString() {
+        return this.value
+    }
+}
     
 }
