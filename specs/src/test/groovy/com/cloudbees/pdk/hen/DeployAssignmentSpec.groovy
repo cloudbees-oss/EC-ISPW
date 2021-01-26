@@ -2,8 +2,10 @@ package com.cloudbees.pdk.hen
 
 import com.cloudbees.pdk.hen.procedures.RegressRelease
 import com.electriccloud.spec.PluginSpockTestSupport
+import spock.lang.Ignore
 import spock.lang.Shared
 
+@Ignore
 class DeployAssignmentSpec extends PluginSpockTestSupport {
     @Shared
     ISPW ispw = ISPW.create()
