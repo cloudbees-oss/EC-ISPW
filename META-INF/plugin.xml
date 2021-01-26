@@ -6,9 +6,12 @@
   <authorUrl>www.electric-cloud.com</authorUrl>
   <category>Mainframe</category>
   <commander-version min="6.0" />
-  <description>Integrates Compuware ISPW into CLoudBees CD</description>
+  <description>Integrates Compuware ISPW into CloudBees CD</description>
   <configure>ec_config</configure>
   <pluginWizardBased>false</pluginWizardBased>
   <depends min="1.4.1">EC-PluginManager</depends>
   <help>help.xml</help>
+  <catalogLabel>Compuware ISPW</catalogLabel>
+  <detailedDescription>Compuware ISPW is a source code management, release automation, and deployment automation tool for mainframe DevOps. It enables developers to quickly and safely build, test and deploy mainframe code. This plugin allows CloudBees CD to interact with Compuware ISPW to control the lifecycle of Mainframe applications and extend DevOps practices to Mainframe releases and software updates.</detailedDescription>
+  <repositoryUrl>https://github.com/cloudbees-oss/EC-ISPW</repositoryUrl>
 </plugin>
