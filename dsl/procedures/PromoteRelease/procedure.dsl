@@ -14,7 +14,7 @@ procedure 'Promote Release', description: 'Promotes a Release', { // [PROCEDURE]
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Promote release');
 """,
-        errorHandling: 'failProcedure',
+        errorHandling: 'abortProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
