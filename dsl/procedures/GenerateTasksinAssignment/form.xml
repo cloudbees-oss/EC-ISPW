@@ -40,7 +40,7 @@
     <name>Emergency (E)</name>
     <value>E</value>
   </option>
-  <property>changeType #### TODO Is this ignored?</property>
+  <property>changeType</property>
   <required>0</required>
   <type>select</type>
   <value>S</value>
@@ -56,7 +56,7 @@
     <name>Hold (H)</name>
     <value>H</value>
   </option>
-  <property>execStat #### TODO Is this ignored?</property>
+  <property>execStat</property>
   <required>0</required>
   <type>select</type>
   <value></value>

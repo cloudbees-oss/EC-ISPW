@@ -89,7 +89,7 @@ sub define_hooks {
     $self->define_hook('Create release', 'parameters', \&check_create_release);
     $self->define_hook('Get assignment information', 'parsed', \&create_assignment_info_report);
     $self->define_hook('Get assignment task information', 'parsed', \&create_task_info_report);
-    $self->define_hook('Get release task generate listing', 'parsed', \&create_release_task_generate_listing_report);    
+    $self->define_hook('Get release task generate listing', 'parsed', \&create_release_task_generate_listing_report);
     $self->define_hook('Get release task information', 'parsed', \&create_task_info_report);
     $self->define_hook('Get release information', 'parsed', \&create_release_info_report);
     $self->define_hook('Get set deployment information', 'parsed', \&create_set_deployment_info_report);
@@ -107,7 +107,7 @@ sub process_response {
         my $message = $json_error->{message};
         if ($message) {
             $self->save_error($message);
-            
+
             $self->plugin->logger->trace( $response->as_string );
             $self->plugin->bail_out( $message );
         }
@@ -122,18 +122,18 @@ sub save_error {
     my $config = $self->plugin->config->{$step_name}->{resultProperty};
     return unless $config && $config->{show};
     my $property_name = $self->plugin->parameters( $step_name )->{+'resultPropertySheet'};
-    
+
     $self->plugin->ec->setProperty( $property_name, $message );
 }
 
 sub correct_json_list_response {
     my ($self, $response) = @_;
-    
+
     if ($response->content =~ /^({"[a-z][A-Za-z]+s":)({.+})(})$/) {
         $response->{'_content'} = $1 . "[" . $2 . "]" . $3;
     }
-}    
-    
+}
+
 sub check_create_release {
     my ($self, $params) = @_;
 
@@ -162,11 +162,11 @@ sub create_assignment_info_report {
 
     my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
     my $link = "/commander/jobSteps/$job_step_id/$report_filename";
-    my $name = "Assignment Task Info: $parsed->{taskId}";
+    my $name = "Assignment Task Info: $parsed->{assignmentId}";
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
-        
+
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
         qq{<html><a href="$link" target="_blank">Link to Assignment details</a></html>}
         );
@@ -194,11 +194,12 @@ sub create_release_info_report {
 
     my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
     my $link = "/commander/jobSteps/$job_step_id/$report_filename";
-    my $name = "Release Task Info: $parsed->{taskId}";
+
+    my $name = "Release Task Info: $parsed->{releaseId}";
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
-        
+
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
         qq{<html><a href="$link" target="_blank">Link to Release details</a></html>}
         );
@@ -230,7 +231,7 @@ sub create_release_task_generate_listing_report {
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
-        
+
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
         qq{<html><a href="$link" target="_blank">Link to Generate Listing details</a></html>}
         );
@@ -268,7 +269,7 @@ sub create_set_info_report {
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
-        
+
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
         qq{<html><a href="$link" target="_blank">Link to Set details</a></html>}
         );
@@ -307,7 +308,7 @@ sub create_task_info_report {
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
-        
+
         $self->plugin->ec->setProperty("/myPipelineStageRuntime/ec_summary/Evidence from ISPW",
         qq{<html><a href="$link" target="_blank">Link to Task and }.ucFirst($params->{containerType}).qq{ details</a></html>}
         );

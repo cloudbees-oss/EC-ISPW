@@ -9,7 +9,7 @@ help:
   links:
     - http://www.compuware.com/en_us/use-cases/source-code-management.html
   hasConfig: true
-  
+
 procedures:
   - name: Create Assignment
     stepName: Create assignment
@@ -376,7 +376,7 @@ procedures:
         label: Assignment Id
         required: 1
         documentation: Assignment Id.
-        
+
   - name: Get Assignment Task List
     stepName: Get assignment task list
     description: Retrieves the Task list for an Assignment.
@@ -473,7 +473,8 @@ procedures:
         in: query
         required: 1
         noEmptyString: true
-      - property: changeType #### TODO Is this ignored?
+      - property: changeType
+        #### TODO Is this ignored?
         type: select
         in: body
         label: Change Type

@@ -1,12 +1,12 @@
 <plugin>
   <key>EC-ISPW</key>
   <label>EC-ISPW</label>
-  <version>3.0.3.0</version>
-  <author>Electric Cloud</author>
+  <version>3.0.4</version>
+  <author>CloudBees</author>
   <authorUrl>www.electric-cloud.com</authorUrl>
   <category>Mainframe</category>
   <commander-version min="6.0" />
-  <description>Integrates Compuware ISPW into ElectricFlow</description>
+  <description>Integrates Compuware ISPW into CLoudBees CD</description>
   <configure>ec_config</configure>
   <pluginWizardBased>false</pluginWizardBased>
   <depends min="1.4.1">EC-PluginManager</depends>
