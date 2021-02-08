@@ -15,10 +15,11 @@ procedure 'Generate Tasks in Release', description: 'Runs generate for the Tasks
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Generate tasks in release');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
+        timeLimit: 5,
         timeLimitUnits: 'minutes'
 
     // [REST Plugin Wizard step ends]

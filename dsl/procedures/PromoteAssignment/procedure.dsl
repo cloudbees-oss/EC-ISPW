@@ -14,11 +14,12 @@ procedure 'Promote Assignment', description: 'Promotes an Assignment', { // [PRO
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Promote assignment');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
-        timeLimitUnits: 'minutes'
+        timeLimitUnits: 'minutes',
+        timeLimit: 5
 
     // [REST Plugin Wizard step ends]
 

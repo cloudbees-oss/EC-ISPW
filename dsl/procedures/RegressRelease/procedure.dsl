@@ -14,10 +14,11 @@ procedure 'Regress Release', description: 'Regresses a Release', { // [PROCEDURE
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Regress release');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
+        timeLimit: 5,
         timeLimitUnits: 'minutes'
 
     // [REST Plugin Wizard step ends]
