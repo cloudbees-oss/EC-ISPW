@@ -71,11 +71,10 @@ class ProceduresSpec extends PluginSpockTestSupport {
         assert r.successful
     }
 
-    @Ignore
     def 'generate tasks in release'() {
         when:
         def r = ispw.generateTasksinRelease
-            .releaseId('RELEASE3')
+            .releaseId(ISPW.VALID_RELEASE)
             .level('DEV1')
             .resultFormat('json')
             .runtimeConfig('TEST')
@@ -85,6 +84,20 @@ class ProceduresSpec extends PluginSpockTestSupport {
             .run(runOptions)
         then:
         assert r.successful
+    }
+
+    def 'generate tasks in release conflict'() {
+        when:
+        def r = ispw.generateTasksinRelease
+            .releaseId(ISPW.INVALID_RELEASE)
+            .level('DEV1')
+            .resultFormat('json')
+            .resultPropertySheet('/myJob/result')
+            .changeType(GenerateTasksinRelease.ChangeTypeOptions.STANDARD_S_)
+            .callbackCredential('admin', ISPW.password())
+            .run(runOptions)
+        then:
+        assert !r.successful
     }
 
     @Ignore

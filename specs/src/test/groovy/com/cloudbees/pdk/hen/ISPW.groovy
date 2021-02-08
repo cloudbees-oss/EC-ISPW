@@ -7,6 +7,9 @@ import static com.cloudbees.pdk.hen.Utils.env
 
 class ISPW extends Plugin {
 
+    static String VALID_RELEASE = 'RELEASE3'
+    static String INVALID_RELEASE = 'RELEASE1'
+
     static ISPW create() {
         String resName = env('ISPW_RESOURCE')
         String resPort = env('ISPW_RESOURCE_PORT')
@@ -31,6 +34,10 @@ class ISPW extends Plugin {
 
     static String assignment() {
         return 'PLAY000004'
+    }
+
+    static String releaseName() {
+        return 'RELEASE1'
     }
 
     static ISPW createWithoutConfig() {
