@@ -17,6 +17,15 @@ services:
       - maven.org:127.0.0.1
       - repo1.maven.org:127.0.0.1
       - jcenter.bintray.com:127.0.0.1
+  ispw:
+    image: electricflow/ispw-mock:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - external
+    container_name: ispw
+    hostname: ispw
+
 
 networks:
   external:
