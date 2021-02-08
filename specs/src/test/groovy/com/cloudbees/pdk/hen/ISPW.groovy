@@ -9,9 +9,14 @@ class ISPW extends Plugin {
 
     static ISPW create() {
         String resName = env('ISPW_RESOURCE')
-        ISPW plugin = new ISPW(name: 'EC-ISPW', defaultResource: resName)
         String resPort = env('ISPW_RESOURCE_PORT')
-        ServerHandler.getInstance().setupResource( resName, resName, resPort as int)
+        ISPW plugin
+        if (resName == 'localhost') {
+            plugin = new ISPW(name: 'EC-ISPW')
+        } else {
+            ServerHandler.getInstance().setupResource(resName, resName, resPort as int)
+            plugin = new ISPW(name: 'EC-ISPW', defaultResource: resName)
+        }
         plugin.configure(plugin.config)
         return plugin
     }
@@ -44,8 +49,6 @@ class ISPW extends Plugin {
         .instance(env('ISPW_INSTANCE'))
         .debugLevel('10')
         .credential('', env("ISPW_TOKEN"))
-
-
 
 
     CreateAssignment createAssignment = CreateAssignment.create(this)
