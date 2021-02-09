@@ -161,10 +161,6 @@ sub add_nested_elements {
         $self->plugin->bail_out( "Events field couldn't be empty and must be JSON. See ISPW documentation." );
     };
     $retval->{events} = $events;
-    print Dumper $events;
-
-    print Dumper $retval;
-    print encode_json($retval);
 
     return encode_json($retval);
 }

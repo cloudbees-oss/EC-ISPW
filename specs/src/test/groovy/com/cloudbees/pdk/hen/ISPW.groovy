@@ -7,9 +7,19 @@ import static com.cloudbees.pdk.hen.Utils.env
 
 class ISPW extends Plugin {
 
+    static String VALID_RELEASE = 'RELEASE3'
+    static String INVALID_RELEASE = 'RELEASE1'
+
     static ISPW create() {
-        ISPW plugin = new ISPW(name: 'EC-ISPW', defaultResource: 'ispw')
-        ServerHandler.getInstance().setupResource('ispw', '10.201.2.73', 7800)
+        String resName = env('ISPW_RESOURCE')
+        String resPort = env('ISPW_RESOURCE_PORT')
+        ISPW plugin
+        if (resName == 'localhost') {
+            plugin = new ISPW(name: 'EC-ISPW')
+        } else {
+            ServerHandler.getInstance().setupResource(resName, resName, resPort as int)
+            plugin = new ISPW(name: 'EC-ISPW', defaultResource: resName)
+        }
         plugin.configure(plugin.config)
         return plugin
     }
@@ -17,7 +27,6 @@ class ISPW extends Plugin {
     static String app() {
         return 'PLAY'
     }
-
 
     static String stream() {
         return 'PLAY'
@@ -27,16 +36,24 @@ class ISPW extends Plugin {
         return 'PLAY000004'
     }
 
+    static String releaseName() {
+        return 'RELEASE1'
+    }
+
     static ISPW createWithoutConfig() {
         ISPW plugin = new ISPW(name: 'EC-ISPW')
         return plugin
+    }
+
+    static String password() {
+        return env('COMMANDER_PASSWORD')
     }
 
     //user-defined after boilerplate was generated, default parameters setup
     ISPWConfig config = ISPWConfig
         .create(this)
         .srid('ISPW')
-        .instance('http://cwpa-p003.nasa.cpwr.corp:2020')
+        .instance(env('ISPW_INSTANCE'))
         .debugLevel('10')
         .credential('', env("ISPW_TOKEN"))
 

@@ -14,11 +14,12 @@ procedure 'Promote Release', description: 'Promotes a Release', { // [PROCEDURE]
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Promote release');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
-        timeLimitUnits: 'minutes'
+        timeLimitUnits: 'minutes',
+        timiLimit: 5
 
     // [REST Plugin Wizard step ends]
 

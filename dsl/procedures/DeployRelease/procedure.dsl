@@ -14,8 +14,9 @@ procedure 'Deploy Release', description: 'Deploys a Release', { // [PROCEDURE]
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Deploy release');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
+        timeLimit: 5,
         releaseMode: 'none',
         shell: 'ec-perl',
         timeLimitUnits: 'minutes'

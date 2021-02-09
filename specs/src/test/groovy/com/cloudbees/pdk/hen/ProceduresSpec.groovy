@@ -1,15 +1,19 @@
 package com.cloudbees.pdk.hen
 
+import com.cloudbees.pdk.hen.procedures.GenerateTasksinRelease
 import com.cloudbees.pdk.hen.procedures.RegressRelease
 import com.electriccloud.spec.PluginSpockTestSupport
 import spock.lang.Ignore
 import spock.lang.Shared
 
-@Ignore
-class DeployAssignmentSpec extends PluginSpockTestSupport {
+//@Ignore
+class ProceduresSpec extends PluginSpockTestSupport {
     @Shared
     ISPW ispw = ISPW.create()
+    @Shared
+    def runOptions = new RunOptions(timeout: 10)
 
+    @Ignore
     def 'create release'() {
         when:
         def r = ispw.createRelease
@@ -19,7 +23,7 @@ class DeployAssignmentSpec extends PluginSpockTestSupport {
             .description('some test description')
             .resultPropertySheet('/myJob/result')
             .resultFormat('json')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }
@@ -30,75 +34,75 @@ class DeployAssignmentSpec extends PluginSpockTestSupport {
             .assignmentId(ISPW.assignment())
             .resultFormat('json')
             .resultPropertySheet('/myJob/result')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    @Ignore
     def 'get release'() {
         when:
         def r = ispw.getReleaseInformation
             .releaseId('RELEASE1')
             .resultPropertySheet('/myJob/result')
             .resultFormat('json')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    def 'create assignment'() {
+        //when:
+        //def r = ispw.createAssignment.stream(ISPW.stream())
+    }
+
+    @Ignore
     def 'generate tasks in assignment'() {
         when:
         def r = ispw.generateTasksinAssignment
-            .assignmentId('PLAY000004')
+            .assignmentId('PLAY000006')
             .level('DEV1')
             .resultFormat('json')
             .runtimeConfig('TEST')
+            .callbackCredential('admin', ISPW.password())
             .resultPropertySheet('/myJob/result')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }
 
-    def 'generate tasks in release'() {
-        when:
-        def r = ispw.generateTasksinRelease
-            .releaseId('RELEASE1')
-            .level('DEV1')
-            .resultFormat('json')
-            .runtimeConfig('TEST')
-            .resultPropertySheet('/myJob/result')
-            .run()
-        then:
-        assert r.successful
-    }
-
+    @Ignore
     def 'regress release'() {
         when:
         def r = ispw.regressRelease
-            .releaseId('RELEASE1')
+            .releaseId('RELEASE3')
             .level('DEV1')
             .resultFormat('json')
             .runtimeConfig('TEST')
-            .changeType(RegressRelease.ChangeTypeOptions.INCIDENTAL_I_)
+            .changeType(RegressRelease.ChangeTypeOptions.EMERGENCY_E_)
             .resultPropertySheet('/myJob/result')
-            .run()
+            .callbackCredential('admin', ISPW.password())
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    @Ignore
     def 'promote assignment'() {
         when:
         def r = ispw.promoteAssignment
-            .assignmentId('PLAY000004')
-            .level('STG1')
+            .assignmentId('PLAY000007')
+            .level('DEV1')
             .runtimeConfig('ISPW')
             .resultPropertySheet('/myJob/result')
             .resultFormat('json')
-            .run()
+            .callbackCredential('admin', ISPW.password())
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    @Ignore
     def 'deploy assignment'() {
         when:
         def r = ispw.deployAssignment
@@ -106,25 +110,29 @@ class DeployAssignmentSpec extends PluginSpockTestSupport {
             .level('DEV2')
             .runtimeConfig('ISPW')
             .resultFormat('json')
+            .callbackCredential('admin', ISPW.password())
             .resultPropertySheet('/myJob/result')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    @Ignore
     def 'promote release'() {
         when:
         def r = ispw.promoteRelease
-            .releaseId('RELEASE1')
+            .releaseId('RELEASE3')
             .level('STG1')
             .runtimeConfig('ISPW')
             .resultFormat('json')
             .resultPropertySheet('/myJob/result')
-            .run()
+            .callbackCredential('admin', ISPW.password())
+            .run(runOptions)
         then:
         assert r.successful
     }
 
+    @Ignore
     def 'deploy release'() {
         when:
         def r = ispw.deployRelease
@@ -133,7 +141,7 @@ class DeployAssignmentSpec extends PluginSpockTestSupport {
             .runtimeConfig('ISPW')
             .resultFormat('json')
             .resultPropertySheet('/myJob/result')
-            .run()
+            .run(runOptions)
         then:
         assert r.successful
     }

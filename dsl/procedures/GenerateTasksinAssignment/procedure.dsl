@@ -14,10 +14,11 @@ procedure 'Generate Tasks in Assignment', description: 'Runs generate for the Ta
 use EC::RESTPlugin;
 EC::RESTPlugin->new->run_step('Generate tasks in assignment');
 """,
-        errorHandling: 'abortProcedure',
+        errorHandling: 'failProcedure',
         exclusiveMode: 'none',
         releaseMode: 'none',
         shell: 'ec-perl',
+        timeLimit: 5,
         timeLimitUnits: 'minutes'
 
     // [REST Plugin Wizard step ends]
