@@ -107,13 +107,14 @@ sub process_response {
         my $message = $json_error->{message};
         if ($message) {
             $self->save_error($message);
-            # so it won't wait
-            $self->plugin->ec->setProperty('/myParent/ec_callback_response', 'terminated');
             $self->plugin->logger->trace( $response->as_string );
             $self->plugin->bail_out( $message );
         }
         1;
     };
+
+    # so it won't wait
+    $self->plugin->ec->setProperty('/myParent/ec_callback_response', 'terminated');
 }
 
 sub save_error {
