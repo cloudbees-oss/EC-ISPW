@@ -267,7 +267,7 @@ sub create_set_info_report {
 
     my $job_step_id = $ENV{COMMANDER_JOBSTEPID};
     my $link = "/commander/jobSteps/$job_step_id/$report_filename";
-    my $name = "Set Task Info: $parsed->{taskId}";
+    my $name = "Set Task Info: $parsed->{setid}";
     $self->plugin->ec->setProperty("/myJob/report-urls/$name", $link);
     eval {
         #### TODO What about if we're not running in a pipeline? Add to job as well
